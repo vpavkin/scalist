@@ -16,8 +16,11 @@ trait ParserBasedAPI[F[_], L[_], P[_], Req, Base] extends API[F, P, Base] {
   def get[R](implicit
              IR: IsResource[R],
              parser: SingleResourceParser.Aux[P, Base, R]): SingleReadResourceDefinition[F, P, R, Base] =
-    new ParserBasedSingleReadResourceDefinition[F, L, P, R, Req, Base](requestFactory, executor, flattener, parser)
+    new ParserSingleRequestDefinition[F, L, P, R, Req, Base](requestFactory, executor, flattener, parser)
 
-  def getAll[R <: HList](implicit IR: IsResource[R], parser: MultipleResourcesParser.Aux[P, Base, R]): MultipleReadResourceDefinition[F, P, R, Base] =
-    new ParserBasedMultipleReadResourceDefinition[F, L, P, R, Req, Base](requestFactory, executor, flattener, parser)
+  def getAll[R <: HList](implicit
+                         IR: IsResource[R],
+                         parser: MultipleResourcesParser.Aux[P, Base, R])
+  : MultipleReadResourceDefinition[F, P, R, Base] =
+    new ParserMultipleRequestDefinition[F, L, P, R, Req, Base](requestFactory, executor, flattener, parser)
 }

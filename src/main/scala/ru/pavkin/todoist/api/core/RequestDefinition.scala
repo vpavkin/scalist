@@ -19,7 +19,8 @@ trait SingleReadResourceDefinition[F[_], P[_], R, Base] extends RequestDefinitio
               FM: FlatMap[P],
               NEQ: RR <:!< R,
               ir: IsResource[RR],
-              parser: SingleResourceParser.Aux[P, Base, RR]): MultipleReadResourceDefinition[F, P, RR :: R :: HNil, Base]
+              parser: SingleResourceParser.Aux[P, Base, RR])
+  : MultipleReadResourceDefinition[F, P, RR :: R :: HNil, Base]
 }
 
 trait MultipleReadResourceDefinition[F[_], P[_], R <: HList, Base] extends RequestDefinition[F, P, R, Base] {

@@ -1,8 +1,8 @@
 package ru.pavkin.todoist.api.core.plain
 
 import cats.{FlatMap, Id}
-import ru.pavkin.todoist.api.core.{IsResource, MultipleReadResourceDefinition, RequestExecutor, SingleReadResourceDefinition}
 import ru.pavkin.todoist.api.core.parser.SingleResourceParser
+import ru.pavkin.todoist.api.core._
 import ru.pavkin.todoist.api.utils.Produce
 import shapeless.{::, <:!<, HNil}
 
@@ -17,7 +17,8 @@ class PlainSingleReadResourceDefinition[F[_], R, Req, Base](requestFactory: Vect
               F: FlatMap[Id],
               NEQ: <:!<[RR, R],
               ir: IsResource[RR],
-              parser: SingleResourceParser.Aux[Id, Base, RR]): MultipleReadResourceDefinition[F, Id, RR :: R :: HNil, Base] =
+              parser: SingleResourceParser.Aux[Id, Base, RR])
+  : MultipleReadResourceDefinition[F, Id, RR :: R :: HNil, Base] =
     new PlainMultipleReadResourceDefinition[F, RR :: R :: HNil, Req, Base](requestFactory, executor)
 
   def execute: F[Out] = executor.execute(requestFactory.produce(itr.strings))
