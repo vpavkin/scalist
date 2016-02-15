@@ -5,7 +5,7 @@ import ru.pavkin.todoist.api.core._
 import ru.pavkin.todoist.api.utils.{Flattener, Produce}
 import shapeless.HList
 
-trait ParserBasedAPI[F[_], L[_], P[_], Base, Req] extends API[F, P, Base] {
+trait ParserBasedAPI[F[_], L[_], P[_], Req, Base] extends API[F, P, Base] {
 
   implicit def F: Functor[L]
 

@@ -1,7 +1,9 @@
 package ru.pavkin.todoist.api.dispatch.impl.circe.json
 
+import cats.{Apply, Functor}
 import cats.data.Xor
 import cats.syntax.xor._
+import cats.std.future._
 import com.ning.http.client.Response
 import dispatch.{Http, Req}
 import dispatch.Defaults._
@@ -18,6 +20,9 @@ object DispatchJsonRequestExecutor {
   case class ParsingError(underlying: ParsingFailure) extends Error
 
   type Result[T] = Future[Xor[Error, T]]
+
+  type X[T] = Xor[Error, T]
+  implicit val functor: Functor[Result] = Functor[Future].compose(Functor[X])
 }
 
 class DispatchJsonRequestExecutor extends DispatchRequestExecutor[DispatchJsonRequestExecutor.Result, Json] {

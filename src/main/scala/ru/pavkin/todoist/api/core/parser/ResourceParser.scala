@@ -1,6 +1,7 @@
 package ru.pavkin.todoist.api.core.parser
 
-import cats.{FlatMap, Apply}
+import cats.{FlatMap, Apply, Functor}
+import cats.syntax.functor._
 import cats.syntax.flatMap._
 import cats.syntax.apply._
 import shapeless.{HNil, HList, ::}
@@ -52,9 +53,24 @@ object SingleResourceParser {
 
 object MultipleResourcesParser {
   type Aux[F[_], Base, Out0 <: HList] = MultipleResourcesParser[F, Base] {type Out = Out0}
+
   def using[F[_], Base, Out0 <: HList](f: Base => F[Out0]): Aux[F, Base, Out0] = new MultipleResourcesParser[F, Base] {
     type Out = Out0
     def parse(resource: Base): F[Out] = f(resource)
+  }
+
+  implicit def singleHListParser[F[_] : Functor, Base, T](implicit p: SingleResourceParser.Aux[F, Base, T]): MultipleResourcesParser.Aux[F, Base, T :: HNil] =
+    new MultipleResourcesParser[F, Base] {
+      type Out = T :: HNil
+      def parse(resource: Base): F[T :: HNil] = p.parse(resource).map(_ :: HNil)
+    }
+
+  implicit def recurse[F[_] : Functor : Apply, Base, H, T <: HList](implicit
+                                                            h: SingleResourceParser.Aux[F, Base, H],
+                                                            t: MultipleResourcesParser.Aux[F, Base, T]): MultipleResourcesParser.Aux[F, Base, H :: T] =
+  new MultipleResourcesParser[F, Base] {
+    type Out = H :: T
+    def parse(resource: Base): F[H :: T] = t.combine(h).parse(resource)
   }
 }
 
