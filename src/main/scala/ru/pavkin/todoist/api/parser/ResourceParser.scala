@@ -44,7 +44,7 @@ object ResourceParser {
 
 object SingleResourceParser {
   type Aux[F[_], Base, Out0] = SingleResourceParser[F, Base] {type Out = Out0}
-  def using[F[_], Base, Out0](f: Base => F[Out0]): SingleResourceParser.Aux[F, Base, Out0] = new SingleResourceParser[F, Base] {
+  def using[F[_], Base, Out0](f: Base => F[Out0]): Aux[F, Base, Out0] = new SingleResourceParser[F, Base] {
     type Out = Out0
     def parse(resource: Base): F[Out] = f(resource)
   }
@@ -52,5 +52,9 @@ object SingleResourceParser {
 
 object MultipleResourcesParser {
   type Aux[F[_], Base, Out0 <: HList] = MultipleResourcesParser[F, Base] {type Out = Out0}
+  def using[F[_], Base, Out0 <: HList](f: Base => F[Out0]): Aux[F, Base, Out0] = new MultipleResourcesParser[F, Base] {
+    type Out = Out0
+    def parse(resource: Base): F[Out] = f(resource)
+  }
 }
 

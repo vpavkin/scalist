@@ -1,6 +1,7 @@
-package ru.pavkin.todoist.api.core
+package ru.pavkin.todoist.api.core.plain
 
 import cats.Id
+import ru.pavkin.todoist.api.core._
 import ru.pavkin.todoist.api.parser.MultipleResourcesParser.Aux
 import ru.pavkin.todoist.api.parser.SingleResourceParser
 import ru.pavkin.todoist.api.utils.Produce

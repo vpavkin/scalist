@@ -1,6 +1,7 @@
-package ru.pavkin.todoist.api.core
+package ru.pavkin.todoist.api.core.plain
 
 import cats.{FlatMap, Id}
+import ru.pavkin.todoist.api.core.{IsResource, MultipleReadResourceDefinition, RequestExecutor, SingleReadResourceDefinition}
 import ru.pavkin.todoist.api.parser.SingleResourceParser
 import ru.pavkin.todoist.api.utils.Produce
 import shapeless.{::, <:!<, HNil}

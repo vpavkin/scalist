@@ -1,8 +1,9 @@
-package ru.pavkin.todoist.api.core
+package ru.pavkin.todoist.api.core.plain
 
 import cats.{FlatMap, Id}
+import ru.pavkin.todoist.api.core.{IsResource, MultipleReadResourceDefinition, RequestExecutor}
 import ru.pavkin.todoist.api.parser.SingleResourceParser
-import ru.pavkin.todoist.api.utils.{Produce, NotContains}
+import ru.pavkin.todoist.api.utils.{NotContains, Produce}
 import shapeless.{::, HList}
 
 class PlainMultipleReadResourceDefinition[F[_], R <: HList, Req, Base](requestFactory: Vector[String] Produce Req,
