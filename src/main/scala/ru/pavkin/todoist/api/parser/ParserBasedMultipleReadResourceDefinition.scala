@@ -1,30 +1,29 @@
 package ru.pavkin.todoist.api.parser
 
-import cats.Functor
+import cats.{FlatMap, Functor}
 import ru.pavkin.todoist.api.core._
-import ru.pavkin.todoist.api.utils.{Produce, NotContains, Flattener}
-import shapeless.{::, HList, LUBConstraint}
+import ru.pavkin.todoist.api.utils.{Flattener, NotContains, Produce}
+import shapeless.{::, HList}
 
-class ParserBasedMultipleReadResourceDefinition[F[_], L[_], P[_], T <: HList, R <: HList, Req](requestFactory: Vector[String] Produce Req,
-                                                                                               executor: RequestExecutor.Aux[Req, L, String],
-                                                                                               flattener: Flattener[F, L, P],
-                                                                                               parserProvider: ParserProvider[P, String])
-                                                                                              (override implicit val lub: LUBConstraint[T, ReadResourceType],
-                                                                                               override implicit val itr: IsResource.Aux[T, R],
-                                                                                               override implicit val F: Functor[L])
-  extends ParsedBasedRequestDefinition[F, L, P, String, Req] with MultipleReadResourceDefinition[F, T, R] {
+class ParserBasedMultipleReadResourceDefinition[F[_], L[_], P[_], R <: HList, Req, Base](requestFactory: Vector[String] Produce Req,
+                                                                                         executor: RequestExecutor.Aux[Req, L, Base],
+                                                                                         flattener: Flattener[F, L, P],
+                                                                                         parser: MultipleResourcesParser.Aux[P, Base, R])
+                                                                                        (override implicit val itr: IsResource[R],
+                                                                                         override implicit val F: Functor[L])
+  extends ParsedBasedRequestDefinition[F, L, P, R, Req, Base] with MultipleReadResourceDefinition[F, P, R, Base] {
 
-  type Res = R
-
-  val parser: MultipleResourcesParser.Aux[P, String, R] = parserProvider.parser[T, R]
-
-  def load: L[String] = executor.execute(requestFactory.produce(itr.strings))
+  def load: L[Base] = executor.execute(requestFactory.produce(itr.strings))
   def flatten(r: L[P[R]]): F[R] = flattener.flatten(r)
-  def parse(r: String): P[R] = parser.parse(r)
+  def parse(r: Base): P[R] = parser.parse(r)
 
-  def and[TT <: ReadResourceType](implicit NC: NotContains[T, TT],
-                                  ITR: IsResource[TT]): MultipleReadResourceDefinition[F, TT :: T, ITR.Repr :: R] =
-    new ParserBasedMultipleReadResourceDefinition[F, L, P, TT :: T, ITR.Repr :: R, Req](
-      requestFactory, executor, flattener, parserProvider
-  )
+
+  def and[RR](implicit
+              FM: FlatMap[P],
+              NC: NotContains[R, RR],
+              ir: IsResource[RR],
+              rrParser: SingleResourceParser.Aux[P, Base, RR]): MultipleReadResourceDefinition[F, P, ::[RR, R], Base] =
+    new ParserBasedMultipleReadResourceDefinition[F, L, P, RR :: R, Req, Base](
+      requestFactory, executor, flattener, parser.combine(rrParser)
+    )
 }

@@ -1,17 +1,23 @@
 package ru.pavkin.todoist.api.core
 
+import cats.{FlatMap, Id}
+import ru.pavkin.todoist.api.parser.SingleResourceParser
 import ru.pavkin.todoist.api.utils.Produce
 import shapeless.{::, <:!<, HNil}
 
-class PlainSingleReadResourceDefinition[F[_], T <: ReadResourceType, R, Req, Res0](requestFactory: Vector[String] Produce Req,
-                                                                                   executor: RequestExecutor.Aux[Req, F, Res0])
-                                                                                  (override implicit val itr: IsResource.Aux[T, R])
-  extends SingleReadResourceDefinition[F, T, R] {
+class PlainSingleReadResourceDefinition[F[_], R, Req, Base](requestFactory: Vector[String] Produce Req,
+                                                            executor: RequestExecutor.Aux[Req, F, Base])
+                                                           (override implicit val itr: IsResource[R])
+  extends SingleReadResourceDefinition[F, Id, R, Base] {
 
-  type Res = Res0
+  type Out = Base
 
-  def and[TT <: ReadResourceType](implicit NEQ: <:!<[TT, T], ITR: IsResource[TT]): MultipleReadResourceDefinition[F, TT :: T :: HNil, ITR.Repr :: R :: HNil] =
-    new PlainMultipleReadResourceDefinition[F, TT :: T :: HNil, ITR.Repr :: R :: HNil, Req, Res0](requestFactory, executor)
+  def and[RR](implicit
+              F: FlatMap[Id],
+              NEQ: <:!<[RR, R],
+              ir: IsResource[RR],
+              parser: SingleResourceParser.Aux[Id, Base, RR]): MultipleReadResourceDefinition[F, Id, RR :: R :: HNil, Base] =
+    new PlainMultipleReadResourceDefinition[F, RR :: R :: HNil, Req, Base](requestFactory, executor)
 
-  def execute: F[Res0] = executor.execute(requestFactory.produce(itr.strings))
+  def execute: F[Out] = executor.execute(requestFactory.produce(itr.strings))
 }

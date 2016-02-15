@@ -1,20 +1,23 @@
 package ru.pavkin.todoist.api.core
 
+import cats.{FlatMap, Id}
+import ru.pavkin.todoist.api.parser.SingleResourceParser
 import ru.pavkin.todoist.api.utils.{Produce, NotContains}
-import shapeless.{::, HList, LUBConstraint}
+import shapeless.{::, HList}
 
-class PlainMultipleReadResourceDefinition[F[_], T <: HList, R <: HList, Req, Res0](requestFactory: Vector[String] Produce Req,
-                                                                                   executor: RequestExecutor.Aux[Req, F, Res0])
-                                                                                  (override implicit val lub: LUBConstraint[T, ReadResourceType],
-                                                                                   override implicit val itr: IsResource.Aux[T, R])
-  extends MultipleReadResourceDefinition[F, T, R] {
+class PlainMultipleReadResourceDefinition[F[_], R <: HList, Req, Base](requestFactory: Vector[String] Produce Req,
+                                                                       executor: RequestExecutor.Aux[Req, F, Base])
+                                                                      (override implicit val itr: IsResource[R])
+  extends MultipleReadResourceDefinition[F, Id, R, Base] {
 
-  type Res = Res0
+  type Out = Base
 
+  def and[RR](implicit
+              F: FlatMap[Id],
+              NC: NotContains[R, RR],
+              ir: IsResource[RR],
+              parser: SingleResourceParser.Aux[Id, Base, RR]): MultipleReadResourceDefinition[F, Id, RR :: R, Base] =
+    new PlainMultipleReadResourceDefinition[F, RR :: R, Req, Base](requestFactory, executor)
 
-  def and[TT <: ReadResourceType](implicit NC: NotContains[T, TT],
-                                  ITR: IsResource[TT]): MultipleReadResourceDefinition[F, TT :: T, ITR.Repr :: R] =
-    new PlainMultipleReadResourceDefinition[F, TT :: T, ITR.Repr :: R, Req, Res0](requestFactory, executor)
-
-  def execute: F[Res0] = executor.execute(requestFactory.produce(itr.strings))
+  def execute: F[Out] = executor.execute(requestFactory.produce(itr.strings))
 }

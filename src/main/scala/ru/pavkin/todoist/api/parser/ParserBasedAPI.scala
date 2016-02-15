@@ -1,24 +1,23 @@
 package ru.pavkin.todoist.api.parser
 
 import cats.Functor
-import ru.pavkin.todoist.api.core.ReadResourceType.All
 import ru.pavkin.todoist.api.core._
-import ru.pavkin.todoist.api.utils.{Produce, Flattener}
+import ru.pavkin.todoist.api.utils.{Flattener, Produce}
 import shapeless.HList
 
-trait ParserBasedAPI[F[_], L[_], P[_], Req] extends API[F] {
+trait ParserBasedAPI[F[_], L[_], P[_], Base, Req] extends API[F, P, Base] {
 
   implicit def F: Functor[L]
 
   def requestFactory: Produce[Vector[String], Req]
-  def executor: RequestExecutor.Aux[Req, L, String]
+  def executor: RequestExecutor.Aux[Req, L, Base]
   def flattener: Flattener[F, L, P]
-  def parserProvider: ParserProvider[P, String]
 
-  def get[T <: ReadResourceType](implicit ITR: IsResource[T]): SingleReadResourceDefinition[F, T, ITR.Repr] =
-    new ParserBasedSingleReadResourceDefinition[F, L, P, T, ITR.Repr, Req](requestFactory, executor, flattener, parserProvider)(IsResource[T], F)
+  def get[R](implicit
+             IR: IsResource[R],
+             parser: SingleResourceParser.Aux[P, Base, R]): SingleReadResourceDefinition[F, P, R, Base] =
+    new ParserBasedSingleReadResourceDefinition[F, L, P, R, Req, Base](requestFactory, executor, flattener, parser)
 
-  def getAll[R <: HList](implicit ITR: IsResource.Aux[All, R]): MultipleReadResourceDefinition[F, All, R] =
-    new ParserBasedMultipleReadResourceDefinition[F, L, P, All, R, Req](requestFactory, executor, flattener, parserProvider)
-
+  def getAll[R <: HList](implicit IR: IsResource[R], parser: MultipleResourcesParser.Aux[P, Base, R]): MultipleReadResourceDefinition[F, P, R, Base] =
+    new ParserBasedMultipleReadResourceDefinition[F, L, P, R, Req, Base](requestFactory, executor, flattener, parser)
 }

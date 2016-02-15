@@ -4,13 +4,15 @@ import cats.Functor
 import cats.syntax.functor._
 import ru.pavkin.todoist.api.core.RequestDefinition
 
-trait ParsedBasedRequestDefinition[F[_], L[_], P[_], Res0, Req] extends RequestDefinition[F] {
+trait ParsedBasedRequestDefinition[F[_], L[_], P[_], R, Req, Base] extends RequestDefinition[F, P, R, Base] {
 
-  def execute: F[Res] = flatten(load.map(parse _))
+  type Out = R
 
-  def load: L[Res0]
-  def flatten(r: L[P[Res]]): F[Res]
-  def parse(r: Res0): P[Res]
+  def execute: F[Out] = flatten(load.map(parse _))
+
+  def load: L[Base]
+  def flatten(r: L[P[Out]]): F[Out]
+  def parse(r: Base): P[Out]
 
   implicit def F: Functor[L]
 }
