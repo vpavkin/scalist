@@ -6,4 +6,5 @@ package object api {
 
   type Token = String
 
+  def unexpected[T]: T = sys.error("Unexpected call")
 }

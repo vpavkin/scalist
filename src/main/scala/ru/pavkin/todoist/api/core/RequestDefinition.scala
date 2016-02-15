@@ -1,27 +1,32 @@
 package ru.pavkin.todoist.api.core
 
+import cats.FlatMap
+import ru.pavkin.todoist.api.core.parser.SingleResourceParser
 import ru.pavkin.todoist.api.utils.NotContains
 import shapeless._
 
-trait RequestDefinition[F[_]] {
-  type Res
+trait RequestDefinition[F[_], P[_], R, Base] {
+  implicit def itr: IsResource[R]
 
-  def execute: F[Res]
+  type Out
+
+  def execute: F[Out]
 }
 
-trait SingleReadResourceDefinition[F[_], T <: ReadResourceType, R] extends RequestDefinition[F] {
-  implicit def itr: IsResource.Aux[T, R]
-  type Res
+trait SingleReadResourceDefinition[F[_], P[_], R, Base] extends RequestDefinition[F, P, R, Base] {
 
-  def and[TT <: ReadResourceType](implicit NEQ: TT <:!< T,
-                                  ITR: IsResource[TT]): MultipleReadResourceDefinition[F, TT :: T :: HNil, ITR.Repr :: R :: HNil]
+  def and[RR](implicit
+              FM: FlatMap[P],
+              NEQ: RR <:!< R,
+              ir: IsResource[RR],
+              parser: SingleResourceParser.Aux[P, Base, RR]): MultipleReadResourceDefinition[F, P, RR :: R :: HNil, Base]
 }
 
-trait MultipleReadResourceDefinition[F[_], T <: HList, R <: HList] extends RequestDefinition[F] {
-  implicit def lub: LUBConstraint[T, ReadResourceType]
-  implicit def itr: IsResource.Aux[T, R]
-  type Res
+trait MultipleReadResourceDefinition[F[_], P[_], R <: HList, Base] extends RequestDefinition[F, P, R, Base] {
 
-  def and[TT <: ReadResourceType](implicit NC: T NotContains TT,
-                                  ITR: IsResource[TT]): MultipleReadResourceDefinition[F, TT :: T, ITR.Repr :: R]
+  def and[RR](implicit
+              FM: FlatMap[P],
+              NC: R NotContains RR,
+              ir: IsResource[RR],
+              parser: SingleResourceParser.Aux[P, Base, RR]): MultipleReadResourceDefinition[F, P, RR :: R, Base]
 }
