@@ -15,7 +15,7 @@ cache:
     - $HOME/.sbt/boot
 
 script:
-  - sbt ++$TRAVIS_SCALA_VERSION clean coverage test && sbt ++$TRAVIS_SCALA_VERSION coverageReport;
+  - sbt ++$TRAVIS_SCALA_VERSION clean coverage validate && sbt ++$TRAVIS_SCALA_VERSION coverageReport;
 
 
   # See http://www.scala-sbt.org/0.13/docs/Travis-CI-with-sbt.html
