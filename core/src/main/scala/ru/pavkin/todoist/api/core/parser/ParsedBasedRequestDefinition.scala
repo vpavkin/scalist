@@ -8,7 +8,7 @@ trait ParsedBasedRequestDefinition[F[_], L[_], P[_], R, Req, Base] extends Reque
 
   type Out = R
 
-  def execute: F[Out] = flatten(load.map(parse _))
+  def execute: F[Out] = flatten(load.map(parse))
 
   def load: L[Base]
   def flatten(r: L[P[Out]]): F[Out]

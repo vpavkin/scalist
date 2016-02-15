@@ -6,7 +6,6 @@ import cats.syntax.flatMap._
 import cats.syntax.apply._
 import shapeless.{HNil, HList, ::}
 
-//todo: try with phantom State
 trait ResourceParser[F[_], Base] {self =>
   type Out
   def parse(resource: Base): F[Out]
