@@ -3,7 +3,7 @@ package ru.pavkin.todoist.api.core.plain
 import cats._
 import ru.pavkin.todoist.api._
 import ru.pavkin.todoist.api.core.{APISuite, tags}
-import ru.pavkin.todoist.api.parser.{MultipleResourcesParser, SingleResourceParser}
+import ru.pavkin.todoist.api.core.parser.{MultipleResourcesParser, SingleResourceParser}
 import shapeless.HList
 
 trait PlainAPISuite[A] extends APISuite {

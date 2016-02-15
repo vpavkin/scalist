@@ -1,6 +1,6 @@
 package ru.pavkin.todoist.api.core
 
-import ru.pavkin.todoist.api.parser.{MultipleResourcesParser, SingleResourceParser}
+import ru.pavkin.todoist.api.core.parser.{MultipleResourcesParser, SingleResourceParser}
 import shapeless._
 
 trait API[F[_], P[_], Base] {

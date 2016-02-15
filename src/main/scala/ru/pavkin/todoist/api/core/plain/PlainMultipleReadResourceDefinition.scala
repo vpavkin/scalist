@@ -2,7 +2,7 @@ package ru.pavkin.todoist.api.core.plain
 
 import cats.{FlatMap, Id}
 import ru.pavkin.todoist.api.core.{IsResource, MultipleReadResourceDefinition, RequestExecutor}
-import ru.pavkin.todoist.api.parser.SingleResourceParser
+import ru.pavkin.todoist.api.core.parser.SingleResourceParser
 import ru.pavkin.todoist.api.utils.{NotContains, Produce}
 import shapeless.{::, HList}
 

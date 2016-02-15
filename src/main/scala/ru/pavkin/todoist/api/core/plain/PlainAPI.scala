@@ -2,8 +2,8 @@ package ru.pavkin.todoist.api.core.plain
 
 import cats.Id
 import ru.pavkin.todoist.api.core._
-import ru.pavkin.todoist.api.parser.MultipleResourcesParser.Aux
-import ru.pavkin.todoist.api.parser.SingleResourceParser
+import ru.pavkin.todoist.api.core.parser.MultipleResourcesParser.Aux
+import ru.pavkin.todoist.api.core.parser.SingleResourceParser
 import ru.pavkin.todoist.api.utils.Produce
 import shapeless.HList
 

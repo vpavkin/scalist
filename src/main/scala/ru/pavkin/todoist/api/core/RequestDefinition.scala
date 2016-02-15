@@ -1,7 +1,7 @@
 package ru.pavkin.todoist.api.core
 
 import cats.FlatMap
-import ru.pavkin.todoist.api.parser.SingleResourceParser
+import ru.pavkin.todoist.api.core.parser.SingleResourceParser
 import ru.pavkin.todoist.api.utils.NotContains
 import shapeless._
 

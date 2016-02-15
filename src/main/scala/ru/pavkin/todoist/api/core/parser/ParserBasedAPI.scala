@@ -1,4 +1,4 @@
-package ru.pavkin.todoist.api.parser
+package ru.pavkin.todoist.api.core.parser
 
 import cats.Functor
 import ru.pavkin.todoist.api.core._
