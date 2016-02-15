@@ -2,7 +2,7 @@ package ru.pavkin.todoist.api.circe
 
 import cats.data.Xor
 import cats.syntax.xor._
-import io.circe.{DecodingFailure, Json, Decoder}
+import io.circe.{Decoder, DecodingFailure, Json}
 import ru.pavkin.todoist.api.circe.CirceDecoder._
 import ru.pavkin.todoist.api.core.parser.SingleResourceParser
 

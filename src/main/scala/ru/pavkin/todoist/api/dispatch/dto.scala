@@ -18,7 +18,8 @@ object dto extends DTODecoders with ParserAPISuite {
   type Labels = Vector[Label]
 
   val todoist = new UnauthorizedAPI[DispatchModelAPI.Result, CirceDecoder.Result, Json] {
-    private lazy val executor: RequestExecutor.Aux[Req, DispatchJsonRequestExecutor.Result, Json] = new DispatchJsonRequestExecutor
+    private lazy val executor: RequestExecutor.Aux[Req, DispatchJsonRequestExecutor.Result, Json] =
+      new DispatchJsonRequestExecutor
 
     def authorize(token: Token): API[DispatchModelAPI.Result, CirceDecoder.Result, Json] =
       new DispatchModelAPI(

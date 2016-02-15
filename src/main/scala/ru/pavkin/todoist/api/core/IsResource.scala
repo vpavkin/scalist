@@ -1,6 +1,6 @@
 package ru.pavkin.todoist.api.core
 
-import shapeless.{HList, HNil, ::}
+import shapeless.{::, HList, HNil}
 
 sealed trait IsResource[R] {
   def strings: Vector[String]

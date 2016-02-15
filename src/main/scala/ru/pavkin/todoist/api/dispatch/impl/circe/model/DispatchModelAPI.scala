@@ -25,7 +25,8 @@ object DispatchModelAPI {
   type P[T] = Xor[DecodingFailure, T]
 
   object Flattener extends Flattener[Result, L, P] {
-    override def flatten[T](o: Future[Xor[DispatchJsonRequestExecutor.Error, Xor[DecodingFailure, T]]]): Future[Xor[Error, T]] =
+    override def flatten[T](o: Future[Xor[DispatchJsonRequestExecutor.Error, Xor[DecodingFailure, T]]])
+    : Future[Xor[Error, T]] =
       o.map {
         _.map(_.leftMap(DecodingError))
           .leftMap {

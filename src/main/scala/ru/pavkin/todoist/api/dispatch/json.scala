@@ -12,7 +12,8 @@ import ru.pavkin.todoist.api.dispatch.impl.circe.json.{DispatchJsonAPI, Dispatch
 object json extends PlainAPISuite[Json]{
 
   val todoist = new UnauthorizedAPI[DispatchJsonRequestExecutor.Result, Id, Json] {
-    private lazy val executor: RequestExecutor.Aux[Req, DispatchJsonRequestExecutor.Result, Json] = new DispatchJsonRequestExecutor
+    private lazy val executor: RequestExecutor.Aux[Req, DispatchJsonRequestExecutor.Result, Json] =
+      new DispatchJsonRequestExecutor
 
     def authorize(token: Token): API[DispatchJsonRequestExecutor.Result, Id, Json] =
       new DispatchJsonAPI(
