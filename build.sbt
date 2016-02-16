@@ -11,6 +11,7 @@ lazy val compilerOptions = Seq(
   "-language:existentials",
   "-language:higherKinds",
   "-unchecked",
+  "-Xfatal-warnings",
   "-Yno-adapted-args",
   "-Ywarn-dead-code",
   "-Ywarn-numeric-widen",
@@ -19,6 +20,7 @@ lazy val compilerOptions = Seq(
 )
 
 lazy val baseSettings = Seq(
+  scalacOptions ++= compilerOptions,
   scalacOptions in(Compile, console) := compilerOptions,
   scalacOptions in(Compile, test) := compilerOptions,
   libraryDependencies ++= Seq(
