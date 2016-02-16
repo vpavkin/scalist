@@ -1,7 +1,9 @@
 package ru.pavkin.todoist.api.dispatch.impl.string
 
+import cats.{Apply, Functor}
 import cats.data.Xor
 import cats.syntax.xor._
+import cats.std.future._
 import com.ning.http.client.Response
 import dispatch.Defaults._
 import dispatch._
@@ -15,6 +17,10 @@ object DispatchStringRequestExecutor {
   case class HTTPError(code: Int, body: Option[String])
 
   type Result[T] = Future[Xor[HTTPError, T]]
+
+  type X[T] = Xor[HTTPError, T]
+  implicit val functor: Functor[Result] = Functor[Future].compose(Functor[X])
+  implicit val apply: Apply[Result] = Apply[Future].compose(Apply[X])
 }
 
 class DispatchStringRequestExecutor extends DispatchRequestExecutor[DispatchStringRequestExecutor.Result, String] {

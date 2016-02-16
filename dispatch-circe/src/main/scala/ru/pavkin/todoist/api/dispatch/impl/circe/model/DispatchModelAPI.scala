@@ -1,7 +1,8 @@
 package ru.pavkin.todoist.api.dispatch.impl.circe.model
 
-import cats.Functor
+import cats.{Apply, Functor}
 import cats.data.Xor
+import cats.std.future._
 import dispatch.Req
 import io.circe.{DecodingFailure, Json}
 import ru.pavkin.todoist.api.core.parser.ParserBasedAPI
@@ -23,6 +24,10 @@ object DispatchModelAPI {
   type Result[T] = Future[Xor[Error, T]]
   type L[T] = DispatchJsonRequestExecutor.Result[T]
   type P[T] = Xor[DecodingFailure, T]
+
+  type X[T] = Xor[Error, T]
+  implicit val functor: Functor[Result] = Functor[Future].compose(Functor[X])
+  implicit val apply: Apply[Result] = Apply[Future].compose(Apply[X])
 
   object Flattener extends Flattener[Result, L, P] {
     override def flatten[T](o: Future[Xor[DispatchJsonRequestExecutor.Error, Xor[DecodingFailure, T]]])

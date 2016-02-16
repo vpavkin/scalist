@@ -23,6 +23,7 @@ object DispatchJsonRequestExecutor {
 
   type X[T] = Xor[Error, T]
   implicit val functor: Functor[Result] = Functor[Future].compose(Functor[X])
+  implicit val apply: Apply[Result] = Apply[Future].compose(Apply[X])
 }
 
 class DispatchJsonRequestExecutor extends DispatchRequestExecutor[DispatchJsonRequestExecutor.Result, Json] {
