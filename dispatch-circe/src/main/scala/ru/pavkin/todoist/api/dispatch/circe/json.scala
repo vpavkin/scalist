@@ -1,4 +1,4 @@
-package ru.pavkin.todoist.api.dispatch
+package ru.pavkin.todoist.api.dispatch.circe
 
 import cats.Id
 import dispatch.Req

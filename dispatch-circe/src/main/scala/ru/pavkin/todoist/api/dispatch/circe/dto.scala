@@ -1,10 +1,10 @@
-package ru.pavkin.todoist.api.dispatch
+package ru.pavkin.todoist.api.dispatch.circe
 
 import dispatch.Req
 import io.circe.Json
 import ru.pavkin.todoist.api.Token
-import ru.pavkin.todoist.api.circe.{CirceAPISuite, CirceDecoder}
 import ru.pavkin.todoist.api.circe.decoders.DTODecoders
+import ru.pavkin.todoist.api.circe.{CirceAPISuite, CirceDecoder}
 import ru.pavkin.todoist.api.core._
 import ru.pavkin.todoist.api.core.dto.{Label, Project}
 import ru.pavkin.todoist.api.dispatch.core.DispatchAuthorizedRequestFactory
