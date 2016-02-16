@@ -8,7 +8,7 @@ import shapeless.{::, HNil}
 
 import scala.util.Try
 
-class ResourceParserTest extends FunSuite with Checkers {
+class ResourceParserSpec extends FunSuite with Checkers {
 
   val intParser = ResourceParser[Id, String, Int]((s: String) => Try(s.toInt).getOrElse(0))
   val doubleParser = ResourceParser[Id, String, Double]((s: String) => Try(s.toDouble).getOrElse(0.0))

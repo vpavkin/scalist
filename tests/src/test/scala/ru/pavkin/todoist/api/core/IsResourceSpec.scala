@@ -5,7 +5,7 @@ import org.scalatest.prop.Checkers
 import shapeless.test.illTyped
 import shapeless.{::, HNil}
 
-class IsResourceTest extends FunSuite with Checkers {
+class IsResourceSpec extends FunSuite with Checkers {
 
   test("IsResource") {
     implicit val i1 = IsResource[Int](Vector("Int"))

@@ -5,7 +5,7 @@ import org.scalatest.{FunSuite, FlatSpec, Matchers}
 import shapeless.{::, HNil}
 import shapeless.test.illTyped
 
-class NotContainsTest extends FunSuite with Checkers {
+class NotContainsSpec extends FunSuite with Checkers {
 
   test("NotContains") {
     NotContains[HNil, Int]
