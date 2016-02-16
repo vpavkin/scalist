@@ -1,12 +1,13 @@
 package ru.pavkin.todoist.api.utils
 
-import org.scalatest.{FlatSpec, Matchers}
+import org.scalatest.prop.Checkers
+import org.scalatest.{FunSuite, FlatSpec, Matchers}
 import shapeless.{::, HNil}
 import shapeless.test.illTyped
 
-class NotContainsTest extends FlatSpec with Matchers {
+class NotContainsTest extends FunSuite with Checkers {
 
-  "NotContains" should "work" in {
+  test("NotContains") {
     NotContains[HNil, Int]
     NotContains[String :: Int :: HNil, Boolean]
 

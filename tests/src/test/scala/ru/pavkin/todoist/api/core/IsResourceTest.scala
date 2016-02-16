@@ -1,14 +1,13 @@
 package ru.pavkin.todoist.api.core
 
-import org.scalacheck.Properties
-import org.scalacheck.Prop.forAll
-import org.scalatest.{FlatSpec, Matchers}
+import org.scalatest.FunSuite
+import org.scalatest.prop.Checkers
 import shapeless.test.illTyped
 import shapeless.{::, HNil}
 
-class IsResourceTest extends FlatSpec with Matchers {
+class IsResourceTest extends FunSuite with Checkers {
 
-  "IsResource" should "work" in {
+  test("IsResource") {
     implicit val i1 = IsResource[Int](Vector("Int"))
     implicit val i2 = IsResource[String](Vector("String"))
 
@@ -21,12 +20,12 @@ class IsResourceTest extends FlatSpec with Matchers {
     illTyped("""IsResource[Int :: Boolean :: HNil]""")
   }
 
-}
-
-object IsResourceSpec extends Properties("IsResource") {
-  property("combinates") = forAll { (a: Vector[String], b: Vector[String]) =>
-    implicit val i1 = IsResource[Int](a)
-    implicit val i2 = IsResource[String](b)
-    IsResource[Int :: String :: HNil].strings == a ++ b
+  test("IsResource combinates") {
+    check { (a: Vector[String], b: Vector[String]) =>
+      implicit val i1 = IsResource[Int](a)
+      implicit val i2 = IsResource[String](b)
+      IsResource[Int :: String :: HNil].strings == a ++ b
+    }
   }
 }
+

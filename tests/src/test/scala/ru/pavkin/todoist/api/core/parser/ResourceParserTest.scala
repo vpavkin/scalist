@@ -1,24 +1,21 @@
 package ru.pavkin.todoist.api.core.parser
 
 import cats.Id
-import org.scalacheck.Prop.forAll
-import org.scalacheck.Properties
-import org.scalatest.FlatSpec
+import org.scalatest.FunSuite
+import org.scalatest.prop.Checkers
 import shapeless.test.illTyped
 import shapeless.{::, HNil}
 
 import scala.util.Try
 
-trait ResourceParserTestData {
+class ResourceParserTest extends FunSuite with Checkers {
+
   val intParser = ResourceParser[Id, String, Int]((s: String) => Try(s.toInt).getOrElse(0))
   val doubleParser = ResourceParser[Id, String, Double]((s: String) => Try(s.toDouble).getOrElse(0.0))
   val intLengthParser = ResourceParser[Id, Int, Int]((s: Int) => s.toString.length)
   val identityParser = ResourceParser[Id, String, String]((s: String) => s)
-}
 
-class ResourceParserTest extends FlatSpec with ResourceParserTestData {
-
-  "ResourceParser" should "work" in {
+  test("ResourceParser") {
     implicit val p1 = intParser
     implicit val p2 = doubleParser
 
@@ -29,18 +26,19 @@ class ResourceParserTest extends FlatSpec with ResourceParserTestData {
     illTyped("""implicitly[MultipleResourcesParser.Aux[Id, String, String :: Int :: HNil]]""")
   }
 
-}
-
-object ResourceParserSpec extends Properties("ResourceParser") with ResourceParserTestData {
-  property("identity") = forAll { (a: String) =>
-    identityParser.parse(a) == a
+  test("ResourceParser identity") {
+    check { (a: String) => identityParser.parse(a) == a }
   }
 
-  property("combination") = forAll { (a: String) =>
-    intParser.combine(doubleParser).parse(a) == intParser.parse(a) :: doubleParser.parse(a) :: HNil
+  test("ResourceParser combination") {
+    check { (a: String) =>
+      intParser.combine(doubleParser).parse(a) == intParser.parse(a) :: doubleParser.parse(a) :: HNil
+    }
   }
 
-  property("composition") = forAll { (a: String) =>
-    intParser.compose(intLengthParser).parse(a) == intLengthParser.parse(intParser.parse(a))
+  test("ResourceParser composition") {
+    check { (a: String) =>
+      intParser.compose(intLengthParser).parse(a) == intLengthParser.parse(intParser.parse(a))
+    }
   }
 }
