@@ -1,4 +1,4 @@
-package dispatch
+package ru.pavkin.todoist.api.dispatch
 
 import cats._
 import org.scalatest.FunSuite
@@ -6,8 +6,7 @@ import org.scalatest.prop.Checkers
 import ru.pavkin.todoist.api.core.{MultipleReadResourceDefinition, SingleReadResourceDefinition}
 import ru.pavkin.todoist.api.dispatch.impl.string.DispatchStringRequestExecutor
 import ru.pavkin.todoist.api.dispatch.string._
-import shapeless.test.illTyped
-import shapeless.test.typed
+import shapeless.test.{illTyped, typed}
 import shapeless.{::, HNil}
 
 class StringAPISpec extends FunSuite with Checkers {

@@ -1,8 +1,8 @@
-package dispatch.core
+package ru.pavkin.todoist.api.dispatch.core
 
 import org.scalatest.FunSuite
 import org.scalatest.prop.Checkers
-import ru.pavkin.todoist.api.dispatch.core.DispatchAuthorizedRequestFactory
+
 import scala.collection.JavaConversions._
 
 class DispatchAuthorizedRequestFactorySpec extends FunSuite with Checkers {
