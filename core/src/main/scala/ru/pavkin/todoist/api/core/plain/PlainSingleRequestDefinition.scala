@@ -6,9 +6,9 @@ import ru.pavkin.todoist.api.core._
 import ru.pavkin.todoist.api.utils.Produce
 import shapeless.{::, <:!<, HNil}
 
-class PlainSingleReadResourceDefinition[F[_], R, Req, Base](requestFactory: Vector[String] Produce Req,
-                                                            executor: RequestExecutor.Aux[Req, F, Base])
-                                                           (override implicit val itr: IsResource[R])
+class PlainSingleRequestDefinition[F[_], R, Req, Base](requestFactory: Vector[String] Produce Req,
+                                                       executor: RequestExecutor.Aux[Req, F, Base])
+                                                      (override implicit val itr: IsResource[R])
   extends SingleReadResourceDefinition[F, Id, R, Base] {
 
   type Out = Base
@@ -19,7 +19,7 @@ class PlainSingleReadResourceDefinition[F[_], R, Req, Base](requestFactory: Vect
               ir: IsResource[RR],
               parser: SingleResourceParser.Aux[Id, Base, RR])
   : MultipleReadResourceDefinition[F, Id, RR :: R :: HNil, Base] =
-    new PlainMultipleReadResourceDefinition[F, RR :: R :: HNil, Req, Base](requestFactory, executor)
+    new PlainMultipleRequestDefinition[F, RR :: R :: HNil, Req, Base](requestFactory, executor)
 
   def execute: F[Out] = executor.execute(requestFactory.produce(itr.strings))
 }

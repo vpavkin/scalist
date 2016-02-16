@@ -1,4 +1,4 @@
-package ru.pavkin.todoist.api.dispatch
+package ru.pavkin.todoist.api.dispatch.circe
 
 import cats.Id
 import dispatch.Req
@@ -9,9 +9,9 @@ import ru.pavkin.todoist.api.core.plain.PlainAPISuite
 import ru.pavkin.todoist.api.dispatch.core.DispatchAuthorizedRequestFactory
 import ru.pavkin.todoist.api.dispatch.impl.circe.json.{DispatchJsonAPI, DispatchJsonRequestExecutor}
 
-object json extends PlainAPISuite[Json]{
+trait JsonAPI extends PlainAPISuite[Json, DispatchJsonRequestExecutor.Result] {
 
-  val todoist = new UnauthorizedAPI[DispatchJsonRequestExecutor.Result, Id, Json] {
+  override val todoist = new UnauthorizedAPI[DispatchJsonRequestExecutor.Result, Id, Json] {
     private lazy val executor: RequestExecutor.Aux[Req, DispatchJsonRequestExecutor.Result, Json] =
       new DispatchJsonRequestExecutor
 

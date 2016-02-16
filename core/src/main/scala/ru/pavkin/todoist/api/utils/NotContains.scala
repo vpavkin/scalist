@@ -7,6 +7,8 @@ import shapeless._
 trait NotContains[L <: HList, U]
 
 object NotContains {
+  def apply[L <: HList, U](implicit ev: NotContains[L, U]): NotContains[L, U] = ev
+
   implicit def nilNotContains[U]: NotContains[HNil, U] =
     new NotContains[HNil, U] {}
 

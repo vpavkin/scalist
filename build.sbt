@@ -32,9 +32,16 @@ lazy val baseSettings = Seq(
 
 lazy val allSettings = buildSettings ++ baseSettings
 
+lazy val shapelessVersion = "2.2.5"
+lazy val catsVersion = "0.4.1"
+lazy val circeVersion = "0.3.0"
+lazy val dispatchVersion = "0.11.2"
+lazy val scalaCheckVersion = "1.12.5"
+lazy val scalaTestVersion = "2.2.6"
+
 lazy val todoistAPI = project.in(file("."))
   .settings(allSettings)
-  .aggregate(core, dispatch, circe, dispatchCirce)
+  .aggregate(core, dispatch, circe, dispatchCirce, tests)
 
 lazy val core = project.in(file("core"))
   .settings(
@@ -45,8 +52,8 @@ lazy val core = project.in(file("core"))
   .settings(allSettings: _*)
   .settings(
     libraryDependencies ++= Seq(
-      "com.chuusai" %% "shapeless" % "2.2.5",
-      "org.typelevel" %% "cats-core" % "0.4.1"
+      "com.chuusai" %% "shapeless" % shapelessVersion,
+      "org.typelevel" %% "cats-core" % catsVersion
     )
   )
 
@@ -59,9 +66,9 @@ lazy val circe = project.in(file("circe"))
   .settings(allSettings: _*)
   .settings(
     libraryDependencies ++= Seq(
-      "io.circe" %% "circe-core" % "0.3.0",
-      "io.circe" %% "circe-generic" % "0.3.0",
-      "io.circe" %% "circe-parser" % "0.3.0"
+      "io.circe" %% "circe-core" % circeVersion,
+      "io.circe" %% "circe-generic" % circeVersion,
+      "io.circe" %% "circe-parser" % circeVersion
     )
   ).dependsOn(core)
 
@@ -74,7 +81,7 @@ lazy val dispatch = project.in(file("dispatch"))
   .settings(allSettings: _*)
   .settings(
     libraryDependencies ++= Seq(
-      "net.databinder.dispatch" %% "dispatch-core" % "0.11.2"
+      "net.databinder.dispatch" %% "dispatch-core" % dispatchVersion
     )
   ).dependsOn(core)
 
@@ -86,5 +93,29 @@ lazy val dispatchCirce = project.in(file("dispatch-circe"))
   )
   .settings(allSettings: _*)
   .dependsOn(core, dispatch, circe)
+
+lazy val tests = project.in(file("tests"))
+  .settings(
+    description := "todoist api tests",
+    moduleName := "todoist-api-tests",
+    name := "todoist-api-tests"
+  )
+  .settings(allSettings: _*)
+  .settings(libraryDependencies ++= Seq(
+    "org.scalacheck" %% "scalacheck" % scalaCheckVersion % "test",
+    "org.scalatest" %% "scalatest" % scalaTestVersion % "test"
+  ))
+  .settings(
+    ScoverageSbtPlugin.ScoverageKeys.coverageExcludedPackages := "ru\\.pavkin\\.todoist\\.api\\.tests\\..*"
+  )
+  .settings(
+    fork := true
+  )
+  .dependsOn(
+    core,
+    dispatch,
+    circe,
+    dispatchCirce
+  )
 
 addCommandAlias("validate", ";compile;test;scalastyle")
