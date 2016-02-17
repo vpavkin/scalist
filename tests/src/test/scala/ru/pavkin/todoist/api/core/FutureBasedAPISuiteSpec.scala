@@ -6,10 +6,13 @@ import org.scalatest.prop.Checkers
 import shapeless.test._
 import shapeless.{::, HNil}
 
-abstract class APISuiteSpec[F[_] : Functor : Apply, P[_] : FlatMap, Base](apiName: String)
+import scala.concurrent.ExecutionContext
+
+abstract class FutureBasedAPISuiteSpec[F[_] : Apply, P[_] : FlatMap, Base](apiName: String)
+                                                                          (implicit ec: ExecutionContext)
   extends FunSuite
     with Checkers
-    with APISuite[F, P, Base] {
+    with FutureBasedAPISuite[F, P, Base] {
 
   test(s"$apiName test suite") {
     val api = todoist.withToken("token")

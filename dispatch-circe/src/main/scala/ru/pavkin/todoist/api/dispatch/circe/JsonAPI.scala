@@ -9,16 +9,21 @@ import ru.pavkin.todoist.api.core.plain.PlainAPISuite
 import ru.pavkin.todoist.api.dispatch.core.DispatchAuthorizedRequestFactory
 import ru.pavkin.todoist.api.dispatch.impl.circe.json.{DispatchJsonAPI, DispatchJsonRequestExecutor}
 
-trait JsonAPI extends PlainAPISuite[Json, DispatchJsonRequestExecutor.Result] {
+import scala.concurrent.ExecutionContext
 
-  override val todoist = new UnauthorizedAPI[DispatchJsonRequestExecutor.Result, Id, Json] {
-    private lazy val executor: RequestExecutor.Aux[Req, DispatchJsonRequestExecutor.Result, Json] =
-      new DispatchJsonRequestExecutor
+trait JsonAPI
+  extends PlainAPISuite[Json, DispatchJsonRequestExecutor.Result]
+    with FutureBasedAPISuite[DispatchJsonRequestExecutor.Result, Id, Json] {
 
-    def withToken(token: Token): API[DispatchJsonRequestExecutor.Result, Id, Json] =
-      new DispatchJsonAPI(
-        new DispatchAuthorizedRequestFactory(token),
-        executor
-      )
-  }
+  override def todoist(implicit ec: ExecutionContext) =
+    new UnauthorizedAPI[DispatchJsonRequestExecutor.Result, Id, Json] {
+      private lazy val executor: RequestExecutor.Aux[Req, DispatchJsonRequestExecutor.Result, Json] =
+        new DispatchJsonRequestExecutor
+
+      def withToken(token: Token): API[DispatchJsonRequestExecutor.Result, Id, Json] =
+        new DispatchJsonAPI(
+          new DispatchAuthorizedRequestFactory(token),
+          executor
+        )
+    }
 }

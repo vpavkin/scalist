@@ -44,6 +44,7 @@ lazy val scalaTestVersion = "2.2.6"
 lazy val todoistAPI = project.in(file("."))
   .settings(allSettings)
   .aggregate(core, dispatch, circe, dispatchCirce, tests)
+  .dependsOn(core, dispatch, circe, dispatchCirce, tests)
 
 lazy val core = project.in(file("core"))
   .settings(

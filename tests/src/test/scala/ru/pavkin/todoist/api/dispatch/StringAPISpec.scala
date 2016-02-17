@@ -1,9 +1,10 @@
 package ru.pavkin.todoist.api.dispatch
 
-import cats._
-import ru.pavkin.todoist.api.core.APISuiteSpec
+import cats.Id
+import scala.concurrent.ExecutionContext.Implicits.global
+import ru.pavkin.todoist.api.core.FutureBasedAPISuiteSpec
 import ru.pavkin.todoist.api.dispatch.impl.string.DispatchStringRequestExecutor
 
 class StringAPISpec
-  extends APISuiteSpec[DispatchStringRequestExecutor.Result, Id, String]("Dispatch String API")
+  extends FutureBasedAPISuiteSpec[DispatchStringRequestExecutor.Result, Id, String]("Dispatch String API")
     with StringAPI
