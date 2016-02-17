@@ -12,7 +12,7 @@ abstract class APISuiteSpec[F[_] : Functor : Apply, P[_] : FlatMap, Base](apiNam
     with APISuite[F, P, Base] {
 
   test(s"$apiName test suite") {
-    val api = todoist.authorize("token")
+    val api = todoist.withToken("token")
     typed[SingleReadResourceDefinition[F, P, Projects, Base]](
       api.get[Projects]
     )

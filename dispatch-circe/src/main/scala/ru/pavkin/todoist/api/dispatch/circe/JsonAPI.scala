@@ -15,7 +15,7 @@ trait JsonAPI extends PlainAPISuite[Json, DispatchJsonRequestExecutor.Result] {
     private lazy val executor: RequestExecutor.Aux[Req, DispatchJsonRequestExecutor.Result, Json] =
       new DispatchJsonRequestExecutor
 
-    def authorize(token: Token): API[DispatchJsonRequestExecutor.Result, Id, Json] =
+    def withToken(token: Token): API[DispatchJsonRequestExecutor.Result, Id, Json] =
       new DispatchJsonAPI(
         new DispatchAuthorizedRequestFactory(token),
         executor

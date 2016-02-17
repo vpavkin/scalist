@@ -28,7 +28,7 @@ trait DTOAPI extends DTODecoders with CirceAPISuite[DispatchModelAPI.Result] {
     private lazy val executor: RequestExecutor.Aux[Req, DispatchJsonRequestExecutor.Result, Json] =
       new DispatchJsonRequestExecutor
 
-    def authorize(token: Token): API[DispatchModelAPI.Result, CirceDecoder.Result, Json] =
+    def withToken(token: Token): API[DispatchModelAPI.Result, CirceDecoder.Result, Json] =
       new DispatchModelAPI(
         new DispatchAuthorizedRequestFactory(token),
         executor

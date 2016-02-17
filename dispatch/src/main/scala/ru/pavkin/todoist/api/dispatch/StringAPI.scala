@@ -14,7 +14,7 @@ trait StringAPI extends PlainAPISuite[String, DispatchStringRequestExecutor.Resu
     private lazy val executor: RequestExecutor.Aux[Req, DispatchStringRequestExecutor.Result, String] =
       new DispatchStringRequestExecutor
 
-    def authorize(token: Token): API[DispatchStringRequestExecutor.Result, Id, String] =
+    def withToken(token: Token): API[DispatchStringRequestExecutor.Result, Id, String] =
       new DispatchStringAPI(
         new DispatchAuthorizedRequestFactory(token),
         executor
