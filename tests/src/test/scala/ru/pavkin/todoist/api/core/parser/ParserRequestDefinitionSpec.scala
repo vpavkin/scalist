@@ -1,7 +1,7 @@
 package ru.pavkin.todoist.api.core.parser
 
 import cats.{FlatMap, Id}
-import ru.pavkin.todoist.api.core.query.SingleQueryDefinition
+import ru.pavkin.todoist.api.core.query.SingleQueryRequestDefinition
 import ru.pavkin.todoist.api.core.{HasRawRequest, RequestDefinitionSpec}
 import ru.pavkin.todoist.api.utils.Flattener
 import shapeless.HNil
@@ -44,7 +44,7 @@ class ParserRequestDefinitionSpec extends RequestDefinitionSpec {
     check((i: Int) => {
       implicit val b: HasRawRequest[String] = HasRawRequest[String](Vector(i.toString))
 
-      val r = new SingleQueryDefinition[Option, Id, Try, String, String, Int](
+      val r = new SingleQueryRequestDefinition[Option, Id, Try, String, String, Int](
         requestFactory,
         toIntRequestExecutor,
         flattener,
@@ -60,7 +60,7 @@ class ParserRequestDefinitionSpec extends RequestDefinitionSpec {
       implicit val b: HasRawRequest[Int] = HasRawRequest[Int](Vector(s.toString))
       implicit val dd: HasRawRequest[Double] = HasRawRequest[Double](Vector.empty)
 
-      val r = new SingleQueryDefinition[Option, Id, Try, Int, String, String](
+      val r = new SingleQueryRequestDefinition[Option, Id, Try, Int, String, String](
         requestFactory,
         identityRequestExecutor[String],
         flattener,

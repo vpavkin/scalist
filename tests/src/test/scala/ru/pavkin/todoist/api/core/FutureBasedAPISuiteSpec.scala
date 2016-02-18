@@ -3,6 +3,7 @@ package ru.pavkin.todoist.api.core
 import cats._
 import org.scalatest.FunSuite
 import org.scalatest.prop.Checkers
+import ru.pavkin.todoist.api.core.query.{SingleQueryDefinition, MultipleQueryDefinition}
 import ru.pavkin.todoist.api.suite.FutureBasedAPISuite
 import shapeless.test._
 import shapeless.{::, HNil}
@@ -17,19 +18,19 @@ abstract class FutureBasedAPISuiteSpec[F[_] : Apply, P[_] : FlatMap, Base](apiNa
 
   test(s"$apiName test suite") {
     val api = todoist.withToken("token")
-    typed[SingleReadResourceDefinition[F, P, Projects, Base]](
+    typed[SingleQueryDefinition[F, P, Projects, Base]](
       api.get[Projects]
     )
-    typed[MultipleReadResourceDefinition[F, P, Labels :: Projects :: HNil, Base]](
+    typed[MultipleQueryDefinition[F, P, Labels :: Projects :: HNil, Base]](
       api.get[Projects].and[Labels]
     )
-    typed[MultipleReadResourceDefinition[F, P, Projects :: Labels :: HNil, Base]](
+    typed[MultipleQueryDefinition[F, P, Projects :: Labels :: HNil, Base]](
       api.getAll[All]
     )
-    typed[MultipleReadResourceDefinition[F, P, Labels :: Projects :: HNil, Base]](
+    typed[MultipleQueryDefinition[F, P, Labels :: Projects :: HNil, Base]](
       api.getAll[Labels :: Projects :: HNil]
     )
-    typed[MultipleReadResourceDefinition[F, P, Labels :: Projects :: HNil, Base]](
+    typed[MultipleQueryDefinition[F, P, Labels :: Projects :: HNil, Base]](
       api.getAll[Projects :: HNil].and[Labels]
     )
 
