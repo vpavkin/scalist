@@ -72,7 +72,7 @@ object MultipleResourcesParser {
       def parse(resource: Base): F[T :: HNil] = p.parse(resource).map(_ :: HNil)
     }
 
-  implicit def recurse[F[_] : Functor : Apply, Base, H, T <: HList](implicit
+  implicit def recurse[F[_] : Apply, Base, H, T <: HList](implicit
                                                                     h: SingleResourceParser.Aux[F, Base, H],
                                                                     t: MultipleResourcesParser.Aux[F, Base, T])
   : MultipleResourcesParser.Aux[F, Base, H :: T] =

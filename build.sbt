@@ -11,14 +11,19 @@ lazy val compilerOptions = Seq(
   "-language:existentials",
   "-language:higherKinds",
   "-unchecked",
+  "-Xfatal-warnings",
   "-Yno-adapted-args",
   "-Ywarn-dead-code",
   "-Ywarn-numeric-widen",
-  "-Xfuture",
-  "-Ywarn-unused-import"
+  "-Xfuture"
 )
 
 lazy val baseSettings = Seq(
+  scalacOptions ++= compilerOptions ++ (
+    CrossVersion.partialVersion(scalaVersion.value) match {
+      case Some((2, 11)) => Seq("-Ywarn-unused-import")
+      case _ => Nil
+    }),
   scalacOptions in(Compile, console) := compilerOptions,
   scalacOptions in(Compile, test) := compilerOptions,
   libraryDependencies ++= Seq(
@@ -42,6 +47,7 @@ lazy val scalaTestVersion = "2.2.6"
 lazy val todoistAPI = project.in(file("."))
   .settings(allSettings)
   .aggregate(core, dispatch, circe, dispatchCirce, tests)
+  .dependsOn(core, dispatch, circe, dispatchCirce, tests)
 
 lazy val core = project.in(file("core"))
   .settings(

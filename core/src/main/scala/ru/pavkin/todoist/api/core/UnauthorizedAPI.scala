@@ -4,6 +4,6 @@ import ru.pavkin.todoist.api.Token
 
 trait UnauthorizedAPI[F[_], P[_], Base] {
 
-  def authorize(token: Token): API[F, P, Base]
+  def withToken(token: Token): API[F, P, Base]
 
 }

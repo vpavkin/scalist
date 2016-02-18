@@ -15,6 +15,4 @@ trait APISuite[F[_], P[_], Base] {
 
   implicit def projectsParser: SingleResourceParser.Aux[P, Base, Projects]
   implicit def labelsParser: SingleResourceParser.Aux[P, Base, Labels]
-
-  def todoist: UnauthorizedAPI[F, P, Base]
 }
