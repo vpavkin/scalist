@@ -9,7 +9,7 @@ import shapeless.{::, <:!<, HNil}
 
 class PlainSingleRequestDefinition[F[_], R, Req, Base](requestFactory: RawRequest Produce Req,
                                                        executor: RequestExecutor.Aux[Req, F, Base])
-                                                      (override implicit val itr: HasRawRequest[R])
+                                                      (implicit val itr: HasRawRequest[R])
   extends SingleReadResourceDefinition[F, Id, R, Base] {
 
   type Out = Base

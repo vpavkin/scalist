@@ -10,7 +10,7 @@ class ParserSingleRequestDefinition[F[_], L[_], P[_], R, Req, Base](requestFacto
                                                                     executor: RequestExecutor.Aux[Req, L, Base],
                                                                     flattener: Flattener[F, L, P],
                                                                     parser: SingleResourceParser.Aux[P, Base, R])
-                                                                   (override implicit val itr: HasRawRequest[R],
+                                                                   (implicit val itr: HasRawRequest[R],
                                                                     override implicit val F: Functor[L])
   extends ParsedBasedRequestDefinition[F, L, P, R, Req, Base] with SingleReadResourceDefinition[F, P, R, Base] {
 

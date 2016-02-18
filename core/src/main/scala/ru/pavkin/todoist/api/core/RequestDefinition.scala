@@ -6,8 +6,6 @@ import ru.pavkin.todoist.api.utils.NotContains
 import shapeless._
 
 trait RequestDefinition[F[_], P[_], R, Base] {
-  implicit def itr: HasRawRequest[R]
-
   type Out
 
   def execute: F[Out]

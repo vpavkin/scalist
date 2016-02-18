@@ -11,7 +11,7 @@ class ParserMultipleRequestDefinition[F[_], L[_], P[_], R <: HList, Req, Base](
                                           executor: RequestExecutor.Aux[Req, L, Base],
                                           flattener: Flattener[F, L, P],
                                           parser: MultipleResourcesParser.Aux[P, Base, R])
-                                         (override implicit val itr: HasRawRequest[R],
+                                         (implicit val itr: HasRawRequest[R],
                                           override implicit val F: Functor[L])
   extends ParsedBasedRequestDefinition[F, L, P, R, Req, Base]
     with MultipleReadResourceDefinition[F, P, R, Base] {

@@ -9,7 +9,7 @@ import shapeless.{::, HList}
 
 class PlainMultipleRequestDefinition[F[_], R <: HList, Req, Base](requestFactory: RawRequest Produce Req,
                                                                   executor: RequestExecutor.Aux[Req, F, Base])
-                                                                 (override implicit val itr: HasRawRequest[R])
+                                                                 (implicit val itr: HasRawRequest[R])
   extends MultipleReadResourceDefinition[F, Id, R, Base] {
 
   type Out = Base
