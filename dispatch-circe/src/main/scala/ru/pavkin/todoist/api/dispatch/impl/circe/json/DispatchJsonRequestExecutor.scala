@@ -3,12 +3,10 @@ package ru.pavkin.todoist.api.dispatch.impl.circe.json
 import cats.Apply
 import cats.data.Xor
 import cats.std.FutureInstances
-import cats.syntax.xor._
-import com.ning.http.client.Response
-import dispatch.{Http, Req}
+import dispatch.Req
 import io.circe.parser._
 import io.circe.{Json, ParsingFailure}
-import ru.pavkin.todoist.api.dispatch.core.DispatchRequestExecutor
+import ru.pavkin.todoist.api.dispatch.core.{DispatchRequestExecutor, DispatchStringRequestExecutor}
 import ru.pavkin.todoist.api.utils.ComposeApply
 
 import scala.concurrent.{ExecutionContext, Future}
@@ -29,12 +27,12 @@ class DispatchJsonRequestExecutor(implicit ec: ExecutionContext)
 
   import DispatchJsonRequestExecutor._
 
-  private def handler(r: Response): Xor[Error, Json] =
-    if (r.getStatusCode / 100 == 2)
-      parse(r.getResponseBody).leftMap(ParsingError)
-    else
-      HTTPError(r.getStatusCode, Option(r.getResponseBody).filter(_.nonEmpty)).left
+  val underlying = new DispatchStringRequestExecutor
 
-  def execute(r: Req): Result[Json] = Http(r > handler _)
+  def execute(r: Req): Result[Json] =
+    underlying.execute(r).map {
+      _.leftMap(e => HTTPError(e.code, e.body): Error)
+        .flatMap(parse(_).leftMap(ParsingError))
+    }
 
 }
