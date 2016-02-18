@@ -6,7 +6,7 @@ import ru.pavkin.todoist.api.utils.NotContains
 import shapeless._
 
 trait RequestDefinition[F[_], P[_], R, Base] {
-  implicit def itr: IsResource[R]
+  implicit def itr: HasRawRequest[R]
 
   type Out
 
@@ -18,7 +18,7 @@ trait SingleReadResourceDefinition[F[_], P[_], R, Base] extends RequestDefinitio
   def and[RR](implicit
               FM: FlatMap[P],
               NEQ: RR <:!< R,
-              ir: IsResource[RR],
+              ir: HasRawRequest[RR],
               parser: SingleResourceParser.Aux[P, Base, RR])
   : MultipleReadResourceDefinition[F, P, RR :: R :: HNil, Base]
 }
@@ -28,6 +28,6 @@ trait MultipleReadResourceDefinition[F[_], P[_], R <: HList, Base] extends Reque
   def and[RR](implicit
               FM: FlatMap[P],
               NC: R NotContains RR,
-              ir: IsResource[RR],
+              ir: HasRawRequest[RR],
               parser: SingleResourceParser.Aux[P, Base, RR]): MultipleReadResourceDefinition[F, P, RR :: R, Base]
 }

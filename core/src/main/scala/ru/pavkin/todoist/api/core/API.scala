@@ -5,11 +5,11 @@ import shapeless._
 
 trait API[F[_], P[_], Base] {
   def get[R](implicit
-             IR: IsResource[R],
+             IR: HasRawRequest[R],
              parser: SingleResourceParser.Aux[P, Base, R]): SingleReadResourceDefinition[F, P, R, Base]
 
   def getAll[R <: HList](implicit
-                         IR: IsResource[R],
+                         IR: HasRawRequest[R],
                          parser: MultipleResourcesParser.Aux[P, Base, R]): MultipleReadResourceDefinition[F, P, R, Base]
 }
 

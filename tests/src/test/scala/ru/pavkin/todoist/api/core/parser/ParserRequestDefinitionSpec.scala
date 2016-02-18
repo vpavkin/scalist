@@ -1,7 +1,7 @@
 package ru.pavkin.todoist.api.core.parser
 
 import cats.{FlatMap, Id}
-import ru.pavkin.todoist.api.core.{IsResource, RequestDefinitionSpec}
+import ru.pavkin.todoist.api.core.{HasRawRequest, RequestDefinitionSpec}
 import ru.pavkin.todoist.api.utils.Flattener
 import shapeless.HNil
 import shapeless.test.{illTyped, typed}
@@ -41,7 +41,7 @@ class ParserRequestDefinitionSpec extends RequestDefinitionSpec {
 
   test("ParsedRequestDefinitionSpec returns the result of the parser") {
     check((i: Int) => {
-      implicit val b: IsResource[String] = IsResource[String](Vector(i.toString))
+      implicit val b: HasRawRequest[String] = HasRawRequest[String](Vector(i.toString))
 
       val r = new ParserSingleRequestDefinition[Option, Id, Try, String, String, Int](
         requestFactory,
@@ -56,8 +56,8 @@ class ParserRequestDefinitionSpec extends RequestDefinitionSpec {
 
   test("ParsedRequestDefinitionSpec combines") {
     check((s: Double) => {
-      implicit val b: IsResource[Int] = IsResource[Int](Vector(s.toString))
-      implicit val dd: IsResource[Double] = IsResource[Double](Vector.empty)
+      implicit val b: HasRawRequest[Int] = HasRawRequest[Int](Vector(s.toString))
+      implicit val dd: HasRawRequest[Double] = HasRawRequest[Double](Vector.empty)
 
       val r = new ParserSingleRequestDefinition[Option, Id, Try, Int, String, String](
         requestFactory,

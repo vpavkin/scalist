@@ -4,7 +4,7 @@ import ru.pavkin.todoist.api._
 import ru.pavkin.todoist.api.core.parser.SingleResourceParser
 import shapeless.test.{illTyped, typed}
 import cats.Id
-import ru.pavkin.todoist.api.core.{IsResource, RequestDefinitionSpec}
+import ru.pavkin.todoist.api.core.{HasRawRequest, RequestDefinitionSpec}
 
 class PlainRequestDefinitionSpec extends RequestDefinitionSpec {
 
@@ -13,7 +13,7 @@ class PlainRequestDefinitionSpec extends RequestDefinitionSpec {
 
   test("PlainRequestDefinition returns same result as executor") {
     check((i: Int) => {
-      implicit val b: IsResource[Boolean] = IsResource[Boolean](Vector(i.toString))
+      implicit val b: HasRawRequest[Boolean] = HasRawRequest[Boolean](Vector(i.toString))
 
       val r = new PlainSingleRequestDefinition[Id, Boolean, String, Int](
         requestFactory, stringLenghtRequestExecutor
@@ -25,9 +25,9 @@ class PlainRequestDefinitionSpec extends RequestDefinitionSpec {
 
   test("PlainRequestDefinition combines") {
     check((i: Int, l: Long, d: Double) => {
-      implicit val b: IsResource[Boolean] = IsResource[Boolean](Vector(i.toString))
-      implicit val ll: IsResource[Long] = IsResource[Long](Vector(l.toString))
-      implicit val dd: IsResource[Double] = IsResource[Double](Vector(d.toString))
+      implicit val b: HasRawRequest[Boolean] = HasRawRequest[Boolean](Vector(i.toString))
+      implicit val ll: HasRawRequest[Long] = HasRawRequest[Long](Vector(l.toString))
+      implicit val dd: HasRawRequest[Double] = HasRawRequest[Double](Vector(d.toString))
 
       val r = new PlainSingleRequestDefinition[Id, Boolean, String, Int](
         requestFactory, stringLenghtRequestExecutor
