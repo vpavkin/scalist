@@ -13,7 +13,7 @@ class SingleQueryDefinition[F[_], L[_], P[_], R, Req, Base](requestFactory: RawR
                                                             parser: SingleResourceParser.Aux[P, Base, R])
                                                            (implicit val itr: HasRawRequest[R],
                                                                     override implicit val F: Functor[L])
-  extends QueryDefinition[F, L, P, R, Req, Base] with SingleReadResourceDefinition[F, P, R, Base] {
+  extends ExecutedRequestDefinition[F, L, P, R, Req, Base] with SingleReadResourceDefinition[F, P, R, Base] {
 
   def load: L[Base] = executor.execute(requestFactory.produce(itr.rawRequest))
   def flatten(r: L[P[R]]): F[R] = flattener.flatten(r)

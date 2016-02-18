@@ -14,7 +14,7 @@ class MultipleQueryDefinition[F[_], L[_], P[_], R <: HList, Req, Base](
                                           parser: MultipleResourcesParser.Aux[P, Base, R])
                                                                       (implicit val itr: HasRawRequest[R],
                                           override implicit val F: Functor[L])
-  extends QueryDefinition[F, L, P, R, Req, Base]
+  extends ExecutedRequestDefinition[F, L, P, R, Req, Base]
     with MultipleReadResourceDefinition[F, P, R, Base] {
 
   def load: L[Base] = executor.execute(requestFactory.produce(itr.rawRequest))
