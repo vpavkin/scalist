@@ -45,7 +45,7 @@ import DispatchAPI._
 class DispatchAPI(override val requestFactory: AuthorizedRequestFactory[RawRequest, Req],
                   override val executor: RequestExecutor.Aux[Req, DispatchJsonRequestExecutor.Result, Json])
                  (override implicit val F: Functor[L],
-                       implicit val ec: ExecutionContext)
+                  implicit val ec: ExecutionContext)
   extends ExecutedAPI[Result, L, P, Req, Json] {
 
   override val flattener = new DispatchFlattener
