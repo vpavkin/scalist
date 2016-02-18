@@ -15,12 +15,15 @@ lazy val compilerOptions = Seq(
   "-Yno-adapted-args",
   "-Ywarn-dead-code",
   "-Ywarn-numeric-widen",
-  "-Xfuture",
-  "-Ywarn-unused-import"
+  "-Xfuture"
 )
 
 lazy val baseSettings = Seq(
-  scalacOptions ++= compilerOptions,
+  scalacOptions ++= compilerOptions ++ (
+    CrossVersion.partialVersion(scalaVersion.value) match {
+      case Some((2, 11)) => Seq("-Ywarn-unused-import")
+      case _ => Nil
+    }),
   scalacOptions in(Compile, console) := compilerOptions,
   scalacOptions in(Compile, test) := compilerOptions,
   libraryDependencies ++= Seq(
