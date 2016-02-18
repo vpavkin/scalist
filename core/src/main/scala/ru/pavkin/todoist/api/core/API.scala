@@ -11,6 +11,8 @@ trait API[F[_], P[_], Base] {
   def getAll[R <: HList](implicit
                          IR: HasRawRequest[R],
                          parser: MultipleResourcesParser.Aux[P, Base, R]): MultipleReadResourceDefinition[F, P, R, Base]
+
+
 }
 
 

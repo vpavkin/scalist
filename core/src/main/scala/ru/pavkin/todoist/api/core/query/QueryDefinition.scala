@@ -1,10 +1,10 @@
-package ru.pavkin.todoist.api.core.parser
+package ru.pavkin.todoist.api.core.query
 
 import cats.Functor
 import cats.syntax.functor._
 import ru.pavkin.todoist.api.core.RequestDefinition
 
-trait ParsedBasedRequestDefinition[F[_], L[_], P[_], R, Req, Base] extends RequestDefinition[F, P, R, Base] {
+trait QueryDefinition[F[_], L[_], P[_], R, Req, Base] extends RequestDefinition[F, P, R, Base] {
 
   type Out = R
 

@@ -3,6 +3,7 @@ package ru.pavkin.todoist.api.core
 import cats._
 import org.scalatest.FunSuite
 import org.scalatest.prop.Checkers
+import ru.pavkin.todoist.api.suite.FutureBasedAPISuite
 import shapeless.test._
 import shapeless.{::, HNil}
 

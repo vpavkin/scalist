@@ -1,20 +1,18 @@
-package ru.pavkin.todoist.api.dispatch.impl.circe.model
+package ru.pavkin.todoist.api.dispatch.impl.circe
 
+import dispatch.Req
 import cats.data.Xor
 import cats.std.FutureInstances
 import cats.{Apply, Functor}
-import dispatch.Req
 import io.circe.{DecodingFailure, Json}
-import ru.pavkin.todoist.api.RawRequest
-import ru.pavkin.todoist.api.core.parser.ParserBasedAPI
-import ru.pavkin.todoist.api.core.{AuthorizedRequestFactory, RequestExecutor}
-import ru.pavkin.todoist.api.dispatch.impl.circe.json.DispatchJsonRequestExecutor
-import ru.pavkin.todoist.api.dispatch.impl.circe.json.DispatchJsonRequestExecutor.ParsingError
+import ru.pavkin.todoist.api._
+import ru.pavkin.todoist.api.core.{ExecutedAPI, AuthorizedRequestFactory, RequestExecutor}
+import DispatchJsonRequestExecutor.ParsingError
 import ru.pavkin.todoist.api.utils.{ComposeApply, Flattener}
 
 import scala.concurrent.{ExecutionContext, Future}
 
-object DispatchModelAPI extends FutureInstances with ComposeApply {
+object DispatchAPI extends FutureInstances with ComposeApply {
 
   sealed trait Error
   case class DecodingError(underlying: io.circe.Error) extends Error
@@ -27,7 +25,7 @@ object DispatchModelAPI extends FutureInstances with ComposeApply {
   type Result[T] = Future[X[T]]
   implicit def applyInstance(implicit ec: ExecutionContext): Apply[Result] = composeApply
 
-  class ModelFlattener(implicit ec: ExecutionContext) extends Flattener[Result, L, P] {
+  class DispatchFlattener(implicit ec: ExecutionContext) extends Flattener[Result, L, P] {
     override def flatten[T](o: Future[Xor[DispatchJsonRequestExecutor.Error, Xor[DecodingFailure, T]]])
     : Future[Xor[Error, T]] =
       o.map {
@@ -42,14 +40,14 @@ object DispatchModelAPI extends FutureInstances with ComposeApply {
   }
 }
 
-import DispatchModelAPI._
+import DispatchAPI._
 
-class DispatchModelAPI(override val requestFactory: AuthorizedRequestFactory[RawRequest, Req],
-                       override val executor: RequestExecutor.Aux[Req, DispatchJsonRequestExecutor.Result, Json])
-                      (override implicit val F: Functor[L],
+class DispatchAPI(override val requestFactory: AuthorizedRequestFactory[RawRequest, Req],
+                  override val executor: RequestExecutor.Aux[Req, DispatchJsonRequestExecutor.Result, Json])
+                 (override implicit val F: Functor[L],
                        implicit val ec: ExecutionContext)
-  extends ParserBasedAPI[Result, L, P, Req, Json] {
+  extends ExecutedAPI[Result, L, P, Req, Json] {
 
-  override val flattener = new ModelFlattener
+  override val flattener = new DispatchFlattener
 
 }

@@ -9,15 +9,15 @@ import ru.pavkin.todoist.api.core._
 import ru.pavkin.todoist.api.core.dto.{Label, Project}
 import ru.pavkin.todoist.api.core.parser.SingleResourceParser
 import ru.pavkin.todoist.api.dispatch.core.DispatchAuthorizedRequestFactory
-import ru.pavkin.todoist.api.dispatch.impl.circe.json.DispatchJsonRequestExecutor
-import ru.pavkin.todoist.api.dispatch.impl.circe.model.DispatchModelAPI
+import ru.pavkin.todoist.api.dispatch.impl.circe.{DispatchAPI, DispatchJsonRequestExecutor}
+import ru.pavkin.todoist.api.suite.FutureBasedAPISuite
 
 import scala.concurrent.ExecutionContext
 
 trait DTOAPI
   extends DTODecoders
-    with CirceAPISuite[DispatchModelAPI.Result]
-    with FutureBasedAPISuite[DispatchModelAPI.Result, CirceDecoder.Result, Json] {
+    with CirceAPISuite[DispatchAPI.Result]
+    with FutureBasedAPISuite[DispatchAPI.Result, CirceDecoder.Result, Json] {
 
   type Projects = Vector[Project]
   type Labels = Vector[Label]
@@ -28,13 +28,13 @@ trait DTOAPI
   override implicit val labelsParser: SingleResourceParser.Aux[CirceDecoder.Result, Json, Vector[Label]] =
     labelsDecoder
 
-  def todoist(implicit ec: ExecutionContext): UnauthorizedAPI[DispatchModelAPI.Result, CirceDecoder.Result, Json] =
-    new UnauthorizedAPI[DispatchModelAPI.Result, CirceDecoder.Result, Json] {
+  def todoist(implicit ec: ExecutionContext): UnauthorizedAPI[DispatchAPI.Result, CirceDecoder.Result, Json] =
+    new UnauthorizedAPI[DispatchAPI.Result, CirceDecoder.Result, Json] {
       private lazy val executor: RequestExecutor.Aux[Req, DispatchJsonRequestExecutor.Result, Json] =
         new DispatchJsonRequestExecutor
 
-      def withToken(token: Token): API[DispatchModelAPI.Result, CirceDecoder.Result, Json] =
-        new DispatchModelAPI(
+      def withToken(token: Token): API[DispatchAPI.Result, CirceDecoder.Result, Json] =
+        new DispatchAPI(
           new DispatchAuthorizedRequestFactory(token),
           executor
         )

@@ -1,4 +1,4 @@
-package ru.pavkin.todoist.api.dispatch.impl.circe.json
+package ru.pavkin.todoist.api.dispatch.impl.circe
 
 import cats.Apply
 import cats.data.Xor
