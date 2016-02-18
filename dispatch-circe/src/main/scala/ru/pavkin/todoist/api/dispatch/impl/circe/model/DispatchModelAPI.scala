@@ -5,6 +5,7 @@ import cats.std.FutureInstances
 import cats.{Apply, Functor}
 import dispatch.Req
 import io.circe.{DecodingFailure, Json}
+import ru.pavkin.todoist.api.RawRequest
 import ru.pavkin.todoist.api.core.parser.ParserBasedAPI
 import ru.pavkin.todoist.api.core.{AuthorizedRequestFactory, RequestExecutor}
 import ru.pavkin.todoist.api.dispatch.impl.circe.json.DispatchJsonRequestExecutor
@@ -43,7 +44,7 @@ object DispatchModelAPI extends FutureInstances with ComposeApply {
 
 import DispatchModelAPI._
 
-class DispatchModelAPI(override val requestFactory: AuthorizedRequestFactory[Vector[String], Req],
+class DispatchModelAPI(override val requestFactory: AuthorizedRequestFactory[RawRequest, Req],
                        override val executor: RequestExecutor.Aux[Req, DispatchJsonRequestExecutor.Result, Json])
                       (override implicit val F: Functor[L],
                        implicit val ec: ExecutionContext)

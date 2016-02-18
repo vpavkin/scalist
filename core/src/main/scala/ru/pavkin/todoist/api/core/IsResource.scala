@@ -1,16 +1,17 @@
 package ru.pavkin.todoist.api.core
 
+import ru.pavkin.todoist.api.RawRequest
 import shapeless.{::, HList, HNil}
 
 sealed trait IsResource[R] {
-  def strings: Vector[String]
+  def strings: RawRequest
 }
 
 object IsResource {
 
   def apply[A](implicit ev: IsResource[A]): IsResource[A] = ev
-  def apply[A](f: => Vector[String]): IsResource[A] = new IsResource[A] {
-    def strings: Vector[String] = f
+  def apply[A](f: => RawRequest): IsResource[A] = new IsResource[A] {
+    def strings: RawRequest = f
   }
 
   implicit def single[T](implicit T: IsResource[T]): IsResource[T :: HNil] =

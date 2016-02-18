@@ -1,6 +1,7 @@
 package ru.pavkin.todoist.api.core.plain
 
 import cats.Id
+import ru.pavkin.todoist.api.RawRequest
 import ru.pavkin.todoist.api.core._
 import ru.pavkin.todoist.api.core.parser.MultipleResourcesParser.Aux
 import ru.pavkin.todoist.api.core.parser.SingleResourceParser
@@ -9,7 +10,7 @@ import shapeless.HList
 
 trait PlainAPI[F[_], Req, Base] extends API[F, Id, Base] {
 
-  def requestFactory: Produce[Vector[String], Req]
+  def requestFactory: Produce[RawRequest, Req]
   def executor: RequestExecutor.Aux[Req, F, Base]
 
   def get[R](implicit

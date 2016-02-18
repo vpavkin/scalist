@@ -1,12 +1,13 @@
 package ru.pavkin.todoist.api.core.parser
 
 import cats.{FlatMap, Functor}
+import ru.pavkin.todoist.api.RawRequest
 import ru.pavkin.todoist.api.core._
 import ru.pavkin.todoist.api.utils.{Flattener, NotContains, Produce}
 import shapeless.{::, HList}
 
 class ParserMultipleRequestDefinition[F[_], L[_], P[_], R <: HList, Req, Base](
-                                          requestFactory: Vector[String] Produce Req,
+                                          requestFactory: RawRequest Produce Req,
                                           executor: RequestExecutor.Aux[Req, L, Base],
                                           flattener: Flattener[F, L, P],
                                           parser: MultipleResourcesParser.Aux[P, Base, R])
