@@ -10,9 +10,9 @@ trait APISuite[F[_], P[_], Base] {
   type Labels
   type All = Projects :: Labels :: HNil
 
-  implicit val projects = HasRawRequest[Projects](Vector("projects"))
-  implicit val labels = HasRawRequest[Labels](Vector("labels"))
-  implicit val all = HasRawRequest[All](Vector("all"))
+  implicit val projects = HasRawRequest.resource[Projects](List("projects"))
+  implicit val labels = HasRawRequest.resource[Labels](List("labels"))
+  implicit val all = HasRawRequest.resource[All](List("all"))
 
   implicit def projectsParser: SingleResponseDecoder.Aux[P, Base, Projects]
   implicit def labelsParser: SingleResponseDecoder.Aux[P, Base, Labels]

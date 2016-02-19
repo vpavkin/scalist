@@ -40,9 +40,9 @@ class QueryDefinitionSpec extends RequestDefinitionSpec {
     def parse(resource: String): Try[Double] = Try(resource.toDouble)
   }
 
-  test("ParsedRequestDefinitionSpec returns the result of the parser") {
+  test("QueryDefinition returns the result of the parser") {
     check((i: Int) => {
-      implicit val b: HasRawRequest[String] = HasRawRequest[String](Vector(i.toString))
+      implicit val b: HasRawRequest[String] = HasRawRequest[String](Map("a" -> List(i.toString)))
 
       val r = new SingleQueryRequestDefinition[Option, Id, Try, String, String, Int](
         requestFactory,
@@ -55,10 +55,10 @@ class QueryDefinitionSpec extends RequestDefinitionSpec {
     })
   }
 
-  test("ParsedRequestDefinitionSpec combines") {
+  test("QueryDefinition combines") {
     check((s: Double) => {
-      implicit val b: HasRawRequest[Int] = HasRawRequest[Int](Vector(s.toString))
-      implicit val dd: HasRawRequest[Double] = HasRawRequest[Double](Vector.empty)
+      implicit val b: HasRawRequest[Int] = HasRawRequest[Int](Map("a" -> List(s.toString)))
+      implicit val dd: HasRawRequest[Double] = HasRawRequest[Double](Map("a" -> List.empty))
 
       val r = new SingleQueryRequestDefinition[Option, Id, Try, Int, String, String](
         requestFactory,

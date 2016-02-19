@@ -12,11 +12,11 @@ class DispatchAuthorizedRequestFactorySpec extends FunSuite with Checkers {
     check((token: String, request: RawRequest) => {
       val factory = DispatchAuthorizedRequestFactory(token)
       val req = factory.produce(request).toRequest
-      req.getQueryParams.keys.zip(req.getQueryParams.values).toMap.mapValues(_.mkString) == Map(
-        "token" -> token,
-        "seq_no" -> "0",
-        "resource_types" -> s"""[${request.map("\"" + _ + "\"").mkString(",")}]"""
-      ) &&
+      req.getQueryParams.keys.zip(req.getQueryParams.values).toMap.mapValues(_.mkString) ==
+        request.mapValues(l => s"""[${l.mkString(",")}]""") ++ Map(
+          "token" -> token,
+          "seq_no" -> "0"
+        ) &&
         req.getMethod == "POST"
     })
   }
