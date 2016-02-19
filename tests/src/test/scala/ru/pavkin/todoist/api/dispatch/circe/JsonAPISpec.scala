@@ -1,5 +1,6 @@
 package ru.pavkin.todoist.api.dispatch.circe
 
+import cats.data.Xor
 import io.circe.Json
 import ru.pavkin.todoist.api.circe.CirceDecoder
 import ru.pavkin.todoist.api.core.FutureBasedAPISuiteSpec
@@ -14,7 +15,7 @@ class JsonAPISpec
   extends FutureBasedAPISuiteSpec[DispatchAPI.Result, CirceDecoder.Result, Json]("Dispatch Circe Json API")
     with JsonAPI {
 
-  test(s"ololo") {
+  test(s"Dispatch Circe Json API commands") {
     val api = todoist.withToken("token")
     typed[SingleCommandDefinition[DispatchAPI.Result, CirceDecoder.Result, Json, Json, Json]](
       api.perform(Json.obj())
@@ -36,4 +37,33 @@ class JsonAPISpec
     )
   }
 
+  test(s"Dispatch Circe Json API parser") {
+    def t(command: Json, result: Json, condition: CirceDecoder.Result[Json] => Boolean): Unit =
+      condition(singleCRParser.parse(command)(result)) shouldBe true
+
+    t(Json.obj("uuid" -> Json.string("123")),
+      Json.obj("SyncStatus" -> Json.obj("123" -> Json.string("ok"))),
+      _ == Xor.Right(Json.string("ok"))
+    )
+
+    t(Json.obj("uuid" -> Json.string("123")),
+      Json.obj("SyncStatus" -> Json.obj("123" -> Json.obj("error" -> Json.string("msg")))),
+      _ == Xor.Right(Json.obj("error" -> Json.string("msg")))
+    )
+
+    t(Json.obj("uuid" -> Json.string("123")),
+      Json.empty,
+      _.isLeft
+    )
+
+    t(Json.obj("uuid" -> Json.string("123")),
+      Json.obj("SyncStatus" -> Json.obj("aaa" -> Json.string("ok"))),
+      _.isLeft
+    )
+
+    t(Json.obj("something" -> Json.string("123")),
+      Json.obj("SyncStatus" -> Json.obj("aaa" -> Json.string("ok"))),
+      _.isLeft
+    )
+  }
 }
