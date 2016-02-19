@@ -4,7 +4,7 @@ import cats.Functor
 import ru.pavkin.todoist.api.RawRequest
 import ru.pavkin.todoist.api.core.CommandReturns.Aux
 import ru.pavkin.todoist.api.core.command._
-import ru.pavkin.todoist.api.core.parser.{SingleResponseDecoder, MultipleResponseDecoder}
+import ru.pavkin.todoist.api.core.decoder.{SingleResponseDecoder, MultipleResponseDecoder}
 import ru.pavkin.todoist.api.core.query._
 import ru.pavkin.todoist.api.utils.{Flattener, Produce}
 import shapeless.HList

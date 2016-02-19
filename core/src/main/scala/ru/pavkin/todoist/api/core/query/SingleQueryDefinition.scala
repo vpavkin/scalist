@@ -2,7 +2,7 @@ package ru.pavkin.todoist.api.core.query
 
 import cats.FlatMap
 import ru.pavkin.todoist.api.core.{RequestDefinition, HasRawRequest}
-import ru.pavkin.todoist.api.core.parser.SingleResponseDecoder
+import ru.pavkin.todoist.api.core.decoder.SingleResponseDecoder
 import shapeless.{::, <:!<, HNil}
 
 trait SingleQueryDefinition[F[_], P[_], R, Base] extends RequestDefinition[F, P, R, Base] {

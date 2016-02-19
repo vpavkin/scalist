@@ -1,7 +1,7 @@
 package ru.pavkin.todoist.api.core
 
 import ru.pavkin.todoist.api.core.command.{MultipleCommandDefinition, SingleCommandDefinition}
-import ru.pavkin.todoist.api.core.parser.{MultipleResponseDecoder, SingleResponseDecoder}
+import ru.pavkin.todoist.api.core.decoder.{MultipleResponseDecoder, SingleResponseDecoder}
 import ru.pavkin.todoist.api.core.query.{MultipleQueryDefinition, SingleQueryDefinition}
 import shapeless._
 

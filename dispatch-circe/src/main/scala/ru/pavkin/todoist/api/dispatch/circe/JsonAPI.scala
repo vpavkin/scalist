@@ -6,7 +6,7 @@ import io.circe.{DecodingFailure, Decoder, Json}
 import ru.pavkin.todoist.api.Token
 import ru.pavkin.todoist.api.circe.{CirceAPISuite, CirceDecoder}
 import ru.pavkin.todoist.api.core._
-import ru.pavkin.todoist.api.core.parser.{MultipleResponseDecoder, SingleResponseDecoder}
+import ru.pavkin.todoist.api.core.decoder.{MultipleResponseDecoder, SingleResponseDecoder}
 import ru.pavkin.todoist.api.dispatch.core.DispatchAuthorizedRequestFactory
 import ru.pavkin.todoist.api.dispatch.impl.circe.{DispatchAPI, DispatchJsonRequestExecutor}
 import ru.pavkin.todoist.api.suite.{FutureBasedAPISuite, PlainAPISuite}

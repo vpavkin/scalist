@@ -3,7 +3,7 @@ package ru.pavkin.todoist.api.core.query
 import cats.{FlatMap, Functor}
 import ru.pavkin.todoist.api.RawRequest
 import ru.pavkin.todoist.api.core._
-import ru.pavkin.todoist.api.core.parser.SingleResponseDecoder
+import ru.pavkin.todoist.api.core.decoder.SingleResponseDecoder
 import ru.pavkin.todoist.api.utils.{Flattener, Produce}
 import shapeless.{::, <:!<, HNil}
 

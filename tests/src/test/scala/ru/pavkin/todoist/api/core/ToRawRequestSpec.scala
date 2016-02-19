@@ -1,11 +1,13 @@
 package ru.pavkin.todoist.api.core
 
-import org.scalatest.FunSuite
-import org.scalatest.prop.Checkers
+import org.scalacheck.Gen.alphaStr
+import org.scalacheck.Gen.posNum
+import org.scalatest.{Matchers, FunSuite}
+import org.scalatest.prop.GeneratorDrivenPropertyChecks
 import shapeless.test.illTyped
 import shapeless.{::, HNil}
 
-class ToRawRequestSpec extends FunSuite with Checkers {
+class ToRawRequestSpec extends FunSuite with Matchers with GeneratorDrivenPropertyChecks {
 
   implicit val i1 = ToRawRequest[Int]((i: Int) => Vector(i.toString))
   implicit val i2 = ToRawRequest[String]((s: String) => Vector(s))
@@ -22,8 +24,8 @@ class ToRawRequestSpec extends FunSuite with Checkers {
   }
 
   test("ToRawRequest combinates") {
-    check { (a: Int, b: String) =>
-      ToRawRequest[Int :: String :: HNil].rawRequest(a :: b :: HNil) == Vector(a.toString, b)
+    forAll(posNum[Int], alphaStr) { (a: Int, b: String) =>
+      ToRawRequest[Int :: String :: HNil].rawRequest(a :: b :: HNil) shouldEqual Vector(a.toString, b)
     }
   }
 }

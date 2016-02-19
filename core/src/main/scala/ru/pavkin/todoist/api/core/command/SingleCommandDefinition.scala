@@ -1,7 +1,7 @@
 package ru.pavkin.todoist.api.core.command
 
 import cats.FlatMap
-import ru.pavkin.todoist.api.core.parser.SingleResponseDecoder
+import ru.pavkin.todoist.api.core.decoder.SingleResponseDecoder
 import ru.pavkin.todoist.api.core.{CommandReturns, RequestDefinition, ToRawRequest}
 import shapeless._
 

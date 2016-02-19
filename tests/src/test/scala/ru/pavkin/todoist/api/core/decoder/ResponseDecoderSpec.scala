@@ -1,4 +1,4 @@
-package ru.pavkin.todoist.api.core.parser
+package ru.pavkin.todoist.api.core.decoder
 
 import cats.Id
 import org.scalatest.FunSuite

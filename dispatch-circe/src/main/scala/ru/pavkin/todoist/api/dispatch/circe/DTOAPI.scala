@@ -7,7 +7,7 @@ import ru.pavkin.todoist.api.circe.decoders.DTODecoders
 import ru.pavkin.todoist.api.circe.{CirceAPISuite, CirceDecoder}
 import ru.pavkin.todoist.api.core._
 import ru.pavkin.todoist.api.core.dto.{Label, Project}
-import ru.pavkin.todoist.api.core.parser.SingleResponseDecoder
+import ru.pavkin.todoist.api.core.decoder.SingleResponseDecoder
 import ru.pavkin.todoist.api.dispatch.core.DispatchAuthorizedRequestFactory
 import ru.pavkin.todoist.api.dispatch.impl.circe.{DispatchAPI, DispatchJsonRequestExecutor}
 import ru.pavkin.todoist.api.suite.FutureBasedAPISuite

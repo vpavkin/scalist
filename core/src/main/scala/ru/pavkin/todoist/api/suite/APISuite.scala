@@ -1,7 +1,7 @@
 package ru.pavkin.todoist.api.suite
 
 import ru.pavkin.todoist.api.core.HasRawRequest
-import ru.pavkin.todoist.api.core.parser.SingleResponseDecoder
+import ru.pavkin.todoist.api.core.decoder.SingleResponseDecoder
 import shapeless.{::, HNil}
 
 trait APISuite[F[_], P[_], Base] {

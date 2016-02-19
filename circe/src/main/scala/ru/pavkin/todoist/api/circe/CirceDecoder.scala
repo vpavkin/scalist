@@ -4,7 +4,7 @@ import cats.data.Xor
 import cats.syntax.xor._
 import io.circe.{Decoder, DecodingFailure, Json}
 import ru.pavkin.todoist.api.circe.CirceDecoder._
-import ru.pavkin.todoist.api.core.parser.SingleResponseDecoder
+import ru.pavkin.todoist.api.core.decoder.SingleResponseDecoder
 
 object CirceDecoder {
   type Result[T] = Xor[DecodingFailure, T]

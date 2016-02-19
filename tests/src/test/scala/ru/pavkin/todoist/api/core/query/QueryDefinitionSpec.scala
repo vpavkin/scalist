@@ -1,7 +1,7 @@
 package ru.pavkin.todoist.api.core.query
 
 import cats.{FlatMap, Id}
-import ru.pavkin.todoist.api.core.parser.SingleResponseDecoder
+import ru.pavkin.todoist.api.core.decoder.SingleResponseDecoder
 import ru.pavkin.todoist.api.core.{HasRawRequest, RequestDefinitionSpec}
 import ru.pavkin.todoist.api.utils.Flattener
 import shapeless.HNil
