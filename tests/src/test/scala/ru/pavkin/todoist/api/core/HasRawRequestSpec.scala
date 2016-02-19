@@ -6,9 +6,9 @@ import ru.pavkin.todoist.api.RawRequest
 import shapeless.test.illTyped
 import shapeless.{::, HNil}
 
-class IsResourceSpec extends FunSuite with Checkers {
+class HasRawRequestSpec extends FunSuite with Checkers {
 
-  test("IsResource") {
+  test("HasRawRequest") {
     implicit val i1 = HasRawRequest[Int](Vector("Int"))
     implicit val i2 = HasRawRequest[String](Vector("String"))
 
@@ -16,12 +16,12 @@ class IsResourceSpec extends FunSuite with Checkers {
     HasRawRequest[String]
     HasRawRequest[Int :: String :: HNil]
 
-    illTyped("""IsResource[Boolean]""")
-    illTyped("""IsResource[Boolean :: Int :: HNil]""")
-    illTyped("""IsResource[Int :: Boolean :: HNil]""")
+    illTyped("""HasRawRequest[Boolean]""")
+    illTyped("""HasRawRequest[Boolean :: Int :: HNil]""")
+    illTyped("""HasRawRequest[Int :: Boolean :: HNil]""")
   }
 
-  test("IsResource combinates") {
+  test("HasRawRequest combinates") {
     check { (a: RawRequest, b: RawRequest) =>
       implicit val i1 = HasRawRequest[Int](a)
       implicit val i2 = HasRawRequest[String](b)

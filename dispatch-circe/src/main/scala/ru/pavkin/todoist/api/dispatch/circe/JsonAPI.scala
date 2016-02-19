@@ -1,29 +1,60 @@
 package ru.pavkin.todoist.api.dispatch.circe
 
+import cats.data.Xor
 import dispatch.Req
-import io.circe.{Decoder, Json}
+import io.circe.{DecodingFailure, Decoder, Json}
 import ru.pavkin.todoist.api.Token
-import ru.pavkin.todoist.api.circe.CirceDecoder.Result
 import ru.pavkin.todoist.api.circe.{CirceAPISuite, CirceDecoder}
 import ru.pavkin.todoist.api.core._
-import ru.pavkin.todoist.api.core.parser.SingleResourceParser
+import ru.pavkin.todoist.api.core.parser.{MultipleResourcesParser, SingleResourceParser}
 import ru.pavkin.todoist.api.dispatch.core.DispatchAuthorizedRequestFactory
 import ru.pavkin.todoist.api.dispatch.impl.circe.{DispatchAPI, DispatchJsonRequestExecutor}
-import ru.pavkin.todoist.api.suite.{PlainAPISuite, FutureBasedAPISuite}
-import shapeless.tag
+import ru.pavkin.todoist.api.suite.{FutureBasedAPISuite, PlainAPISuite}
+import shapeless.ops.hlist.{Length, Fill, Unifier}
+import shapeless.ops.nat.ToInt
 import shapeless.tag.@@
+import shapeless._
 
 import scala.concurrent.ExecutionContext
+import scala.util.Try
 
 trait JsonAPI
   extends PlainAPISuite[DispatchAPI.Result, CirceDecoder.Result, Json]
     with CirceAPISuite[DispatchAPI.Result]
     with FutureBasedAPISuite[DispatchAPI.Result, CirceDecoder.Result, Json] {
 
+  implicit def toRawRequest: ToRawRequest[Json] = ToRawRequest((json: Json) => Vector(json.noSpaces))
+
   implicit def labelledParser[T]: Decoder[Json @@ T] = Decoder[Json].map(a => tag[T](a))
 
-  override implicit val projectsParser: SingleResourceParser.Aux[Result, Json, Projects] = projectsDecoder
-  override implicit val labelsParser: SingleResourceParser.Aux[Result, Json, Labels] = labelsDecoder
+  override implicit val projectsParser: SingleResourceParser.Aux[CirceDecoder.Result, Json, Projects] = projectsDecoder
+  override implicit val labelsParser: SingleResourceParser.Aux[CirceDecoder.Result, Json, Labels] = labelsDecoder
+
+  implicit val singleCRParser: SingleResourceParser.Aux[CirceDecoder.Result, Json, Json] =
+    SingleResourceParser.using[CirceDecoder.Result, Json, Json] {
+      Xor.right
+    }
+
+  implicit val singleCRParser1: MultipleResourcesParser.Aux[CirceDecoder.Result, Json :: HNil, Json :: HNil] =
+    MultipleResourcesParser.using[CirceDecoder.Result, Json :: HNil, Json :: HNil] {
+      l => Xor.fromOption(
+        l.head.asArray.flatMap(_.headOption),
+        DecodingFailure("Couldn't find command result at index 0", Nil)
+      ).map(_ :: HNil)
+    }
+
+  implicit def multipleCRParser[H, T <: HList, N <: Nat](implicit
+                                                         ev: MultipleResourcesParser.Aux[CirceDecoder.Result, T, T],
+                                                         toInt: ToInt[N],
+                                                         length: Length.Aux[T, N])
+  : MultipleResourcesParser.Aux[CirceDecoder.Result, Json :: T, Json :: T] =
+    MultipleResourcesParser.using[CirceDecoder.Result, Json :: T, Json :: T] {
+      l => Xor.fromOption(
+        l.head.asArray.flatMap(jl => Try(jl(toInt())).toOption),
+        DecodingFailure(s"Couldn't find command result at index ${toInt()}", Nil)
+      ).flatMap(j => ev.parse(l.tail).map(j :: _))
+    }
+
 
   def todoist(implicit ec: ExecutionContext): UnauthorizedAPI[DispatchAPI.Result, CirceDecoder.Result, Json] =
     new UnauthorizedAPI[DispatchAPI.Result, CirceDecoder.Result, Json] {

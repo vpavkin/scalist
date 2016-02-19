@@ -1,7 +1,7 @@
-package ru.pavkin.todoist.api.core.parser
+package ru.pavkin.todoist.api.core.query
 
 import cats.{FlatMap, Id}
-import ru.pavkin.todoist.api.core.query.SingleQueryRequestDefinition
+import ru.pavkin.todoist.api.core.parser.SingleResourceParser
 import ru.pavkin.todoist.api.core.{HasRawRequest, RequestDefinitionSpec}
 import ru.pavkin.todoist.api.utils.Flattener
 import shapeless.HNil
@@ -9,7 +9,7 @@ import shapeless.test.{illTyped, typed}
 
 import scala.util.{Failure, Success, Try}
 
-class ParserRequestDefinitionSpec extends RequestDefinitionSpec {
+class QueryDefinitionSpec extends RequestDefinitionSpec {
 
   implicit val tryFlatMap: FlatMap[Try] = new FlatMap[Try] {
     def flatMap[A, B](fa: Try[A])(f: (A) => Try[B]): Try[B] = fa.flatMap(f)

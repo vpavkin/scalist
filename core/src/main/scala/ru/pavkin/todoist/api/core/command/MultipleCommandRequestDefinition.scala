@@ -4,9 +4,8 @@ import cats.{FlatMap, Functor}
 import ru.pavkin.todoist.api.RawRequest
 import ru.pavkin.todoist.api.core.CommandReturns.Aux
 import ru.pavkin.todoist.api.core._
-import ru.pavkin.todoist.api.core.parser.{SingleResourceParser, MultipleResourcesParser}
-import ru.pavkin.todoist.api.core.query.MultipleQueryDefinition
-import ru.pavkin.todoist.api.utils.{Flattener, NotContains, Produce}
+import ru.pavkin.todoist.api.core.parser.{MultipleResourcesParser, SingleResourceParser}
+import ru.pavkin.todoist.api.utils.{Flattener, Produce}
 import shapeless.{::, HList}
 
 class MultipleCommandRequestDefinition[F[_], L[_], P[_], C <: HList, R <: HList, Req, Base]
