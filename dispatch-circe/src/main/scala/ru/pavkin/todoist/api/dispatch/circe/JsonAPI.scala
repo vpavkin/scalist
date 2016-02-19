@@ -40,12 +40,12 @@ trait JsonAPI
       (command: Json, result: Json) => {
         val decodingError = DecodingFailure(s"Failed to find result by uuid for command $command", Nil)
         Xor.fromOption(
-          uuid(command)
-            .flatMap(commandUUID =>
-              result.asObject
-                .flatMap(_ ("SyncStatus").flatMap(_.asObject))
-                .flatMap(_ (commandUUID))
-            ),
+          uuid(command).flatMap(commandUUID =>
+            result.hcursor
+              .downField("SyncStatus")
+              .downField(commandUUID)
+              .focus
+          ),
           decodingError)
       }
     }
