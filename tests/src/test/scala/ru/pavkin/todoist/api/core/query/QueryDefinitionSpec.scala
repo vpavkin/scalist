@@ -1,7 +1,7 @@
-package ru.pavkin.todoist.api.core.parser
+package ru.pavkin.todoist.api.core.query
 
 import cats.{FlatMap, Id}
-import ru.pavkin.todoist.api.core.query.SingleQueryRequestDefinition
+import ru.pavkin.todoist.api.core.decoder.SingleResponseDecoder
 import ru.pavkin.todoist.api.core.{HasRawRequest, RequestDefinitionSpec}
 import ru.pavkin.todoist.api.utils.Flattener
 import shapeless.HNil
@@ -9,7 +9,7 @@ import shapeless.test.{illTyped, typed}
 
 import scala.util.{Failure, Success, Try}
 
-class ParserRequestDefinitionSpec extends RequestDefinitionSpec {
+class QueryDefinitionSpec extends RequestDefinitionSpec {
 
   implicit val tryFlatMap: FlatMap[Try] = new FlatMap[Try] {
     def flatMap[A, B](fa: Try[A])(f: (A) => Try[B]): Try[B] = fa.flatMap(f)
@@ -25,24 +25,24 @@ class ParserRequestDefinitionSpec extends RequestDefinitionSpec {
     else if (i == 0) Success("zero")
     else Failure(new Exception)
 
-  val nonNegativeStringParser = new SingleResourceParser[Try, Int] {
+  val nonNegativeStringParser = new SingleResponseDecoder[Try, Int] {
     type Out = String
     def parse(resource: Int): Try[String] = parseNonNegative(resource)
   }
 
-  implicit val toIntParser = new SingleResourceParser[Try, String] {
+  implicit val toIntParser = new SingleResponseDecoder[Try, String] {
     type Out = Int
     def parse(resource: String): Try[Int] = Try(resource.toInt)
   }
 
-  implicit val toDoubleParser = new SingleResourceParser[Try, String] {
+  implicit val toDoubleParser = new SingleResponseDecoder[Try, String] {
     type Out = Double
     def parse(resource: String): Try[Double] = Try(resource.toDouble)
   }
 
-  test("ParsedRequestDefinitionSpec returns the result of the parser") {
+  test("QueryDefinition returns the result of the parser") {
     check((i: Int) => {
-      implicit val b: HasRawRequest[String] = HasRawRequest[String](Vector(i.toString))
+      implicit val b: HasRawRequest[String] = HasRawRequest[String](Map("a" -> List(i.toString)))
 
       val r = new SingleQueryRequestDefinition[Option, Id, Try, String, String, Int](
         requestFactory,
@@ -55,10 +55,10 @@ class ParserRequestDefinitionSpec extends RequestDefinitionSpec {
     })
   }
 
-  test("ParsedRequestDefinitionSpec combines") {
+  test("QueryDefinition combines") {
     check((s: Double) => {
-      implicit val b: HasRawRequest[Int] = HasRawRequest[Int](Vector(s.toString))
-      implicit val dd: HasRawRequest[Double] = HasRawRequest[Double](Vector.empty)
+      implicit val b: HasRawRequest[Int] = HasRawRequest[Int](Map("a" -> List(s.toString)))
+      implicit val dd: HasRawRequest[Double] = HasRawRequest[Double](Map("a" -> List.empty))
 
       val r = new SingleQueryRequestDefinition[Option, Id, Try, Int, String, String](
         requestFactory,

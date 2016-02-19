@@ -1,7 +1,7 @@
 package ru.pavkin.todoist.api.core
 
 import cats._
-import org.scalatest.FunSuite
+import org.scalatest.{Matchers, FunSuite}
 import org.scalatest.prop.Checkers
 import ru.pavkin.todoist.api.core.query.{SingleQueryDefinition, MultipleQueryDefinition}
 import ru.pavkin.todoist.api.suite.FutureBasedAPISuite
@@ -14,6 +14,7 @@ abstract class FutureBasedAPISuiteSpec[F[_] : Apply, P[_] : FlatMap, Base](apiNa
                                                                           (implicit ec: ExecutionContext)
   extends FunSuite
     with Checkers
+    with Matchers
     with FutureBasedAPISuite[F, P, Base] {
 
   test(s"$apiName test suite") {

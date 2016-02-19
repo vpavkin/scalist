@@ -2,7 +2,7 @@ package ru.pavkin.todoist.api.core.query
 
 import cats.FlatMap
 import ru.pavkin.todoist.api.core.{RequestDefinition, HasRawRequest}
-import ru.pavkin.todoist.api.core.parser.SingleResourceParser
+import ru.pavkin.todoist.api.core.decoder.SingleResponseDecoder
 import ru.pavkin.todoist.api.utils.NotContains
 import shapeless.{::, HList}
 
@@ -12,5 +12,5 @@ trait MultipleQueryDefinition[F[_], P[_], R <: HList, Base] extends RequestDefin
               FM: FlatMap[P],
               NC: R NotContains RR,
               ir: HasRawRequest[RR],
-              parser: SingleResourceParser.Aux[P, Base, RR]): MultipleQueryDefinition[F, P, RR :: R, Base]
+              parser: SingleResponseDecoder.Aux[P, Base, RR]): MultipleQueryDefinition[F, P, RR :: R, Base]
 }

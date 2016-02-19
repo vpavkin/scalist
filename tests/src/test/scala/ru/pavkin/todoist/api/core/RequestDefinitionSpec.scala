@@ -11,7 +11,7 @@ trait RequestDefinitionSpec extends FunSuite with Checkers {
   type Req = String
   type Base = Int
 
-  val requestFactory: RawRequest Produce Req = Produce(_.mkString)
+  val requestFactory: RawRequest Produce Req = Produce(_.values.flatten.mkString)
   val stringLenghtRequestExecutor: RequestExecutor.Aux[Req, Id, Base] = new RequestExecutor[Req, Id] {
     type Res = Base
     def execute(r: Req): Id[Res] = r.length

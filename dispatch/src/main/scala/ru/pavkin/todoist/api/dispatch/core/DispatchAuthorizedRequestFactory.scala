@@ -12,8 +12,8 @@ case class DispatchAuthorizedRequestFactory(token: Token) extends AuthorizedRequ
       .POST
       .<<?(Map(
         "token" -> token,
-        "seq_no" -> "0",
-        "resource_types" -> s"[${resources.map("\"" + _ + "\"").mkString(",")}]"
+        "seq_no" -> "0"
+      ) ++ resources.mapValues(vector => s"[${vector.mkString(",")}]"
       ))
 }
 
