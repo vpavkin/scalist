@@ -1,7 +1,7 @@
 package ru.pavkin.todoist.api.core.query
 
 import cats.{FlatMap, Id}
-import ru.pavkin.todoist.api.core.parser.SingleResourceParser
+import ru.pavkin.todoist.api.core.parser.SingleResponseDecoder
 import ru.pavkin.todoist.api.core.{HasRawRequest, RequestDefinitionSpec}
 import ru.pavkin.todoist.api.utils.Flattener
 import shapeless.HNil
@@ -25,17 +25,17 @@ class QueryDefinitionSpec extends RequestDefinitionSpec {
     else if (i == 0) Success("zero")
     else Failure(new Exception)
 
-  val nonNegativeStringParser = new SingleResourceParser[Try, Int] {
+  val nonNegativeStringParser = new SingleResponseDecoder[Try, Int] {
     type Out = String
     def parse(resource: Int): Try[String] = parseNonNegative(resource)
   }
 
-  implicit val toIntParser = new SingleResourceParser[Try, String] {
+  implicit val toIntParser = new SingleResponseDecoder[Try, String] {
     type Out = Int
     def parse(resource: String): Try[Int] = Try(resource.toInt)
   }
 
-  implicit val toDoubleParser = new SingleResourceParser[Try, String] {
+  implicit val toDoubleParser = new SingleResponseDecoder[Try, String] {
     type Out = Double
     def parse(resource: String): Try[Double] = Try(resource.toDouble)
   }

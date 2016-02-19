@@ -1,7 +1,7 @@
 package ru.pavkin.todoist.api.core.command
 
 import cats.FlatMap
-import ru.pavkin.todoist.api.core.parser.SingleResourceParser
+import ru.pavkin.todoist.api.core.parser.SingleResponseDecoder
 import ru.pavkin.todoist.api.core.{CommandReturns, RequestDefinition, ToRawRequest}
 import shapeless._
 
@@ -13,7 +13,7 @@ trait SingleCommandDefinition[F[_], P[_], C, R, Base]
                   FM: FlatMap[P],
                   tr: ToRawRequest[CC],
                   cr: CommandReturns.Aux[CC, RR],
-                  parser: SingleResourceParser.Aux[P, Base, RR])
+                  parser: SingleResponseDecoder.Aux[P, Base, RR])
   : MultipleCommandDefinition[F, P, CC :: C :: HNil, RR :: R :: HNil, Base]
 }
 

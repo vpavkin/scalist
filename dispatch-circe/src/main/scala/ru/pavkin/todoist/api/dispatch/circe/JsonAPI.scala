@@ -6,7 +6,7 @@ import io.circe.{DecodingFailure, Decoder, Json}
 import ru.pavkin.todoist.api.Token
 import ru.pavkin.todoist.api.circe.{CirceAPISuite, CirceDecoder}
 import ru.pavkin.todoist.api.core._
-import ru.pavkin.todoist.api.core.parser.{MultipleResourcesParser, SingleResourceParser}
+import ru.pavkin.todoist.api.core.parser.{MultipleResponseDecoder, SingleResponseDecoder}
 import ru.pavkin.todoist.api.dispatch.core.DispatchAuthorizedRequestFactory
 import ru.pavkin.todoist.api.dispatch.impl.circe.{DispatchAPI, DispatchJsonRequestExecutor}
 import ru.pavkin.todoist.api.suite.{FutureBasedAPISuite, PlainAPISuite}
@@ -27,16 +27,16 @@ trait JsonAPI
 
   implicit def labelledParser[T]: Decoder[Json @@ T] = Decoder[Json].map(a => tag[T](a))
 
-  override implicit val projectsParser: SingleResourceParser.Aux[CirceDecoder.Result, Json, Projects] = projectsDecoder
-  override implicit val labelsParser: SingleResourceParser.Aux[CirceDecoder.Result, Json, Labels] = labelsDecoder
+  override implicit val projectsParser: SingleResponseDecoder.Aux[CirceDecoder.Result, Json, Projects] = projectsDecoder
+  override implicit val labelsParser: SingleResponseDecoder.Aux[CirceDecoder.Result, Json, Labels] = labelsDecoder
 
-  implicit val singleCRParser: SingleResourceParser.Aux[CirceDecoder.Result, Json, Json] =
-    SingleResourceParser.using[CirceDecoder.Result, Json, Json] {
+  implicit val singleCRParser: SingleResponseDecoder.Aux[CirceDecoder.Result, Json, Json] =
+    SingleResponseDecoder.using[CirceDecoder.Result, Json, Json] {
       Xor.right
     }
 
-  implicit val singleCRParser1: MultipleResourcesParser.Aux[CirceDecoder.Result, Json :: HNil, Json :: HNil] =
-    MultipleResourcesParser.using[CirceDecoder.Result, Json :: HNil, Json :: HNil] {
+  implicit val singleCRParser1: MultipleResponseDecoder.Aux[CirceDecoder.Result, Json :: HNil, Json :: HNil] =
+    MultipleResponseDecoder.using[CirceDecoder.Result, Json :: HNil, Json :: HNil] {
       l => Xor.fromOption(
         l.head.asArray.flatMap(_.headOption),
         DecodingFailure("Couldn't find command result at index 0", Nil)
@@ -44,11 +44,11 @@ trait JsonAPI
     }
 
   implicit def multipleCRParser[H, T <: HList, N <: Nat](implicit
-                                                         ev: MultipleResourcesParser.Aux[CirceDecoder.Result, T, T],
+                                                         ev: MultipleResponseDecoder.Aux[CirceDecoder.Result, T, T],
                                                          toInt: ToInt[N],
                                                          length: Length.Aux[T, N])
-  : MultipleResourcesParser.Aux[CirceDecoder.Result, Json :: T, Json :: T] =
-    MultipleResourcesParser.using[CirceDecoder.Result, Json :: T, Json :: T] {
+  : MultipleResponseDecoder.Aux[CirceDecoder.Result, Json :: T, Json :: T] =
+    MultipleResponseDecoder.using[CirceDecoder.Result, Json :: T, Json :: T] {
       l => Xor.fromOption(
         l.head.asArray.flatMap(jl => Try(jl(toInt())).toOption),
         DecodingFailure(s"Couldn't find command result at index ${toInt()}", Nil)

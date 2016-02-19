@@ -1,7 +1,7 @@
 package ru.pavkin.todoist.api.suite
 
 import ru.pavkin.todoist.api.core.HasRawRequest
-import ru.pavkin.todoist.api.core.parser.SingleResourceParser
+import ru.pavkin.todoist.api.core.parser.SingleResponseDecoder
 import shapeless.{::, HNil}
 
 trait APISuite[F[_], P[_], Base] {
@@ -14,6 +14,6 @@ trait APISuite[F[_], P[_], Base] {
   implicit val labels = HasRawRequest[Labels](Vector("labels"))
   implicit val all = HasRawRequest[All](Vector("all"))
 
-  implicit def projectsParser: SingleResourceParser.Aux[P, Base, Projects]
-  implicit def labelsParser: SingleResourceParser.Aux[P, Base, Labels]
+  implicit def projectsParser: SingleResponseDecoder.Aux[P, Base, Projects]
+  implicit def labelsParser: SingleResponseDecoder.Aux[P, Base, Labels]
 }

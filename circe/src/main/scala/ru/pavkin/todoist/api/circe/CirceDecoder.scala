@@ -4,7 +4,7 @@ import cats.data.Xor
 import cats.syntax.xor._
 import io.circe.{Decoder, DecodingFailure, Json}
 import ru.pavkin.todoist.api.circe.CirceDecoder._
-import ru.pavkin.todoist.api.core.parser.SingleResourceParser
+import ru.pavkin.todoist.api.core.parser.SingleResponseDecoder
 
 object CirceDecoder {
   type Result[T] = Xor[DecodingFailure, T]
@@ -12,7 +12,7 @@ object CirceDecoder {
 }
 
 case class CirceDecoder[A](locator: Locator)
-                          (implicit D: Decoder[A]) extends SingleResourceParser[Result, Json] {
+                          (implicit D: Decoder[A]) extends SingleResponseDecoder[Result, Json] {
 
   type Out = A
 
