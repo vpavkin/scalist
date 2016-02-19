@@ -4,7 +4,7 @@ import cats.{FlatMap, Functor}
 import ru.pavkin.todoist.api.RawRequest
 import ru.pavkin.todoist.api.core.CommandReturns.Aux
 import ru.pavkin.todoist.api.core._
-import ru.pavkin.todoist.api.core.decoder.{MultipleResponseDecoder, SingleResponseDecoder}
+import ru.pavkin.todoist.api.core.decoder.{MultipleCommandResponseDecoder, SingleCommandResponseDecoder}
 import ru.pavkin.todoist.api.utils.{Flattener, Produce}
 import shapeless.{::, HList}
 
@@ -12,7 +12,7 @@ class MultipleCommandRequestDefinition[F[_], L[_], P[_], C <: HList, R <: HList,
     (requestFactory: RawRequest Produce Req,
     executor: RequestExecutor.Aux[Req, L, Base],
     flattener: Flattener[F, L, P],
-    parser: MultipleResponseDecoder.Aux[P, Base, R])
+    parser: MultipleCommandResponseDecoder.Aux[P, C, Base, R])
    (commands: C)
    (implicit val trr: ToRawRequest[C],
     override implicit val F: Functor[L])
@@ -22,7 +22,7 @@ class MultipleCommandRequestDefinition[F[_], L[_], P[_], C <: HList, R <: HList,
 
   def load: L[Base] = executor.execute(requestFactory.produce(trr.rawRequest(commands)))
   def flatten(r: L[P[R]]): F[R] = flattener.flatten(r)
-  def parse(r: Base): P[R] = parser.parse(r)
+  def parse(r: Base): P[R] = parser.parse(commands)(r)
 
 
   def and[CC, RR](otherCommand: CC)
@@ -30,7 +30,7 @@ class MultipleCommandRequestDefinition[F[_], L[_], P[_], C <: HList, R <: HList,
                   FM: FlatMap[P],
                   tr: ToRawRequest[CC],
                   cr: Aux[CC, RR],
-                  otherParser: SingleResponseDecoder.Aux[P, Base, RR])
+                  otherParser: SingleCommandResponseDecoder.Aux[P, CC, Base, RR])
   : MultipleCommandDefinition[F, P, CC :: C, RR :: R, Base] =
     new MultipleCommandRequestDefinition[F, L, P, CC :: C, RR :: R, Req, Base](
       requestFactory, executor, flattener, parser.combine(otherParser)
