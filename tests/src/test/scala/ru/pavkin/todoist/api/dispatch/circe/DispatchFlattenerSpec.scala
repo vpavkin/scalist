@@ -5,14 +5,15 @@ import io.circe.ParsingFailure
 import org.scalatest.concurrent.ScalaFutures
 import org.scalatest.prop.Checkers
 import org.scalatest.{FunSuite, Matchers}
-import ru.pavkin.todoist.api.dispatch.impl.circe.json.DispatchJsonRequestExecutor
-import ru.pavkin.todoist.api.dispatch.impl.circe.model.DispatchModelAPI.{DecodingError, HTTPError, ModelFlattener}
+import ru.pavkin.todoist.api.dispatch.impl.circe.DispatchAPI.{HTTPError, DecodingError, DispatchFlattener}
+import ru.pavkin.todoist.api.dispatch.impl.circe.DispatchJsonRequestExecutor
+
 import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.Future
 
-class ModelFlattenerSpec extends FunSuite with Matchers with ScalaFutures with Checkers {
+class DispatchFlattenerSpec extends FunSuite with Matchers with ScalaFutures with Checkers {
 
-  val flattener = new ModelFlattener
+  val flattener = new DispatchFlattener
 
   test("ModelFlattener flatten properties") {
     check((a: Int) =>

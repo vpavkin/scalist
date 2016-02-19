@@ -1,4 +1,4 @@
-package ru.pavkin.todoist.api.dispatch.impl.string
+package ru.pavkin.todoist.api.dispatch.core
 
 import cats.Apply
 import cats.data.Xor
@@ -6,7 +6,6 @@ import cats.std.FutureInstances
 import cats.syntax.xor._
 import com.ning.http.client.Response
 import dispatch._
-import ru.pavkin.todoist.api.dispatch.core.DispatchRequestExecutor
 import ru.pavkin.todoist.api.utils.ComposeApply
 
 import scala.concurrent.{ExecutionContext, Future}

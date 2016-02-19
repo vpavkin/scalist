@@ -1,6 +1,7 @@
-package ru.pavkin.todoist.api.core
+package ru.pavkin.todoist.api.suite
 
 import cats.std.FutureInstances
+import ru.pavkin.todoist.api.core.UnauthorizedAPI
 
 import scala.concurrent.ExecutionContext
 

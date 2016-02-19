@@ -1,7 +1,7 @@
 package ru.pavkin.todoist.api.circe
 
 import io.circe.{Json, Decoder}
-import ru.pavkin.todoist.api.core.APISuite
+import ru.pavkin.todoist.api.suite.APISuite
 
 // todo: extract labels
 trait CirceAPISuite[F[_]] extends APISuite[F, CirceDecoder.Result, Json] {
