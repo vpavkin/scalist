@@ -2,6 +2,7 @@ package ru.pavkin.todoist.api.suite
 
 import cats.{FlatMap, Monad}
 import ru.pavkin.todoist.api.core.decoder._
+import ru.pavkin.todoist.api.core.dto.{RawCommandWithTempId, RawCommand}
 import shapeless.HList
 
 trait AbstractDTOCommandAPISuite[F[_], P[_], Base, CommandResultDTO]
@@ -9,12 +10,17 @@ trait AbstractDTOCommandAPISuite[F[_], P[_], Base, CommandResultDTO]
 
   implicit def commandDtoDecoder: SingleResponseDecoder.Aux[P, Base, CommandResultDTO]
 
+  implicit def dtoToRawCommand1[A]
+  (implicit M: Monad[P]): SingleCommandResponseDecoder.Aux[P, RawCommand[A], CommandResultDTO, SingleCommandResult]
+
+  implicit def dtoToRawCommand2[A](implicit M: Monad[P])
+  : SingleCommandResponseDecoder.Aux[P, RawCommandWithTempId[A], CommandResultDTO, SingleCommandResultWithTempId]
+
   protected def fromCommandResultDtoDecoder[C, R]
-  (f: CommandResultDTO => Option[R])
-  (command: C)
+  (f: (C, CommandResultDTO) => Option[R])
   (implicit M: Monad[P]): SingleCommandResponseDecoder.Aux[P, C, CommandResultDTO, R] =
     SingleCommandResponseDecoder.using[P, C, CommandResultDTO, R] {
-      (c, dto) => f(dto).map(M.pure).getOrElse(dtoDecodingError(s"Couldn't find result for command $c"))
+      (c, dto) => f(c, dto).map(M.pure).getOrElse(dtoDecodingError(s"Couldn't find result for command $c"))
     }
 
   implicit def composeCommandDecoders1[C, Out]

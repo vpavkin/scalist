@@ -2,7 +2,22 @@ package ru.pavkin.todoist.api.core.dto
 
 import java.util.UUID
 
-case class Command[A](`type`: String, uuid: UUID, args: A, temp_id: Option[String])
+trait ToRawCommandOps {
+  implicit class Ops[A](o: A)(implicit T: ToRawCommand[A]) {
+    def build: RawCommand[A] = T.build(o)
+  }
+}
+
+trait ToRawCommand[T] {
+  def build(o: T): RawCommand[T]
+}
+
+trait ToRawCommandWithTempId[T] {
+  def withTempId(o: T, tempId: String): RawCommandWithTempId[T]
+}
+
+case class RawCommand[A](`type`: String, uuid: UUID, args: A)
+case class RawCommandWithTempId[A](`type`: String, uuid: UUID, args: A, temp_id: UUID)
 
 case class AddProject(name: String,
                       color: Option[Int] = None,

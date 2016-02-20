@@ -4,8 +4,9 @@ import io.circe._
 import io.circe.generic.auto._
 import ru.pavkin.todoist.api.core.dto._
 
-trait DTODecoders extends PlainCoproductDecoder {
+trait CirceDTODecoders extends PlainCoproductDecoder {
 
+  // resources
   implicit val projectDTODecoder = Decoder[Project]
   implicit val labelDTODecoder = Decoder[Label]
 
@@ -14,6 +15,7 @@ trait DTODecoders extends PlainCoproductDecoder {
 
   implicit val allResourcesDecoder = Decoder[AllResources]
 
+  // commands
   implicit val commandErrorDecoder = Decoder[CommandError]
   implicit val commandStatusDecoder = Decoder[CommandStatus]
   implicit val commandResultDecoder = Decoder[CommandResult]

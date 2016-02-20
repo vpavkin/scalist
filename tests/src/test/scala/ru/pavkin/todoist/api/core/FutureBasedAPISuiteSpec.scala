@@ -19,7 +19,7 @@ abstract class FutureBasedAPISuiteSpec[F[_] : Apply, P[_] : Monad, Base, ResDTO,
     with AbstractDTOCommandAPISuite[F, P, Base, ComResDTO]
     with FutureBasedAPISuite[F, P, Base] {
 
-  test(s"$apiName test suite") {
+  test(s"$apiName query test suite") {
     val api = todoist.withToken("token")
     typed[SingleQueryDefinition[F, P, Projects, Base]](
       api.get[Projects]

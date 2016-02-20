@@ -1,8 +1,8 @@
 package ru.pavkin.todoist.api.suite
 
 import cats.Monad
-import ru.pavkin.todoist.api.core.decoder.SingleResponseDecoder
-import ru.pavkin.todoist.api.core.dto
+import ru.pavkin.todoist.api.core.decoder.{SingleCommandResponseDecoder, SingleResponseDecoder}
+import ru.pavkin.todoist.api.core.{CommandReturns, dto}
 import ru.pavkin.todoist.api.core.dto._
 
 trait DTOAPISuite[F[_], P[_], Base]
@@ -24,4 +24,26 @@ trait DTOAPISuite[F[_], P[_], Base]
   implicit def dtoToLabels(implicit M: Monad[P]): SingleResponseDecoder.Aux[P, AllResources, Labels] =
     fromResourceDtoDecoder(_.Labels)("labels")
 
+  implicit def dtoToRawCommand1[A]
+  (implicit M: Monad[P]): SingleCommandResponseDecoder.Aux[P, RawCommand[A], CommandResult, SingleCommandResult] =
+    fromCommandResultDtoDecoder[RawCommand[A], SingleCommandResult] {
+      (command, result) => result.SyncStatus.get(command.uuid.toString).map(SingleCommandResult)
+    }
+
+  implicit def dtoToRawCommand2[A](implicit M: Monad[P])
+  : SingleCommandResponseDecoder.Aux[P, RawCommandWithTempId[A], CommandResult, SingleCommandResultWithTempId] =
+    fromCommandResultDtoDecoder[RawCommandWithTempId[A], SingleCommandResultWithTempId]((command, result) => for {
+      r <- result.SyncStatus.get(command.uuid.toString)
+      t <- result.TempIdMapping.flatMap(_.get(command.temp_id.toString))
+    } yield SingleCommandResultWithTempId(r, t))
+
+  implicit def rawCommandReturns1[A]: CommandReturns.Aux[RawCommand[A], SingleCommandResult] =
+    new CommandReturns[RawCommand[A]] {
+      type Result = SingleCommandResult
+    }
+
+  implicit def rawCommandReturns2[A]: CommandReturns.Aux[RawCommandWithTempId[A], SingleCommandResultWithTempId] =
+    new CommandReturns[RawCommandWithTempId[A]] {
+      type Result = SingleCommandResultWithTempId
+    }
 }

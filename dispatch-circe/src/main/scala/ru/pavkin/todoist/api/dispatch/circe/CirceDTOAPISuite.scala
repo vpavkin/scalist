@@ -6,7 +6,9 @@ import io.circe.{DecodingFailure, Json}
 import ru.pavkin.todoist.api.Token
 import ru.pavkin.todoist.api.circe.CirceDecoder
 import ru.pavkin.todoist.api.circe.CirceDecoder.Result
-import ru.pavkin.todoist.api.circe.decoders.DTODecoders
+import ru.pavkin.todoist.api.circe.decoders.CirceDTODecoders
+import ru.pavkin.todoist.api.circe.dto.CirceDTOCommands
+import ru.pavkin.todoist.api.circe.encoders.CirceDTOEncoders
 import ru.pavkin.todoist.api.core._
 import ru.pavkin.todoist.api.core.decoder.SingleResponseDecoder
 import ru.pavkin.todoist.api.core.decoder.SingleResponseDecoder.Aux
@@ -18,7 +20,9 @@ import ru.pavkin.todoist.api.suite.{DTOAPISuite, FutureBasedAPISuite}
 import scala.concurrent.ExecutionContext
 
 trait CirceDTOAPISuite
-  extends DTODecoders
+  extends CirceDTODecoders
+    with CirceDTOEncoders
+    with CirceDTOCommands
     with DTOAPISuite[DispatchAPI.Result, CirceDecoder.Result, Json]
     with FutureBasedAPISuite[DispatchAPI.Result, CirceDecoder.Result, Json] {
 
