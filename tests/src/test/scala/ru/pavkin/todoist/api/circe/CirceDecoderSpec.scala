@@ -19,22 +19,18 @@ class CirceDecoderSpec extends FunSuite with Checkers {
 
   case class A(a: Int)
   case class B(c: String)
+  case class D(b: B)
 
-  test("CirceDecoder uses locator correctly") {
-    val aDecoder = new CirceDecoder[A](Option(_))
-    val bDecoder = new CirceDecoder[B](_.asObject.flatMap(_ ("b")))
+  test("CirceDecoder works if decoder works") {
+    val aDecoder = new CirceDecoder[A]
+    val bDecoder = new CirceDecoder[D]
 
     aDecoder.parse(fixture) == Xor.Right(A(123)) &&
-      bDecoder.parse(fixture) == Xor.Right(B("str"))
-  }
-
-  test("CirceDecoder fails if locator fails") {
-    val aDecoder = new CirceDecoder[A](_.asObject.flatMap(_ ("c")))
-    aDecoder.parse(fixture).isLeft
+      bDecoder.parse(fixture) == Xor.Right(D(B("str")))
   }
 
   test("CirceDecoder fails if decoder fails") {
-    val aDecoder = new CirceDecoder[B](_.asObject.flatMap(_ ("a")))
+    val aDecoder = new CirceDecoder[B]
     aDecoder.parse(fixture).isLeft
   }
 }
