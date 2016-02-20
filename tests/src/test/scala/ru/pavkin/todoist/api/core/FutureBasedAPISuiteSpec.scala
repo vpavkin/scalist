@@ -1,20 +1,21 @@
 package ru.pavkin.todoist.api.core
 
-import cats._
-import org.scalatest.{Matchers, FunSuite}
+import cats.{Apply, Monad}
 import org.scalatest.prop.Checkers
-import ru.pavkin.todoist.api.core.query.{SingleQueryDefinition, MultipleQueryDefinition}
+import org.scalatest.{FunSuite, Matchers}
+import ru.pavkin.todoist.api.core.query.{MultipleQueryDefinition, SingleQueryDefinition}
 import ru.pavkin.todoist.api.suite.FutureBasedAPISuite
 import shapeless.test._
 import shapeless.{::, HNil}
 
 import scala.concurrent.ExecutionContext
 
-abstract class FutureBasedAPISuiteSpec[F[_] : Apply, P[_] : FlatMap, Base](apiName: String)
-                                                                          (implicit ec: ExecutionContext)
+abstract class FutureBasedAPISuiteSpec[F[_] : Apply, P[_] : Monad, Base, Dto](apiName: String)
+                                                                             (implicit ec: ExecutionContext)
   extends FunSuite
     with Checkers
     with Matchers
+    with AbstractDTOAPISuite[F, P, Base, Dto]
     with FutureBasedAPISuite[F, P, Base] {
 
   test(s"$apiName test suite") {
@@ -22,6 +23,7 @@ abstract class FutureBasedAPISuiteSpec[F[_] : Apply, P[_] : FlatMap, Base](apiNa
     typed[SingleQueryDefinition[F, P, Projects, Base]](
       api.get[Projects]
     )
+
     typed[MultipleQueryDefinition[F, P, Labels :: Projects :: HNil, Base]](
       api.get[Projects].and[Labels]
     )

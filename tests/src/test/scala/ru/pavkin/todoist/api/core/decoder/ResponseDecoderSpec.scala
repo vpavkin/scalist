@@ -10,10 +10,19 @@ import scala.util.Try
 
 class ResponseDecoderSpec extends FunSuite with Checkers {
 
+  case class Smth(n: Int)
   val intParser = SingleResponseDecoder.using[Id, String, Int]((s: String) => Try(s.toInt).getOrElse(0))
   val doubleParser = SingleResponseDecoder.using[Id, String, Double]((s: String) => Try(s.toDouble).getOrElse(0.0))
-  val intLengthParser = SingleResponseDecoder.using[Id, Int, Int]((s: Int) => s.toString.length)
-  val identityParser = SingleResponseDecoder.using[Id, String, String]((s: String) => s)
+  val intLengthParser = SingleResponseDecoder.using[Id, Int, Long]((s: Int) => s.toString.length.toLong)
+  val identityParser = SingleResponseDecoder.using[Id, Boolean, Boolean]((s: Boolean) => s)
+  val smthParser = SingleResponseDecoder.using[Id, Int, Smth]((n: Int) => Smth(n))
+
+  val smthCommandDecoder = SingleCommandResponseDecoder.using[Id, Smth, Smth, Boolean] {
+    (smth: Smth, n: Smth) => smth.n == n.n
+  }
+  val smthStringLengthDecoder = SingleCommandResponseDecoder.using[Id, String, Smth, String] {
+    (command: String, base: Smth) => (base.n + command.length).toString
+  }
 
   test("ResponseDecoder") {
     implicit val p1 = intParser
@@ -27,7 +36,7 @@ class ResponseDecoderSpec extends FunSuite with Checkers {
   }
 
   test("ResponseDecoder identity") {
-    check { (a: String) => identityParser.parse(a) == a }
+    check { (a: Boolean) => identityParser.parse(a) == a }
   }
 
   test("ResponseDecoder combination") {
@@ -39,6 +48,30 @@ class ResponseDecoderSpec extends FunSuite with Checkers {
   test("ResponseDecoder composition") {
     check { (a: String) =>
       intParser.compose(intLengthParser).parse(a) == intLengthParser.parse(intParser.parse(a))
+    }
+  }
+
+  test("ResponseDecoder composition with multiple") {
+    check { (a: String) =>
+      intParser.compose(intLengthParser.combine(smthParser)).parse(a) ==
+        intLengthParser.combine(smthParser).parse(intParser.parse(a))
+    }
+  }
+
+  test("ResponseDecoder composition with single command decoder") {
+    check { (s: Int, a: Int) =>
+      smthParser.compose(smthCommandDecoder).parse(Smth(s))(a) == (s == a)
+    }
+  }
+
+  test("ResponseDecoder composition with multiple command decoder") {
+    check { (c1: Int, c2: String, base: Int) =>
+      smthParser.compose(
+        smthCommandDecoder.combine(smthStringLengthDecoder)
+      ).parse(c2 :: Smth(c1) :: HNil)(base) == {
+        val nBase = smthParser.parse(base)
+        smthStringLengthDecoder.parse(c2)(nBase) :: smthCommandDecoder.parse(Smth(c1))(nBase) :: HNil
+      }
     }
   }
 }

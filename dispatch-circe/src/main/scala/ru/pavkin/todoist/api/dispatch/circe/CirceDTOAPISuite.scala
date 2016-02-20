@@ -1,32 +1,29 @@
 package ru.pavkin.todoist.api.dispatch.circe
 
+import cats.data.Xor
 import dispatch.Req
-import io.circe.Json
+import io.circe.{DecodingFailure, Json}
 import ru.pavkin.todoist.api.Token
+import ru.pavkin.todoist.api.circe.CirceDecoder
 import ru.pavkin.todoist.api.circe.decoders.DTODecoders
-import ru.pavkin.todoist.api.circe.{CirceAPISuite, CirceDecoder}
 import ru.pavkin.todoist.api.core._
-import ru.pavkin.todoist.api.core.dto.{Label, Project}
 import ru.pavkin.todoist.api.core.decoder.SingleResponseDecoder
+import ru.pavkin.todoist.api.core.dto.AllResources
 import ru.pavkin.todoist.api.dispatch.core.DispatchAuthorizedRequestFactory
 import ru.pavkin.todoist.api.dispatch.impl.circe.{DispatchAPI, DispatchJsonRequestExecutor}
 import ru.pavkin.todoist.api.suite.FutureBasedAPISuite
 
 import scala.concurrent.ExecutionContext
 
-trait DTOAPI
+trait CirceDTOAPISuite
   extends DTODecoders
-    with CirceAPISuite[DispatchAPI.Result]
+    with DTOAPISuite[DispatchAPI.Result, CirceDecoder.Result, Json]
     with FutureBasedAPISuite[DispatchAPI.Result, CirceDecoder.Result, Json] {
 
-  type Projects = Vector[Project]
-  type Labels = Vector[Label]
+  implicit def dtoDecoder: SingleResponseDecoder.Aux[CirceDecoder.Result, Json, AllResources] =
+    new CirceDecoder[AllResources]
 
-  override implicit val projectsParser: SingleResponseDecoder.Aux[CirceDecoder.Result, Json, Vector[Project]] =
-    projectsDecoder
-
-  override implicit val labelsParser: SingleResponseDecoder.Aux[CirceDecoder.Result, Json, Vector[Label]] =
-    labelsDecoder
+  def dtoDecodingError[T](msg: String): CirceDecoder.Result[T] = Xor.Left(DecodingFailure(msg, Nil))
 
   def todoist(implicit ec: ExecutionContext): UnauthorizedAPI[DispatchAPI.Result, CirceDecoder.Result, Json] =
     new UnauthorizedAPI[DispatchAPI.Result, CirceDecoder.Result, Json] {
