@@ -5,13 +5,15 @@ import dispatch.Req
 import io.circe.{DecodingFailure, Json}
 import ru.pavkin.todoist.api.Token
 import ru.pavkin.todoist.api.circe.CirceDecoder
+import ru.pavkin.todoist.api.circe.CirceDecoder.Result
 import ru.pavkin.todoist.api.circe.decoders.DTODecoders
 import ru.pavkin.todoist.api.core._
 import ru.pavkin.todoist.api.core.decoder.SingleResponseDecoder
-import ru.pavkin.todoist.api.core.dto.AllResources
+import ru.pavkin.todoist.api.core.decoder.SingleResponseDecoder.Aux
+import ru.pavkin.todoist.api.core.dto.{CommandResult, AllResources}
 import ru.pavkin.todoist.api.dispatch.core.DispatchAuthorizedRequestFactory
 import ru.pavkin.todoist.api.dispatch.impl.circe.{DispatchAPI, DispatchJsonRequestExecutor}
-import ru.pavkin.todoist.api.suite.FutureBasedAPISuite
+import ru.pavkin.todoist.api.suite.{DTOAPISuite, FutureBasedAPISuite}
 
 import scala.concurrent.ExecutionContext
 
@@ -20,7 +22,10 @@ trait CirceDTOAPISuite
     with DTOAPISuite[DispatchAPI.Result, CirceDecoder.Result, Json]
     with FutureBasedAPISuite[DispatchAPI.Result, CirceDecoder.Result, Json] {
 
-  implicit def dtoDecoder: SingleResponseDecoder.Aux[CirceDecoder.Result, Json, AllResources] =
+  implicit def commandDtoDecoder: Aux[Result, Json, CommandResult] =
+    new CirceDecoder[CommandResult]
+
+  implicit def resourceDtoDecoder: SingleResponseDecoder.Aux[CirceDecoder.Result, Json, AllResources] =
     new CirceDecoder[AllResources]
 
   def dtoDecodingError[T](msg: String): CirceDecoder.Result[T] = Xor.Left(DecodingFailure(msg, Nil))

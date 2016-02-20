@@ -3,7 +3,7 @@ package ru.pavkin.todoist.api.suite
 import ru.pavkin.todoist.api.core.HasRawRequest
 import shapeless.{::, HNil}
 
-trait APISuite[F[_], P[_], Base] {
+trait QueryAPISuite {
 
   type Projects
   type Labels
@@ -12,5 +12,4 @@ trait APISuite[F[_], P[_], Base] {
   implicit val projects = HasRawRequest.resource[Projects](List("projects"))
   implicit val labels = HasRawRequest.resource[Labels](List("labels"))
   implicit val all = HasRawRequest.resource[All](List("all"))
-
 }

@@ -4,18 +4,19 @@ import cats.{Apply, Monad}
 import org.scalatest.prop.Checkers
 import org.scalatest.{FunSuite, Matchers}
 import ru.pavkin.todoist.api.core.query.{MultipleQueryDefinition, SingleQueryDefinition}
-import ru.pavkin.todoist.api.suite.FutureBasedAPISuite
+import ru.pavkin.todoist.api.suite.{AbstractDTOCommandAPISuite, AbstractDTOQueryAPISuite, FutureBasedAPISuite}
 import shapeless.test._
 import shapeless.{::, HNil}
 
 import scala.concurrent.ExecutionContext
 
-abstract class FutureBasedAPISuiteSpec[F[_] : Apply, P[_] : Monad, Base, Dto](apiName: String)
-                                                                             (implicit ec: ExecutionContext)
+abstract class FutureBasedAPISuiteSpec[F[_] : Apply, P[_] : Monad, Base, ResDTO, ComResDTO]
+(apiName: String)(implicit ec: ExecutionContext)
   extends FunSuite
     with Checkers
     with Matchers
-    with AbstractDTOAPISuite[F, P, Base, Dto]
+    with AbstractDTOQueryAPISuite[F, P, Base, ResDTO]
+    with AbstractDTOCommandAPISuite[F, P, Base, ComResDTO]
     with FutureBasedAPISuite[F, P, Base] {
 
   test(s"$apiName test suite") {
