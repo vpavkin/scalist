@@ -12,7 +12,7 @@ import ru.pavkin.todoist.api.circe.encoders.CirceDTOEncoders
 import ru.pavkin.todoist.api.core._
 import ru.pavkin.todoist.api.core.decoder.SingleResponseDecoder
 import ru.pavkin.todoist.api.core.decoder.SingleResponseDecoder.Aux
-import ru.pavkin.todoist.api.core.dto.{CommandResult, AllResources}
+import ru.pavkin.todoist.api.core.dto.{RawCommandResult, AllResources}
 import ru.pavkin.todoist.api.dispatch.core.DispatchAuthorizedRequestFactory
 import ru.pavkin.todoist.api.dispatch.impl.circe.{DispatchAPI, DispatchJsonRequestExecutor}
 import ru.pavkin.todoist.api.suite.{DTOAPISuite, FutureBasedAPISuite}
@@ -26,8 +26,8 @@ trait CirceDTOAPISuite
     with DTOAPISuite[DispatchAPI.Result, CirceDecoder.Result, Json]
     with FutureBasedAPISuite[DispatchAPI.Result, CirceDecoder.Result, Json] {
 
-  implicit def commandDtoDecoder: Aux[Result, Json, CommandResult] =
-    new CirceDecoder[CommandResult]
+  implicit def commandDtoDecoder: Aux[Result, Json, RawCommandResult] =
+    new CirceDecoder[RawCommandResult]
 
   implicit def resourceDtoDecoder: SingleResponseDecoder.Aux[CirceDecoder.Result, Json, AllResources] =
     new CirceDecoder[AllResources]

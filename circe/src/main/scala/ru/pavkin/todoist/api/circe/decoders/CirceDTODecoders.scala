@@ -16,7 +16,7 @@ trait CirceDTODecoders extends PlainCoproductDecoder {
   implicit val allResourcesDecoder = Decoder[AllResources]
 
   // commands
-  implicit val commandErrorDecoder = Decoder[CommandError]
-  implicit val commandStatusDecoder = Decoder[CommandStatus]
-  implicit val commandResultDecoder = Decoder[CommandResult]
+  implicit val commandErrorDecoder = Decoder[RawCommandError]
+  implicit val commandStatusDecoder = Decoder[RawCommandStatus]
+  implicit val commandResultDecoder = Decoder[RawCommandResult]
 }

@@ -7,7 +7,7 @@ import ru.pavkin.todoist.api.core.dto._
 
 trait DTOAPISuite[F[_], P[_], Base]
   extends AbstractDTOQueryAPISuite[F, P, Base, AllResources]
-    with AbstractDTOCommandAPISuite[F, P, Base, CommandResult] {
+    with AbstractDTOCommandAPISuite[F, P, Base, RawCommandResult] {
 
   type Projects = List[Project]
   type Labels = List[Label]
@@ -15,8 +15,8 @@ trait DTOAPISuite[F[_], P[_], Base]
   type AddProject = dto.AddProject
   type AddTask = dto.AddTask
 
-  type SingleCommandResult = dto.SingleCommandResult
-  type SingleCommandResultWithTempId = dto.SingleCommandResultWithTempId
+  type SingleCommandResult = dto.CommandResult
+  type SingleCommandResultWithTempId = dto.CommandResultWithTempId
 
   implicit def dtoToProjects(implicit M: Monad[P]): SingleResponseDecoder.Aux[P, AllResources, Projects] =
     fromResourceDtoDecoder(_.Projects)("projects")
@@ -25,17 +25,17 @@ trait DTOAPISuite[F[_], P[_], Base]
     fromResourceDtoDecoder(_.Labels)("labels")
 
   implicit def dtoToRawCommand1[A]
-  (implicit M: Monad[P]): SingleCommandResponseDecoder.Aux[P, RawCommand[A], CommandResult, SingleCommandResult] =
+  (implicit M: Monad[P]): SingleCommandResponseDecoder.Aux[P, RawCommand[A], RawCommandResult, SingleCommandResult] =
     fromCommandResultDtoDecoder[RawCommand[A], SingleCommandResult] {
-      (command, result) => result.SyncStatus.get(command.uuid.toString).map(SingleCommandResult)
+      (command, result) => result.SyncStatus.get(command.uuid.toString).map(CommandResult)
     }
 
   implicit def dtoToRawCommand2[A](implicit M: Monad[P])
-  : SingleCommandResponseDecoder.Aux[P, RawCommandWithTempId[A], CommandResult, SingleCommandResultWithTempId] =
+  : SingleCommandResponseDecoder.Aux[P, RawCommandWithTempId[A], RawCommandResult, SingleCommandResultWithTempId] =
     fromCommandResultDtoDecoder[RawCommandWithTempId[A], SingleCommandResultWithTempId]((command, result) => for {
       r <- result.SyncStatus.get(command.uuid.toString)
       t <- result.TempIdMapping.flatMap(_.get(command.temp_id.toString))
-    } yield SingleCommandResultWithTempId(r, t))
+    } yield CommandResultWithTempId(r, t))
 
   implicit def rawCommandReturns1[A]: CommandReturns.Aux[RawCommand[A], SingleCommandResult] =
     new CommandReturns[RawCommand[A]] {

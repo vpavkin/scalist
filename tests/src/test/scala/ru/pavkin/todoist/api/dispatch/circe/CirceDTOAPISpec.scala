@@ -13,7 +13,7 @@ import shapeless.test.typed
 import scala.concurrent.ExecutionContext.Implicits.global
 
 class CirceDTOAPISpec
-  extends FutureBasedAPISuiteSpec[DispatchAPI.Result, CirceDecoder.Result, Json, AllResources, CommandResult](
+  extends FutureBasedAPISuiteSpec[DispatchAPI.Result, CirceDecoder.Result, Json, AllResources, RawCommandResult](
     "Dispatch Circe DTO API"
   ) with CirceDTOAPISuite {
 
