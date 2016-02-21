@@ -8,6 +8,7 @@ import ru.pavkin.todoist.api.core.decoder._
 import ru.pavkin.todoist.api.core.query._
 import ru.pavkin.todoist.api.utils.{Flattener, Produce}
 import shapeless.HList
+import shapeless.ops.hlist.Reverse
 
 trait ExecutedAPI[F[_], L[_], P[_], Req, Base] extends API[F, P, Base] {
 
@@ -36,13 +37,14 @@ trait ExecutedAPI[F[_], L[_], P[_], Req, Base] extends API[F, P, Base] {
   : SingleCommandDefinition[F, P, C, R, Base] =
     new SingleCommandRequestDefinition[F, L, P, C, R, Req, Base](requestFactory, executor, flattener, parser)(command)
 
-  def performAll[C <: HList, R <: HList](commands: C)
-                                        (implicit
-                                         trr: ToRawRequest[C],
-                                         cr: Aux[C, R],
-                                         parser: MultipleCommandResponseDecoder.Aux[P, C, Base, R])
-  : MultipleCommandDefinition[F, P, C, R, Base] =
-    new MultipleCommandRequestDefinition[F, L, P, C, R, Req, Base](
+  def performAll[C <: HList, R <: HList, CR <: HList](commands: C)
+                                                     (implicit
+                                                      R: Reverse.Aux[C, CR],
+                                                      trr: ToRawRequest[CR],
+                                                      cr: CommandReturns.Aux[CR, R],
+                                                      parser: MultipleCommandResponseDecoder.Aux[P, CR, Base, R])
+  : MultipleCommandDefinition[F, P, CR, R, Base] =
+    new MultipleCommandRequestDefinition[F, L, P, CR, R, Req, Base](
       requestFactory, executor, flattener, parser
-    )(commands)
+    )(R(commands))
 }

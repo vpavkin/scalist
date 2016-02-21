@@ -2,19 +2,12 @@ package ru.pavkin.todoist.api.suite
 
 import cats.{FlatMap, Monad}
 import ru.pavkin.todoist.api.core.decoder._
-import ru.pavkin.todoist.api.core.dto.{RawCommandWithTempId, RawCommand}
 import shapeless.HList
 
 trait AbstractDTOCommandAPISuite[F[_], P[_], Base, CommandResultDTO]
   extends CommandAPISuite with AbstractDTOAPISuite[P] {
 
   implicit def commandDtoDecoder: SingleResponseDecoder.Aux[P, Base, CommandResultDTO]
-
-  implicit def dtoToRawCommand1[A]
-  (implicit M: Monad[P]): SingleCommandResponseDecoder.Aux[P, RawCommand[A], CommandResultDTO, CommandResult]
-
-  implicit def dtoToRawCommand2[A](implicit M: Monad[P])
-  : SingleCommandResponseDecoder.Aux[P, RawCommandWithTempId[A], CommandResultDTO, TempIdCommandResult]
 
   protected def fromCommandResultDtoDecoder[C, R]
   (f: (C, CommandResultDTO) => Option[R])

@@ -22,15 +22,15 @@ trait DTOAPISuite[F[_], P[_], Base]
   implicit def dtoToLabels(implicit M: Monad[P]): SingleResponseDecoder.Aux[P, AllResources, Labels] =
     fromResourceDtoDecoder(_.Labels)("labels")
 
-  implicit def dtoToRawCommand1[A]
+  implicit def dtoToRawCommandResult[A]
   (implicit M: Monad[P]): SingleCommandResponseDecoder.Aux[P, RawCommand[A], RawCommandResult, CommandResult] =
     fromCommandResultDtoDecoder[RawCommand[A], CommandResult] {
       (command, result) => result.SyncStatus.get(command.uuid.toString).map(CommandResult)
     }
 
-  implicit def dtoToRawCommand2[A](implicit M: Monad[P])
-  : SingleCommandResponseDecoder.Aux[P, RawCommandWithTempId[A], RawCommandResult, TempIdCommandResult] =
-    fromCommandResultDtoDecoder[RawCommandWithTempId[A], TempIdCommandResult]((command, result) =>
+  implicit def dtoToRawTempIdCommandResult[A](implicit M: Monad[P])
+  : SingleCommandResponseDecoder.Aux[P, RawTempIdCommand[A], RawCommandResult, TempIdCommandResult] =
+    fromCommandResultDtoDecoder[RawTempIdCommand[A], TempIdCommandResult]((command, result) =>
       result.SyncStatus.get(command.uuid.toString).flatMap {
         case Inr(Inl(error)) => Some(TempIdFailure(error))
         case other => result.TempIdMapping.flatMap(_.get(command.temp_id.toString)).map(TempIdSuccess(other, _))
@@ -41,8 +41,8 @@ trait DTOAPISuite[F[_], P[_], Base]
       type Result = CommandResult
     }
 
-  implicit def rawCommandReturns2[A]: CommandReturns.Aux[RawCommandWithTempId[A], TempIdCommandResult] =
-    new CommandReturns[RawCommandWithTempId[A]] {
+  implicit def rawCommandReturns2[A]: CommandReturns.Aux[RawTempIdCommand[A], TempIdCommandResult] =
+    new CommandReturns[RawTempIdCommand[A]] {
       type Result = TempIdCommandResult
     }
 }

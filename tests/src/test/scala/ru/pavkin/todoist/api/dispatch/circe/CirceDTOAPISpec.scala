@@ -24,18 +24,18 @@ class CirceDTOAPISpec
       api.perform(RawCommand("item_add", UUID.randomUUID(), AddTask("Some name", 2)))
     )
 
-    typed[SingleCommandDefinition[DispatchAPI.Result, CirceDecoder.Result, RawCommandWithTempId[AddTask[String]], TempIdCommandResult, Json]](
-      api.perform(RawCommandWithTempId("item_add", UUID.randomUUID(), AddTask("Some name", "str"), UUID.randomUUID()))
+    typed[SingleCommandDefinition[DispatchAPI.Result, CirceDecoder.Result, RawTempIdCommand[AddTask[UUID]], TempIdCommandResult, Json]](
+      api.perform(RawTempIdCommand("item_add", UUID.randomUUID(), AddTask("Some name", UUID.randomUUID()), UUID.randomUUID()))
     )
 
     typed[MultipleCommandDefinition[
       DispatchAPI.Result,
       CirceDecoder.Result,
-      RawCommandWithTempId[AddTaskToInbox] :: RawCommand[AddProject] :: HNil,
+      RawTempIdCommand[AddTaskToInbox] :: RawCommand[AddProject] :: HNil,
       TempIdCommandResult :: CommandResult :: HNil,
       Json]](
       api.perform(RawCommand("project_add", UUID.randomUUID(), AddProject("Some name")))
-        .and(RawCommandWithTempId("item_add", UUID.randomUUID(), AddTaskToInbox("Some name"), UUID.randomUUID()))
+        .and(RawTempIdCommand("item_add", UUID.randomUUID(), AddTaskToInbox("Some name"), UUID.randomUUID()))
     )
   }
 

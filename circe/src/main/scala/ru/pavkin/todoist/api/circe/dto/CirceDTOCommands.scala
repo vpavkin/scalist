@@ -4,7 +4,7 @@ import io.circe.{Printer, Json, Encoder}
 import io.circe.syntax._
 import ru.pavkin.todoist.api.circe.encoders.CirceDTOEncoders
 import ru.pavkin.todoist.api.core.ToRawRequest
-import ru.pavkin.todoist.api.core.dto.{RawCommandWithTempId, RawCommand}
+import ru.pavkin.todoist.api.core.dto.{RawTempIdCommand, RawCommand}
 
 trait CirceDTOCommands extends CirceDTOEncoders {
 
@@ -13,7 +13,7 @@ trait CirceDTOCommands extends CirceDTOEncoders {
   implicit def commandIsRawRequest1[A: Encoder]: ToRawRequest[RawCommand[A]] = ToRawRequest.command(
     c => List(print(c.asJson))
   )
-  implicit def commandIsRawRequest2[A: Encoder]: ToRawRequest[RawCommandWithTempId[A]] = ToRawRequest.command(
+  implicit def commandIsRawRequest2[A: Encoder]: ToRawRequest[RawTempIdCommand[A]] = ToRawRequest.command(
     c => List(print(c.asJson))
   )
 }

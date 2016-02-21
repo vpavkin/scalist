@@ -2,6 +2,7 @@ package ru.pavkin.todoist.api.core.model
 
 import java.util.Date
 
+// todo: incorporate xx:xx:59 thing
 case class TaskDate(text: String,
                     language: DateLanguage,
                     dueDateUTC: Date)
@@ -24,4 +25,4 @@ object DateLanguage {
   val nl = DateLanguage("nl")
 }
 
-case class DateLanguage private(value: String)
+case class DateLanguage private(code: String)

@@ -13,7 +13,7 @@ class DispatchAuthorizedRequestFactorySpec extends FunSuite with Checkers {
       val factory = DispatchAuthorizedRequestFactory(token)
       val req = factory.produce(request).toRequest
       req.getQueryParams.keys.zip(req.getQueryParams.values).toMap.mapValues(_.mkString) ==
-        request.mapValues(l => s"""[${l.mkString(",")}]""") ++ Map(
+        request.mapValues(l => s"""[${l.reverse.mkString(",")}]""") ++ Map(
           "token" -> token,
           "seq_no" -> "0"
         ) &&

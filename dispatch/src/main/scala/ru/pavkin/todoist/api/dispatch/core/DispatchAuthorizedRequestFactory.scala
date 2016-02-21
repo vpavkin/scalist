@@ -13,7 +13,7 @@ case class DispatchAuthorizedRequestFactory(token: Token) extends AuthorizedRequ
       .<<?(Map(
         "token" -> token,
         "seq_no" -> "0"
-      ) ++ resources.mapValues(vector => s"[${vector.mkString(",")}]"
+      ) ++ resources.mapValues(list => s"[${list.reverse.mkString(",")}]"
       ))
 }
 

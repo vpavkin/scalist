@@ -4,6 +4,7 @@ import ru.pavkin.todoist.api.core.command.{MultipleCommandDefinition, SingleComm
 import ru.pavkin.todoist.api.core.decoder._
 import ru.pavkin.todoist.api.core.query.{MultipleQueryDefinition, SingleQueryDefinition}
 import shapeless._
+import shapeless.ops.hlist.Reverse
 
 trait API[F[_], P[_], Base] {
   def get[R](implicit
@@ -20,12 +21,13 @@ trait API[F[_], P[_], Base] {
                     cr: CommandReturns.Aux[C, R],
                     parser: SingleCommandResponseDecoder.Aux[P, C, Base, R]): SingleCommandDefinition[F, P, C, R, Base]
 
-  def performAll[C <: HList, R <: HList](commands: C)
-                                        (implicit
-                                         trr: ToRawRequest[C],
-                                         cr: CommandReturns.Aux[C, R],
-                                         parser: MultipleCommandResponseDecoder.Aux[P, C, Base, R])
-  : MultipleCommandDefinition[F, P, C, R, Base]
+  def performAll[C <: HList, R <: HList, CR <: HList](commands: C)
+                                                     (implicit
+                                                      R: Reverse.Aux[C, CR],
+                                                      trr: ToRawRequest[CR],
+                                                      cr: CommandReturns.Aux[CR, R],
+                                                      parser: MultipleCommandResponseDecoder.Aux[P, CR, Base, R])
+  : MultipleCommandDefinition[F, P, CR, R, Base]
 }
 
 
