@@ -12,7 +12,7 @@ class MultipleQueryRequestDefinition[F[_], L[_], P[_], R <: HList, Req, Base](
                                           executor: RequestExecutor.Aux[Req, L, Base],
                                           flattener: Flattener[F, L, P],
                                           parser: MultipleResponseDecoder.Aux[P, Base, R])
-                                                                             (implicit val itr: HasRawRequest[R],
+                                          (implicit val itr: HasRawRequest[R],
                                           override implicit val F: Functor[L])
   extends ExecutedRequestDefinition[F, L, P, R, Req, Base]
     with MultipleQueryDefinition[F, P, R, Base] {
