@@ -10,10 +10,10 @@ trait CirceDTOCommands extends CirceDTOEncoders {
 
   private def print(json: Json) = Printer.noSpaces.copy(dropNullKeys = true).pretty(json)
 
-  implicit def commandIsRawRequest1[A: Encoder]: ToRawRequest[RawCommand[A]] = ToRawRequest.command(
+  implicit def rawCommandToRequest[A: Encoder]: ToRawRequest[RawCommand[A]] = ToRawRequest.command(
     c => List(print(c.asJson))
   )
-  implicit def commandIsRawRequest2[A: Encoder]: ToRawRequest[RawTempIdCommand[A]] = ToRawRequest.command(
+  implicit def rawTempIdCommandToRequest[A: Encoder]: ToRawRequest[RawTempIdCommand[A]] = ToRawRequest.command(
     c => List(print(c.asJson))
   )
 }
