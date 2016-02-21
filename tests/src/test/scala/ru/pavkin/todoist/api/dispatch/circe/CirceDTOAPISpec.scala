@@ -24,7 +24,7 @@ class CirceDTOAPISpec
       api.perform(RawCommand("item_add", UUID.randomUUID(), AddTask("Some name", 2)))
     )
 
-    typed[SingleCommandDefinition[DispatchAPI.Result, CirceDecoder.Result, RawCommandWithTempId[AddTask[String]], CommandResultWithTempId, Json]](
+    typed[SingleCommandDefinition[DispatchAPI.Result, CirceDecoder.Result, RawCommandWithTempId[AddTask[String]], TempIdCommandResult, Json]](
       api.perform(RawCommandWithTempId("item_add", UUID.randomUUID(), AddTask("Some name", "str"), UUID.randomUUID()))
     )
 
@@ -32,7 +32,7 @@ class CirceDTOAPISpec
       DispatchAPI.Result,
       CirceDecoder.Result,
       RawCommandWithTempId[AddTaskToInbox] :: RawCommand[AddProject] :: HNil,
-      CommandResultWithTempId :: CommandResult :: HNil,
+      TempIdCommandResult :: CommandResult :: HNil,
       Json]](
       api.perform(RawCommand("project_add", UUID.randomUUID(), AddProject("Some name")))
         .and(RawCommandWithTempId("item_add", UUID.randomUUID(), AddTaskToInbox("Some name"), UUID.randomUUID()))

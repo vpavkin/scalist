@@ -2,12 +2,17 @@ package ru.pavkin.todoist.api.core.model
 
 import java.util.UUID
 
-trait Command {
+import ru.pavkin.todoist.api.core.tags
+import shapeless.tag.@@
+
+sealed trait Command {
   val uuid: UUID
 }
 
-trait TempIdCommand {
+sealed trait SimpleCommand extends Command
 
+sealed trait TempIdCommand extends Command {
+  val tempId: UUID
 }
 
 case class AddProject(name: String,
@@ -15,7 +20,7 @@ case class AddProject(name: String,
                       indent: Option[Indent] = None,
                       order: Option[Int] = None)
 
-case class UpdateProject(id: ProjectId,
+case class UpdateProject(id: Int @@ tags.ProjectId,
                          name: Option[String] = None,
                          color: Option[ProjectColor] = None,
                          indent: Option[Indent] = None,
@@ -29,29 +34,29 @@ case class AddTaskToInbox(content: String,
                           order: Option[Int] = None,
                           dayOrder: Option[Int] = None,
                           isCollapsed: Option[Boolean] = None,
-                          labels: List[LabelId] = Nil)
+                          labels: List[Int @@ tags.LabelId] = Nil)
 
 case class AddTask(content: String,
-                   projectId: ProjectId,
+                   projectId: Int @@ tags.ProjectId,
                    date: Option[TaskDate] = None,
                    priority: Option[Priority] = None,
                    indent: Option[Indent] = None,
                    order: Option[Int] = None,
                    dayOrder: Option[Int] = None,
                    isCollapsed: Option[Boolean] = None,
-                   labels: List[LabelId] = Nil,
-                   assignedBy: Option[UserId] = None,
-                   responsible: Option[UserId] = None)
+                   labels: List[Int @@ tags.LabelId] = Nil,
+                   assignedBy: Option[Int @@ tags.UserId] = None,
+                   responsible: Option[Int @@ tags.UserId] = None)
 
-case class UpdateTask(id: TaskId,
+case class UpdateTask(id: Int @@ tags.TaskId,
                       content: String,
-                      projectId: ProjectId,
+                      projectId: Int @@ tags.ProjectId,
                       date: Option[TaskDate] = None,
                       priority: Option[Priority] = None,
                       indent: Option[Indent] = None,
                       order: Option[Int] = None,
                       dayOrder: Option[Int] = None,
                       isCollapsed: Option[Boolean] = None,
-                      labels: List[LabelId] = Nil,
-                      assignedBy: Option[UserId] = None,
-                      responsible: Option[UserId] = None)
+                      labels: List[Int @@ tags.LabelId] = Nil,
+                      assignedBy: Option[Int @@ tags.UserId] = None,
+                      responsible: Option[Int @@ tags.UserId] = None)

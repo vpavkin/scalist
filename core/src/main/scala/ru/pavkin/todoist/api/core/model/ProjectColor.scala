@@ -1,5 +1,9 @@
 package ru.pavkin.todoist.api.core.model
 
+import ru.pavkin.todoist.api
+
+import scala.util.Try
+
 object ProjectColor {
 
   val color0 = ProjectColor(0, 0x95ef63)
@@ -25,8 +29,37 @@ object ProjectColor {
   val color19 = ProjectColor(19, 0x0072c6)
   val color20 = ProjectColor(20, 0x000000)
   val color21 = ProjectColor(21, 0x777777)
+
+  private val colors = Vector(
+    color0,
+    color1,
+    color2,
+    color3,
+    color4,
+    color5,
+    color6,
+    color7,
+    color8,
+    color9,
+    color10,
+    color11,
+    color12,
+    color13,
+    color14,
+    color15,
+    color16,
+    color17,
+    color18,
+    color19,
+    color20,
+    color21)
+
+  def apply(n: Int): ProjectColor =
+    Try(colors(n)).getOrElse(api.unexpected)
+
 }
 
 case class ProjectColor private(code: Int, value: Int) {
   def isPremium: Boolean = code >= 12
+  override def toString: String = s"ProjectColor($code, 0x${value.toHexString})"
 }

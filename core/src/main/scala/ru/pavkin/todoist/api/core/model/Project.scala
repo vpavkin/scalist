@@ -1,10 +1,11 @@
 package ru.pavkin.todoist.api.core.model
 
-import java.util.Date
+import ru.pavkin.todoist.api.core.tags
+import shapeless.tag.@@
 
 sealed trait Project {
-  def id: ProjectId
-  def userId: UserId
+  def id: Int @@ tags.ProjectId
+  def userId: Int @@ tags.UserId
   def name: String
   def color: ProjectColor
   def indent: Indent
@@ -17,8 +18,8 @@ sealed trait Project {
   def isTeamInbox: Boolean
 }
 
-case class RegularProject(id: ProjectId,
-                          userId: UserId,
+case class RegularProject(id: Int @@ tags.ProjectId,
+                          userId: Int @@ tags.UserId,
                           name: String,
                           color: ProjectColor,
                           indent: Indent,
@@ -29,21 +30,6 @@ case class RegularProject(id: ProjectId,
                           isInbox: Boolean,
                           isTeamInbox: Boolean) extends Project {
   val isArchived: Boolean = false
-}
-
-case class ArchivedProject(id: ProjectId,
-                           userId: UserId,
-                           name: String,
-                           color: ProjectColor,
-                           indent: Indent,
-                           order: Int,
-                           isCollapsed: Boolean,
-                           isShared: Boolean,
-                           isDeleted: Boolean,
-                           archivedAt: Date) extends Project {
-  val isArchived: Boolean = true
-  val isInbox: Boolean = false
-  val isTeamInbox: Boolean = false
 }
 
 

@@ -2,9 +2,12 @@ package ru.pavkin.todoist.api.core.model
 
 import java.util.Date
 
-case class Task(id: TaskId,
-                userId: UserId,
-                projectId: ProjectId,
+import ru.pavkin.todoist.api.core.tags
+import shapeless.tag.@@
+
+case class Task(id: Int @@ tags.TaskId,
+                userId: Int @@ tags.UserId,
+                projectId: Int @@ tags.ProjectId,
                 content: String,
                 date: Option[TaskDate],
                 priority: Priority,
@@ -12,9 +15,9 @@ case class Task(id: TaskId,
                 order: Int,
                 dayOrder: Int,
                 isCollapsed: Boolean,
-                labels: List[LabelId],
-                assignedBy: Option[UserId],
-                responsible: Option[UserId],
+                labels: List[Int @@ tags.LabelId],
+                assignedBy: Option[Int @@ tags.UserId],
+                responsible: Option[Int @@ tags.UserId],
                 isCompleted: Boolean,
                 isInHistory: Boolean,
                 isDeleted: Boolean,
