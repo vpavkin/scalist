@@ -5,10 +5,10 @@ import cats.std.list._
 import ru.pavkin.todoist.api
 import ru.pavkin.todoist.api.RawRequest
 import ru.pavkin.todoist.api.core.FromDTO.syntax._
-import ru.pavkin.todoist.api.core._
 import ru.pavkin.todoist.api.core.decoder.{SingleCommandResponseDecoder, SingleResponseDecoder}
-import ru.pavkin.todoist.api.core.dto
+import ru.pavkin.todoist.api.core.{dto, _}
 import ru.pavkin.todoist.api.core.model._
+import ru.pavkin.todoist.api.core.model.util.{CommandResultHListSyntax, ReversedAtSyntax}
 import shapeless.{Inl, Inr}
 
 trait ModelAPISuite[F[_], P[_], Base]
@@ -78,5 +78,7 @@ trait ModelAPISuite[F[_], P[_], Base]
     def rawRequest(c: A): RawRequest =
       dto.RawTempIdCommand(T.commandType, c.uuid, D.produce(c), c.tempId).toRawRequest
   }
+
+  object syntax extends QuerySyntax with ReversedAtSyntax with CommandResultHListSyntax
 
 }

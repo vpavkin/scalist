@@ -14,8 +14,8 @@ trait QueryAPISuite {
   implicit val labels = HasRawRequest.resource[Labels](List("labels"))
   implicit val all = HasRawRequest.resource[All](List("all"))
 
-  object syntax {
-    implicit class HListOps[L <: HList](l: L) {
+  trait QuerySyntax {
+    implicit class HListQueryOps[L <: HList](l: L) {
       def projects(implicit S: Selector[L, Projects]): Projects = S(l)
       def labels(implicit S: Selector[L, Labels]): Labels = S(l)
     }
