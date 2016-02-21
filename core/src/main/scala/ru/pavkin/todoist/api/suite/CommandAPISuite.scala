@@ -1,6 +1,8 @@
 package ru.pavkin.todoist.api.suite
 
-trait CommandAPISuite {
+import ru.pavkin.todoist.api.core.tags
+
+trait CommandAPISuite extends tags.Syntax {
   type CommandResult
   type TempIdCommandResult
 }
