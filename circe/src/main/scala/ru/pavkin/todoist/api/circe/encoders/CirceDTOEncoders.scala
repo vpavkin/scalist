@@ -7,8 +7,9 @@ import io.circe.generic.auto._
 trait CirceDTOEncoders {
 
   // commands
-  implicit val addTaskEncoder = Encoder[AddTask]
-  implicit val addProjecrEncoder = Encoder[AddProject]
+  implicit def addTaskEncoder[A: IsResourceId](implicit E: Encoder[A]) = Encoder[AddTask[A]]
+  implicit val addTaskToInboxEncoder = Encoder[AddTaskToInbox]
+  implicit val addProjectEncoder = Encoder[AddProject]
 
   implicit def rawCommandEncoder1[A](implicit E: Encoder[A]) =
     Encoder[RawCommand[A]]

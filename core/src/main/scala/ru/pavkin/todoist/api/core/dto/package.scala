@@ -16,6 +16,8 @@ package object dto {
   case class RawCommandResult(SyncStatus: RawRequestStatus, TempIdMapping: Option[TempIdMapping])
 
   // synthetic DTOs
-  case class CommandResult(SyncStatus: RawCommandStatus)
-  case class CommandResultWithTempId(SyncStatus: RawCommandStatus, TempIdMapping: Int)
+  case class CommandResult(status: RawCommandStatus)
+  sealed trait CommandWithTempIdResult
+  case class TempIdSuccess(status: RawCommandStatus, realId: Int) extends CommandWithTempIdResult
+  case class TempIdFailure(underlying: RawCommandError) extends CommandWithTempIdResult
 }

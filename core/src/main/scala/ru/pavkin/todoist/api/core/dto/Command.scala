@@ -32,12 +32,18 @@ case class UpdateProjectTempId(id: String,
                                item_order: Option[Int] = None,
                                collapsed: Option[Int] = None)
 
-case class UpdateProject(id: Int,
-                         name: String,
-                         color: Option[Int] = None,
-                         indent: Option[Int] = None,
-                         item_order: Option[Int] = None,
-                         collapsed: Option[Int] = None)
+trait IsResourceId[T]
+object IsResourceId {
+  implicit val strResourceId: IsResourceId[String] = new IsResourceId[String] {}
+  implicit val intResourceId: IsResourceId[Int] = new IsResourceId[Int] {}
+}
+
+case class UpdateProject[T: IsResourceId](id: Int,
+                                          name: String,
+                                          color: Option[Int] = None,
+                                          indent: Option[Int] = None,
+                                          item_order: Option[Int] = None,
+                                          collapsed: Option[Int] = None)
 
 
 case class AddItemTempId(content: String,
@@ -55,19 +61,31 @@ case class AddItemTempId(content: String,
                          responsible_uid: Option[Int] = None // only for shared
                         )
 
-case class AddTask(content: String,
-                   project_id: Option[Int] = None,
-                   date_string: Option[String] = None,
-                   date_lang: Option[String] = None,
-                   due_date_utc: Option[String] = None,
-                   priority: Option[Int] = None,
-                   indent: Option[Int] = None,
-                   item_order: Option[Int] = None,
-                   day_order: Option[Int] = None,
-                   collapsed: Option[Int] = None,
-                   labels: List[Int] = Nil,
-                   assigned_by_uid: Option[Int] = None,
-                   responsible_uid: Option[Int] = None)
+
+case class AddTaskToInbox(content: String,
+                          date_string: Option[String] = None,
+                          date_lang: Option[String] = None,
+                          due_date_utc: Option[String] = None,
+                          priority: Option[Int] = None,
+                          indent: Option[Int] = None,
+                          item_order: Option[Int] = None,
+                          day_order: Option[Int] = None,
+                          collapsed: Option[Int] = None,
+                          labels: List[Int] = Nil)
+
+case class AddTask[T: IsResourceId](content: String,
+                                    project_id: T,
+                                    date_string: Option[String] = None,
+                                    date_lang: Option[String] = None,
+                                    due_date_utc: Option[String] = None,
+                                    priority: Option[Int] = None,
+                                    indent: Option[Int] = None,
+                                    item_order: Option[Int] = None,
+                                    day_order: Option[Int] = None,
+                                    collapsed: Option[Int] = None,
+                                    labels: List[Int] = Nil,
+                                    assigned_by_uid: Option[Int] = None,
+                                    responsible_uid: Option[Int] = None)
 
 case class UpdateItemTempId(id: String,
                             content: Option[String] = None,

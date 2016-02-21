@@ -4,6 +4,7 @@ import cats.Monad
 import ru.pavkin.todoist.api.core.decoder.{SingleCommandResponseDecoder, SingleResponseDecoder}
 import ru.pavkin.todoist.api.core.{CommandReturns, dto}
 import ru.pavkin.todoist.api.core.dto._
+import shapeless.{Inl, Inr}
 
 trait DTOAPISuite[F[_], P[_], Base]
   extends AbstractDTOQueryAPISuite[F, P, Base, AllResources]
@@ -12,11 +13,8 @@ trait DTOAPISuite[F[_], P[_], Base]
   type Projects = List[Project]
   type Labels = List[Label]
 
-  type AddProject = dto.AddProject
-  type AddTask = dto.AddTask
-
-  type SingleCommandResult = dto.CommandResult
-  type SingleCommandResultWithTempId = dto.CommandResultWithTempId
+  type CommandResult = dto.CommandResult
+  type CommandResultWithTempId = dto.CommandWithTempIdResult
 
   implicit def dtoToProjects(implicit M: Monad[P]): SingleResponseDecoder.Aux[P, AllResources, Projects] =
     fromResourceDtoDecoder(_.Projects)("projects")
@@ -25,25 +23,26 @@ trait DTOAPISuite[F[_], P[_], Base]
     fromResourceDtoDecoder(_.Labels)("labels")
 
   implicit def dtoToRawCommand1[A]
-  (implicit M: Monad[P]): SingleCommandResponseDecoder.Aux[P, RawCommand[A], RawCommandResult, SingleCommandResult] =
-    fromCommandResultDtoDecoder[RawCommand[A], SingleCommandResult] {
+  (implicit M: Monad[P]): SingleCommandResponseDecoder.Aux[P, RawCommand[A], RawCommandResult, CommandResult] =
+    fromCommandResultDtoDecoder[RawCommand[A], CommandResult] {
       (command, result) => result.SyncStatus.get(command.uuid.toString).map(CommandResult)
     }
 
   implicit def dtoToRawCommand2[A](implicit M: Monad[P])
-  : SingleCommandResponseDecoder.Aux[P, RawCommandWithTempId[A], RawCommandResult, SingleCommandResultWithTempId] =
-    fromCommandResultDtoDecoder[RawCommandWithTempId[A], SingleCommandResultWithTempId]((command, result) => for {
-      r <- result.SyncStatus.get(command.uuid.toString)
-      t <- result.TempIdMapping.flatMap(_.get(command.temp_id.toString))
-    } yield CommandResultWithTempId(r, t))
+  : SingleCommandResponseDecoder.Aux[P, RawCommandWithTempId[A], RawCommandResult, CommandResultWithTempId] =
+    fromCommandResultDtoDecoder[RawCommandWithTempId[A], CommandResultWithTempId]((command, result) =>
+      result.SyncStatus.get(command.uuid.toString).flatMap {
+        case Inr(Inl(error)) => Some(TempIdFailure(error))
+        case other => result.TempIdMapping.flatMap(_.get(command.temp_id.toString)).map(TempIdSuccess(other, _))
+      })
 
-  implicit def rawCommandReturns1[A]: CommandReturns.Aux[RawCommand[A], SingleCommandResult] =
+  implicit def rawCommandReturns1[A]: CommandReturns.Aux[RawCommand[A], CommandResult] =
     new CommandReturns[RawCommand[A]] {
-      type Result = SingleCommandResult
+      type Result = CommandResult
     }
 
-  implicit def rawCommandReturns2[A]: CommandReturns.Aux[RawCommandWithTempId[A], SingleCommandResultWithTempId] =
+  implicit def rawCommandReturns2[A]: CommandReturns.Aux[RawCommandWithTempId[A], CommandResultWithTempId] =
     new CommandReturns[RawCommandWithTempId[A]] {
-      type Result = SingleCommandResultWithTempId
+      type Result = CommandResultWithTempId
     }
 }

@@ -11,10 +11,10 @@ trait AbstractDTOCommandAPISuite[F[_], P[_], Base, CommandResultDTO]
   implicit def commandDtoDecoder: SingleResponseDecoder.Aux[P, Base, CommandResultDTO]
 
   implicit def dtoToRawCommand1[A]
-  (implicit M: Monad[P]): SingleCommandResponseDecoder.Aux[P, RawCommand[A], CommandResultDTO, SingleCommandResult]
+  (implicit M: Monad[P]): SingleCommandResponseDecoder.Aux[P, RawCommand[A], CommandResultDTO, CommandResult]
 
   implicit def dtoToRawCommand2[A](implicit M: Monad[P])
-  : SingleCommandResponseDecoder.Aux[P, RawCommandWithTempId[A], CommandResultDTO, SingleCommandResultWithTempId]
+  : SingleCommandResponseDecoder.Aux[P, RawCommandWithTempId[A], CommandResultDTO, CommandResultWithTempId]
 
   protected def fromCommandResultDtoDecoder[C, R]
   (f: (C, CommandResultDTO) => Option[R])

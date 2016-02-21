@@ -20,22 +20,22 @@ class CirceDTOAPISpec
   test("Dispatch Circe DTO API command test suite") {
     val api = todoist.withToken("token")
 
-    typed[SingleCommandDefinition[DispatchAPI.Result, CirceDecoder.Result, RawCommand[AddTask], SingleCommandResult, Json]](
-      api.perform(RawCommand("item_add", UUID.randomUUID(), AddTask("Some name")))
+    typed[SingleCommandDefinition[DispatchAPI.Result, CirceDecoder.Result, RawCommand[AddTask[Int]], CommandResult, Json]](
+      api.perform(RawCommand("item_add", UUID.randomUUID(), AddTask("Some name", 2)))
     )
 
-    typed[SingleCommandDefinition[DispatchAPI.Result, CirceDecoder.Result, RawCommandWithTempId[AddTask], SingleCommandResultWithTempId, Json]](
-      api.perform(RawCommandWithTempId("item_add", UUID.randomUUID(), AddTask("Some name"), UUID.randomUUID()))
+    typed[SingleCommandDefinition[DispatchAPI.Result, CirceDecoder.Result, RawCommandWithTempId[AddTask[String]], CommandResultWithTempId, Json]](
+      api.perform(RawCommandWithTempId("item_add", UUID.randomUUID(), AddTask("Some name", "str"), UUID.randomUUID()))
     )
 
     typed[MultipleCommandDefinition[
       DispatchAPI.Result,
       CirceDecoder.Result,
-      RawCommandWithTempId[AddTask] :: RawCommand[AddProject] :: HNil,
-      SingleCommandResultWithTempId :: SingleCommandResult :: HNil,
+      RawCommandWithTempId[AddTaskToInbox] :: RawCommand[AddProject] :: HNil,
+      CommandResultWithTempId :: CommandResult :: HNil,
       Json]](
       api.perform(RawCommand("project_add", UUID.randomUUID(), AddProject("Some name")))
-        .and(RawCommandWithTempId("item_add", UUID.randomUUID(), AddTask("Some name"), UUID.randomUUID()))
+        .and(RawCommandWithTempId("item_add", UUID.randomUUID(), AddTaskToInbox("Some name"), UUID.randomUUID()))
     )
   }
 
