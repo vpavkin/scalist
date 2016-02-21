@@ -18,6 +18,6 @@ package object dto {
   // synthetic DTOs
   case class CommandResult(status: RawCommandStatus)
   sealed trait TempIdCommandResult
-  case class TempIdSuccess(status: RawCommandStatus, realId: Int) extends TempIdCommandResult
+  case class TempIdSuccess(realId: Int) extends TempIdCommandResult
   case class TempIdFailure(underlying: RawCommandError) extends TempIdCommandResult
 }

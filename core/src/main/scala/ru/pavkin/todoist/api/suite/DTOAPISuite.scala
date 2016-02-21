@@ -33,7 +33,7 @@ trait DTOAPISuite[F[_], P[_], Base]
     fromCommandResultDtoDecoder[RawTempIdCommand[A], TempIdCommandResult]((command, result) =>
       result.SyncStatus.get(command.uuid.toString).flatMap {
         case Inr(Inl(error)) => Some(TempIdFailure(error))
-        case other => result.TempIdMapping.flatMap(_.get(command.temp_id.toString)).map(TempIdSuccess(other, _))
+        case other => result.TempIdMapping.flatMap(_.get(command.temp_id.toString)).map(TempIdSuccess)
       })
 
   implicit def rawCommandReturns1[A]: CommandReturns.Aux[RawCommand[A], CommandResult] =

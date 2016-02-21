@@ -6,11 +6,15 @@ import ru.pavkin.todoist.api
 import ru.pavkin.todoist.api.core.model._
 import ru.pavkin.todoist.api.core.tags.{LabelId, UserId, ProjectId}
 import ru.pavkin.todoist.api.utils.Produce
-import shapeless.tag
+import shapeless.{CNil, Inr, Inl, tag}
 
 trait FromDTO[DTO, Model] extends Produce[DTO, Model]
 
 object FromDTO {
+
+  def apply[DTO, Model](f: DTO => Model): FromDTO[DTO, Model] = new FromDTO[DTO, Model] {
+    def produce(a: DTO): Model = f(a)
+  }
 
   private implicit class BinaryIntOps(a: Int) {
     def toBool = a match {
@@ -43,40 +47,54 @@ object FromDTO {
   }
 
   implicit def functorFromDTO[F[_] : Functor, DTO, Model](implicit F: FromDTO[DTO, Model]): FromDTO[F[DTO], F[Model]] =
-    new FromDTO[F[DTO], F[Model]] {
-      def produce(a: F[DTO]): F[Model] = a.map(F.produce)
-    }
+    FromDTO(_.map(F.produce))
 
-  implicit val projectsFromDTO: FromDTO[dto.Project, Project] = new FromDTO[dto.Project, model.Project] {
-    def produce(a: dto.Project): model.Project =
-      if (!a.is_archived.toBool) {
-        model.RegularProject(
-          tag[ProjectId](a.id),
-          tag[UserId](a.user_id),
-          a.name,
-          a.color.toProjectColor,
-          a.indent.toIndent,
-          a.item_order,
-          a.collapsed.toBool,
-          a.shared,
-          a.is_deleted.toBool,
-          a.inbox_project.toBool,
-          a.team_inbox.toBool
-        )
-      } else {
-        api.unexpected
-      }
+  implicit val projectsFromDTO: FromDTO[dto.Project, Project] = FromDTO(a =>
+    if (!a.is_archived.toBool) {
+      model.RegularProject(
+        tag[ProjectId](a.id),
+        tag[UserId](a.user_id),
+        a.name,
+        a.color.toProjectColor,
+        a.indent.toIndent,
+        a.item_order,
+        a.collapsed.toBool,
+        a.shared,
+        a.is_deleted.toBool,
+        a.inbox_project.toBool,
+        a.team_inbox.toBool
+      )
+    } else {
+      api.unexpected
+    }
+  )
+
+  implicit val labelsFromDTO: FromDTO[dto.Label, model.Label] = FromDTO(a =>
+    model.Label(
+      tag[LabelId](a.id),
+      tag[UserId](a.uid),
+      a.name,
+      a.color.toLabelColor,
+      a.item_order,
+      a.is_deleted.toBool
+    )
+  )
+
+  // command results
+
+  implicit val singleCommandStatusFromDTO: FromDTO[dto.RawItemStatus, model.SingleCommandStatus] = FromDTO {
+    case Inl(_) => CommandSuccess
+    case Inr(Inl(e)) => CommandFailure(e.error_code, e.error)
+    case Inr(Inr(cNil)) => api.unexpected
   }
 
-  implicit val labelsFromDTO = new FromDTO[dto.Label, model.Label] {
-    def produce(a: dto.Label): model.Label =
-      model.Label(
-        tag[LabelId](a.id),
-        tag[UserId](a.uid),
-        a.name,
-        a.color.toLabelColor,
-        a.item_order,
-        a.is_deleted.toBool
-      )
+  implicit val commandStatusFromDTO: FromDTO[dto.RawCommandStatus, model.CommandStatus] = FromDTO {
+    case Inl(_) => CommandSuccess
+    case Inr(Inl(e)) => CommandFailure(e.error_code, e.error)
+    case Inr(Inr(Inl(s))) => MultiItemCommandStatus(s.map {
+      case (id, status) =>
+        id.toInt -> singleCommandStatusFromDTO.produce(status)
+    })
+    case Inr(Inr(Inr(cNil))) => api.unexpected
   }
 }
