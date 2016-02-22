@@ -10,7 +10,18 @@ trait CommandResultHList[T <: HList] {
   def resultFor(result: T)(uuid: UUID): Option[TodoistCommandResult]
 }
 
-object CommandResultHList extends CommandResultHListSyntax {
+object CommandResultHList {
+
+  trait Syntax {
+    implicit class CommandResultHListOps[A <: HList](a: A)(implicit ev: CommandResultHList[A]) {
+      def resultFor(uuid: UUID): Option[TodoistCommandResult] = ev.resultFor(a)(uuid)
+      def isSuccess: Boolean = ev.isSuccess(a)
+    }
+  }
+
+  object syntax extends Syntax
+
+  import syntax._
 
   implicit val hnil: CommandResultHList[HNil] = new CommandResultHList[HNil] {
     def resultFor(result: HNil)(uuid: UUID): Option[TodoistCommandResult] = None
@@ -30,11 +41,4 @@ object CommandResultHList extends CommandResultHListSyntax {
       }
       def isSuccess(result: H :: T): Boolean = C(result.head).isSuccess && result.tail.isSuccess
     }
-}
-
-trait CommandResultHListSyntax {
-  implicit class CommandResultHListOps[A <: HList](a: A)(implicit ev: CommandResultHList[A]) {
-    def resultFor(uuid: UUID): Option[TodoistCommandResult] = ev.resultFor(a)(uuid)
-    def isSuccess: Boolean = ev.isSuccess(a)
-  }
 }
