@@ -1,5 +1,5 @@
 <scalastyle>
-    <name>Todoist API Configuration</name>
+    <name>Scalist Configuration</name>
     <check level="error" class="org.scalastyle.scalariform.EnsureSingleSpaceAfterTokenChecker" enabled="true">
         <parameters>
             <parameter name="tokens">FOR</parameter>

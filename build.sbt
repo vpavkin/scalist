@@ -45,8 +45,8 @@ lazy val todoistAPI = project.in(file("."))
 
 lazy val core = project.in(file("core"))
   .settings(
-    description := "todoist api core",
-    moduleName := "todoist-api-core",
+    description := "Scalist core",
+    moduleName := "scalist-core",
     name := "core"
   )
   .settings(allSettings: _*)
@@ -59,8 +59,8 @@ lazy val core = project.in(file("core"))
 
 lazy val circe = project.in(file("circe"))
   .settings(
-    description := "circe json support for todoist-api-scala",
-    moduleName := "todoist-api-circe",
+    description := "Circe JSON support for Scalist",
+    moduleName := "scalist-circe",
     name := "circe"
   )
   .settings(allSettings: _*)
@@ -74,8 +74,8 @@ lazy val circe = project.in(file("circe"))
 
 lazy val dispatch = project.in(file("dispatch"))
   .settings(
-    description := "dispatch http support for todoist-api-scala",
-    moduleName := "todoist-api-dispatch",
+    description := "Dispatch HTTP support for Scalist",
+    moduleName := "scalist-dispatch",
     name := "dispatch"
   )
   .settings(allSettings: _*)
@@ -87,8 +87,8 @@ lazy val dispatch = project.in(file("dispatch"))
 
 lazy val dispatchCirce = project.in(file("dispatch-circe"))
   .settings(
-    description := "todoist api backed by circe json and dispatch http",
-    moduleName := "todoist-api-dispatch-circe",
+    description := "Todoist API client backed by Circe JSON and Dispatch HTTP",
+    moduleName := "scalist-dispatch-circe",
     name := "dispatch-circe"
   )
   .settings(allSettings: _*)
@@ -96,9 +96,9 @@ lazy val dispatchCirce = project.in(file("dispatch-circe"))
 
 lazy val tests = project.in(file("tests"))
   .settings(
-    description := "todoist api tests",
-    moduleName := "todoist-api-tests",
-    name := "todoist-api-tests"
+    description := "Scalist tests",
+    moduleName := "scalist-tests",
+    name := "scalist-tests"
   )
   .settings(allSettings: _*)
   .settings(libraryDependencies ++= Seq(
