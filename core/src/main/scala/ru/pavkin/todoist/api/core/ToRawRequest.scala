@@ -4,7 +4,7 @@ import ru.pavkin.todoist.api._
 import cats.syntax.semigroup._
 import shapeless.{::, HList, HNil}
 
-sealed trait ToRawRequest[R] {
+trait ToRawRequest[R] {
   def rawRequest(o: R): RawRequest
 }
 
@@ -27,6 +27,12 @@ object ToRawRequest {
 
   implicit def recurse[H, T <: HList](implicit H: ToRawRequest[H], T: ToRawRequest[T]): ToRawRequest[H :: T] =
     ToRawRequest[H :: T]((l: H :: T) => H.rawRequest(l.head).combine(T.rawRequest(l.tail)))
+
+  object syntax {
+    implicit class Ops[A](a: A)(implicit T: ToRawRequest[A]) {
+      def toRawRequest: RawRequest = T.rawRequest(a)
+    }
+  }
 }
 
 

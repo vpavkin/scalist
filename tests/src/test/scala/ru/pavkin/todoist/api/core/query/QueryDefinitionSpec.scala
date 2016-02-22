@@ -50,7 +50,6 @@ class QueryDefinitionSpec extends RequestDefinitionSpec {
         flattener,
         nonNegativeStringParser
       )
-      typed[r.Out]("")
       r.execute == parseNonNegative(i).toOption
     })
   }

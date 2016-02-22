@@ -18,7 +18,11 @@ class SingleCommandRequestDefinition[F[_], L[_], P[_], C, R, Req, Base]
     override implicit val F: Functor[L])
   extends ExecutedRequestDefinition[F, L, P, R, Req, Base] with SingleCommandDefinition[F, P, C, R, Base] {
 
-  def load: L[Base] = executor.execute(requestFactory.produce(trr.rawRequest(command)))
+  def load: L[Base] = executor.execute(
+    requestFactory.produce(
+      trr.rawRequest(command)
+    )
+  )
   def flatten(r: L[P[R]]): F[R] = flattener.flatten(r)
   def parse(r: Base): P[R] = parser.parse(command)(r)
 

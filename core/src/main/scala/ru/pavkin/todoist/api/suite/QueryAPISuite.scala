@@ -1,9 +1,10 @@
 package ru.pavkin.todoist.api.suite
 
 import ru.pavkin.todoist.api.core.HasRawRequest
-import shapeless.{::, HNil}
+import shapeless.ops.hlist.Selector
+import shapeless.{HList, ::, HNil}
 
-trait APISuite[F[_], P[_], Base] {
+trait QueryAPISuite {
 
   type Projects
   type Labels
@@ -13,4 +14,10 @@ trait APISuite[F[_], P[_], Base] {
   implicit val labels = HasRawRequest.resource[Labels](List("labels"))
   implicit val all = HasRawRequest.resource[All](List("all"))
 
+  trait QuerySyntax {
+    implicit class HListQueryOps[L <: HList](l: L) {
+      def projects(implicit S: Selector[L, Projects]): Projects = S(l)
+      def labels(implicit S: Selector[L, Labels]): Labels = S(l)
+    }
+  }
 }

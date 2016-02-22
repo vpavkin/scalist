@@ -1,7 +1,7 @@
 lazy val buildSettings = Seq(
   organization := "ru.vpavkin",
   scalaVersion := "2.11.7",
-  crossScalaVersions := Seq("2.10.6", "2.11.7")
+  crossScalaVersions := Seq("2.11.7", "2.12.0-M3")
 )
 
 lazy val compilerOptions = Seq(
@@ -15,29 +15,18 @@ lazy val compilerOptions = Seq(
   "-Yno-adapted-args",
   "-Ywarn-dead-code",
   "-Ywarn-numeric-widen",
+  "-Ywarn-unused-import",
   "-Xfuture"
 )
 
 lazy val baseSettings = Seq(
-  scalacOptions ++= compilerOptions ++ (
-    CrossVersion.partialVersion(scalaVersion.value) match {
-      case Some((2, 11)) => Seq("-Ywarn-unused-import")
-      case _ => Nil
-    }),
+  scalacOptions ++= compilerOptions,
   scalacOptions in(Compile, console) := compilerOptions,
   scalacOptions in(Compile, test) := compilerOptions,
-  libraryDependencies ++= Seq(
-    compilerPlugin("org.scalamacros" % "paradise" % "2.1.0" cross CrossVersion.full)
-  ),
   resolvers ++= Seq(
     Resolver.sonatypeRepo("releases"),
     Resolver.sonatypeRepo("snapshots")
-  ),
-  ScoverageSbtPlugin.ScoverageKeys.coverageHighlighting := (
-    CrossVersion.partialVersion(scalaVersion.value) match {
-      case Some((2, 10)) => false
-      case _ => true
-    })
+  )
 )
 
 lazy val allSettings = buildSettings ++ baseSettings
