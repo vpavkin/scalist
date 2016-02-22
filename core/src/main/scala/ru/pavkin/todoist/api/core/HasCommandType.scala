@@ -1,6 +1,5 @@
 package ru.pavkin.todoist.api.core
 
-import ru.pavkin.todoist.api.core.dto.IsResourceId
 import ru.pavkin.todoist.api.core.model._
 
 trait HasCommandType[T] {
@@ -17,4 +16,9 @@ object HasCommandType {
   implicit def addTask[T: IsResourceId]: HasCommandType[AddTask[T]] = HasCommandType("item_add")
   implicit val addTaskToInbox: HasCommandType[AddTaskToInbox] = HasCommandType("item_add")
   implicit val addLabel: HasCommandType[AddLabel] = HasCommandType("label_add")
+
+  implicit def updateProject[T: IsResourceId]: HasCommandType[UpdateProject[T]] = HasCommandType("project_update")
+  implicit def updateTask[T: IsResourceId]: HasCommandType[UpdateTask[T]] = HasCommandType("item_update")
+  implicit def updateLabel[T: IsResourceId]: HasCommandType[UpdateLabel[T]] = HasCommandType("label_update")
+
 }

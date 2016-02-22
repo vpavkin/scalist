@@ -2,7 +2,7 @@ package ru.pavkin.todoist.api.core.model
 
 import java.util.UUID
 
-import ru.pavkin.todoist.api.core.dto.IsResourceId
+import ru.pavkin.todoist.api.core.IsResourceId
 import ru.pavkin.todoist.api.core.tags
 import ru.pavkin.todoist.api.core.tags.syntax._
 import shapeless.tag.@@
@@ -59,24 +59,32 @@ case class AddLabel(name: String,
                     tempId: UUID @@ tags.LabelId = UUID.randomUUID().labelId)
   extends TempIdCommand[tags.LabelId]
 
-// todo: after this line
+case class UpdateProject[A: IsResourceId](id: A @@ tags.ProjectId,
+                                          name: Option[String] = None,
+                                          color: Option[ProjectColor] = None,
+                                          indent: Option[Indent] = None,
+                                          order: Option[Int] = None,
+                                          isCollapsed: Option[Boolean] = None,
+                                          uuid: UUID = UUID.randomUUID())
+  extends SimpleCommand
 
-case class UpdateProject(id: Int @@ tags.ProjectId,
-                         name: Option[String] = None,
-                         color: Option[ProjectColor] = None,
-                         indent: Option[Indent] = None,
-                         order: Option[Int] = None,
-                         isCollapsed: Option[Boolean] = None)
+case class UpdateTask[A: IsResourceId](id: A @@ tags.TaskId,
+                                       content: Option[String] = None,
+                                       date: Option[TaskDate] = None,
+                                       priority: Option[Priority] = None,
+                                       indent: Option[Indent] = None,
+                                       order: Option[Int] = None,
+                                       dayOrder: Option[Int] = None,
+                                       isCollapsed: Option[Boolean] = None,
+                                       labels: List[Int @@ tags.LabelId] = Nil,
+                                       assignedBy: Option[Int @@ tags.UserId] = None,
+                                       responsible: Option[Int @@ tags.UserId] = None,
+                                       uuid: UUID = UUID.randomUUID())
+  extends SimpleCommand
 
-case class UpdateTask(id: Int @@ tags.TaskId,
-                      content: String,
-                      projectId: Int @@ tags.ProjectId,
-                      date: Option[TaskDate] = None,
-                      priority: Option[Priority] = None,
-                      indent: Option[Indent] = None,
-                      order: Option[Int] = None,
-                      dayOrder: Option[Int] = None,
-                      isCollapsed: Option[Boolean] = None,
-                      labels: List[Int @@ tags.LabelId] = Nil,
-                      assignedBy: Option[Int @@ tags.UserId] = None,
-                      responsible: Option[Int @@ tags.UserId] = None)
+case class UpdateLabel[A: IsResourceId](id: A @@ tags.LabelId,
+                                        name: Option[String] = None,
+                                        color: Option[LabelColor] = None,
+                                        order: Option[Int] = None,
+                                        uuid: UUID = UUID.randomUUID())
+  extends SimpleCommand

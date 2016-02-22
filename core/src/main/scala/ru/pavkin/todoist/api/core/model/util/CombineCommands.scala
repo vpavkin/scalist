@@ -9,7 +9,7 @@ import shapeless.{HList, ::, HNil}
 object CombineCommands {
   trait Syntax {
     implicit class CombineCommandsOps[C <: Command](command: C) {
-      def :+[A](other: A): C :: A :: HNil = command :: other :: HNil
+      def :+[A <: Command](other: A): C :: A :: HNil = command :: other :: HNil
     }
 
     implicit class TempIdProduceCommandsOps[Tag, C](command: C)(implicit ev: C <:< TempIdCommand[Tag]) {

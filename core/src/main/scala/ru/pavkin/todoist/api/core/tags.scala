@@ -1,6 +1,5 @@
 package ru.pavkin.todoist.api.core
 
-import ru.pavkin.todoist.api.core.dto.IsResourceId
 import shapeless.tag
 import shapeless.tag._
 
