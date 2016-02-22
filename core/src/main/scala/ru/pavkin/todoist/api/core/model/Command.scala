@@ -4,7 +4,9 @@ import java.util.UUID
 
 import ru.pavkin.todoist.api.core.dto.IsResourceId
 import ru.pavkin.todoist.api.core.tags
+import shapeless.{HNil, ::}
 import shapeless.tag.@@
+import tags.syntax._
 
 sealed trait Command {
   val uuid: UUID
@@ -21,7 +23,7 @@ case class AddProject(name: String,
                       indent: Option[Indent] = None,
                       order: Option[Int] = None,
                       uuid: UUID = UUID.randomUUID(),
-                      tempId: UUID = UUID.randomUUID()) extends TempIdCommand
+                      tempId: UUID @@ tags.ProjectId = UUID.randomUUID().projectId) extends TempIdCommand
 
 case class AddTaskToInbox(content: String,
                           date: Option[TaskDate] = None,
@@ -32,7 +34,7 @@ case class AddTaskToInbox(content: String,
                           isCollapsed: Option[Boolean] = None,
                           labels: List[Int @@ tags.LabelId] = Nil,
                           uuid: UUID = UUID.randomUUID(),
-                          tempId: UUID = UUID.randomUUID()) extends TempIdCommand
+                          tempId: UUID @@ tags.TaskId = UUID.randomUUID().taskId) extends TempIdCommand
 
 case class AddTask[A: IsResourceId](content: String,
                                     projectId: A @@ tags.ProjectId,
@@ -46,13 +48,13 @@ case class AddTask[A: IsResourceId](content: String,
                                     assignedBy: Option[Int @@ tags.UserId] = None,
                                     responsible: Option[Int @@ tags.UserId] = None,
                                     uuid: UUID = UUID.randomUUID(),
-                                    tempId: UUID = UUID.randomUUID()) extends TempIdCommand
+                                    tempId: UUID @@ tags.TaskId = UUID.randomUUID().taskId) extends TempIdCommand
 
 case class AddLabel(name: String,
                     color: Option[LabelColor] = None,
                     order: Option[Int] = None,
                     uuid: UUID = UUID.randomUUID(),
-                    tempId: UUID = UUID.randomUUID()) extends TempIdCommand
+                    tempId: UUID @@ tags.LabelId = UUID.randomUUID().labelId) extends TempIdCommand
 
 // todo: after this line
 

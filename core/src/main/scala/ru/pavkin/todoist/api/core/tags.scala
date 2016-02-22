@@ -21,4 +21,6 @@ object tags {
       def userId: A @@ tags.UserId = tag[tags.UserId](a)
     }
   }
+
+  object syntax extends Syntax
 }
