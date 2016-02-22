@@ -34,7 +34,8 @@ case class AddTaskToInbox(content: String,
                           isCollapsed: Option[Boolean] = None,
                           labels: List[Int @@ tags.LabelId] = Nil,
                           uuid: UUID = UUID.randomUUID(),
-                          tempId: UUID @@ tags.TaskId = UUID.randomUUID().taskId) extends TempIdCommand[tags.TaskId]
+                          tempId: UUID @@ tags.TaskId = UUID.randomUUID().taskId)
+  extends TempIdCommand[tags.TaskId]
 
 case class AddTask[A: IsResourceId](content: String,
                                     projectId: A @@ tags.ProjectId,
@@ -48,13 +49,15 @@ case class AddTask[A: IsResourceId](content: String,
                                     assignedBy: Option[Int @@ tags.UserId] = None,
                                     responsible: Option[Int @@ tags.UserId] = None,
                                     uuid: UUID = UUID.randomUUID(),
-                                    tempId: UUID @@ tags.TaskId = UUID.randomUUID().taskId) extends TempIdCommand[tags.TaskId]
+                                    tempId: UUID @@ tags.TaskId = UUID.randomUUID().taskId)
+  extends TempIdCommand[tags.TaskId]
 
 case class AddLabel(name: String,
                     color: Option[LabelColor] = None,
                     order: Option[Int] = None,
                     uuid: UUID = UUID.randomUUID(),
-                    tempId: UUID @@ tags.LabelId = UUID.randomUUID().labelId) extends TempIdCommand[tags.LabelId]
+                    tempId: UUID @@ tags.LabelId = UUID.randomUUID().labelId)
+  extends TempIdCommand[tags.LabelId]
 
 // todo: after this line
 
