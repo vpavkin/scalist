@@ -35,7 +35,7 @@ trait ModelAPISuite[F[_], P[_], Base]
       )
     }
 
-  implicit def dtoToRawTempIdCommandResult[A <: TempIdCommand](implicit M: Monad[P])
+  implicit def dtoToRawTempIdCommandResult[A <: TempIdCommand[_]](implicit M: Monad[P])
   : SingleCommandResponseDecoder.Aux[P, A, dto.RawCommandResult, TempIdCommandResult] =
     fromCommandResultDtoDecoder[A, TempIdCommandResult]((command, result) =>
       result.SyncStatus.get(command.uuid.toString).flatMap {
@@ -54,7 +54,7 @@ trait ModelAPISuite[F[_], P[_], Base]
       type Result = CommandResult
     }
 
-  implicit def tempIdCommandReturns[T <: TempIdCommand]: CommandReturns.Aux[T, TempIdCommandResult] =
+  implicit def tempIdCommandReturns[T <: TempIdCommand[_]]: CommandReturns.Aux[T, TempIdCommandResult] =
     new CommandReturns[T] {
       type Result = TempIdCommandResult
     }
@@ -70,7 +70,7 @@ trait ModelAPISuite[F[_], P[_], Base]
       dto.RawCommand(T.commandType, c.uuid, D.produce(c)).toRawRequest
   }
 
-  implicit def tempIdCommandToRawReq[A <: TempIdCommand, B]
+  implicit def tempIdCommandToRawReq[A <: TempIdCommand[_], B]
   (implicit
    T: HasCommandType[A],
    D: ToDTO[A, B],
