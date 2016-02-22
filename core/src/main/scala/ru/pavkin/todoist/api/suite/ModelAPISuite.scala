@@ -6,9 +6,9 @@ import ru.pavkin.todoist.api
 import ru.pavkin.todoist.api.RawRequest
 import ru.pavkin.todoist.api.core.FromDTO.syntax._
 import ru.pavkin.todoist.api.core.decoder.{SingleCommandResponseDecoder, SingleResponseDecoder}
-import ru.pavkin.todoist.api.core.{dto, _}
 import ru.pavkin.todoist.api.core.model._
-import ru.pavkin.todoist.api.core.model.util.{CommandResultHListSyntax, ReversedAtSyntax}
+import ru.pavkin.todoist.api.core.model.util.{CombineCommands, CommandResultHList, ReversedAtSyntax}
+import ru.pavkin.todoist.api.core.{dto, _}
 import shapeless.{Inl, Inr}
 
 trait ModelAPISuite[F[_], P[_], Base]
@@ -79,6 +79,10 @@ trait ModelAPISuite[F[_], P[_], Base]
       dto.RawTempIdCommand(T.commandType, c.uuid, D.produce(c), c.tempId).toRawRequest
   }
 
-  object syntax extends QuerySyntax with ReversedAtSyntax with CommandResultHListSyntax
+  object syntax
+    extends QuerySyntax
+      with ReversedAtSyntax
+      with CommandResultHList.Syntax
+      with CombineCommands.Syntax
 
 }
