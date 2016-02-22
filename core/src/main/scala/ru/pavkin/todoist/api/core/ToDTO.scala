@@ -4,8 +4,7 @@ import java.text.SimpleDateFormat
 
 import cats.Functor
 import cats.syntax.functor._
-import ru.pavkin.todoist.api.core.dto.IsResourceId
-import ru.pavkin.todoist.api.core.model.{AddLabel, AddTaskToInbox, AddTask, AddProject}
+import ru.pavkin.todoist.api.core.model._
 import ru.pavkin.todoist.api.utils.Produce
 
 trait ToDTO[Model, DTO] extends Produce[Model, DTO]
@@ -70,6 +69,36 @@ object ToDTO {
 
   implicit val addLabelToDTO: ToDTO[AddLabel, dto.AddLabel] =
     ToDTO(a => dto.AddLabel(
+      a.name,
+      a.color.map(_.code),
+      a.order
+    ))
+
+  implicit def updateTaskToDTO[T: IsResourceId]: ToDTO[UpdateTask[T], dto.UpdateTask[T]] =
+    ToDTO(a => dto.UpdateTask[T](
+      a.id,
+      a.content,
+      a.date.map(_.text),
+      a.date.map(_.language.code),
+      a.date.map(_.dueDateUTC).map(dateFormatter.format),
+      a.priority.map(_.value),
+      a.indent.map(_.value),
+      a.order,
+      a.dayOrder,
+      a.isCollapsed.map(_.toInt),
+      a.labels,
+      a.assignedBy,
+      a.responsible
+    ))
+
+  implicit def updateProjectToDTO[T: IsResourceId]: ToDTO[UpdateProject[T], dto.UpdateProject[T]] =
+    ToDTO(a => dto.UpdateProject[T](
+      a.id, a.name, a.color.map(_.code), a.indent.map(_.value), a.order
+    ))
+
+  implicit def updateLabelToDTO[T: IsResourceId]: ToDTO[UpdateLabel[T], dto.UpdateLabel[T]] =
+    ToDTO(a => dto.UpdateLabel[T](
+      a.id,
       a.name,
       a.color.map(_.code),
       a.order
