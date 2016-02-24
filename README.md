@@ -280,7 +280,9 @@ Some type level tricks, that were used within the Scalist DSL will be described 
 Full API documentation is under development. 
 For now, please, check the [Getting started](#getting-started) guide or [file an issue](https://github.com/vpavkin/scalist/issues/new) with a question.
 
-Model classes are best to study right in the [source](https://github.com/vpavkin/scalist/tree/master/core/src/main/scala/ru/pavkin/todoist/api/core/model).
+Scaladocs are located [here](http://vpavkin.github.io/scalist/api/#package).
+
+Model classes are good to study right in the [source](https://github.com/vpavkin/scalist/tree/master/core/src/main/scala/ru/pavkin/todoist/api/core/model).
 
 ## Contributing
 
