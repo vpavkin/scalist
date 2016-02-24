@@ -1,0 +1,172 @@
+<!DOCTYPE html >
+<html>
+        <head>
+          <title>core - ru.pavkin.todoist.api.dispatch.core</title>
+          <meta name="description" content="core - ru.pavkin.todoist.api.dispatch.core" />
+          <meta name="keywords" content="core ru.pavkin.todoist.api.dispatch.core" />
+          <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+          
+      <link href="../../../../../../lib/template.css" media="screen" type="text/css" rel="stylesheet" />
+      <link href="../../../../../../lib/diagrams.css" media="screen" type="text/css" rel="stylesheet" id="diagrams-css" />
+      <script type="text/javascript" src="../../../../../../lib/jquery.js" id="jquery-js"></script>
+      <script type="text/javascript" src="../../../../../../lib/jquery-ui.js"></script>
+      <script type="text/javascript" src="../../../../../../lib/template.js"></script>
+      <script type="text/javascript" src="../../../../../../lib/tools.tooltip.js"></script>
+      
+      <script type="text/javascript">
+         if(top === self) {
+            var url = '../../../../../../index.html';
+            var hash = 'ru.pavkin.todoist.api.dispatch.core.package';
+            var anchor = window.location.hash;
+            var anchor_opt = '';
+            if (anchor.length >= 1)
+              anchor_opt = '@' + anchor.substring(1);
+            window.location.href = url + '#' + hash + anchor_opt;
+         }
+   	  </script>
+    
+        </head>
+        <body class="value">
+      <div id="definition">
+        <img alt="Package" src="../../../../../../lib/package_big.png" />
+        <p id="owner"><a href="../../../../../package.html" class="extype" name="ru">ru</a>.<a href="../../../../package.html" class="extype" name="ru.pavkin">pavkin</a>.<a href="../../../package.html" class="extype" name="ru.pavkin.todoist">todoist</a>.<a href="../../package.html" class="extype" name="ru.pavkin.todoist.api">api</a>.<a href="../package.html" class="extype" name="ru.pavkin.todoist.api.dispatch">dispatch</a></p>
+        <h1>core</h1><span class="permalink">
+      <a href="../../../../../../index.html#ru.pavkin.todoist.api.dispatch.core.package" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      </div>
+
+      <h4 id="signature" class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">package</span>
+      </span>
+      <span class="symbol">
+        <span class="name">core</span>
+      </span>
+      </h4>
+      
+          <div id="comment" class="fullcommenttop"></div>
+        
+
+      <div id="mbrsel">
+        <div id="textfilter"><span class="pre"></span><span class="input"><input id="mbrsel-input" type="text" accesskey="/" /></span><span class="post"></span></div>
+        
+        
+        <div id="visbl">
+            <span class="filtertype">Visibility</span>
+            <ol><li class="public in"><span>Public</span></li><li class="all out"><span>All</span></li></ol>
+          </div>
+      </div>
+
+      <div id="template">
+        <div id="allMembers">
+        
+
+        <div id="types" class="types members">
+              <h3>Type Members</h3>
+              <ol><li name="ru.pavkin.todoist.api.dispatch.core.DispatchAuthorizedRequestFactory" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="DispatchAuthorizedRequestFactoryextendsAuthorizedRequestFactory[ru.pavkin.todoist.api.RawRequest,dispatch.Req]withProductwithSerializable"></a>
+      <a id="DispatchAuthorizedRequestFactory:DispatchAuthorizedRequestFactory"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="DispatchAuthorizedRequestFactory.html"><span class="name">DispatchAuthorizedRequestFactory</span></a><span class="params">(<span name="token">token: <a href="../../package.html#Token=String" class="extmbr" name="ru.pavkin.todoist.api.Token">Token</a></span>)</span><span class="result"> extends <a href="../../core/AuthorizedRequestFactory.html" class="extype" name="ru.pavkin.todoist.api.core.AuthorizedRequestFactory">AuthorizedRequestFactory</a>[<a href="../../package.html#RawRequest=Map[String,List[String]]" class="extmbr" name="ru.pavkin.todoist.api.RawRequest">RawRequest</a>, <span class="extype" name="dispatch.Req">Req</span>] with <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Product" class="extype" target="_top">Product</a> with <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Serializable" class="extype" target="_top">Serializable</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#ru.pavkin.todoist.api.dispatch.core.package@DispatchAuthorizedRequestFactoryextendsAuthorizedRequestFactory[ru.pavkin.todoist.api.RawRequest,dispatch.Req]withProductwithSerializable" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="ru.pavkin.todoist.api.dispatch.core.DispatchRequestExecutor" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="DispatchRequestExecutor[F[_],Res0]extendsRequestExecutor[dispatch.Req,F]"></a>
+      <a id="DispatchRequestExecutor[F[_],Res0]:DispatchRequestExecutor[F,Res0]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="DispatchRequestExecutor.html"><span class="name">DispatchRequestExecutor</span></a><span class="tparams">[<span name="F">F<span class="tparams">[<span name="_">_</span>]</span></span>, <span name="Res0">Res0</span>]</span><span class="result"> extends <a href="../../core/RequestExecutor.html" class="extype" name="ru.pavkin.todoist.api.core.RequestExecutor">RequestExecutor</a>[<span class="extype" name="dispatch.Req">Req</span>, <span class="extype" name="ru.pavkin.todoist.api.dispatch.core.DispatchRequestExecutor.F">F</span>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#ru.pavkin.todoist.api.dispatch.core.package@DispatchRequestExecutor[F[_],Res0]extendsRequestExecutor[dispatch.Req,F]" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="ru.pavkin.todoist.api.dispatch.core.DispatchStringRequestExecutor" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="DispatchStringRequestExecutorextendsDispatchRequestExecutor[ru.pavkin.todoist.api.dispatch.core.DispatchStringRequestExecutor.Result,String]"></a>
+      <a id="DispatchStringRequestExecutor:DispatchStringRequestExecutor"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="DispatchStringRequestExecutor.html"><span class="name">DispatchStringRequestExecutor</span></a><span class="result"> extends <a href="DispatchRequestExecutor.html" class="extype" name="ru.pavkin.todoist.api.dispatch.core.DispatchRequestExecutor">DispatchRequestExecutor</a>[<a href="DispatchStringRequestExecutor$.html#Result[T]=scala.concurrent.Future[ru.pavkin.todoist.api.dispatch.core.DispatchStringRequestExecutor.X[T]]" class="extmbr" name="ru.pavkin.todoist.api.dispatch.core.DispatchStringRequestExecutor.Result">Result</a>, <span class="extype" name="scala.Predef.String">String</span>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#ru.pavkin.todoist.api.dispatch.core.package@DispatchStringRequestExecutorextendsDispatchRequestExecutor[ru.pavkin.todoist.api.dispatch.core.DispatchStringRequestExecutor.Result,String]" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li></ol>
+            </div>
+
+        
+
+        <div id="values" class="values members">
+              <h3>Value Members</h3>
+              <ol><li name="ru.pavkin.todoist.api.dispatch.core.DispatchStringRequestExecutor" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="DispatchStringRequestExecutor"></a>
+      <a id="DispatchStringRequestExecutor:DispatchStringRequestExecutor"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="DispatchStringRequestExecutor$.html"><span class="name">DispatchStringRequestExecutor</span></a><span class="result"> extends <a href="http://typelevel.org/cats/api/index.html#cats.std.FutureInstances" class="extype" target="_top">FutureInstances</a> with <a href="../../utils/ComposeApply.html" class="extype" name="ru.pavkin.todoist.api.utils.ComposeApply">ComposeApply</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#ru.pavkin.todoist.api.dispatch.core.package@DispatchStringRequestExecutor" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li></ol>
+            </div>
+
+        
+
+        
+        </div>
+
+        <div id="inheritedMembers">
+        
+        
+        </div>
+
+        <div id="groupedMembers">
+        <div class="group" name="Ungrouped">
+              <h3>Ungrouped</h3>
+              
+            </div>
+        </div>
+
+      </div>
+
+      <div id="tooltip"></div>
+
+      <div id="footer">  </div>
+
+
+    </body>
+      </html>
