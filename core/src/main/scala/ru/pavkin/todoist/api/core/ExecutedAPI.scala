@@ -6,7 +6,7 @@ import ru.pavkin.todoist.api.core.CommandReturns.Aux
 import ru.pavkin.todoist.api.core.command._
 import ru.pavkin.todoist.api.core.decoder._
 import ru.pavkin.todoist.api.core.query._
-import ru.pavkin.todoist.api.utils.{Flattener, Produce}
+import ru.pavkin.todoist.api.utils.{IsDistinctConstraint, Flattener, Produce}
 import shapeless.HList
 import shapeless.ops.hlist.Reverse
 
@@ -25,6 +25,7 @@ trait ExecutedAPI[F[_], L[_], P[_], Req, Base] extends API[F, P, Base] {
 
   def getAll[R <: HList](implicit
                          IR: HasRawRequest[R],
+                         ID: IsDistinctConstraint[R],
                          parser: MultipleResponseDecoder.Aux[P, Base, R])
   : MultipleQueryDefinition[F, P, R, Base] =
     new MultipleQueryRequestDefinition[F, L, P, R, Req, Base](requestFactory, executor, flattener, parser)

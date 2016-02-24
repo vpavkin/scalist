@@ -8,8 +8,8 @@ import shapeless.test.illTyped
 class NotContainsSpec extends FunSuite with Checkers {
 
   test("NotContains") {
-    NotContains[HNil, Int]
-    NotContains[String :: Int :: HNil, Boolean]
+    NotContainsConstraint[HNil, Int]
+    NotContainsConstraint[String :: Int :: HNil, Boolean]
 
     illTyped("""NotContains[Int::HNil, Int]""")
     illTyped("""NotContains[Boolean :: Int :: HNil, Int]""")
