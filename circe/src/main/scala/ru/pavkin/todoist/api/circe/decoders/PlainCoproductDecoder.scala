@@ -6,7 +6,6 @@ import io.circe.generic.decoding.DerivedDecoder
 import io.circe.{DecodingFailure, Decoder, HCursor}
 import shapeless._
 
-// todo: tests
 trait PlainCoproductDecoder {
 
   implicit val decodeCNil: Decoder[CNil] =
