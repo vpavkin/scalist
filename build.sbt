@@ -15,12 +15,13 @@ lazy val compilerOptions = Seq(
   "-Yno-adapted-args",
   "-Ywarn-dead-code",
   "-Ywarn-numeric-widen",
-  "-Ywarn-unused-import",
   "-Xfuture"
 )
 
 lazy val baseSettings = Seq(
-  scalacOptions ++= compilerOptions,
+  scalacOptions ++= compilerOptions ++ Seq(
+    "-Ywarn-unused-import"
+  ),
   scalacOptions in(Compile, console) := compilerOptions,
   scalacOptions in(Compile, test) := compilerOptions,
   resolvers ++= Seq(
