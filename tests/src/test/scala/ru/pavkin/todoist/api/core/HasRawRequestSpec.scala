@@ -3,10 +3,8 @@ package ru.pavkin.todoist.api.core
 import org.scalacheck.Gen
 import org.scalatest.{Matchers, FunSuite}
 import org.scalatest.prop.GeneratorDrivenPropertyChecks
-import ru.pavkin.todoist.api._
 import shapeless.test.illTyped
 import shapeless.{::, HNil}
-import cats.syntax.semigroup._
 
 class HasRawRequestSpec extends FunSuite with Matchers with GeneratorDrivenPropertyChecks {
 
@@ -26,10 +24,10 @@ class HasRawRequestSpec extends FunSuite with Matchers with GeneratorDrivenPrope
   implicit val strGen: Gen[String] = Gen.alphaStr
 
   test("HasRawRequest combinates") {
-    forAll((a: RawRequest, b: RawRequest) => {
-      implicit val i1 = HasRawRequest[Int](a)
-      implicit val i2 = HasRawRequest[String](b)
-      HasRawRequest[Int :: String :: HNil].rawRequest shouldEqual a.combine(b)
+    forAll((k: String, v1: String, v2: String) => {
+      implicit val i1 = HasRawRequest[Int](Map(k -> List(v1)))
+      implicit val i2 = HasRawRequest[String](Map(k -> List(v2)))
+      HasRawRequest[Int :: String :: HNil].rawRequest shouldEqual Map(k -> List(v1, v2))
     })
   }
 }
