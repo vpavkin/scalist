@@ -33,7 +33,7 @@ object FromDTO {
   }
 
   private implicit class LabelColorIntOps(a: Int) {
-    def toLabelColor = LabelColor(a)
+    def toLabelColor = LabelColor.unsafeBy(a)
   }
 
   private implicit class BoolOptionOps(a: Option[Boolean]) {
