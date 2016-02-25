@@ -24,6 +24,7 @@ lazy val baseSettings = Seq(
   scalacOptions ++= compilerOptions ++ Seq(
     "-Ywarn-unused-import"
   ),
+  testOptions in Test += Tests.Argument("-oF"),
   scalacOptions in(Compile, console) := compilerOptions,
   scalacOptions in(Compile, test) := compilerOptions,
   resolvers ++= Seq(
