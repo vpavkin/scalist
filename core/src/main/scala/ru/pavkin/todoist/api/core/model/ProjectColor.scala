@@ -54,7 +54,7 @@ object ProjectColor {
     color20,
     color21)
 
-  def apply(n: Int): ProjectColor =
+  def unsafeBy(n: Int): ProjectColor =
     Try(colors(n)).getOrElse(api.unexpected)
 
 }

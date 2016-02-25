@@ -25,7 +25,7 @@ object FromDTO {
   }
 
   private implicit class ProjectColorIntOps(a: Int) {
-    def toProjectColor = ProjectColor(a)
+    def toProjectColor = ProjectColor.unsafeBy(a)
   }
 
   private implicit class IndentIntOps(a: Int) {
