@@ -11,14 +11,14 @@ object Indent {
   val Indent3 = Indent(3)
   val Indent4 = Indent(4)
 
-  private val indents = Vector(
+  private lazy val indentsMap = Vector(
     Indent1,
     Indent2,
     Indent3,
     Indent4
-  )
+  ).map(i => i.value -> i).toMap
 
-  def by(n: Int): Indent =
-    Try(indents(n)).getOrElse(api.unexpected)
+  def unsafeBy(n: Int): Indent =
+    indentsMap.getOrElse(n, api.unexpected)
 }
 case class Indent private(value: Int)

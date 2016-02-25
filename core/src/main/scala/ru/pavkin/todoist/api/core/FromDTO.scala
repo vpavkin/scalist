@@ -29,7 +29,7 @@ object FromDTO {
   }
 
   private implicit class IndentIntOps(a: Int) {
-    def toIndent = Indent.by(a)
+    def toIndent = Indent.unsafeBy(a)
   }
 
   private implicit class LabelColorIntOps(a: Int) {
