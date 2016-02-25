@@ -16,14 +16,11 @@ class SingleCommandRequestDefinition[F[_], L[_], P[_], C, R, Req, Base]
    (command: C)
    (implicit val trr: ToRawRequest[C],
     override implicit val F: Functor[L])
-  extends ExecutedRequestDefinition[F, L, P, R, Req, Base] with SingleCommandDefinition[F, P, C, R, Base] {
+  extends CompositeExecutedRequestDefinition[F, L, P, R, Req, Base](
+    requestFactory, executor, flattener
+  ) with SingleCommandDefinition[F, P, C, R, Base] {
 
-  def load: L[Base] = executor.execute(
-    requestFactory.produce(
-      trr.rawRequest(command)
-    )
-  )
-  def flatten(r: L[P[R]]): F[R] = flattener.flatten(r)
+  def toRawRequest: RawRequest = trr.rawRequest(command)
   def parse(r: Base): P[R] = parser.parse(command)(r)
 
   def and[CC, RR](otherCommand: CC)
