@@ -205,10 +205,10 @@ result.filters // won't compile as we didn't request filters
 
 Single command returns `CommandResult` object for simple commands and `TempIdCommandResult` for commads with `temp_id` parameter (e.g. adding new resources):
 ```scala
-api.perform(UpdateTask(1, "NewText")) // SimpleCommandResult
+api.perform(UpdateTask(1, "NewText")) // CommandResult
 api.perform(AddProject("Project")) // TempIdCommandResult
 ```
-Without going into details both `SimpleCommandResult` and `TempIdCommandResult` are success/failure containers. `TempIdCommandResult` also holds the real id, assigned to the created resource.
+Without going into details both `CommandResult` and `TempIdCommandResult` are success/failure containers. `TempIdCommandResult` also holds the real id, assigned to the created resource.
 
 All command sequences, defined either with `perform().and().and()` or `performAll()`, return `HList` of corresponding results.
 
@@ -221,12 +221,12 @@ api.perform(AddProject("project"))
 
 // later
 result.resultFor(_0) // TempIdCommandResult of AddProject command
-result.resultFor(_1) // SimpleCommandResult of UpdateTask 
+result.resultFor(_1) // CommandResult of UpdateTask 
 result.resultFor(_2) // won't compile, only 2 commands were sent
 ```
 - Runtime typed `resultFor(uuid: UUID)` allows to get the result of a command with particular `uuid`.
 
-Note, that it gives much less compile time safety: method calls always compile and the return type is always `Option[CommandResult]`, where `CommandResult` is a super-trait for any command result.
+Note, that it gives much less compile time safety: method calls always compile and the return type is always `Option[TodoistCommandResult]`, where `TodoistCommandResult` is a super-trait for any command result.
 
 ```scala
 val addProject = AddProject("project")
@@ -234,7 +234,7 @@ api.perform(addProject)
    .and(UpdateTask(1, "task"))
 
 // later
-// Option[CommandResult], resolves to Some(TempIdCommandResult)
+// Option[TodoistCommandResult], resolves to Some(TempIdCommandResult)
 result.resultFor(addProject.uuid) 
 
 result.resultFor(UUID.randomUUID) // returns None at runtime
