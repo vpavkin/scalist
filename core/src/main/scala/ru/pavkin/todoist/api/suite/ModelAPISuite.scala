@@ -37,17 +37,7 @@ trait ModelAPISuite[F[_], P[_], Base]
 
   implicit def dtoToRawTempIdCommandResult[A <: TempIdCommand[_]](implicit M: Monad[P])
   : SingleCommandResponseDecoder.Aux[P, A, dto.RawCommandResult, TempIdCommandResult] =
-    fromCommandResultDtoDecoder[A, TempIdCommandResult]((command, result) =>
-      result.SyncStatus.get(command.uuid.toString).flatMap {
-        case Inl(_) =>
-          result.TempIdMapping
-            .flatMap(_.get(command.tempId.toString))
-            .map(TempIdSuccess(command.tempId, _))
-            .map(TempIdCommandResult(command.uuid, _))
-        case Inr(Inl(e)) =>
-          Some(TempIdCommandResult(command.uuid, TempIdFailure(e.error_code, e.error)))
-        case Inr(Inr(cNil)) => api.unexpected
-      })
+    fromCommandResultDtoDecoder[A, TempIdCommandResult](FromDTO.tempIdCommandStatusFromDTO(_, _))
 
   implicit def commandReturns[T <: SimpleCommand]: CommandReturns.Aux[T, CommandResult] =
     new CommandReturns[T] {

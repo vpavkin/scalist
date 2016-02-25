@@ -97,4 +97,17 @@ object FromDTO {
     })
     case Inr(Inr(Inr(cNil))) => api.unexpected
   }
+
+  def tempIdCommandStatusFromDTO(command: TempIdCommand[_],
+                                 result: dto.RawCommandResult): Option[model.TempIdCommandResult] =
+    result.SyncStatus.get(command.uuid.toString).flatMap {
+      case Inl(_) =>
+        result.TempIdMapping
+          .flatMap(_.get(command.tempId.toString))
+          .map(TempIdSuccess(command.tempId, _))
+          .map(TempIdCommandResult(command.uuid, _))
+      case Inr(Inl(e)) =>
+        Some(TempIdCommandResult(command.uuid, TempIdFailure(e.error_code, e.error)))
+      case Inr(Inr(cNil)) => api.unexpected
+    }
 }
