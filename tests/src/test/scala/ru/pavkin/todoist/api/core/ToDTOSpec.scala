@@ -103,6 +103,34 @@ class ToDTOSpec extends FunSuite with Matchers with GeneratorDrivenPropertyCheck
     }
   }
 
+  val addTaskToInboxGen: Gen[AddTaskToInbox] = addTaskGen(Gen.uuid).map(p => AddTaskToInbox(
+    p.content,
+    p.date,
+    p.priority,
+    p.indent,
+    p.order,
+    p.dayOrder,
+    p.isCollapsed,
+    p.labels
+  ))
+
+  test("AddTaskToInbox") {
+    forAll(addTaskToInboxGen) { (p: AddTaskToInbox) =>
+      p.toDTO shouldBe dto.AddTaskToInbox(
+        p.content,
+        p.date.map(_.text),
+        p.date.map(_.language.code),
+        p.date.map(_.dueDateUTC).map(new SimpleDateFormat("EEE dd MMM yyyy HH:mm:ss Z").format),
+        p.priority.map(_.level),
+        p.indent.map(_.code),
+        p.order,
+        p.dayOrder,
+        p.isCollapsed.map(b => if (b) 1 else 0),
+        p.labels
+      )
+    }
+  }
+
   def updateProjectGen[T: IsResourceId](gen: Gen[T]): Gen[UpdateProject[T]] = for {
     o <- arbitrary[Option[Int]]
     p <- addProjectGen
