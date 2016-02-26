@@ -130,5 +130,12 @@ class FromDTOSpec extends FunSuite with Matchers with GeneratorDrivenPropertyChe
       })
     }
   }
+
+  test("Functor FromDTO") {
+    forAll(Gen.listOf(labelGen)) { (l: List[Label]) =>
+      import cats.std.list._
+      l.toModel shouldBe l.map(_.toModel)
+    }
+  }
 }
 
