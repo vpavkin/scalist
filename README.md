@@ -4,7 +4,7 @@
 [![Build Status](https://img.shields.io/travis/vpavkin/scalist/master.svg)](https://travis-ci.org/vpavkin/scalist) 
 [![Coverage status](https://img.shields.io/codecov/c/github/vpavkin/scalist/master.svg)](https://codecov.io/github/vpavkin/scalist?branch=master)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/vpavkin/scalist/blob/master/LICENSE)
-[![GitHub release](https://img.shields.io/github/release/vpavkin/scalist.svg)](https://github.com/vpavkin/scalist/releases)
+[![Maven Central](https://img.shields.io/maven-central/v/ru.pavkin/scalist-core_2.11.svg)](https://github.com/vpavkin/scalist)
 [![Join the chat at https://gitter.im/vpavkin/scalist](https://badges.gitter.im/vpavkin/scalist.svg)](https://gitter.im/vpavkin/scalist?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 Scalist is a client library for [Todoist API](https://developer.todoist.com/), written in Scala. It is built on top of [Cats](https://github.com/typelevel/cats/) and [Shapeless](https://github.com/milessabin/shapeless) with a special attention to type safety. You don't need deep knowledge of Shapeless or Cats to use this library.
