@@ -44,5 +44,6 @@ abstract class FutureBasedAPISuiteSpec[F[_] : Apply, P[_] : Monad, Base, ResDTO,
     illTyped("""api.get[Projects].and[Projects]""")
     illTyped("""api.get[Projects].and[Labels].and[Projects]""")
     illTyped("""api.getAll[Labels :: Projects :: HNil].and[Labels]""")
+    illTyped("""api.getAll[Labels :: Projects :: Labels :: HNil]""")
   }
 }
