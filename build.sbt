@@ -35,7 +35,7 @@ lazy val baseSettings = Seq(
 
 lazy val allSettings = buildSettings ++ baseSettings ++ publishSettings
 
-lazy val shapelessVersion = "2.2.5"
+lazy val shapelessVersion = "2.3.0"
 lazy val catsVersion = "0.4.1"
 lazy val circeVersion = "0.3.0"
 lazy val dispatchVersion = "0.11.2"

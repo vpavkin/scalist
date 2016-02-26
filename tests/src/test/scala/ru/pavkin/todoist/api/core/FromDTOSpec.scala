@@ -100,7 +100,7 @@ class FromDTOSpec extends FunSuite with Matchers with GeneratorDrivenPropertyChe
         case Inr(Inr(Inl(map))) => model.MultiItemCommandStatus(
           map.map { case (k, v) => k.toInt -> v.toModel }
         )
-        case Inr(Inr(Inr(cnil))) => api.unexpected
+        case Inr(Inr(Inr(cnil))) => cnil.impossible
       })
     }
   }
@@ -126,7 +126,8 @@ class FromDTOSpec extends FunSuite with Matchers with GeneratorDrivenPropertyChe
           ))
         case Inr(Inl(e)) =>
           Some(TempIdCommandResult(c.uuid, TempIdFailure(e.error_code, e.error)))
-        case Inr(Inr(cNil)) => api.unexpected
+        case Inr(Inr(Inl(multipleCommandStatus))) => api.unexpected
+        case Inr(Inr(Inr(cNil))) => cNil.impossible
       })
     }
   }
