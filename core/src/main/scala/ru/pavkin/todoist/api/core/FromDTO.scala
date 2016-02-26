@@ -6,7 +6,7 @@ import ru.pavkin.todoist.api
 import ru.pavkin.todoist.api.core.model._
 import ru.pavkin.todoist.api.core.tags.{LabelId, UserId, ProjectId}
 import ru.pavkin.todoist.api.utils.Produce
-import shapeless.{CNil, Inr, Inl, tag}
+import shapeless.{Inr, Inl, tag}
 
 trait FromDTO[DTO, Model] extends Produce[DTO, Model]
 
@@ -85,7 +85,7 @@ object FromDTO {
   implicit val singleCommandStatusFromDTO: FromDTO[dto.RawItemStatus, model.SingleCommandStatus] = FromDTO {
     case Inl(_) => CommandSuccess
     case Inr(Inl(e)) => CommandFailure(e.error_code, e.error)
-    case Inr(Inr(cNil)) => api.unexpected
+    case Inr(Inr(cNil)) => cNil.impossible
   }
 
   implicit val commandStatusFromDTO: FromDTO[dto.RawCommandStatus, model.CommandStatus] = FromDTO {
@@ -95,7 +95,7 @@ object FromDTO {
       case (id, status) =>
         id.toInt -> singleCommandStatusFromDTO.produce(status)
     })
-    case Inr(Inr(Inr(cNil))) => api.unexpected
+    case Inr(Inr(Inr(cNil))) => cNil.impossible
   }
 
   def tempIdCommandStatusFromDTO(command: TempIdCommand[_],
@@ -108,6 +108,7 @@ object FromDTO {
           .map(TempIdCommandResult(command.uuid, _))
       case Inr(Inl(e)) =>
         Some(TempIdCommandResult(command.uuid, TempIdFailure(e.error_code, e.error)))
-      case Inr(Inr(cNil)) => api.unexpected
+      case Inr(Inr(Inl(multipleCommandStatus))) => api.unexpected
+      case Inr(Inr(Inr(cNil))) => cNil.impossible
     }
 }
