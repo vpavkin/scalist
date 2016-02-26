@@ -33,7 +33,7 @@ object ToDTO {
     }
 
   implicit val addProjectToDTO: ToDTO[AddProject, dto.AddProject] = ToDTO(a => dto.AddProject(
-    a.name, a.color.map(_.code), a.indent.map(_.value), a.order
+    a.name, a.color.map(_.code), a.indent.map(_.code), a.order
   ))
 
   implicit def addTaskToDTO[T: IsResourceId]: ToDTO[AddTask[T], dto.AddTask[T]] =
@@ -43,8 +43,8 @@ object ToDTO {
       a.date.map(_.text),
       a.date.map(_.language.code),
       a.date.map(_.dueDateUTC).map(dateFormatter.format),
-      a.priority.map(_.value),
-      a.indent.map(_.value),
+      a.priority.map(_.level),
+      a.indent.map(_.code),
       a.order,
       a.dayOrder,
       a.isCollapsed.map(_.toInt),
@@ -59,8 +59,8 @@ object ToDTO {
       a.date.map(_.text),
       a.date.map(_.language.code),
       a.date.map(_.dueDateUTC).map(dateFormatter.format),
-      a.priority.map(_.value),
-      a.indent.map(_.value),
+      a.priority.map(_.level),
+      a.indent.map(_.code),
       a.order,
       a.dayOrder,
       a.isCollapsed.map(_.toInt),
@@ -81,8 +81,8 @@ object ToDTO {
       a.date.map(_.text),
       a.date.map(_.language.code),
       a.date.map(_.dueDateUTC).map(dateFormatter.format),
-      a.priority.map(_.value),
-      a.indent.map(_.value),
+      a.priority.map(_.level),
+      a.indent.map(_.code),
       a.order,
       a.dayOrder,
       a.isCollapsed.map(_.toInt),
@@ -93,7 +93,7 @@ object ToDTO {
 
   implicit def updateProjectToDTO[T: IsResourceId]: ToDTO[UpdateProject[T], dto.UpdateProject[T]] =
     ToDTO(a => dto.UpdateProject[T](
-      a.id, a.name, a.color.map(_.code), a.indent.map(_.value), a.order
+      a.id, a.name, a.color.map(_.code), a.indent.map(_.code), a.order, a.isCollapsed.map(_.toInt)
     ))
 
   implicit def updateLabelToDTO[T: IsResourceId]: ToDTO[UpdateLabel[T], dto.UpdateLabel[T]] =

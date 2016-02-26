@@ -4,9 +4,9 @@ object Priority {
   val Highest = Priority(4)
   val Lowest = Priority(1)
 
-  val Priority1 = Highest
-  val Priority2 = Priority(3)
-  val Priority3 = Priority(2)
-  val Priority4 = Lowest
+  val level1 = Highest
+  val level2 = Priority(3)
+  val level3 = Priority(2)
+  val level4 = Lowest
 }
-case class Priority private(value: Int)
+case class Priority private(level: Int)

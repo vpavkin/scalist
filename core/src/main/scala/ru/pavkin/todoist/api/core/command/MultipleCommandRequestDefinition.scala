@@ -17,13 +17,12 @@ class MultipleCommandRequestDefinition[F[_], L[_], P[_], C <: HList, R <: HList,
    (implicit val trr: ToRawRequest[C],
     override implicit val F: Functor[L])
 
-  extends ExecutedRequestDefinition[F, L, P, R, Req, Base]
-    with MultipleCommandDefinition[F, P, C, R, Base] {
+  extends CompositeExecutedRequestDefinition[F, L, P, R, Req, Base](
+    requestFactory, executor, flattener
+  ) with MultipleCommandDefinition[F, P, C, R, Base] {
 
-  def load: L[Base] = executor.execute(requestFactory.produce(trr.rawRequest(commands)))
-  def flatten(r: L[P[R]]): F[R] = flattener.flatten(r)
+  def toRawRequest: RawRequest = trr.rawRequest(commands)
   def parse(r: Base): P[R] = parser.parse(commands)(r)
-
 
   def and[CC, RR](otherCommand: CC)
                  (implicit

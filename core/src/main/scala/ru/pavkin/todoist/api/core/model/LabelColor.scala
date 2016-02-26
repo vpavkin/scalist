@@ -36,7 +36,7 @@ object LabelColor {
     color12
   )
 
-  def apply(n: Int): LabelColor =
+  def unsafeBy(n: Int): LabelColor =
     Try(colors(n)).getOrElse(api.unexpected)
 }
 

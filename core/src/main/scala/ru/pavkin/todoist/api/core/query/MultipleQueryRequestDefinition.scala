@@ -14,13 +14,12 @@ class MultipleQueryRequestDefinition[F[_], L[_], P[_], R <: HList, Req, Base](
                                           parser: MultipleResponseDecoder.Aux[P, Base, R])
                                           (implicit val itr: HasRawRequest[R],
                                           override implicit val F: Functor[L])
-  extends ExecutedRequestDefinition[F, L, P, R, Req, Base]
-    with MultipleQueryDefinition[F, P, R, Base] {
+  extends CompositeExecutedRequestDefinition[F, L, P, R, Req, Base](
+    requestFactory, executor, flattener
+  ) with MultipleQueryDefinition[F, P, R, Base] {
 
-  def load: L[Base] = executor.execute(requestFactory.produce(itr.rawRequest))
-  def flatten(r: L[P[R]]): F[R] = flattener.flatten(r)
+  def toRawRequest: RawRequest = itr.rawRequest
   def parse(r: Base): P[R] = parser.parse(r)
-
 
   def and[RR](implicit
               FM: FlatMap[P],

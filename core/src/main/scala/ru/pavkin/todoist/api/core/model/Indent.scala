@@ -6,19 +6,19 @@ import scala.util.Try
 
 object Indent {
   val Top = Indent(1)
-  val Indent1 = Top
-  val Indent2 = Indent(2)
-  val Indent3 = Indent(3)
-  val Indent4 = Indent(4)
+  val level1 = Top
+  val level2 = Indent(2)
+  val level3 = Indent(3)
+  val level4 = Indent(4)
 
-  private val indents = Vector(
-    Indent1,
-    Indent2,
-    Indent3,
-    Indent4
-  )
+  private lazy val indentsMap = Vector(
+    level1,
+    level2,
+    level3,
+    level4
+  ).map(i => i.code -> i).toMap
 
-  def by(n: Int): Indent =
-    Try(indents(n)).getOrElse(api.unexpected)
+  def unsafeBy(n: Int): Indent =
+    indentsMap.getOrElse(n, api.unexpected)
 }
-case class Indent private(value: Int)
+case class Indent private(code: Int)
