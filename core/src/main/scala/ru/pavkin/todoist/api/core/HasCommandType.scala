@@ -8,6 +8,12 @@ trait HasCommandType[T] {
 
 object HasCommandType {
 
+  object syntax {
+    implicit class CommandTypeOps[T](o: T)(implicit ev: HasCommandType[T]) {
+      def commandType = ev.commandType
+    }
+  }
+
   def apply[T](s: String): HasCommandType[T] = new HasCommandType[T] {
     def commandType: String = s
   }
