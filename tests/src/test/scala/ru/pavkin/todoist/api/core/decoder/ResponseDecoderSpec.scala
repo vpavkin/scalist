@@ -1,14 +1,15 @@
 package ru.pavkin.todoist.api.core.decoder
 
 import cats.Id
-import org.scalatest.FunSuite
-import org.scalatest.prop.Checkers
+import org.scalacheck.Gen
+import org.scalatest.{Matchers, FunSuite}
+import org.scalatest.prop.{GeneratorDrivenPropertyChecks, Checkers}
 import shapeless.test.illTyped
 import shapeless.{::, HNil}
 
 import scala.util.Try
 
-class ResponseDecoderSpec extends FunSuite with Checkers {
+class ResponseDecoderSpec extends FunSuite with Checkers with Matchers with GeneratorDrivenPropertyChecks{
 
   case class Smth(n: Int)
   val intParser = SingleResponseDecoder.using[Id, String, Int]((s: String) => Try(s.toInt).getOrElse(0))
@@ -46,8 +47,8 @@ class ResponseDecoderSpec extends FunSuite with Checkers {
   }
 
   test("ResponseDecoder composition") {
-    check { (a: String) =>
-      intParser.compose(intLengthParser).parse(a) == intLengthParser.parse(intParser.parse(a))
+    forAll(Gen.alphaStr) { (a: String) =>
+      intParser.compose(intLengthParser).parse(a) shouldBe intLengthParser.parse(intParser.parse(a))
     }
   }
 
