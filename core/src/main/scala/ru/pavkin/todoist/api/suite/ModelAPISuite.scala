@@ -2,14 +2,12 @@ package ru.pavkin.todoist.api.suite
 
 import cats.Monad
 import cats.std.list._
-import ru.pavkin.todoist.api
 import ru.pavkin.todoist.api.RawRequest
 import ru.pavkin.todoist.api.core.FromDTO.syntax._
 import ru.pavkin.todoist.api.core.decoder.{SingleCommandResponseDecoder, SingleResponseDecoder}
 import ru.pavkin.todoist.api.core.model._
 import ru.pavkin.todoist.api.core.model.util.{CombineCommands, CommandResultHList, ReversedAtSyntax}
 import ru.pavkin.todoist.api.core.{dto, _}
-import shapeless.{Inl, Inr}
 
 trait ModelAPISuite[F[_], P[_], Base]
   extends AbstractDTOQueryAPISuite[F, P, Base, dto.AllResources]
@@ -17,6 +15,7 @@ trait ModelAPISuite[F[_], P[_], Base]
 
   type Projects = List[model.Project]
   type Labels = List[model.Label]
+  type Tasks = List[model.Task]
 
   type CommandResult = model.CommandResult
   type TempIdCommandResult = model.TempIdCommandResult
@@ -26,6 +25,9 @@ trait ModelAPISuite[F[_], P[_], Base]
 
   implicit def dtoToLabels(implicit M: Monad[P]): SingleResponseDecoder.Aux[P, dto.AllResources, Labels] =
     fromResourceDtoDecoder(_.Labels.map(_.toModel))("labels")
+
+  implicit def dtoToTasks(implicit M: Monad[P]): SingleResponseDecoder.Aux[P, dto.AllResources, Tasks] =
+    fromResourceDtoDecoder(_.Items.map(_.toModel))("tasks")
 
   implicit def dtoToRawCommandResult[A <: SimpleCommand]
   (implicit M: Monad[P]): SingleCommandResponseDecoder.Aux[P, A, dto.RawCommandResult, CommandResult] =

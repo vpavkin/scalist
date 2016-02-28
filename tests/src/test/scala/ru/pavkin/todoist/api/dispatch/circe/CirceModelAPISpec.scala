@@ -1,7 +1,7 @@
 package ru.pavkin.todoist.api.dispatch.circe
 
 import io.circe.Json
-import org.scalatest.FunSuite
+import org.scalatest.{Matchers, FunSuite}
 import org.scalatest.prop.Checkers
 import ru.pavkin.todoist.api.circe.CirceDecoder
 import ru.pavkin.todoist.api.core.model._
@@ -13,7 +13,7 @@ import shapeless.{::, HNil}
 import scala.concurrent.ExecutionContext.Implicits.global
 
 class CirceModelAPISpec
-  extends FunSuite with Checkers with CirceModelAPISuite {
+  extends FunSuite with Checkers with Matchers with CirceModelAPISuite {
 
   import syntax._
 
@@ -74,4 +74,16 @@ class CirceModelAPISpec
     )
   }
 
+  test("Query result syntax test") {
+    val p = List.empty[Project]
+    val rp = (p :: HNil)
+    rp.projects shouldBe p
+    illTyped("""rp.tasks""")
+    illTyped("""rp.labels""")
+
+    val all = (p :: List.empty[Label] :: List.empty[Task] :: HNil)
+    all.projects shouldBe p
+    all.labels shouldBe List.empty[Label]
+    all.tasks shouldBe List.empty[Task]
+  }
 }

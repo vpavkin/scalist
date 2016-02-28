@@ -18,6 +18,7 @@ trait AbstractDTOQueryAPISuite[F[_], P[_], Base, ResourceDTO]
 
   implicit def dtoToProjects(implicit M: Monad[P]): SingleResponseDecoder.Aux[P, ResourceDTO, Projects]
   implicit def dtoToLabels(implicit M: Monad[P]): SingleResponseDecoder.Aux[P, ResourceDTO, Labels]
+  implicit def dtoToTasks(implicit M: Monad[P]): SingleResponseDecoder.Aux[P, ResourceDTO, Tasks]
 
   implicit def composeDecoders1[Out](implicit
                                      p2: SingleResponseDecoder.Aux[P, ResourceDTO, Out],
