@@ -48,7 +48,7 @@ class ToDTOSpec extends FunSuite with Matchers with GeneratorDrivenPropertyCheck
   }
 
   val taskDateGen: Gen[TaskDate] = for {
-    str <- arbitrary[String]
+    str <- arbitrary[Option[String]]
     lang <- Gen.oneOf(DateLanguage.en,
       DateLanguage.da,
       DateLanguage.pl,
@@ -88,9 +88,9 @@ class ToDTOSpec extends FunSuite with Matchers with GeneratorDrivenPropertyCheck
       p.toDTO shouldBe dto.AddTask(
         p.content,
         p.projectId: UUID,
-        p.date.map(_.text),
+        p.date.flatMap(_.text),
         p.date.map(_.language.code),
-        p.date.map(_.dueDateUTC).map(new SimpleDateFormat("EEE dd MMM yyyy HH:mm:ss Z").format),
+        p.date.map(_.dueDateUTC).map(TodoistDate.format),
         p.priority.map(_.level),
         p.indent.map(_.code),
         p.order,
@@ -118,9 +118,9 @@ class ToDTOSpec extends FunSuite with Matchers with GeneratorDrivenPropertyCheck
     forAll(addTaskToInboxGen) { (p: AddTaskToInbox) =>
       p.toDTO shouldBe dto.AddTaskToInbox(
         p.content,
-        p.date.map(_.text),
+        p.date.flatMap(_.text),
         p.date.map(_.language.code),
-        p.date.map(_.dueDateUTC).map(new SimpleDateFormat("EEE dd MMM yyyy HH:mm:ss Z").format),
+        p.date.map(_.dueDateUTC).map(TodoistDate.format),
         p.priority.map(_.level),
         p.indent.map(_.code),
         p.order,
@@ -186,9 +186,9 @@ class ToDTOSpec extends FunSuite with Matchers with GeneratorDrivenPropertyCheck
       p.toDTO shouldBe dto.UpdateTask(
         p.id: Int,
         p.content,
-        p.date.map(_.text),
+        p.date.flatMap(_.text),
         p.date.map(_.language.code),
-        p.date.map(_.dueDateUTC).map(new SimpleDateFormat("EEE dd MMM yyyy HH:mm:ss Z").format),
+        p.date.map(_.dueDateUTC).map(TodoistDate.format),
         p.priority.map(_.level),
         p.indent.map(_.code),
         p.order,

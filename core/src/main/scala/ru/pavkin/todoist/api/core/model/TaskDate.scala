@@ -5,7 +5,7 @@ import java.util.Date
 import ru.pavkin.todoist.api
 
 // todo: incorporate xx:xx:59 thing
-case class TaskDate(text: String,
+case class TaskDate(text: Option[String],
                     language: DateLanguage,
                     dueDateUTC: Date)
 

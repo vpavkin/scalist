@@ -4,9 +4,9 @@ import cats.Functor
 import cats.syntax.functor._
 import ru.pavkin.todoist.api
 import ru.pavkin.todoist.api.core.model._
-import ru.pavkin.todoist.api.core.tags.{LabelId, UserId, ProjectId}
+import ru.pavkin.todoist.api.core.tags.syntax._
 import ru.pavkin.todoist.api.utils.Produce
-import shapeless.{Inr, Inl, tag}
+import shapeless.{Inl, Inr}
 
 trait FromDTO[DTO, Model] extends Produce[DTO, Model]
 
@@ -52,8 +52,8 @@ object FromDTO {
   implicit val projectsFromDTO: FromDTO[dto.Project, Project] = FromDTO(a =>
     if (!a.is_archived.toBool) {
       model.RegularProject(
-        tag[ProjectId](a.id),
-        tag[UserId](a.user_id),
+        a.id.projectId,
+        a.user_id.userId,
         a.name,
         a.color.toProjectColor,
         a.indent.toIndent,
@@ -71,12 +71,37 @@ object FromDTO {
 
   implicit val labelsFromDTO: FromDTO[dto.Label, model.Label] = FromDTO(a =>
     model.Label(
-      tag[LabelId](a.id),
-      tag[UserId](a.uid),
+      a.id.labelId,
+      a.uid.userId,
       a.name,
       a.color.toLabelColor,
       a.item_order,
       a.is_deleted.toBool
+    )
+  )
+
+  implicit val tasksFromDTO: FromDTO[dto.Task, model.Task] = FromDTO(a =>
+    model.Task(
+      a.id.taskId,
+      a.user_id.userId,
+      a.project_id.projectId,
+      a.content,
+      a.due_date_utc
+        .flatMap(TodoistDate.parse)
+        .map(TaskDate(a.date_string, DateLanguage.unsafeBy(a.date_lang), _)),
+      Priority.unsafeBy(a.priority),
+      Indent.unsafeBy(a.indent),
+      a.item_order,
+      a.day_order,
+      a.collapsed.toBool,
+      a.labels.map(_.labelId),
+      a.assigned_by_uid.map(_.userId),
+      a.responsible_uid.map(_.userId),
+      a.checked.toBool,
+      a.in_history.toBool,
+      a.is_deleted.toBool,
+      a.is_archived.toBool,
+      TodoistDate.parse(a.date_added).getOrElse(api.unexpected)
     )
   )
 
