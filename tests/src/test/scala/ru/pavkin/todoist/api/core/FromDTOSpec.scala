@@ -1,13 +1,20 @@
 package ru.pavkin.todoist.api.core
 
+import java.util.Date
+
 import org.scalacheck.Arbitrary.arbitrary
 import org.scalacheck.Gen
 import org.scalatest.prop.GeneratorDrivenPropertyChecks
 import org.scalatest.{FunSuite, Matchers}
 import ru.pavkin.todoist.api
 import ru.pavkin.todoist.api.core.FromDTO.syntax._
+import ru.pavkin.todoist.api.core.dto.Label
+import ru.pavkin.todoist.api.core.dto.Project
+import ru.pavkin.todoist.api.core.dto.Task
 import ru.pavkin.todoist.api.core.dto._
-import ru.pavkin.todoist.api.core.model.{TempIdCommandResult, TempIdFailure, TempIdSuccess}
+import ru.pavkin.todoist.api.core.model.TempIdCommandResult
+import ru.pavkin.todoist.api.core.model.TempIdFailure
+import ru.pavkin.todoist.api.core.model.TempIdSuccess
 import ru.pavkin.todoist.api.core.tags.syntax._
 import shapeless._
 
@@ -64,6 +71,55 @@ class FromDTOSpec extends FunSuite with Matchers with GeneratorDrivenPropertyChe
       l.toModel shouldBe model.Label(
         l.id.labelId, l.uid.userId, l.name, model.LabelColor.unsafeBy(l.color),
         l.item_order, l.is_deleted == 1
+      )
+    }
+  }
+
+  val taskGen: Gen[Task] = for {
+    id <- arbitrary[Int]
+    uid <- arbitrary[Int]
+    projectId <- arbitrary[Int]
+    content <- arbitrary[String]
+    date_str <- arbitrary[Option[String]]
+    date_lang <- Gen.oneOf("en", "da", "pl", "zh", "ko", "de", "pt", "ja", "it", "fr", "sv", "ru", "es", "nl")
+    due_date <- arbitrary[Option[Date]].map(_.map(model.TodoistDate.format))
+    priority <- Gen.choose(1, 4)
+    indent <- Gen.choose(1, 4)
+    item_order <- arbitrary[Int]
+    day_order <- arbitrary[Int]
+    collapsed <- Gen.choose(0, 1)
+    labels <- Gen.listOfN(5, arbitrary[Int])
+    assigned_by <- arbitrary[Option[Int]]
+    responsible <- arbitrary[Option[Int]]
+    checked <- Gen.choose(0, 1)
+    in_history <- Gen.choose(0, 1)
+    is_deleted <- Gen.choose(0, 1)
+    is_archived <- Gen.choose(0, 1)
+    date_added <- arbitrary[Date].map(model.TodoistDate.format)
+  } yield Task(id, uid, projectId, content, date_str, date_lang, due_date, priority, indent, item_order,
+    day_order, collapsed, labels, assigned_by, responsible,
+    checked, in_history, is_deleted, is_archived, date_added)
+
+  test("Task") {
+    forAll(taskGen) { (t: Task) =>
+      t.toModel shouldBe model.Task(
+        t.id.taskId, t.user_id.userId, t.project_id.projectId, t.content,
+        t.due_date_utc
+          .flatMap(model.TodoistDate.parse)
+          .map(dd => model.TaskDate(t.date_string, model.DateLanguage.unsafeBy(t.date_lang), dd)),
+        model.Priority.unsafeBy(t.priority),
+        model.Indent.unsafeBy(t.indent),
+        t.item_order,
+        t.day_order,
+        t.collapsed == 1,
+        t.labels.map(_.labelId),
+        t.assigned_by_uid.map(_.userId),
+        t.responsible_uid.map(_.userId),
+        t.checked == 1,
+        t.in_history == 1,
+        t.is_deleted == 1,
+        t.is_archived == 1,
+        model.TodoistDate.parse(t.date_added).getOrElse(api.unexpected)
       )
     }
   }
