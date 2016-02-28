@@ -168,6 +168,24 @@ class FromDTOSpec extends FunSuite with Matchers with GeneratorDrivenPropertyChe
     }
   }
 
+  val filterGen: Gen[Filter] = for {
+    id <- arbitrary[Int]
+    name <- arbitrary[String]
+    query <- arbitrary[String]
+    color <- Gen.choose(0, 12)
+    item_order <- arbitrary[Int]
+    is_deleted <- Gen.choose(0, 1)
+  } yield Filter(id, name, query, color, item_order, is_deleted)
+
+  test("Filter") {
+    forAll(filterGen) { (l: Filter) =>
+      l.toModel shouldBe model.Filter(
+        l.id.filterId, l.name, l.query, model.LabelColor.unsafeBy(l.color),
+        l.item_order, l.is_deleted == 1
+      )
+    }
+  }
+
   // command results
 
   val okGen: Gen[String] = Gen.const("ok")

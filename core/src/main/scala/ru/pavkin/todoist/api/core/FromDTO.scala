@@ -91,7 +91,7 @@ object FromDTO {
         .flatMap(TodoistDate.parse)
         .map(TaskDate(a.date_string, DateLanguage.unsafeBy(a.date_lang), _)),
       Priority.unsafeBy(a.priority),
-      Indent.unsafeBy(a.indent),
+      a.indent.toIndent,
       a.item_order,
       a.day_order,
       a.collapsed.toBool,
@@ -128,6 +128,17 @@ object FromDTO {
       a.is_deleted.toBool,
       a.is_archived.toBool,
       TodoistDate.parse(a.posted).getOrElse(api.unexpected)
+    )
+  )
+
+  implicit val filtersFromDTO: FromDTO[dto.Filter, model.Filter] = FromDTO(a =>
+    model.Filter(
+      a.id.filterId,
+      a.name,
+      a.query,
+      a.color.toLabelColor,
+      a.item_order,
+      a.is_deleted.toBool
     )
   )
 
