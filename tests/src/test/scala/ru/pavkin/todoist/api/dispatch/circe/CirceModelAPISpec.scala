@@ -28,6 +28,9 @@ class CirceModelAPISpec
     typed[MultipleQueryDefinition[DispatchAPI.Result, CirceDecoder.Result, Labels :: Projects :: HNil, Json]](
       api.get[Projects].and[Labels]
     )
+    typed[MultipleQueryDefinition[DispatchAPI.Result, CirceDecoder.Result, Notes :: Tasks :: Labels :: Projects :: HNil, Json]](
+      api.get[Projects].and[Labels].and[Tasks].and[Notes]
+    )
     typed[MultipleQueryDefinition[DispatchAPI.Result, CirceDecoder.Result, Tasks :: Labels :: Projects :: HNil, Json]](
       api.getAll[Tasks :: Labels :: Projects :: HNil]
     )
@@ -74,16 +77,19 @@ class CirceModelAPISpec
     )
   }
 
+  // todo: extract generators and use them here
   test("Query result syntax test") {
     val p = List.empty[Project]
-    val rp = (p :: HNil)
+    val rp = p :: HNil
     rp.projects shouldBe p
     illTyped("""rp.tasks""")
     illTyped("""rp.labels""")
+    illTyped("""rp.notes""")
 
-    val all = (p :: List.empty[Label] :: List.empty[Task] :: HNil)
+    val all = p :: List.empty[Label] :: List.empty[Task] :: List.empty[Note] :: HNil
     all.projects shouldBe p
     all.labels shouldBe List.empty[Label]
     all.tasks shouldBe List.empty[Task]
+    all.notes shouldBe List.empty[Note]
   }
 }

@@ -8,6 +8,7 @@ object tags {
   trait LabelId
   trait TaskId
   trait UserId
+  trait NoteId
 
   trait Projects
   trait Labels
@@ -18,6 +19,7 @@ object tags {
       def labelId: A @@ tags.LabelId = tag[tags.LabelId](a)
       def taskId: A @@ tags.TaskId = tag[tags.TaskId](a)
       def userId: A @@ tags.UserId = tag[tags.UserId](a)
+      def noteId: A @@ tags.NoteId = tag[tags.NoteId](a)
     }
   }
 

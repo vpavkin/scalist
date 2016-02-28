@@ -7,6 +7,7 @@ import ru.pavkin.todoist.api.core.model._
 import ru.pavkin.todoist.api.core.tags.syntax._
 import ru.pavkin.todoist.api.utils.Produce
 import shapeless.{Inl, Inr}
+import FromDTO.syntax._
 
 trait FromDTO[DTO, Model] extends Produce[DTO, Model]
 
@@ -102,6 +103,31 @@ object FromDTO {
       a.is_deleted.toBool,
       a.is_archived.toBool,
       TodoistDate.parse(a.date_added).getOrElse(api.unexpected)
+    )
+  )
+
+  implicit val filesFromDTO: FromDTO[dto.FileAttachment, model.FileAttachment] = FromDTO(a =>
+    model.FileAttachment(
+      a.file_name,
+      a.file_size,
+      a.file_type,
+      a.file_url,
+      UploadState.unsafe(a.upload_state)
+    )
+  )
+
+  implicit val notesFromDTO: FromDTO[dto.Note, model.Note] = FromDTO(a =>
+    model.Note(
+      a.id.noteId,
+      a.posted_uid.userId,
+      a.item_id.taskId,
+      a.project_id.projectId,
+      a.content,
+      a.file_attachment.map(_.toModel),
+      a.uids_to_notify.toList.flatten.map(_.userId),
+      a.is_deleted.toBool,
+      a.is_archived.toBool,
+      TodoistDate.parse(a.posted).getOrElse(api.unexpected)
     )
   )
 

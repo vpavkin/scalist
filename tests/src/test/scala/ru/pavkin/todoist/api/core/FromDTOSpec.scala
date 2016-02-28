@@ -12,9 +12,7 @@ import ru.pavkin.todoist.api.core.dto.Label
 import ru.pavkin.todoist.api.core.dto.Project
 import ru.pavkin.todoist.api.core.dto.Task
 import ru.pavkin.todoist.api.core.dto._
-import ru.pavkin.todoist.api.core.model.TempIdCommandResult
-import ru.pavkin.todoist.api.core.model.TempIdFailure
-import ru.pavkin.todoist.api.core.model.TempIdSuccess
+import ru.pavkin.todoist.api.core.model.{UploadState, TempIdCommandResult, TempIdFailure, TempIdSuccess}
 import ru.pavkin.todoist.api.core.tags.syntax._
 import shapeless._
 
@@ -124,6 +122,51 @@ class FromDTOSpec extends FunSuite with Matchers with GeneratorDrivenPropertyChe
     }
   }
 
+  val fileAttachmentGen = for {
+    name <- arbitrary[String]
+    size <- Gen.posNum[Long]
+    mime <- Gen.oneOf("application/pdf", "image/jpg", "image/png")
+    url <- arbitrary[String]
+    uploadState <- Gen.option(Gen.oneOf("completed", "pending"))
+  } yield FileAttachment(name, size, mime, url, uploadState)
+
+  test("FileAttachment") {
+    forAll(fileAttachmentGen) { (t: FileAttachment) =>
+      t.toModel shouldBe model.FileAttachment(
+        t.file_name,
+        t.file_size,
+        t.file_type,
+        t.file_url,
+        UploadState.unsafe(t.upload_state)
+      )
+    }
+  }
+
+  val noteGen: Gen[Note] = for {
+    id <- arbitrary[Int]
+    uid <- arbitrary[Int]
+    taskId <- arbitrary[Int]
+    projectId <- arbitrary[Int]
+    content <- arbitrary[String]
+    file <- Gen.option(fileAttachmentGen)
+    uids <- Gen.option(Gen.listOfN(7, arbitrary[Int]))
+    is_deleted <- Gen.choose(0, 1)
+    is_archived <- Gen.choose(0, 1)
+    date_added <- arbitrary[Date].map(model.TodoistDate.format)
+  } yield Note(id, uid, taskId, projectId, content, file, uids, is_deleted, is_archived, date_added)
+
+  test("Note") {
+    forAll(noteGen) { (t: Note) =>
+      t.toModel shouldBe model.Note(
+        t.id.noteId, t.posted_uid.userId, t.item_id.taskId, t.project_id.projectId, t.content,
+        t.file_attachment.map(_.toModel),
+        t.uids_to_notify.toList.flatten.map(_.userId),
+        t.is_deleted == 1,
+        t.is_archived == 1,
+        model.TodoistDate.parse(t.posted).getOrElse(api.unexpected)
+      )
+    }
+  }
 
   // command results
 

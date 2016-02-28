@@ -10,10 +10,13 @@ trait CirceDTODecoders extends PlainCoproductDecoder {
   implicit val projectDTODecoder = Decoder[Project]
   implicit val labelDTODecoder = Decoder[Label]
   implicit val taskDTODecoder = Decoder[Task]
+  implicit val fileDTODecoder = Decoder[FileAttachment]
+  implicit val noteDTODecoder = Decoder[Note]
 
   implicit val projectsDTODecoder = Decoder[List[Project]]
   implicit val labelsDTODecoder = Decoder[List[Label]]
   implicit val tasksDTODecoder = Decoder[List[Task]]
+  implicit val notesDTODecoder = Decoder[List[Note]]
 
   implicit val allResourcesDecoder = Decoder[AllResources]
 
