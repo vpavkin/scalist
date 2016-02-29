@@ -7,31 +7,31 @@ import shapeless.HList
 trait AbstractDTOQueryAPISuite[F[_], P[_], Base, ResourceDTO]
   extends QueryAPISuite with AbstractDTOAPISuite[P] {
 
-  def resourceDtoDecoder: SingleResponseDecoder.Aux[P, Base, ResourceDTO]
+  def resourceDtoDecoder: SingleResponseDecoder[P, Base, ResourceDTO]
 
   protected def fromResourceDtoDecoder[T](f: ResourceDTO => Option[T])
                                          (name: String)
-                                         (implicit M: Monad[P]): SingleResponseDecoder.Aux[P, ResourceDTO, T] =
+                                         (implicit M: Monad[P]): SingleResponseDecoder[P, ResourceDTO, T] =
     SingleResponseDecoder.using[P, ResourceDTO, T] {
       dto => f(dto).map(M.pure).getOrElse(dtoDecodingError(s"No $name found in the response"))
     }
 
-  implicit def dtoToProjects(implicit M: Monad[P]): SingleResponseDecoder.Aux[P, ResourceDTO, Projects]
-  implicit def dtoToLabels(implicit M: Monad[P]): SingleResponseDecoder.Aux[P, ResourceDTO, Labels]
-  implicit def dtoToTasks(implicit M: Monad[P]): SingleResponseDecoder.Aux[P, ResourceDTO, Tasks]
-  implicit def dtoToNotes(implicit M: Monad[P]): SingleResponseDecoder.Aux[P, ResourceDTO, Notes]
-  implicit def dtoToFilters(implicit M: Monad[P]): SingleResponseDecoder.Aux[P, ResourceDTO, Filters]
-  implicit def dtoToReminders(implicit M: Monad[P]): SingleResponseDecoder.Aux[P, ResourceDTO, Reminders]
+  implicit def dtoToProjects(implicit M: Monad[P]): SingleResponseDecoder[P, ResourceDTO, Projects]
+  implicit def dtoToLabels(implicit M: Monad[P]): SingleResponseDecoder[P, ResourceDTO, Labels]
+  implicit def dtoToTasks(implicit M: Monad[P]): SingleResponseDecoder[P, ResourceDTO, Tasks]
+  implicit def dtoToNotes(implicit M: Monad[P]): SingleResponseDecoder[P, ResourceDTO, Notes]
+  implicit def dtoToFilters(implicit M: Monad[P]): SingleResponseDecoder[P, ResourceDTO, Filters]
+  implicit def dtoToReminders(implicit M: Monad[P]): SingleResponseDecoder[P, ResourceDTO, Reminders]
 
   implicit def composeDecoders1[Out](implicit
-                                     p2: SingleResponseDecoder.Aux[P, ResourceDTO, Out],
-                                     F: FlatMap[P]): SingleResponseDecoder.Aux[P, Base, Out] =
+                                     p2: SingleResponseDecoder[P, ResourceDTO, Out],
+                                     F: FlatMap[P]): SingleResponseDecoder[P, Base, Out] =
     resourceDtoDecoder.compose(p2)
 
 
   implicit def composeDecoders2[Out <: HList](implicit
-                                              p2: MultipleResponseDecoder.Aux[P, ResourceDTO, Out],
-                                              F: FlatMap[P]): MultipleResponseDecoder.Aux[P, Base, Out] =
+                                              p2: MultipleResponseDecoder[P, ResourceDTO, Out],
+                                              F: FlatMap[P]): MultipleResponseDecoder[P, Base, Out] =
     resourceDtoDecoder.compose(p2)
 
 }

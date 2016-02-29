@@ -11,7 +11,7 @@ class MultipleQueryRequestDefinition[F[_], L[_], P[_], R <: HList, Req, Base](
                                           requestFactory: RawRequest Produce Req,
                                           executor: RequestExecutor.Aux[Req, L, Base],
                                           flattener: Flattener[F, L, P],
-                                          parser: MultipleResponseDecoder.Aux[P, Base, R])
+                                          parser: MultipleResponseDecoder[P, Base, R])
                                           (implicit val itr: HasRawRequest[R],
                                           override implicit val F: Functor[L])
   extends CompositeExecutedRequestDefinition[F, L, P, R, Req, Base](
@@ -25,7 +25,7 @@ class MultipleQueryRequestDefinition[F[_], L[_], P[_], R <: HList, Req, Base](
               FM: FlatMap[P],
               NC: NotContainsConstraint[R, RR],
               ir: HasRawRequest[RR],
-              rrParser: SingleResponseDecoder.Aux[P, Base, RR]): MultipleQueryDefinition[F, P, ::[RR, R], Base] =
+              rrParser: SingleResponseDecoder[P, Base, RR]): MultipleQueryDefinition[F, P, ::[RR, R], Base] =
     new MultipleQueryRequestDefinition[F, L, P, RR :: R, Req, Base](
       requestFactory, executor, flattener, parser.combine(rrParser)
     )

@@ -7,7 +7,7 @@ import shapeless.HList
 trait AbstractDTOCommandAPISuite[F[_], P[_], Base, CommandResultDTO]
   extends CommandAPISuite with AbstractDTOAPISuite[P] {
 
-  implicit def commandDtoDecoder: SingleResponseDecoder.Aux[P, Base, CommandResultDTO]
+  implicit def commandDtoDecoder: SingleResponseDecoder[P, Base, CommandResultDTO]
 
   protected def fromCommandResultDtoDecoder[C, R]
   (f: (C, CommandResultDTO) => Option[R])

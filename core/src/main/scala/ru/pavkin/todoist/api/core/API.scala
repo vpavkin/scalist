@@ -10,12 +10,12 @@ import shapeless.ops.hlist.Reverse
 trait API[F[_], P[_], Base] {
   def get[R](implicit
              IR: HasRawRequest[R],
-             parser: SingleResponseDecoder.Aux[P, Base, R]): SingleQueryDefinition[F, P, R, Base]
+             parser: SingleResponseDecoder[P, Base, R]): SingleQueryDefinition[F, P, R, Base]
 
   def getAll[R <: HList](implicit
                          IR: HasRawRequest[R],
                          ID: IsDistinctConstraint[R],
-                         parser: MultipleResponseDecoder.Aux[P, Base, R]): MultipleQueryDefinition[F, P, R, Base]
+                         parser: MultipleResponseDecoder[P, Base, R]): MultipleQueryDefinition[F, P, R, Base]
 
   def perform[C, R](command: C)
                    (implicit

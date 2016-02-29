@@ -10,7 +10,7 @@ import shapeless.{::, <:!<, HNil}
 class SingleQueryRequestDefinition[F[_], L[_], P[_], R, Req, Base](requestFactory: RawRequest Produce Req,
                                                                    executor: RequestExecutor.Aux[Req, L, Base],
                                                                    flattener: Flattener[F, L, P],
-                                                                   parser: SingleResponseDecoder.Aux[P, Base, R])
+                                                                   parser: SingleResponseDecoder[P, Base, R])
                                                                   (implicit val itr: HasRawRequest[R],
                                                                    override implicit val F: Functor[L])
   extends CompositeExecutedRequestDefinition[F, L, P, R, Req, Base](
@@ -24,7 +24,7 @@ class SingleQueryRequestDefinition[F[_], L[_], P[_], R, Req, Base](requestFactor
               FM: FlatMap[P],
               NEQ: <:!<[RR, R],
               ir: HasRawRequest[RR],
-              rrParser: SingleResponseDecoder.Aux[P, Base, RR])
+              rrParser: SingleResponseDecoder[P, Base, RR])
   : MultipleQueryDefinition[F, P, RR :: R :: HNil, Base] =
     new MultipleQueryRequestDefinition[F, L, P, RR :: R :: HNil, Req, Base](
       requestFactory, executor, flattener, parser.combine(rrParser)
