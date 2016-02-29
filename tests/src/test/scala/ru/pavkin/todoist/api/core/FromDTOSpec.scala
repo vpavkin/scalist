@@ -186,6 +186,65 @@ class FromDTOSpec extends FunSuite with Matchers with GeneratorDrivenPropertyChe
     }
   }
 
+  val reminderGen: Gen[Reminder] = for {
+    id <- arbitrary[Int]
+    uid <- arbitrary[Int]
+    taskId <- arbitrary[Int]
+    service <- Gen.oneOf("push", "mobile", "email")
+    tpe <- Gen.oneOf("location", "absolute", "relative")
+    date_str <- arbitrary[String]
+    date_lang <- Gen.oneOf("en", "da", "pl", "zh", "ko", "de", "pt", "ja", "it", "fr", "sv", "ru", "es", "nl")
+    due_date <- arbitrary[Date].map(model.TodoistDate.format)
+    minute_offset <- Gen.posNum[Int]
+    name <- arbitrary[String]
+    lat <- arbitrary[Double]
+    lon <- arbitrary[Double]
+    trigger <- Gen.oneOf("on_enter", "on_leave")
+    radius <- Gen.posNum[Int]
+    is_deleted <- Gen.choose(0, 1)
+  } yield tpe match {
+    case "location" =>
+      Reminder(id, uid, taskId, None, tpe, None, None, None, None, None, Some(name), Some(lat.toString), Some(lon.toString), Some(trigger), Some(radius), is_deleted)
+    case "absolute" =>
+      Reminder(id, uid, taskId, Some(service), tpe, Some(date_str), Some(date_lang), Some(due_date), None, None, None, None, None, None, None, is_deleted)
+    case "relative" =>
+      Reminder(id, uid, taskId, Some(service), tpe, Some(date_str), Some(date_lang), Some(due_date), Some(minute_offset), Some(minute_offset), None, None, None, None, None, is_deleted)
+  }
+
+  test("Reminder") {
+    forAll(reminderGen) { (t: Reminder) =>
+      t.toModel shouldBe (t.`type` match {
+        case "location" =>
+          model.LocationBasedReminder(
+            t.id.reminderId,
+            t.notify_uid.userId,
+            t.item_id.taskId,
+            t.name.get,
+            t.loc_lat.get.toDouble,
+            t.loc_long.get.toDouble,
+            model.LocationBasedReminder.TriggerKind.unsafeBy(t.loc_trigger.get),
+            t.radius.get,
+            t.is_deleted == 1)
+        case "absolute" =>
+          model.AbsoluteTimeBasedReminder(
+            t.id.reminderId,
+            t.notify_uid.userId,
+            t.item_id.taskId,
+            model.ReminderService.unsafeBy(t.service.get),
+            model.TaskDate(t.date_string, model.DateLanguage.unsafeBy(t.date_lang.get), model.TodoistDate.parse(t.due_date_utc.get).get),
+            t.is_deleted == 1)
+        case "relative" =>
+          model.RelativeTimeBasedReminder(
+            t.id.reminderId,
+            t.notify_uid.userId,
+            t.item_id.taskId,
+            model.ReminderService.unsafeBy(t.service.get),
+            model.TaskDate(t.date_string, model.DateLanguage.unsafeBy(t.date_lang.get), model.TodoistDate.parse(t.due_date_utc.get).get),
+            t.minute_offset.orElse(t.mm_offset).get,
+            t.is_deleted == 1)
+      })
+    }
+  }
   // command results
 
   val okGen: Gen[String] = Gen.const("ok")
