@@ -7,7 +7,7 @@ import shapeless.HList
 trait AbstractDTOQueryAPISuite[F[_], P[_], Base, ResourceDTO]
   extends QueryAPISuite with AbstractDTOAPISuite[P] {
 
-  implicit def resourceDtoDecoder: SingleResponseDecoder.Aux[P, Base, ResourceDTO]
+  def resourceDtoDecoder: SingleResponseDecoder.Aux[P, Base, ResourceDTO]
 
   protected def fromResourceDtoDecoder[T](f: ResourceDTO => Option[T])
                                          (name: String)
@@ -21,11 +21,13 @@ trait AbstractDTOQueryAPISuite[F[_], P[_], Base, ResourceDTO]
   implicit def dtoToTasks(implicit M: Monad[P]): SingleResponseDecoder.Aux[P, ResourceDTO, Tasks]
   implicit def dtoToNotes(implicit M: Monad[P]): SingleResponseDecoder.Aux[P, ResourceDTO, Notes]
   implicit def dtoToFilters(implicit M: Monad[P]): SingleResponseDecoder.Aux[P, ResourceDTO, Filters]
+  implicit def dtoToReminders(implicit M: Monad[P]): SingleResponseDecoder.Aux[P, ResourceDTO, Reminders]
 
   implicit def composeDecoders1[Out](implicit
                                      p2: SingleResponseDecoder.Aux[P, ResourceDTO, Out],
                                      F: FlatMap[P]): SingleResponseDecoder.Aux[P, Base, Out] =
     resourceDtoDecoder.compose(p2)
+
 
   implicit def composeDecoders2[Out <: HList](implicit
                                               p2: MultipleResponseDecoder.Aux[P, ResourceDTO, Out],

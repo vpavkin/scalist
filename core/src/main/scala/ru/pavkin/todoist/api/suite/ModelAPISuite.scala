@@ -18,6 +18,7 @@ trait ModelAPISuite[F[_], P[_], Base]
   type Tasks = List[model.Task]
   type Notes = List[model.Note]
   type Filters = List[model.Filter]
+  type Reminders = List[model.Reminder]
 
   type CommandResult = model.CommandResult
   type TempIdCommandResult = model.TempIdCommandResult
@@ -36,6 +37,9 @@ trait ModelAPISuite[F[_], P[_], Base]
 
   implicit def dtoToFilters(implicit M: Monad[P]): SingleResponseDecoder.Aux[P, dto.AllResources, Filters] =
     fromResourceDtoDecoder(_.Filters.map(_.toModel))("filters")
+
+  implicit def dtoToReminders(implicit M: Monad[P]): SingleResponseDecoder.Aux[P, dto.AllResources, Reminders] =
+    fromResourceDtoDecoder(_.Reminders.map(_.toModel))("reminders")
 
   implicit def dtoToRawCommandResult[A <: SimpleCommand]
   (implicit M: Monad[P]): SingleCommandResponseDecoder.Aux[P, A, dto.RawCommandResult, CommandResult] =

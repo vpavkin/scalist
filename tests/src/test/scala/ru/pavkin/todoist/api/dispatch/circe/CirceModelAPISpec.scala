@@ -42,6 +42,7 @@ class CirceModelAPISpec
     )
 
     api.getAll[Tasks :: Labels :: Filters :: HNil]
+    api.getAll[Filters :: Notes :: Tasks :: Labels :: Projects :: HNil]
     api.get[Projects].and[Labels].and[Tasks].and[Notes].and[Filters]
 
     illTyped("""api.get[String]""")
@@ -89,10 +90,18 @@ class CirceModelAPISpec
     illTyped("""rp.labels""")
     illTyped("""rp.notes""")
 
-    val all = p :: List.empty[Label] :: List.empty[Task] :: List.empty[Note] :: HNil
+    val all = p ::
+      List.empty[Label] ::
+      List.empty[Task] ::
+      List.empty[Note] ::
+      List.empty[Filter] ::
+      List.empty[Reminder] ::
+      HNil
     all.projects shouldBe p
     all.labels shouldBe List.empty[Label]
     all.tasks shouldBe List.empty[Task]
     all.notes shouldBe List.empty[Note]
+    all.filters shouldBe List.empty[Filter]
+    all.reminders shouldBe List.empty[Reminder]
   }
 }

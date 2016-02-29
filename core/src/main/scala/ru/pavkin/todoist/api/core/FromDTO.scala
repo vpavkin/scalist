@@ -11,6 +11,8 @@ import ru.pavkin.todoist.api.utils.Produce
 import shapeless.{Inl, Inr}
 import FromDTO.syntax._
 
+import scala.util.Try
+
 trait FromDTO[DTO, Model] extends Produce[DTO, Model]
 
 object FromDTO {
@@ -152,6 +154,51 @@ object FromDTO {
       a.item_order,
       a.is_deleted.toBool
     )
+  )
+
+  implicit val remindersFromDTO: FromDTO[dto.Reminder, model.Reminder] = FromDTO(a =>
+    (a.`type` match {
+      case "relative" | "absolute" => for {
+        dueDate <- taskDateFromDTO(a.due_date_utc, a.date_string, a.date_lang)
+        service <- a.service.map(ReminderService.unsafeBy)
+      } yield if (a.`type` == "relative")
+        RelativeTimeBasedReminder(
+          a.id.reminderId,
+          a.notify_uid.userId,
+          a.item_id.taskId,
+          service,
+          dueDate,
+          a.minute_offset.orElse(a.mm_offset).getOrElse(api.unexpected),
+          a.is_deleted.toBool
+        )
+      else
+        AbsoluteTimeBasedReminder(
+          a.id.reminderId,
+          a.notify_uid.userId,
+          a.item_id.taskId,
+          service,
+          dueDate,
+          a.is_deleted.toBool
+        )
+      case "location" => for {
+        locName <- a.name
+        lat <- a.loc_lat.flatMap(s => Try(s.toDouble).toOption)
+        lon <- a.loc_long.flatMap(s => Try(s.toDouble).toOption)
+        radius <- a.radius
+        trigger <- a.loc_trigger.map(LocationBasedReminder.TriggerKind.unsafeBy)
+      } yield LocationBasedReminder(
+        a.id.reminderId,
+        a.notify_uid.userId,
+        a.item_id.taskId,
+        locName,
+        lat,
+        lon,
+        trigger,
+        radius,
+        a.is_deleted.toBool
+      )
+      case _ => api.unexpected
+    }).getOrElse(api.unexpected)
   )
 
   // command results
