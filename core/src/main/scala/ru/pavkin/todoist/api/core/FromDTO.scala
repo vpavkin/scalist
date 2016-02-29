@@ -1,5 +1,7 @@
 package ru.pavkin.todoist.api.core
 
+import java.util.Date
+
 import cats.Functor
 import cats.syntax.functor._
 import ru.pavkin.todoist.api
@@ -41,6 +43,10 @@ object FromDTO {
     def toBool = a.exists(identity)
   }
 
+  private implicit class StringDateOps(a: String) {
+    def toDate: Date = TodoistDate.parse(a).getOrElse(api.unexpected)
+  }
+
   object syntax {
     implicit class Ops[DTO, Model](a: DTO)(implicit F: FromDTO[DTO, Model]) {
       def toModel: Model = F.produce(a)
@@ -49,6 +55,14 @@ object FromDTO {
 
   implicit def functorFromDTO[F[_] : Functor, DTO, Model](implicit F: FromDTO[DTO, Model]): FromDTO[F[DTO], F[Model]] =
     FromDTO(_.map(F.produce))
+
+  private def taskDateFromDTO(due_date_utc: Option[String],
+                              date_string: Option[String],
+                              date_lang: Option[String]): Option[model.TaskDate] = for {
+    date <- due_date_utc.flatMap(TodoistDate.parse)
+    lang <- date_lang.map(DateLanguage.unsafeBy)
+  } yield model.TaskDate(date_string, lang, date)
+
 
   implicit val projectsFromDTO: FromDTO[dto.Project, Project] = FromDTO(a =>
     if (!a.is_archived.toBool) {
@@ -87,9 +101,7 @@ object FromDTO {
       a.user_id.userId,
       a.project_id.projectId,
       a.content,
-      a.due_date_utc
-        .flatMap(TodoistDate.parse)
-        .map(TaskDate(a.date_string, DateLanguage.unsafeBy(a.date_lang), _)),
+      taskDateFromDTO(a.due_date_utc, a.date_string, Some(a.date_lang)),
       Priority.unsafeBy(a.priority),
       a.indent.toIndent,
       a.item_order,
@@ -102,7 +114,7 @@ object FromDTO {
       a.in_history.toBool,
       a.is_deleted.toBool,
       a.is_archived.toBool,
-      TodoistDate.parse(a.date_added).getOrElse(api.unexpected)
+      a.date_added.toDate
     )
   )
 
@@ -127,7 +139,7 @@ object FromDTO {
       a.uids_to_notify.toList.flatten.map(_.userId),
       a.is_deleted.toBool,
       a.is_archived.toBool,
-      TodoistDate.parse(a.posted).getOrElse(api.unexpected)
+      a.posted.toDate
     )
   )
 
