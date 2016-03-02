@@ -43,6 +43,7 @@ class CirceModelAPISpec
 
     api.getAll[Tasks :: Labels :: Filters :: HNil]
     api.getAll[Filters :: Notes :: Tasks :: Labels :: Projects :: HNil]
+    api.getAll[All]
     api.get[Projects].and[Labels].and[Tasks].and[Notes].and[Filters]
 
     illTyped("""api.get[String]""")

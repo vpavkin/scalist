@@ -12,7 +12,8 @@ trait QueryAPISuite {
   type Notes
   type Filters
   type Reminders
-  type All = Reminders :: Filters :: Notes :: Tasks :: Projects :: Labels :: HNil
+  type User
+  type All = User :: Reminders :: Filters :: Notes :: Tasks :: Projects :: Labels :: HNil
 
   implicit val tasks = HasRawRequest.resource[Tasks](List("items"))
   implicit val projects = HasRawRequest.resource[Projects](List("projects"))
@@ -20,6 +21,7 @@ trait QueryAPISuite {
   implicit val notes = HasRawRequest.resource[Notes](List("notes"))
   implicit val filters = HasRawRequest.resource[Filters](List("filters"))
   implicit val reminders = HasRawRequest.resource[Reminders](List("reminders"))
+  implicit val user = HasRawRequest.resource[User](List("user"))
   implicit val all = HasRawRequest.resource[All](List("all"))
 
   trait QuerySyntax {
@@ -30,6 +32,7 @@ trait QueryAPISuite {
       def notes(implicit S: Selector[L, Notes]): Notes = S(l)
       def filters(implicit S: Selector[L, Filters]): Filters = S(l)
       def reminders(implicit S: Selector[L, Reminders]): Reminders = S(l)
+      def user(implicit S: Selector[L, User]): User = S(l)
     }
   }
 }

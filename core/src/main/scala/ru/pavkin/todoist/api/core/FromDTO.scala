@@ -1,6 +1,6 @@
 package ru.pavkin.todoist.api.core
 
-import java.util.Date
+import java.util.{TimeZone, Date}
 
 import cats.Functor
 import cats.syntax.functor._
@@ -29,16 +29,11 @@ object FromDTO {
     }
   }
 
-  private implicit class ProjectColorIntOps(a: Int) {
+  private implicit class ModelIntOps(a: Int) {
     def toProjectColor = ProjectColor.unsafeBy(a)
-  }
-
-  private implicit class IndentIntOps(a: Int) {
     def toIndent = Indent.unsafeBy(a)
-  }
-
-  private implicit class LabelColorIntOps(a: Int) {
     def toLabelColor = LabelColor.unsafeBy(a)
+    def toDayOfWeek = DayOfWeek.unsafeBy(a)
   }
 
   private implicit class BoolOptionOps(a: Option[Boolean]) {
@@ -199,6 +194,46 @@ object FromDTO {
       )
       case _ => api.unexpected
     }).getOrElse(api.unexpected)
+  )
+
+  def timezoneToDTO(id: String, offset: dto.TimeZoneOffset): TimeZone = {
+    val idBased = TimeZone.getTimeZone(id)
+    if (idBased.getID == "GMT" && (offset.hours + offset.minutes > 0))
+      TimeZone.getTimeZone(s"GMT${offset.gmtString}")
+    else
+      idBased
+  }
+
+  implicit val usersToDTO: FromDTO[dto.User, model.User] = FromDTO(a =>
+    model.User(
+      a.id.userId,
+      a.email,
+      a.full_name,
+      a.inbox_project.projectId,
+      timezoneToDTO(a.timezone, a.tz_offset),
+      a.start_page,
+      a.start_day.toDayOfWeek,
+      a.next_week.toDayOfWeek,
+      TimeFormat.unsafeBy(a.time_format),
+      DateFormat.unsafeBy(a.date_format),
+      ProjectsSortOrder.unsafeBy(a.sort_order),
+      a.has_push_reminders,
+      a.default_reminder.map(ReminderService.unsafeBy),
+      a.auto_reminder,
+      a.mobile_number,
+      a.mobile_host,
+      a.completed_count,
+      a.completed_today,
+      a.karma,
+      a.premium_until.flatMap(TodoistDate.parse),
+      a.is_biz_admin,
+      a.business_account_id,
+      a.beta.toBool,
+      a.is_dummy.toBool,
+      a.join_date.toDate,
+      Theme.unsafeBy(a.theme),
+      UserAvatars(a.avatar_small, a.avatar_medium, a.avatar_big, a.avatar_s640)
+    )
   )
 
   // command results

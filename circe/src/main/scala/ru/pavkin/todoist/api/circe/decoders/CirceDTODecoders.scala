@@ -1,5 +1,6 @@
 package ru.pavkin.todoist.api.circe.decoders
 
+import cats.data.Xor
 import io.circe._
 import io.circe.generic.auto._
 import ru.pavkin.todoist.api.core.dto._
@@ -14,6 +15,19 @@ trait CirceDTODecoders extends PlainCoproductDecoder {
   implicit val noteDTODecoder = Decoder[Note]
   implicit val filterDTODecoder = Decoder[Filter]
   implicit val reminderDTODecoder = Decoder[Reminder]
+  implicit val tzOffsetDTODecoder = Decoder.instance(c =>
+    Xor.fromOption(c.focus.asArray.flatMap {
+      case List(gmtStr, hr, min, _) =>
+        for {
+          gmtString <- gmtStr.asString
+          hour <- hr.asNumber.flatMap(_.toInt)
+          minute <- min.asNumber.flatMap(_.toInt)
+        } yield TimeZoneOffset(gmtString, hour, minute)
+      case _ =>
+        None
+    }, DecodingFailure("Couldn't parse timezone offset", Nil))
+  )
+  implicit val userDTODecoder = Decoder[User]
 
   implicit val projectsDTODecoder = Decoder[List[Project]]
   implicit val labelsDTODecoder = Decoder[List[Label]]

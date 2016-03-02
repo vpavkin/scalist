@@ -1,6 +1,6 @@
 package ru.pavkin.todoist.api.core
 
-import java.util.Date
+import java.util.{TimeZone, Date}
 
 import org.scalacheck.Arbitrary.arbitrary
 import org.scalacheck.Gen
@@ -8,11 +8,21 @@ import org.scalatest.prop.GeneratorDrivenPropertyChecks
 import org.scalatest.{FunSuite, Matchers}
 import ru.pavkin.todoist.api
 import ru.pavkin.todoist.api.core.FromDTO.syntax._
+import ru.pavkin.todoist.api.core.dto.FileAttachment
+import ru.pavkin.todoist.api.core.dto.Filter
 import ru.pavkin.todoist.api.core.dto.Label
+import ru.pavkin.todoist.api.core.dto.Label
+import ru.pavkin.todoist.api.core.dto.Note
 import ru.pavkin.todoist.api.core.dto.Project
+import ru.pavkin.todoist.api.core.dto.Project
+import ru.pavkin.todoist.api.core.dto.Reminder
 import ru.pavkin.todoist.api.core.dto.Task
+import ru.pavkin.todoist.api.core.dto.Task
+import ru.pavkin.todoist.api.core.dto.User
 import ru.pavkin.todoist.api.core.dto._
-import ru.pavkin.todoist.api.core.model.{UploadState, TempIdCommandResult, TempIdFailure, TempIdSuccess}
+import ru.pavkin.todoist.api.core.model.TempIdCommandResult
+import ru.pavkin.todoist.api.core.model.TempIdFailure
+import ru.pavkin.todoist.api.core.model.TempIdSuccess
 import ru.pavkin.todoist.api.core.tags.syntax._
 import shapeless._
 
@@ -137,7 +147,7 @@ class FromDTOSpec extends FunSuite with Matchers with GeneratorDrivenPropertyChe
         t.file_size,
         t.file_type,
         t.file_url,
-        UploadState.unsafe(t.upload_state)
+        model.UploadState.unsafe(t.upload_state)
       )
     }
   }
@@ -245,6 +255,81 @@ class FromDTOSpec extends FunSuite with Matchers with GeneratorDrivenPropertyChe
       })
     }
   }
+
+  val userGen: Gen[User] = for {
+    id <- arbitrary[Int]
+    email <- arbitrary[String]
+    full_name <- arbitrary[String]
+    inbox_project <- arbitrary[Int]
+    timezone <- Gen.oneOf(TimeZone.getAvailableIDs.toList)
+    hr <- Gen.choose(0, 23)
+    start_page <- arbitrary[String]
+    start_day <- Gen.choose(1, 7)
+    next_week <- Gen.choose(1, 7)
+    time_format <- Gen.choose(0, 1)
+    date_format <- Gen.choose(0, 1)
+    sort_order <- Gen.choose(0, 1)
+    has_push <- arbitrary[Boolean]
+    service <- Gen.option(Gen.oneOf("push", "mobile", "email"))
+    auto_reminder <- Gen.option(Gen.posNum[Int])
+    mobile <- arbitrary[Option[String]]
+    mobile_host <- arbitrary[Option[String]]
+    completed <- Gen.posNum[Int]
+    completed_today <- Gen.posNum[Int]
+    karma <- Gen.posNum[Double]
+    premium_until <- Gen.option(arbitrary[Date].map(model.TodoistDate.format))
+    is_biz_admin <- arbitrary[Boolean]
+    biz_id <- arbitrary[Option[Int]]
+    image_id <- arbitrary[Option[String]]
+    beta <- Gen.choose(0, 1)
+    is_dummy <- Gen.choose(0, 1)
+    join_date <- arbitrary[Date].map(model.TodoistDate.format)
+    theme <- Gen.choose(0, 9)
+    a_sm <- arbitrary[Option[String]]
+    a_m <- arbitrary[Option[String]]
+    a_b <- arbitrary[Option[String]]
+    a_640 <- arbitrary[Option[String]]
+  } yield User(id, email, full_name, inbox_project, timezone, TimeZoneOffset(s"+$hr:00", hr, 0),
+    start_page, start_day, next_week, time_format, date_format, sort_order, has_push, service, auto_reminder,
+    mobile, mobile_host, completed, completed_today, karma, "up", premium_until.isDefined, premium_until,
+    is_biz_admin, biz_id, image_id, beta, is_dummy, join_date, theme, a_sm, a_m, a_b, a_640)
+
+  test("User") {
+    forAll(userGen) { (t: User) =>
+      t.toModel shouldBe model.User(
+        t.id.userId,
+        t.email,
+        t.full_name,
+        t.inbox_project.projectId,
+        TimeZone.getTimeZone(t.timezone),
+        t.start_page,
+        model.DayOfWeek.unsafeBy(t.start_day),
+        model.DayOfWeek.unsafeBy(t.next_week),
+        model.TimeFormat.unsafeBy(t.time_format),
+        model.DateFormat.unsafeBy(t.date_format),
+        model.ProjectsSortOrder.unsafeBy(t.sort_order),
+        t.has_push_reminders,
+        t.default_reminder.map(model.ReminderService.unsafeBy),
+        t.auto_reminder,
+        t.mobile_number,
+        t.mobile_host,
+        t.completed_count,
+        t.completed_today,
+        t.karma,
+        t.premium_until.map(d => model.TodoistDate.parse(d).getOrElse(api.unexpected)),
+        t.is_biz_admin,
+        t.business_account_id,
+        t.beta == 1,
+        t.is_dummy == 1,
+        model.TodoistDate.parse(t.join_date).get,
+        model.Theme.unsafeBy(t.theme),
+        model.UserAvatars(
+          t.avatar_small, t.avatar_medium, t.avatar_big, t.avatar_s640
+        )
+      )
+    }
+  }
+
   // command results
 
   val okGen: Gen[String] = Gen.const("ok")

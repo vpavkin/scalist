@@ -5,6 +5,7 @@ case class AllResources(Projects: Option[List[Project]],
                         Items: Option[List[Task]],
                         Notes: Option[List[Note]],
                         Filters: Option[List[Filter]],
-                        Reminders: Option[List[Reminder]])
+                        Reminders: Option[List[Reminder]],
+                        User: Option[User])
 
 
