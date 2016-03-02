@@ -2,14 +2,12 @@ package ru.pavkin.todoist.api.suite
 
 import cats.Monad
 import cats.std.list._
-import ru.pavkin.todoist.api
 import ru.pavkin.todoist.api.RawRequest
 import ru.pavkin.todoist.api.core.FromDTO.syntax._
 import ru.pavkin.todoist.api.core.decoder.{SingleCommandResponseDecoder, SingleResponseDecoder}
 import ru.pavkin.todoist.api.core.model._
 import ru.pavkin.todoist.api.core.model.util.{CombineCommands, CommandResultHList, ReversedAtSyntax}
 import ru.pavkin.todoist.api.core.{dto, _}
-import shapeless.{Inl, Inr}
 
 trait ModelAPISuite[F[_], P[_], Base]
   extends AbstractDTOQueryAPISuite[F, P, Base, dto.AllResources]
@@ -17,15 +15,35 @@ trait ModelAPISuite[F[_], P[_], Base]
 
   type Projects = List[model.Project]
   type Labels = List[model.Label]
+  type Tasks = List[model.Task]
+  type Notes = List[model.Note]
+  type Filters = List[model.Filter]
+  type Reminders = List[model.Reminder]
+  type User = model.User
 
   type CommandResult = model.CommandResult
   type TempIdCommandResult = model.TempIdCommandResult
 
-  implicit def dtoToProjects(implicit M: Monad[P]): SingleResponseDecoder.Aux[P, dto.AllResources, Projects] =
+  implicit def dtoToProjects(implicit M: Monad[P]): SingleResponseDecoder[P, dto.AllResources, Projects] =
     fromResourceDtoDecoder(_.Projects.map(_.toModel))("projects")
 
-  implicit def dtoToLabels(implicit M: Monad[P]): SingleResponseDecoder.Aux[P, dto.AllResources, Labels] =
+  implicit def dtoToLabels(implicit M: Monad[P]): SingleResponseDecoder[P, dto.AllResources, Labels] =
     fromResourceDtoDecoder(_.Labels.map(_.toModel))("labels")
+
+  implicit def dtoToTasks(implicit M: Monad[P]): SingleResponseDecoder[P, dto.AllResources, Tasks] =
+    fromResourceDtoDecoder(_.Items.map(_.toModel))("tasks")
+
+  implicit def dtoToNotes(implicit M: Monad[P]): SingleResponseDecoder[P, dto.AllResources, Notes] =
+    fromResourceDtoDecoder(_.Notes.map(_.toModel))("notes")
+
+  implicit def dtoToFilters(implicit M: Monad[P]): SingleResponseDecoder[P, dto.AllResources, Filters] =
+    fromResourceDtoDecoder(_.Filters.map(_.toModel))("filters")
+
+  implicit def dtoToReminders(implicit M: Monad[P]): SingleResponseDecoder[P, dto.AllResources, Reminders] =
+    fromResourceDtoDecoder(_.Reminders.map(_.toModel))("reminders")
+
+  implicit def dtoToUser(implicit M: Monad[P]): SingleResponseDecoder[P, dto.AllResources, User] =
+    fromResourceDtoDecoder(_.User.map(_.toModel))("user")
 
   implicit def dtoToRawCommandResult[A <: SimpleCommand]
   (implicit M: Monad[P]): SingleCommandResponseDecoder.Aux[P, A, dto.RawCommandResult, CommandResult] =

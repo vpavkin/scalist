@@ -4,7 +4,7 @@ case class Task(id: Int,
                 user_id: Int,
                 project_id: Int,
                 content: String,
-                date_string: String,
+                date_string: Option[String],
                 date_lang: String,
                 due_date_utc: Option[String], // YYYY-MM-DDTHH:MM, UTC strictly
                 priority: Int,

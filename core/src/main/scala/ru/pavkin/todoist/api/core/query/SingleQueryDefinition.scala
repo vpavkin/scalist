@@ -11,6 +11,6 @@ trait SingleQueryDefinition[F[_], P[_], R, Base] extends RequestDefinition[F, P,
               FM: FlatMap[P],
               NEQ: RR <:!< R,
               ir: HasRawRequest[RR],
-              parser: SingleResponseDecoder.Aux[P, Base, RR])
+              parser: SingleResponseDecoder[P, Base, RR])
   : MultipleQueryDefinition[F, P, RR :: R :: HNil, Base]
 }

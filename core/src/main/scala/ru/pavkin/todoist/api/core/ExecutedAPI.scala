@@ -20,13 +20,13 @@ trait ExecutedAPI[F[_], L[_], P[_], Req, Base] extends API[F, P, Base] {
 
   def get[R](implicit
              IR: HasRawRequest[R],
-             parser: SingleResponseDecoder.Aux[P, Base, R]): SingleQueryDefinition[F, P, R, Base] =
+             parser: SingleResponseDecoder[P, Base, R]): SingleQueryDefinition[F, P, R, Base] =
     new SingleQueryRequestDefinition[F, L, P, R, Req, Base](requestFactory, executor, flattener, parser)
 
   def getAll[R <: HList](implicit
                          IR: HasRawRequest[R],
                          ID: IsDistinctConstraint[R],
-                         parser: MultipleResponseDecoder.Aux[P, Base, R])
+                         parser: MultipleResponseDecoder[P, Base, R])
   : MultipleQueryDefinition[F, P, R, Base] =
     new MultipleQueryRequestDefinition[F, L, P, R, Req, Base](requestFactory, executor, flattener, parser)
 

@@ -5,26 +5,24 @@ import shapeless.{HList, HNil, ::}
 import cats.syntax.flatMap._
 import cats.syntax.apply._
 
-trait SingleResponseDecoder[F[_], Base] extends ResponseDecoder[F, Base] {self =>
-  def combine[Out2](other: ResponseDecoder.Aux[F, Base, Out2])
-                   (implicit A: Apply[F]): MultipleResponseDecoder.Aux[F, Base, Out2 :: self.Out :: HNil] =
-    new MultipleResponseDecoder[F, Base] {
-      type Out = Out2 :: self.Out :: HNil
-      def parse(resource: Base): F[Out] = self.parse(resource).map2(other.parse(resource))((a, b) => b :: a :: HNil)
+trait SingleResponseDecoder[F[_], Base, Out] extends ResponseDecoder[F, Base, Out] {self =>
+  def combine[Out2](other: ResponseDecoder[F, Base, Out2])
+                   (implicit A: Apply[F]): MultipleResponseDecoder[F, Base, Out2 :: Out :: HNil] =
+    new MultipleResponseDecoder[F, Base, Out2 :: Out :: HNil] {
+      def parse(resource: Base): F[Out2 :: Out :: HNil] =
+        self.parse(resource).map2(other.parse(resource))((a, b) => b :: a :: HNil)
     }
 
-  def compose[Out2](other: SingleResponseDecoder.Aux[F, Out, Out2])
-                   (implicit F: FlatMap[F]): SingleResponseDecoder.Aux[F, Base, Out2] =
-    new SingleResponseDecoder[F, Base] {
-      type Out = Out2
-      def parse(resource: Base): F[Out] = self.parse(resource).flatMap(other.parse)
+  def compose[Out2](other: SingleResponseDecoder[F, Out, Out2])
+                   (implicit F: FlatMap[F]): SingleResponseDecoder[F, Base, Out2] =
+    new SingleResponseDecoder[F, Base, Out2] {
+      def parse(resource: Base): F[Out2] = self.parse(resource).flatMap(other.parse)
     }
 
-  def compose[Out2 <: HList](other: MultipleResponseDecoder.Aux[F, Out, Out2])
-                            (implicit F: FlatMap[F]): MultipleResponseDecoder.Aux[F, Base, Out2] =
-    new MultipleResponseDecoder[F, Base] {
-      type Out = Out2
-      def parse(resource: Base): F[Out] = self.parse(resource).flatMap(other.parse)
+  def compose[Out2 <: HList](other: MultipleResponseDecoder[F, Out, Out2])
+                            (implicit F: FlatMap[F]): MultipleResponseDecoder[F, Base, Out2] =
+    new MultipleResponseDecoder[F, Base, Out2] {
+      def parse(resource: Base): F[Out2] = self.parse(resource).flatMap(other.parse)
     }
 
   def compose[Out2, Command]
@@ -48,12 +46,11 @@ trait SingleResponseDecoder[F[_], Base] extends ResponseDecoder[F, Base] {self =
 
 
 object SingleResponseDecoder {
-  def apply[F[_], Base, Out0](implicit ev: Aux[F, Base, Out0]): Aux[F, Base, Out0] = ev
+  def apply[F[_], Base, Out0](implicit
+                              ev: SingleResponseDecoder[F, Base, Out0]): SingleResponseDecoder[F, Base, Out0] = ev
 
-  type Aux[F[_], Base, Out0] = SingleResponseDecoder[F, Base] {type Out = Out0}
-
-  def using[F[_], Base, Out0](f: Base => F[Out0]): Aux[F, Base, Out0] = new SingleResponseDecoder[F, Base] {
-    type Out = Out0
-    def parse(resource: Base): F[Out] = f(resource)
-  }
+  def using[F[_], Base, Out0](f: Base => F[Out0]): SingleResponseDecoder[F, Base, Out0] =
+    new SingleResponseDecoder[F, Base, Out0] {
+      def parse(resource: Base): F[Out0] = f(resource)
+    }
 }

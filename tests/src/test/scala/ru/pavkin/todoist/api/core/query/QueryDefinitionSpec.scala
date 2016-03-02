@@ -25,18 +25,15 @@ class QueryDefinitionSpec extends RequestDefinitionSpec {
     else if (i == 0) Success("zero")
     else Failure(new Exception)
 
-  val nonNegativeStringParser = new SingleResponseDecoder[Try, Int] {
-    type Out = String
+  val nonNegativeStringParser = new SingleResponseDecoder[Try, Int, String] {
     def parse(resource: Int): Try[String] = parseNonNegative(resource)
   }
 
-  implicit val toIntParser = new SingleResponseDecoder[Try, String] {
-    type Out = Int
+  implicit val toIntParser = new SingleResponseDecoder[Try, String, Int] {
     def parse(resource: String): Try[Int] = Try(resource.toInt)
   }
 
-  implicit val toDoubleParser = new SingleResponseDecoder[Try, String] {
-    type Out = Double
+  implicit val toDoubleParser = new SingleResponseDecoder[Try, String, Double] {
     def parse(resource: String): Try[Double] = Try(resource.toDouble)
   }
 

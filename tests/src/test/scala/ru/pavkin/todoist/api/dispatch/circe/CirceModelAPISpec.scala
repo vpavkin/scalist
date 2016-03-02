@@ -1,23 +1,59 @@
 package ru.pavkin.todoist.api.dispatch.circe
 
-import java.util.UUID
-
 import io.circe.Json
+import org.scalatest.{Matchers, FunSuite}
+import org.scalatest.prop.Checkers
 import ru.pavkin.todoist.api.circe.CirceDecoder
-import ru.pavkin.todoist.api.core.FutureBasedAPISuiteSpec
-import ru.pavkin.todoist.api.core.dto.{RawCommandResult, AllResources}
 import ru.pavkin.todoist.api.core.model._
+import ru.pavkin.todoist.api.core.query.{MultipleQueryDefinition, SingleQueryDefinition}
 import ru.pavkin.todoist.api.dispatch.impl.circe.DispatchAPI
-import shapeless.HNil
+import shapeless.test._
+import shapeless.{::, HNil}
 
 import scala.concurrent.ExecutionContext.Implicits.global
 
 class CirceModelAPISpec
-  extends FutureBasedAPISuiteSpec[DispatchAPI.Result, CirceDecoder.Result, Json, AllResources, RawCommandResult](
-    "Dispatch Circe API"
-  ) with CirceModelAPISuite {
+  extends FunSuite with Checkers with Matchers with CirceModelAPISuite {
 
   import syntax._
+
+  test("Circe query test suite") {
+    val api = todoist.withToken("token")
+    typed[SingleQueryDefinition[DispatchAPI.Result, CirceDecoder.Result, Projects, Json]](
+      api.get[Projects]
+    )
+    typed[SingleQueryDefinition[DispatchAPI.Result, CirceDecoder.Result, Tasks, Json]](
+      api.get[Tasks]
+    )
+    typed[MultipleQueryDefinition[DispatchAPI.Result, CirceDecoder.Result, Labels :: Projects :: HNil, Json]](
+      api.get[Projects].and[Labels]
+    )
+    typed[MultipleQueryDefinition[DispatchAPI.Result, CirceDecoder.Result, Notes :: Tasks :: Labels :: Projects :: HNil, Json]](
+      api.get[Projects].and[Labels].and[Tasks].and[Notes]
+    )
+    typed[MultipleQueryDefinition[DispatchAPI.Result, CirceDecoder.Result, Tasks :: Labels :: Projects :: HNil, Json]](
+      api.getAll[Tasks :: Labels :: Projects :: HNil]
+    )
+    typed[MultipleQueryDefinition[DispatchAPI.Result, CirceDecoder.Result, Labels :: Projects :: HNil, Json]](
+      api.getAll[Labels :: Projects :: HNil]
+    )
+    typed[MultipleQueryDefinition[DispatchAPI.Result, CirceDecoder.Result, Labels :: Projects :: HNil, Json]](
+      api.getAll[Projects :: HNil].and[Labels]
+    )
+
+    api.getAll[Tasks :: Labels :: Filters :: HNil]
+    api.getAll[Filters :: Notes :: Tasks :: Labels :: Projects :: HNil]
+    api.getAll[All]
+    api.get[Projects].and[Labels].and[Tasks].and[Notes].and[Filters]
+
+    illTyped("""api.get[String]""")
+    illTyped("""api.get""")
+    illTyped("""api.get[Projects].and[Int]""")
+    illTyped("""api.get[Projects].and[Projects]""")
+    illTyped("""api.get[Projects].and[Labels].and[Projects]""")
+    illTyped("""api.getAll[Labels :: Projects :: HNil].and[Labels]""")
+    illTyped("""api.getAll[Labels :: Projects :: Labels :: HNil]""")
+  }
 
   test("Dispatch Circe API command test suite") {
     val api = todoist.withToken("token")
@@ -46,4 +82,27 @@ class CirceModelAPISpec
     )
   }
 
+  // todo: extract generators and use them here
+  test("Query result syntax test") {
+    val p = List.empty[Project]
+    val rp = p :: HNil
+    rp.projects shouldBe p
+    illTyped("""rp.tasks""")
+    illTyped("""rp.labels""")
+    illTyped("""rp.notes""")
+
+    val all = p ::
+      List.empty[Label] ::
+      List.empty[Task] ::
+      List.empty[Note] ::
+      List.empty[Filter] ::
+      List.empty[Reminder] ::
+      HNil
+    all.projects shouldBe p
+    all.labels shouldBe List.empty[Label]
+    all.tasks shouldBe List.empty[Task]
+    all.notes shouldBe List.empty[Note]
+    all.filters shouldBe List.empty[Filter]
+    all.reminders shouldBe List.empty[Reminder]
+  }
 }

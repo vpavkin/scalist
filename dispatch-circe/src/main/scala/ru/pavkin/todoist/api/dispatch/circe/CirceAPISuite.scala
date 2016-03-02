@@ -25,10 +25,10 @@ trait CirceAPISuite
     with AbstractDTOQueryAPISuite[DispatchAPI.Result, CirceDecoder.Result, Json, AllResources]
     with AbstractDTOCommandAPISuite[DispatchAPI.Result, CirceDecoder.Result, Json, RawCommandResult] {
 
-  implicit def commandDtoDecoder: SingleResponseDecoder.Aux[Result, Json, RawCommandResult] =
+  implicit def commandDtoDecoder: SingleResponseDecoder[Result, Json, RawCommandResult] =
     new CirceDecoder[RawCommandResult]
 
-  implicit def resourceDtoDecoder: SingleResponseDecoder.Aux[CirceDecoder.Result, Json, AllResources] =
+  implicit def resourceDtoDecoder: SingleResponseDecoder[CirceDecoder.Result, Json, AllResources] =
     new CirceDecoder[AllResources]
 
   def dtoDecodingError[T](msg: String): CirceDecoder.Result[T] = Xor.Left(DecodingFailure(msg, Nil))

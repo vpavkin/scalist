@@ -12,5 +12,5 @@ trait MultipleQueryDefinition[F[_], P[_], R <: HList, Base] extends RequestDefin
               FM: FlatMap[P],
               NC: R NotContainsConstraint RR,
               ir: HasRawRequest[RR],
-              parser: SingleResponseDecoder.Aux[P, Base, RR]): MultipleQueryDefinition[F, P, RR :: R, Base]
+              parser: SingleResponseDecoder[P, Base, RR]): MultipleQueryDefinition[F, P, RR :: R, Base]
 }

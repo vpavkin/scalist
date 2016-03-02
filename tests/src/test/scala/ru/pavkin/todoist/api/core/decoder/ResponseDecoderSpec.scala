@@ -29,11 +29,11 @@ class ResponseDecoderSpec extends FunSuite with Checkers with Matchers with Gene
     implicit val p1 = intParser
     implicit val p2 = doubleParser
 
-    implicitly[MultipleResponseDecoder.Aux[Id, String, Double :: Int :: HNil]]
-    implicitly[MultipleResponseDecoder.Aux[Id, String, Int :: Double :: HNil]]
-    implicitly[MultipleResponseDecoder.Aux[Id, String, Int :: HNil]]
+    implicitly[MultipleResponseDecoder[Id, String, Double :: Int :: HNil]]
+    implicitly[MultipleResponseDecoder[Id, String, Int :: Double :: HNil]]
+    implicitly[MultipleResponseDecoder[Id, String, Int :: HNil]]
 
-    illTyped("""implicitly[MultipleResponseDecoder.Aux[Id, String, String :: Int :: HNil]]""")
+    illTyped("""implicitly[MultipleResponseDecoder[Id, String, String :: Int :: HNil]]""")
   }
 
   test("ResponseDecoder identity") {

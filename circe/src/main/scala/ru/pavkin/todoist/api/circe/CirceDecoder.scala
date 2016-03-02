@@ -9,11 +9,9 @@ object CirceDecoder {
   type Result[T] = Xor[DecodingFailure, T]
 }
 
-case class CirceDecoder[A](implicit D: Decoder[A]) extends SingleResponseDecoder[Result, Json] {
+case class CirceDecoder[A](implicit D: Decoder[A]) extends SingleResponseDecoder[Result, Json, A] {
 
-  type Out = A
-
-  def parse(resource: Json): Result[Out] =
+  def parse(resource: Json): Result[A] =
     D.decodeJson(resource)
 }
 

@@ -1,11 +1,9 @@
 package ru.pavkin.todoist.api.core.decoder
 
-trait ResponseDecoder[F[_], Base] {self =>
-  type Out
+trait ResponseDecoder[F[_], Base, Out] {self =>
   def parse(resource: Base): F[Out]
 }
 
 object ResponseDecoder {
-  type Aux[F[_], Base, Out0] = ResponseDecoder[F, Base] {type Out = Out0}
-  def apply[F[_], Base, Out](implicit ev: Aux[F, Base, Out]): ResponseDecoder[F, Base] = ev
+  def apply[F[_], Base, Out](implicit ev: ResponseDecoder[F, Base, Out]): ResponseDecoder[F, Base, Out] = ev
 }
