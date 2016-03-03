@@ -59,6 +59,14 @@ case class AddLabel(name: String,
                     tempId: UUID @@ tags.LabelId = UUID.randomUUID().labelId)
   extends TempIdCommand[tags.LabelId]
 
+// todo: add attachment when API is clear
+case class AddNote[A: IsResourceId](content: String,
+                                    taskId: A @@ tags.TaskId,
+                                    notifyUsers: List[Int @@ tags.UserId] = Nil,
+                                    uuid: UUID = UUID.randomUUID(),
+                                    tempId: UUID @@ tags.NoteId = UUID.randomUUID().noteId)
+  extends TempIdCommand[tags.NoteId]
+
 case class UpdateProject[A: IsResourceId](id: A @@ tags.ProjectId,
                                           name: Option[String] = None,
                                           color: Option[ProjectColor] = None,

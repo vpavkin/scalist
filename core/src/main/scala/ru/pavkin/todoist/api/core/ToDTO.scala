@@ -14,7 +14,7 @@ object ToDTO {
   }
 
   object syntax {
-    implicit class Ops[Model, DTO](a: Model)(implicit F: ToDTO[Model, DTO]) {
+    implicit class ToDTOSyntaxOps[Model, DTO](a: Model)(implicit F: ToDTO[Model, DTO]) {
       def toDTO: DTO = F.produce(a)
     }
   }
@@ -68,6 +68,13 @@ object ToDTO {
       a.name,
       a.color.map(_.code),
       a.order
+    ))
+
+  implicit def addNoteToDTO[T: IsResourceId]: ToDTO[AddNote[T], dto.AddNote[T]] =
+    ToDTO(a => dto.AddNote[T](
+      a.content,
+      a.taskId,
+      a.notifyUsers.map(a => a: Int)
     ))
 
   implicit def updateTaskToDTO[T: IsResourceId]: ToDTO[UpdateTask[T], dto.UpdateTask[T]] =

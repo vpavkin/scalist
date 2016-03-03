@@ -9,6 +9,7 @@ trait CirceDTOEncoders {
 
   // commands
   implicit def addTaskEncoder[A: IsResourceId](implicit E: Encoder[A]) = Encoder[AddTask[A]]
+  implicit def addNoteEncoder[A: IsResourceId](implicit E: Encoder[A]) = Encoder[AddNote[A]]
   implicit val addTaskToInboxEncoder = Encoder[AddTaskToInbox]
   implicit val addProjectEncoder = Encoder[AddProject]
   implicit val addLabelEncoder = Encoder[AddLabel]

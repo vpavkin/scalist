@@ -14,6 +14,7 @@ class HasCommandTypeSpec extends FunSuite with Matchers with GeneratorDrivenProp
     AddLabel("1").commandType shouldBe "label_add"
     AddTask[Int]("1", 1.projectId).commandType shouldBe "item_add"
     AddTaskToInbox("1").commandType shouldBe "item_add"
+    AddNote[Int]("1", 1.taskId).commandType shouldBe "note_add"
     UpdateProject[Int](1.projectId).commandType shouldBe "project_update"
     UpdateLabel[Int](1.labelId).commandType shouldBe "label_update"
     UpdateTask[Int](1.taskId).commandType shouldBe "item_update"

@@ -90,6 +90,7 @@ class CirceModelAPISpec
     api.perform(AddLabel("A"))
     api.perform(AddTask("A", 1.projectId))
     api.perform(AddTaskToInbox("A"))
+    api.perform(AddNote("A", 1.taskId))
     api.perform(UpdateProject(1.projectId, Some("A")))
     api.perform(UpdateTask(1.taskId, Some("A")))
     api.perform(UpdateLabel(1.labelId, Some("A")))

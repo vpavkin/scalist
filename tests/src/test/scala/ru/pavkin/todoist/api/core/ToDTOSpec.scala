@@ -135,6 +135,24 @@ class ToDTOSpec extends FunSuite with Matchers with GeneratorDrivenPropertyCheck
     }
   }
 
+  def addNoteGen[T: IsResourceId](gen: Gen[T]): Gen[AddNote[T]] = for {
+    content <- arbitrary[String]
+    taskId <- gen.map(_.taskId)
+    notify <- Gen.listOf(Gen.posNum[Int]).map(_.userIds)
+  } yield AddNote(
+    content, taskId, notify
+  )
+
+  test("AddNote") {
+    forAll(addNoteGen(Gen.uuid)) { (p: AddNote[UUID]) =>
+      p.toDTO shouldBe dto.AddNote(
+        p.content,
+        p.taskId: UUID,
+        p.notifyUsers.map(a => a: Int)
+      )
+    }
+  }
+
   def updateProjectGen[T: IsResourceId](gen: Gen[T]): Gen[UpdateProject[T]] = for {
     o <- arbitrary[Option[Int]]
     p <- addProjectGen
