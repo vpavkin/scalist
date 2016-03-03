@@ -45,7 +45,7 @@ object FromDTO {
   }
 
   object syntax {
-    implicit class Ops[DTO, Model](a: DTO)(implicit F: FromDTO[DTO, Model]) {
+    implicit class FromDTOSyntaxOps[DTO, Model](a: DTO)(implicit F: FromDTO[DTO, Model]) {
       def toModel: Model = F.produce(a)
     }
   }
@@ -55,15 +55,15 @@ object FromDTO {
 
   private def taskDateFromDTO(due_date_utc: Option[String],
                               date_string: Option[String],
-                              date_lang: Option[String]): Option[model.TaskDate] = for {
+                              date_lang: Option[String]): Option[TaskDate] = for {
     date <- due_date_utc.flatMap(TodoistDate.parse)
     lang <- date_lang.map(DateLanguage.unsafeBy)
-  } yield model.TaskDate(date_string, lang, date)
+  } yield TaskDate(date_string, lang, date)
 
 
   implicit val projectsFromDTO: FromDTO[dto.Project, Project] = FromDTO(a =>
     if (!a.is_archived.toBool) {
-      model.RegularProject(
+      RegularProject(
         a.id.projectId,
         a.user_id.userId,
         a.name,
@@ -81,8 +81,8 @@ object FromDTO {
     }
   )
 
-  implicit val labelsFromDTO: FromDTO[dto.Label, model.Label] = FromDTO(a =>
-    model.Label(
+  implicit val labelsFromDTO: FromDTO[dto.Label, Label] = FromDTO(a =>
+    Label(
       a.id.labelId,
       a.uid.userId,
       a.name,
@@ -92,8 +92,8 @@ object FromDTO {
     )
   )
 
-  implicit val tasksFromDTO: FromDTO[dto.Task, model.Task] = FromDTO(a =>
-    model.Task(
+  implicit val tasksFromDTO: FromDTO[dto.Task, Task] = FromDTO(a =>
+    Task(
       a.id.taskId,
       a.user_id.userId,
       a.project_id.projectId,
@@ -115,8 +115,8 @@ object FromDTO {
     )
   )
 
-  implicit val filesFromDTO: FromDTO[dto.FileAttachment, model.FileAttachment] = FromDTO(a =>
-    model.FileAttachment(
+  implicit val filesFromDTO: FromDTO[dto.FileAttachment, FileAttachment] = FromDTO(a =>
+    FileAttachment(
       a.file_name,
       a.file_size,
       a.file_type,
@@ -125,8 +125,8 @@ object FromDTO {
     )
   )
 
-  implicit val notesFromDTO: FromDTO[dto.Note, model.Note] = FromDTO(a =>
-    model.Note(
+  implicit val notesFromDTO: FromDTO[dto.Note, Note] = FromDTO(a =>
+    Note(
       a.id.noteId,
       a.posted_uid.userId,
       a.item_id.taskId,
@@ -140,8 +140,8 @@ object FromDTO {
     )
   )
 
-  implicit val filtersFromDTO: FromDTO[dto.Filter, model.Filter] = FromDTO(a =>
-    model.Filter(
+  implicit val filtersFromDTO: FromDTO[dto.Filter, Filter] = FromDTO(a =>
+    Filter(
       a.id.filterId,
       a.name,
       a.query,
@@ -151,7 +151,7 @@ object FromDTO {
     )
   )
 
-  implicit val remindersFromDTO: FromDTO[dto.Reminder, model.Reminder] = FromDTO(a =>
+  implicit val remindersFromDTO: FromDTO[dto.Reminder, Reminder] = FromDTO(a =>
     (a.`type` match {
       case "relative" | "absolute" => for {
         dueDate <- taskDateFromDTO(a.due_date_utc, a.date_string, a.date_lang)
@@ -204,8 +204,8 @@ object FromDTO {
       idBased
   }
 
-  implicit val usersToDTO: FromDTO[dto.User, model.User] = FromDTO(a =>
-    model.User(
+  implicit val usersToDTO: FromDTO[dto.User, User] = FromDTO(a =>
+    User(
       a.id.userId,
       a.email,
       a.full_name,
@@ -236,15 +236,21 @@ object FromDTO {
     )
   )
 
+  // auth
+
+  implicit val accessTokenFromDTO: FromDTO[dto.AccessToken, AccessToken] = FromDTO(dto =>
+    AccessToken(dto.access_token, dto.token_type)
+  )
+
   // command results
 
-  implicit val singleCommandStatusFromDTO: FromDTO[dto.RawItemStatus, model.SingleCommandStatus] = FromDTO {
+  implicit val singleCommandStatusFromDTO: FromDTO[dto.RawItemStatus, SingleCommandStatus] = FromDTO {
     case Inl(_) => CommandSuccess
     case Inr(Inl(e)) => CommandFailure(e.error_code, e.error)
     case Inr(Inr(cNil)) => cNil.impossible
   }
 
-  implicit val commandStatusFromDTO: FromDTO[dto.RawCommandStatus, model.CommandStatus] = FromDTO {
+  implicit val commandStatusFromDTO: FromDTO[dto.RawCommandStatus, CommandStatus] = FromDTO {
     case Inl(_) => CommandSuccess
     case Inr(Inl(e)) => CommandFailure(e.error_code, e.error)
     case Inr(Inr(Inl(s))) => MultiItemCommandStatus(s.map {
@@ -255,7 +261,7 @@ object FromDTO {
   }
 
   def tempIdCommandStatusFromDTO(command: TempIdCommand[_],
-                                 result: dto.RawCommandResult): Option[model.TempIdCommandResult] =
+                                 result: dto.RawCommandResult): Option[TempIdCommandResult] =
     result.SyncStatus.get(command.uuid.toString).flatMap {
       case Inl(_) =>
         result.TempIdMapping

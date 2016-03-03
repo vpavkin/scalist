@@ -8,17 +8,6 @@ import org.scalatest.prop.GeneratorDrivenPropertyChecks
 import org.scalatest.{FunSuite, Matchers}
 import ru.pavkin.todoist.api
 import ru.pavkin.todoist.api.core.FromDTO.syntax._
-import ru.pavkin.todoist.api.core.dto.FileAttachment
-import ru.pavkin.todoist.api.core.dto.Filter
-import ru.pavkin.todoist.api.core.dto.Label
-import ru.pavkin.todoist.api.core.dto.Label
-import ru.pavkin.todoist.api.core.dto.Note
-import ru.pavkin.todoist.api.core.dto.Project
-import ru.pavkin.todoist.api.core.dto.Project
-import ru.pavkin.todoist.api.core.dto.Reminder
-import ru.pavkin.todoist.api.core.dto.Task
-import ru.pavkin.todoist.api.core.dto.Task
-import ru.pavkin.todoist.api.core.dto.User
 import ru.pavkin.todoist.api.core.dto._
 import ru.pavkin.todoist.api.core.model.TempIdCommandResult
 import ru.pavkin.todoist.api.core.model.TempIdFailure
@@ -262,7 +251,6 @@ class FromDTOSpec extends FunSuite with Matchers with GeneratorDrivenPropertyChe
     full_name <- arbitrary[String]
     inbox_project <- arbitrary[Int]
     timezone <- Gen.oneOf(TimeZone.getAvailableIDs.toList)
-    hr <- Gen.choose(0, 23)
     start_page <- arbitrary[String]
     start_day <- Gen.choose(1, 7)
     next_week <- Gen.choose(1, 7)
@@ -289,7 +277,7 @@ class FromDTOSpec extends FunSuite with Matchers with GeneratorDrivenPropertyChe
     a_m <- arbitrary[Option[String]]
     a_b <- arbitrary[Option[String]]
     a_640 <- arbitrary[Option[String]]
-  } yield User(id, email, full_name, inbox_project, timezone, TimeZoneOffset(s"+$hr:00", hr, 0),
+  } yield User(id, email, full_name, inbox_project, timezone, TimeZoneOffset(s"+00:00", 0, 0),
     start_page, start_day, next_week, time_format, date_format, sort_order, has_push, service, auto_reminder,
     mobile, mobile_host, completed, completed_today, karma, "up", premium_until.isDefined, premium_until,
     is_biz_admin, biz_id, image_id, beta, is_dummy, join_date, theme, a_sm, a_m, a_b, a_640)
@@ -326,6 +314,21 @@ class FromDTOSpec extends FunSuite with Matchers with GeneratorDrivenPropertyChe
         model.UserAvatars(
           t.avatar_small, t.avatar_medium, t.avatar_big, t.avatar_s640
         )
+      )
+    }
+  }
+
+  // auth
+
+  val accessTokenGen: Gen[AccessToken] = for {
+    token <- arbitrary[String]
+    tpe <- arbitrary[String]
+  } yield AccessToken(token, tpe)
+
+  test("AccessToken") {
+    forAll(accessTokenGen) { (l: AccessToken) =>
+      l.toModel shouldBe model.AccessToken(
+        l.access_token, l.token_type
       )
     }
   }
