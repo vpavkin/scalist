@@ -19,6 +19,11 @@ class HasCommandTypeSpec extends FunSuite with Matchers with GeneratorDrivenProp
     UpdateTask[Int](1.taskId).commandType shouldBe "item_update"
 
     DeleteProjects[Int](List(1.projectId)).commandType shouldBe "project_delete"
+    DeleteTasks[Int](List(1.taskId)).commandType shouldBe "item_delete"
+
+    CloseTask[Int](1.taskId).commandType shouldBe "item_close"
+    MoveTasks(Map.empty, 1.projectId).commandType shouldBe "item_move"
+    UncompleteTasks[Int](List(1.taskId)).commandType shouldBe "item_uncomplete"
     ArchiveProjects[Int](List(1.projectId)).commandType shouldBe "project_archive"
     UnarchiveProjects[Int](List(1.projectId)).commandType shouldBe "project_unarchive"
   }

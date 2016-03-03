@@ -16,7 +16,10 @@ trait CirceDTOEncoders {
   implicit def updateProjectEncoder[A: IsResourceId](implicit E: Encoder[A]) = Encoder[UpdateProject[A]]
   implicit def updateLabelEncoder[A: IsResourceId](implicit E: Encoder[A]) = Encoder[UpdateLabel[A]]
 
-  implicit def mulltiIdEncoder[A: IsResourceId](implicit E: Encoder[A]) = Encoder[MultipleIdCommand[A]]
+  implicit def singleIdEncoder[A: IsResourceId](implicit E: Encoder[A]) = Encoder[SingleIdCommand[A]]
+  implicit def multiIdEncoder[A: IsResourceId](implicit E: Encoder[A]) = Encoder[MultipleIdCommand[A]]
+
+  implicit val moveTasksEncoder = Encoder[MoveTasks]
 
   implicit def rawCommandEncoder[A](implicit E: Encoder[A]) =
     Encoder[RawCommand[A]]

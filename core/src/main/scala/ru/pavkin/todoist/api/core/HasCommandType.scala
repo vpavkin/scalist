@@ -28,6 +28,12 @@ object HasCommandType {
   implicit def updateLabel[T: IsResourceId]: HasCommandType[UpdateLabel[T]] = HasCommandType("label_update")
 
   implicit def deleteProjects[T: IsResourceId]: HasCommandType[DeleteProjects[T]] = HasCommandType("project_delete")
+  implicit def deleteTasks[T: IsResourceId]: HasCommandType[DeleteTasks[T]] = HasCommandType("item_delete")
+
+  implicit def closeTask[T: IsResourceId]: HasCommandType[CloseTask[T]] = HasCommandType("item_close")
+  implicit def uncompleteTasks[T: IsResourceId]: HasCommandType[UncompleteTasks[T]] = HasCommandType("item_uncomplete")
+  implicit val moveTasks: HasCommandType[MoveTasks] = HasCommandType("item_move")
+
   implicit def archiveProjects[T: IsResourceId]: HasCommandType[ArchiveProjects[T]] = HasCommandType("project_archive")
   implicit def unarchiveProjects[T: IsResourceId]: HasCommandType[UnarchiveProjects[T]] =
     HasCommandType("project_unarchive")

@@ -9,7 +9,7 @@ import org.scalatest.prop.GeneratorDrivenPropertyChecks
 import org.scalatest.{FunSuite, Matchers}
 import ru.pavkin.todoist.api.core.ToDTO.syntax._
 import ru.pavkin.todoist.api.core.model._
-import ru.pavkin.todoist.api.core.tags.ProjectId
+import ru.pavkin.todoist.api.core.tags.{TaskId, ProjectId}
 import shapeless.tag.@@
 import tags.syntax._
 
@@ -205,6 +205,31 @@ class ToDTOSpec extends FunSuite with Matchers with GeneratorDrivenPropertyCheck
     }
   }
 
+  val moveTasksGen: Gen[MoveTasks] = for {
+    tasks <- arbitrary[Map[Int, List[Int]]].map(_.map { case (k, v) => k.projectId -> v.taskIds })
+    p <- arbitrary[Int]
+  } yield MoveTasks(tasks, p.projectId)
+
+  test("MoveTasks") {
+    forAll(moveTasksGen) { (p: MoveTasks) =>
+      p.toDTO shouldBe dto.MoveTasks(
+        p.tasks.map { case (k, v) => k.toString -> v.map(a => a: Int) },
+        p.toProject: Int
+      )
+    }
+  }
+
+  def closeTaskGen[T: IsResourceId](gen: Gen[T]): Gen[CloseTask[T]] =
+    gen.map(t => CloseTask(t.taskId))
+
+  test("CloseTask") {
+    forAll(closeTaskGen(arbitrary[Int])) { (p: CloseTask[Int]) =>
+      p.toDTO shouldBe dto.SingleIdCommand(
+        p.task: Int
+      )
+    }
+  }
+
   def multipleIdCommandTest[T: IsResourceId, C, Tag](name: String,
                                                      commandFactory: List[T] => C,
                                                      extractor: C => List[T @@ Tag])
@@ -236,6 +261,18 @@ class ToDTOSpec extends FunSuite with Matchers with GeneratorDrivenPropertyCheck
     "UnarchiveProjects",
     ids => UnarchiveProjects(ids.projectIds),
     _.projects
+  )
+
+  multipleIdCommandTest[Int, UncompleteTasks[Int], TaskId](
+    "UncompleteTasks",
+    ids => UncompleteTasks(ids.taskIds),
+    _.tasks
+  )
+
+  multipleIdCommandTest[Int, DeleteTasks[Int], TaskId](
+    "DeleteTasks",
+    ids => DeleteTasks(ids.taskIds),
+    _.tasks
   )
 }
 

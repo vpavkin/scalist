@@ -103,6 +103,20 @@ object ToDTO {
   implicit def deleteProjectsToDTO[T: IsResourceId]: ToDTO[DeleteProjects[T], dto.MultipleIdCommand[T]] =
     ToDTO(a => dto.MultipleIdCommand[T](a.projects))
 
+  implicit def deleteTasksToDTO[T: IsResourceId]: ToDTO[DeleteTasks[T], dto.MultipleIdCommand[T]] =
+    ToDTO(a => dto.MultipleIdCommand[T](a.tasks))
+
+  implicit def moveTasksToDTO: ToDTO[MoveTasks, dto.MoveTasks] =
+    ToDTO(a => dto.MoveTasks(a.tasks.map {
+      case (pId, tasks) => pId.toString -> tasks.map(a => a: Int)
+    }, a.toProject: Int))
+
+  implicit def closeTaskToDTO[T: IsResourceId]: ToDTO[CloseTask[T], dto.SingleIdCommand[T]] =
+    ToDTO(a => dto.SingleIdCommand[T](a.task))
+
+  implicit def uncompleteTasksToDTO[T: IsResourceId]: ToDTO[UncompleteTasks[T], dto.MultipleIdCommand[T]] =
+    ToDTO(a => dto.MultipleIdCommand[T](a.tasks))
+
   implicit def archiveProjectsToDTO[T: IsResourceId]: ToDTO[ArchiveProjects[T], dto.MultipleIdCommand[T]] =
     ToDTO(a => dto.MultipleIdCommand[T](a.projects))
 
