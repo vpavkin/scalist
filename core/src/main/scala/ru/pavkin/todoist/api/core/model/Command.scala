@@ -97,6 +97,10 @@ case class DeleteProjects[A: IsResourceId](projects: List[A @@ tags.ProjectId],
                                            uuid: UUID = UUID.randomUUID())
   extends SimpleCommand
 
+case class DeleteLabel[A: IsResourceId](label: A @@ tags.LabelId,
+                                        uuid: UUID = UUID.randomUUID())
+  extends SimpleCommand
+
 case class MoveTasks(tasks: Map[Int @@ tags.ProjectId, List[Int @@ tags.TaskId]],
                      toProject: Int @@ tags.ProjectId,
                      uuid: UUID = UUID.randomUUID())

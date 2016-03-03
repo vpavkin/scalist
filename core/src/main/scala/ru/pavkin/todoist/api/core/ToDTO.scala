@@ -106,6 +106,10 @@ object ToDTO {
   implicit def deleteTasksToDTO[T: IsResourceId]: ToDTO[DeleteTasks[T], dto.MultipleIdCommand[T]] =
     ToDTO(a => dto.MultipleIdCommand[T](a.tasks))
 
+  implicit def deleteLabelToDTO[T: IsResourceId]: ToDTO[DeleteLabel[T], dto.SingleIdCommand[T]] =
+    ToDTO(a => dto.SingleIdCommand[T](a.label))
+
+
   implicit def moveTasksToDTO: ToDTO[MoveTasks, dto.MoveTasks] =
     ToDTO(a => dto.MoveTasks(a.tasks.map {
       case (pId, tasks) => pId.toString -> tasks.map(a => a: Int)

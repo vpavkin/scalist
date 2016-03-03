@@ -230,6 +230,17 @@ class ToDTOSpec extends FunSuite with Matchers with GeneratorDrivenPropertyCheck
     }
   }
 
+  def deleteLabelGen[T: IsResourceId](gen: Gen[T]): Gen[DeleteLabel[T]] =
+    gen.map(t => DeleteLabel(t.labelId))
+
+  test("DeleteLabel") {
+    forAll(deleteLabelGen(arbitrary[Int])) { (p: DeleteLabel[Int]) =>
+      p.toDTO shouldBe dto.SingleIdCommand(
+        p.label: Int
+      )
+    }
+  }
+
   def multipleIdCommandTest[T: IsResourceId, C, Tag](name: String,
                                                      commandFactory: List[T] => C,
                                                      extractor: C => List[T @@ Tag])

@@ -94,6 +94,7 @@ class CirceModelAPISpec
     api.perform(UpdateTask(1.taskId, Some("A")))
     api.perform(UpdateLabel(1.labelId, Some("A")))
     api.perform(DeleteProjects(List(1, 2).projectIds))
+    api.perform(DeleteLabel(1.labelId))
     api.perform(DeleteTasks(List(1, 2).taskIds))
 
     api.perform(MoveTasks(Map.empty, 1.projectId))
