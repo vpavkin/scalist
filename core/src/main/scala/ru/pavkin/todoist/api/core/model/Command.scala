@@ -88,3 +88,15 @@ case class UpdateLabel[A: IsResourceId](id: A @@ tags.LabelId,
                                         order: Option[Int] = None,
                                         uuid: UUID = UUID.randomUUID())
   extends SimpleCommand
+
+case class DeleteProjects[A: IsResourceId](projects: List[A @@ tags.ProjectId],
+                                           uuid: UUID = UUID.randomUUID())
+  extends SimpleCommand
+
+case class ArchiveProjects[A: IsResourceId](projects: List[A @@ tags.ProjectId],
+                                            uuid: UUID = UUID.randomUUID())
+  extends SimpleCommand
+
+case class UnarchiveProjects[A: IsResourceId](projects: List[A @@ tags.ProjectId],
+                                              uuid: UUID = UUID.randomUUID())
+  extends SimpleCommand

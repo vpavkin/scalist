@@ -99,4 +99,13 @@ object ToDTO {
       a.color.map(_.code),
       a.order
     ))
+
+  implicit def deleteProjectsToDTO[T: IsResourceId]: ToDTO[DeleteProjects[T], dto.MultipleIdCommand[T]] =
+    ToDTO(a => dto.MultipleIdCommand[T](a.projects))
+
+  implicit def archiveProjectsToDTO[T: IsResourceId]: ToDTO[ArchiveProjects[T], dto.MultipleIdCommand[T]] =
+    ToDTO(a => dto.MultipleIdCommand[T](a.projects))
+
+  implicit def unarchiveProjectsToDTO[T: IsResourceId]: ToDTO[UnarchiveProjects[T], dto.MultipleIdCommand[T]] =
+    ToDTO(a => dto.MultipleIdCommand[T](a.projects))
 }

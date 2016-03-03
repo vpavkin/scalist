@@ -4,14 +4,18 @@ import java.text.SimpleDateFormat
 import java.util.{UUID, Date}
 
 import org.scalacheck.Arbitrary._
-import org.scalacheck.Gen
+import org.scalacheck.{Arbitrary, Gen}
 import org.scalatest.prop.GeneratorDrivenPropertyChecks
 import org.scalatest.{FunSuite, Matchers}
 import ru.pavkin.todoist.api.core.ToDTO.syntax._
 import ru.pavkin.todoist.api.core.model._
+import ru.pavkin.todoist.api.core.tags.ProjectId
+import shapeless.tag.@@
 import tags.syntax._
 
 class ToDTOSpec extends FunSuite with Matchers with GeneratorDrivenPropertyChecks {
+
+  implicit val arbitraryUUID = Arbitrary(Gen.uuid)
 
   val addProjectGen: Gen[AddProject] = for {
     name <- arbitrary[String]
@@ -200,5 +204,38 @@ class ToDTOSpec extends FunSuite with Matchers with GeneratorDrivenPropertyCheck
       )
     }
   }
+
+  def multipleIdCommandTest[T: IsResourceId, C, Tag](name: String,
+                                                     commandFactory: List[T] => C,
+                                                     extractor: C => List[T @@ Tag])
+                                                    (implicit gen: Arbitrary[T],
+                                                     toDTO: ToDTO[C, dto.MultipleIdCommand[T]]) = {
+    val generator = for {
+      ids <- Gen.nonEmptyListOf(arbitrary[T])
+    } yield commandFactory(ids)
+    test(name) {
+      forAll(generator) { (p: C) =>
+        p.toDTO shouldBe dto.MultipleIdCommand[T](extractor(p).map(a => a: T))
+      }
+    }
+  }
+
+  multipleIdCommandTest[Int, DeleteProjects[Int], ProjectId](
+    "DeleteProjects",
+    ids => DeleteProjects(ids.projectIds),
+    _.projects
+  )
+
+  multipleIdCommandTest[UUID, ArchiveProjects[UUID], ProjectId](
+    "ArchiveProjects",
+    ids => ArchiveProjects(ids.projectIds),
+    _.projects
+  )
+
+  multipleIdCommandTest[Int, UnarchiveProjects[Int], ProjectId](
+    "UnarchiveProjects",
+    ids => UnarchiveProjects(ids.projectIds),
+    _.projects
+  )
 }
 

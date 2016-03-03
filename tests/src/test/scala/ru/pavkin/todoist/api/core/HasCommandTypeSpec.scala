@@ -17,6 +17,10 @@ class HasCommandTypeSpec extends FunSuite with Matchers with GeneratorDrivenProp
     UpdateProject[Int](1.projectId).commandType shouldBe "project_update"
     UpdateLabel[Int](1.labelId).commandType shouldBe "label_update"
     UpdateTask[Int](1.taskId).commandType shouldBe "item_update"
+
+    DeleteProjects[Int](List(1.projectId)).commandType shouldBe "project_delete"
+    ArchiveProjects[Int](List(1.projectId)).commandType shouldBe "project_archive"
+    UnarchiveProjects[Int](List(1.projectId)).commandType shouldBe "project_unarchive"
   }
 
   test("Other types don't have commandType") {

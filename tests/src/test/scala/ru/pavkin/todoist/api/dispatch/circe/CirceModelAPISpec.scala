@@ -57,7 +57,7 @@ class CirceModelAPISpec
     illTyped("""api.getAll[Labels :: Projects :: Labels :: HNil]""")
   }
 
-  test("Dispatch Circe API command test suite") {
+  test("Dispatch Circe API command syntax test suite") {
     val api = todoist.withToken("token")
 
     api.perform(AddProject("Learn Scalist"))
@@ -82,6 +82,20 @@ class CirceModelAPISpec
         AddTask("task1", id) :+ AddTask("task2", id)
       ) :+ AddLabel("label")
     )
+  }
+
+  test("Dispatch Circe API command support test suite") {
+    val api = todoist.withToken("token")
+    api.perform(AddProject("A"))
+    api.perform(AddLabel("A"))
+    api.perform(AddTask("A", 1.projectId))
+    api.perform(AddTaskToInbox("A"))
+    api.perform(UpdateProject(1.projectId, Some("A")))
+    api.perform(UpdateTask(1.taskId, Some("A")))
+    api.perform(UpdateLabel(1.labelId, Some("A")))
+    api.perform(DeleteProjects(List(1, 2).projectIds))
+    api.perform(ArchiveProjects(List(1, 2).projectIds))
+    api.perform(UnarchiveProjects(List(1, 2).projectIds))
   }
 
   test("Dispatch Circe OAuth API test suite") {

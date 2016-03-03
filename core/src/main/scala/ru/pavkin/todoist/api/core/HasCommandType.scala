@@ -27,4 +27,8 @@ object HasCommandType {
   implicit def updateTask[T: IsResourceId]: HasCommandType[UpdateTask[T]] = HasCommandType("item_update")
   implicit def updateLabel[T: IsResourceId]: HasCommandType[UpdateLabel[T]] = HasCommandType("label_update")
 
+  implicit def deleteProjects[T: IsResourceId]: HasCommandType[DeleteProjects[T]] = HasCommandType("project_delete")
+  implicit def archiveProjects[T: IsResourceId]: HasCommandType[ArchiveProjects[T]] = HasCommandType("project_archive")
+  implicit def unarchiveProjects[T: IsResourceId]: HasCommandType[UnarchiveProjects[T]] =
+    HasCommandType("project_unarchive")
 }
