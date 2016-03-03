@@ -6,9 +6,9 @@ import cats.std.FutureInstances
 import cats.{Apply, Functor}
 import io.circe.{DecodingFailure, Json}
 import ru.pavkin.todoist.api._
-import ru.pavkin.todoist.api.core.{ExecutedAPI, AuthorizedRequestFactory, RequestExecutor}
+import ru.pavkin.todoist.api.core._
 import DispatchJsonRequestExecutor.ParsingError
-import ru.pavkin.todoist.api.utils.{ComposeApply, Flattener}
+import ru.pavkin.todoist.api.utils.{Produce, ComposeApply, Flattener}
 
 import scala.concurrent.{ExecutionContext, Future}
 
@@ -42,12 +42,18 @@ object DispatchAPI extends FutureInstances with ComposeApply {
 
 import DispatchAPI._
 
-class DispatchAPI(override val requestFactory: AuthorizedRequestFactory[RawRequest, Req],
-                  override val executor: RequestExecutor.Aux[Req, DispatchJsonRequestExecutor.Result, Json])
-                 (override implicit val F: Functor[L],
-                  implicit val ec: ExecutionContext)
-  extends ExecutedAPI[Result, L, P, Req, Json] {
-
+abstract class DispatchAPI(override val executor: RequestExecutor.Aux[Req, DispatchJsonRequestExecutor.Result, Json])
+                          (override implicit val F: Functor[L],
+                           implicit val ec: ExecutionContext) extends ExecutedAPI[Result, L, P, Req, Json] {
   override val flattener = new DispatchFlattener
-
 }
+
+class DispatchAuthorizedAPI(override val requestFactory: AuthorizedRequestFactory[RawRequest, Req],
+                            override val executor: RequestExecutor.Aux[Req, DispatchJsonRequestExecutor.Result, Json])
+                           (override implicit val ec: ExecutionContext)
+  extends DispatchAPI(executor) with ExecutedAuthorizedAPI[Result, L, P, Req, Json]
+
+class DispatchOAuthAPI(override val requestFactory: RawRequest Produce Req,
+                            override val executor: RequestExecutor.Aux[Req, DispatchJsonRequestExecutor.Result, Json])
+                           (override implicit val ec: ExecutionContext)
+  extends DispatchAPI(executor) with ExecutedOAuthAPI[Result, L, P, Req, Json]

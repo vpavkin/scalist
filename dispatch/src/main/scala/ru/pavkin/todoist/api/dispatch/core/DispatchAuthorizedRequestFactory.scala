@@ -8,7 +8,7 @@ import ru.pavkin.todoist.api.core.AuthorizedRequestFactory
 case class DispatchAuthorizedRequestFactory(token: Token) extends AuthorizedRequestFactory[RawRequest, Req] {
 
   def produce(resources: RawRequest): Req =
-    url(api.url)
+    url(api.syncURL)
       .POST
       .<<?(Map(
         "token" -> token,

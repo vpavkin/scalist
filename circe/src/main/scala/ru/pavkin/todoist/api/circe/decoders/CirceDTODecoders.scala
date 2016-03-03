@@ -28,6 +28,7 @@ trait CirceDTODecoders extends PlainCoproductDecoder {
     }, DecodingFailure("Couldn't parse timezone offset", Nil))
   )
   implicit val userDTODecoder = Decoder[User]
+  implicit val accessTokenDTODecoder = Decoder[AccessToken]
 
   implicit val projectsDTODecoder = Decoder[List[Project]]
   implicit val labelsDTODecoder = Decoder[List[Label]]

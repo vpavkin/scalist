@@ -5,13 +5,15 @@ import cats.std.list._
 import ru.pavkin.todoist.api.RawRequest
 import ru.pavkin.todoist.api.core.FromDTO.syntax._
 import ru.pavkin.todoist.api.core.decoder.{SingleCommandResponseDecoder, SingleResponseDecoder}
+import ru.pavkin.todoist.api.core.dto
 import ru.pavkin.todoist.api.core.model._
 import ru.pavkin.todoist.api.core.model.util.{CombineCommands, CommandResultHList, ReversedAtSyntax}
-import ru.pavkin.todoist.api.core.{dto, _}
+import ru.pavkin.todoist.api.core._
 
 trait ModelAPISuite[F[_], P[_], Base]
   extends AbstractDTOQueryAPISuite[F, P, Base, dto.AllResources]
-    with AbstractDTOCommandAPISuite[F, P, Base, dto.RawCommandResult] {
+    with AbstractDTOCommandAPISuite[F, P, Base, dto.RawCommandResult]
+    with AbstractOAuthAPISuite[F, P, Base, dto.AccessToken] {
 
   type Projects = List[model.Project]
   type Labels = List[model.Label]
@@ -86,6 +88,9 @@ trait ModelAPISuite[F[_], P[_], Base]
     def rawRequest(c: A): RawRequest =
       dto.RawTempIdCommand(T.commandType, c.uuid, D.produce(c), c.tempId).toRawRequest
   }
+
+  def dtoToAccessToken(implicit M: Monad[P]): SingleResponseDecoder[P, dto.AccessToken, model.AccessToken] =
+    SingleResponseDecoder.using(d => M.pure(d.toModel))
 
   object syntax
     extends QuerySyntax

@@ -1,8 +1,10 @@
 package ru.pavkin.todoist.api.dispatch.circe
 
 import io.circe.Json
+import org.scalacheck.{Arbitrary, Gen}
+import org.scalacheck.Arbitrary._
 import org.scalatest.{Matchers, FunSuite}
-import org.scalatest.prop.Checkers
+import org.scalatest.prop.{GeneratorDrivenPropertyChecks, Checkers}
 import ru.pavkin.todoist.api.circe.CirceDecoder
 import ru.pavkin.todoist.api.core.model._
 import ru.pavkin.todoist.api.core.query.{MultipleQueryDefinition, SingleQueryDefinition}
@@ -13,7 +15,7 @@ import shapeless.{::, HNil}
 import scala.concurrent.ExecutionContext.Implicits.global
 
 class CirceModelAPISpec
-  extends FunSuite with Checkers with Matchers with CirceModelAPISuite {
+  extends FunSuite with GeneratorDrivenPropertyChecks with Matchers with CirceModelAPISuite {
 
   import syntax._
 
@@ -81,6 +83,34 @@ class CirceModelAPISpec
       ) :+ AddLabel("label")
     )
   }
+
+  test("Dispatch Circe OAuth API test suite") {
+    implicit val genTokenScope: Gen[TokenScope] = Gen.choose(0, 4).flatMap {
+      case 0 => TokenScope.AddTasks
+      case 1 => TokenScope.Read
+      case 2 => TokenScope.ReadWrite
+      case 3 => TokenScope.Delete
+      case 4 => TokenScope.DeleteProjects
+    }
+    implicit val arbTokenScope = Arbitrary(genTokenScope)
+
+    val oAuthStep1Gen = for {
+      scope <- arbitrary[Set[TokenScope]]
+      clientId <- arbitrary[String]
+      state <- arbitrary[String]
+    } yield (clientId, scope, state)
+
+    forAll(oAuthStep1Gen) { tuple =>
+      todoist.auth.oAuthStep1URL(tuple._1, tuple._2, tuple._3) shouldBe
+        s"https://todoist.com/oauth/authorize?" +
+          s"client_id=${tuple._1}&" +
+          s"state=${tuple._3}&" +
+          s"scope=${tuple._2.map(_.name).mkString(",")}"
+    }
+
+    todoist.auth.oAuthStep3(TokenExchange("", "", ""))
+  }
+
 
   // todo: extract generators and use them here
   test("Query result syntax test") {

@@ -7,7 +7,7 @@ import ru.pavkin.todoist.api.utils.IsDistinctConstraint
 import shapeless._
 import shapeless.ops.hlist.Reverse
 
-trait API[F[_], P[_], Base] {
+trait AuthorizedAPI[F[_], P[_], Base] {
   def get[R](implicit
              IR: HasRawRequest[R],
              parser: SingleResponseDecoder[P, Base, R]): SingleQueryDefinition[F, P, R, Base]
