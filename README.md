@@ -28,7 +28,8 @@ Project is at early stages now. Implemented feature set is not complete and ther
   2. [API dependencies](#api-dependencies)
   3. [Type safety](#type-safety)
 3. [Documentation](#documentation)
-4. [Contributing](#contributing)
+4. [Supported commands list](#supported-commands-list)
+5. [Contributing](#contributing)
 
 
 ## Getting started
@@ -37,7 +38,7 @@ Project is at early stages now. Implemented feature set is not complete and ther
 Currently, there's only one API implementation, based on [Dispatch HTTP](https://github.com/dispatch/reboot) and [Circe JSON](https://github.com/travisbrown/circe) libraries. To get it, include this in your `build.sbt`:
 
 ```scala
-libraryDependencies += "ru.vpavkin" %% "scalist-dispatch-circe" % "0.1.0"
+libraryDependencies += "ru.vpavkin" %% "scalist-dispatch-circe" % "0.2.0"
 ```
 
 Next, import the API toolkit where you need it:
@@ -283,6 +284,36 @@ For now, please, check the [Getting started](#getting-started) guide or [file an
 Scaladocs are located [here](http://vpavkin.github.io/scalist/api/#package).
 
 Model classes are good to study right in the [source](https://github.com/vpavkin/scalist/tree/master/core/src/main/scala/ru/pavkin/todoist/api/core/model).
+
+## Supported command list
+
+Full list of commands, currently supported by Scalist:
+
+- AddAbsoluteTimeBasedReminder
+- AddFilter
+- AddLabel
+- AddLocationBasedReminder
+- AddNote
+- AddProject
+- AddRelativeTimeBasedReminder
+- AddTask
+- AddTaskToInbox
+- ArchiveProjects
+- CloseTask
+- DeleteFilter
+- DeleteLabel
+- DeleteNote
+- DeleteProjects
+- DeleteReminder
+- DeleteTasks
+- MoveTasks
+- UnarchiveProjects
+- UncompleteTasks
+- UpdateFilter
+- UpdateLabel
+- UpdateNote
+- UpdateProject
+- UpdateTask
 
 ## Contributing
 
