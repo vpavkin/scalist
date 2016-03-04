@@ -147,6 +147,21 @@ object ToDTO {
       a.order
     ))
 
+  implicit def updateFilterToDTO[T: IsResourceId]: ToDTO[UpdateFilter[T], dto.UpdateFilter[T]] =
+    ToDTO(a => dto.UpdateFilter[T](
+      a.id,
+      a.name,
+      a.query,
+      a.color.map(_.code),
+      a.order
+    ))
+
+  implicit def updateNoteToDTO[T: IsResourceId]: ToDTO[UpdateNote[T], dto.UpdateNote[T]] =
+    ToDTO(a => dto.UpdateNote[T](
+      a.id,
+      a.content
+    ))
+
   implicit def deleteProjectsToDTO[T: IsResourceId]: ToDTO[DeleteProjects[T], dto.MultipleIdCommand[T]] =
     ToDTO(a => dto.MultipleIdCommand[T](a.projects))
 

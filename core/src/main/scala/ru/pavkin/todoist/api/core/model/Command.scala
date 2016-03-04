@@ -132,6 +132,19 @@ case class UpdateLabel[A: IsResourceId](id: A @@ tags.LabelId,
                                         uuid: UUID = UUID.randomUUID())
   extends SimpleCommand
 
+case class UpdateFilter[A: IsResourceId](id: A @@ tags.FilterId,
+                                         name: Option[String] = None,
+                                         query: Option[String] = None,
+                                         color: Option[LabelColor] = None,
+                                         order: Option[Int] = None,
+                                         uuid: UUID = UUID.randomUUID())
+  extends SimpleCommand
+
+case class UpdateNote[A: IsResourceId](id: A @@ tags.NoteId,
+                                       content: Option[String] = None,
+                                       uuid: UUID = UUID.randomUUID())
+  extends SimpleCommand
+
 case class DeleteTasks[A: IsResourceId](tasks: List[A @@ tags.TaskId],
                                         uuid: UUID = UUID.randomUUID())
   extends SimpleCommand
