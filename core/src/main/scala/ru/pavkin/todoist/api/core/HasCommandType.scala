@@ -40,6 +40,9 @@ object HasCommandType {
   implicit def deleteProjects[T: IsResourceId]: HasCommandType[DeleteProjects[T]] = HasCommandType("project_delete")
   implicit def deleteTasks[T: IsResourceId]: HasCommandType[DeleteTasks[T]] = HasCommandType("item_delete")
   implicit def deleteLabel[T: IsResourceId]: HasCommandType[DeleteLabel[T]] = HasCommandType("label_delete")
+  implicit def deleteNote[T: IsResourceId]: HasCommandType[DeleteNote[T]] = HasCommandType("note_delete")
+  implicit def deleteFilter[T: IsResourceId]: HasCommandType[DeleteFilter[T]] = HasCommandType("filter_delete")
+  implicit def deleteReminder[T: IsResourceId]: HasCommandType[DeleteReminder[T]] = HasCommandType("reminder_delete")
 
   implicit def closeTask[T: IsResourceId]: HasCommandType[CloseTask[T]] = HasCommandType("item_close")
   implicit def uncompleteTasks[T: IsResourceId]: HasCommandType[UncompleteTasks[T]] = HasCommandType("item_uncomplete")

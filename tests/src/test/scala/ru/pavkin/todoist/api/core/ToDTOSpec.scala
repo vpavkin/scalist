@@ -8,7 +8,7 @@ import org.scalatest.prop.GeneratorDrivenPropertyChecks
 import org.scalatest.{FunSuite, Matchers}
 import ru.pavkin.todoist.api.core.ToDTO.syntax._
 import ru.pavkin.todoist.api.core.model._
-import ru.pavkin.todoist.api.core.tags.{TaskId, ProjectId}
+import ru.pavkin.todoist.api.core.tags._
 import shapeless.tag.@@
 import tags.syntax._
 import ReminderPeriod._
@@ -359,28 +359,49 @@ class ToDTOSpec extends FunSuite with Matchers with GeneratorDrivenPropertyCheck
     }
   }
 
-  def closeTaskGen[T: IsResourceId](gen: Gen[T]): Gen[CloseTask[T]] =
-    gen.map(t => CloseTask(t.taskId))
+  def singleIdCommandTest[T: IsResourceId, C, Tag](name: String,
+                                                   commandFactory: T => C,
+                                                   extractor: C => T @@ Tag)
+                                                  (implicit gen: Arbitrary[T],
+                                                   toDTO: ToDTO[C, dto.SingleIdCommand[T]]) = {
+    val generator = arbitrary[T].map(commandFactory)
 
-  test("CloseTask") {
-    forAll(closeTaskGen(arbitrary[Int])) { (p: CloseTask[Int]) =>
-      p.toDTO shouldBe dto.SingleIdCommand(
-        p.task: Int
-      )
+    test(name) {
+      forAll(generator) { (p: C) =>
+        p.toDTO shouldBe dto.SingleIdCommand[T](extractor(p): T)
+      }
     }
   }
 
-  def deleteLabelGen[T: IsResourceId](gen: Gen[T]): Gen[DeleteLabel[T]] =
-    gen.map(t => DeleteLabel(t.labelId))
+  singleIdCommandTest[Int, CloseTask[Int], TaskId](
+    "CloseTask",
+    id => CloseTask(id.taskId),
+    _.task
+  )
 
-  test("DeleteLabel") {
-    forAll(deleteLabelGen(arbitrary[Int])) { (p: DeleteLabel[Int]) =>
-      p.toDTO shouldBe dto.SingleIdCommand(
-        p.label: Int
-      )
-    }
-  }
+  singleIdCommandTest[Int, DeleteFilter[Int], FilterId](
+    "DeleteFilter",
+    id => DeleteFilter(id.filterId),
+    _.filter
+  )
 
+  singleIdCommandTest[Int, DeleteNote[Int], NoteId](
+    "DeleteNote",
+    id => DeleteNote(id.noteId),
+    _.note
+  )
+
+  singleIdCommandTest[Int, DeleteReminder[Int], ReminderId](
+    "DeleteReminder",
+    id => DeleteReminder(id.reminderId),
+    _.reminder
+  )
+
+  singleIdCommandTest[Int, DeleteLabel[Int], LabelId](
+    "DeleteLabel",
+    id => DeleteLabel(id.labelId),
+    _.label
+  )
   def multipleIdCommandTest[T: IsResourceId, C, Tag](name: String,
                                                      commandFactory: List[T] => C,
                                                      extractor: C => List[T @@ Tag])

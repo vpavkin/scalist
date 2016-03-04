@@ -171,6 +171,14 @@ object ToDTO {
   implicit def deleteLabelToDTO[T: IsResourceId]: ToDTO[DeleteLabel[T], dto.SingleIdCommand[T]] =
     ToDTO(a => dto.SingleIdCommand[T](a.label))
 
+  implicit def deleteFilterToDTO[T: IsResourceId]: ToDTO[DeleteFilter[T], dto.SingleIdCommand[T]] =
+    ToDTO(a => dto.SingleIdCommand[T](a.filter))
+
+  implicit def deleteNoteToDTO[T: IsResourceId]: ToDTO[DeleteNote[T], dto.SingleIdCommand[T]] =
+    ToDTO(a => dto.SingleIdCommand[T](a.note))
+
+  implicit def deleteReminderToDTO[T: IsResourceId]: ToDTO[DeleteReminder[T], dto.SingleIdCommand[T]] =
+    ToDTO(a => dto.SingleIdCommand[T](a.reminder))
 
   implicit def moveTasksToDTO: ToDTO[MoveTasks, dto.MoveTasks] =
     ToDTO(a => dto.MoveTasks(a.tasks.map {

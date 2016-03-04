@@ -157,6 +157,18 @@ case class DeleteLabel[A: IsResourceId](label: A @@ tags.LabelId,
                                         uuid: UUID = UUID.randomUUID())
   extends SimpleCommand
 
+case class DeleteFilter[A: IsResourceId](filter: A @@ tags.FilterId,
+                                        uuid: UUID = UUID.randomUUID())
+  extends SimpleCommand
+
+case class DeleteNote[A: IsResourceId](note: A @@ tags.NoteId,
+                                        uuid: UUID = UUID.randomUUID())
+  extends SimpleCommand
+
+case class DeleteReminder[A: IsResourceId](reminder: A @@ tags.ReminderId,
+                                        uuid: UUID = UUID.randomUUID())
+  extends SimpleCommand
+
 case class MoveTasks(tasks: Map[Int @@ tags.ProjectId, List[Int @@ tags.TaskId]],
                      toProject: Int @@ tags.ProjectId,
                      uuid: UUID = UUID.randomUUID())
