@@ -4,12 +4,23 @@ import ru.pavkin.todoist.api
 import ru.pavkin.todoist.api.core.tags
 import shapeless.tag.@@
 
-sealed trait ReminderService
-case object Push extends ReminderService
-case object SMS extends ReminderService
-case object Email extends ReminderService
+sealed trait ReminderService {
+
+  import ReminderService._
+
+  def name: String = this match {
+    case Push => "push"
+    case SMS => "mobile"
+    case Email => "email"
+  }
+}
 
 object ReminderService {
+
+  case object Push extends ReminderService
+  case object SMS extends ReminderService
+  case object Email extends ReminderService
+
   def unsafeBy(code: String): ReminderService = code match {
     case "email" => Email
     case "mobile" => SMS
@@ -56,11 +67,20 @@ case class LocationBasedReminder(id: Int @@ tags.ReminderId,
                                  isDeleted: Boolean) extends Reminder
 
 object LocationBasedReminder {
-  sealed trait TriggerKind
-  case object Enter extends TriggerKind
-  case object Leave extends TriggerKind
+  sealed trait TriggerKind {
+
+    import TriggerKind._
+
+    def name: String = this match {
+      case Enter => "on_enter"
+      case Leave => "on_leave"
+    }
+  }
 
   object TriggerKind {
+    case object Enter extends TriggerKind
+    case object Leave extends TriggerKind
+
     def unsafeBy(code: String): TriggerKind = code match {
       case "on_enter" => Enter
       case "on_leave" => Leave

@@ -70,11 +70,51 @@ object ToDTO {
       a.order
     ))
 
+  implicit val addFilterToDTO: ToDTO[AddFilter, dto.AddFilter] =
+    ToDTO(a => dto.AddFilter(
+      a.name,
+      a.query,
+      a.color.code,
+      a.order
+    ))
+
   implicit def addNoteToDTO[T: IsResourceId]: ToDTO[AddNote[T], dto.AddNote[T]] =
     ToDTO(a => dto.AddNote[T](
       a.content,
       a.taskId,
       a.notifyUsers.map(a => a: Int)
+    ))
+
+  implicit def addRelativeReminderToDTO[T: IsResourceId]: ToDTO[AddRelativeTimeBasedReminder[T], dto.AddReminder[T]] =
+    ToDTO(a => dto.AddReminder[T](
+      a.taskId,
+      "relative",
+      a.subscriber.map(s => s: Int),
+      Some(a.service.name),
+      minute_offset = Some(a.minutesBefore.minutes)
+    ))
+
+  implicit def addAbsoluteReminderToDTO[T: IsResourceId]: ToDTO[AddAbsoluteTimeBasedReminder[T], dto.AddReminder[T]] =
+    ToDTO(a => dto.AddReminder[T](
+      a.taskId,
+      "absolute",
+      a.subscriber.map(s => s: Int),
+      Some(a.service.name),
+      a.dueDate.text,
+      Some(a.dueDate.language.code),
+      Some(TodoistDate.format(a.dueDate.dueDateUTC))
+    ))
+
+  implicit def addLocationReminderToDTO[T: IsResourceId]: ToDTO[AddLocationBasedReminder[T], dto.AddReminder[T]] =
+    ToDTO(a => dto.AddReminder[T](
+      a.taskId,
+      "location",
+      a.subscriber.map(s => s: Int),
+      name = Some(a.locationName),
+      loc_lat = Some(a.latitude.toString),
+      loc_long = Some(a.longitude.toString),
+      loc_trigger = Some(a.triggerKind.name),
+      radius = Some(a.radiusInMeters)
     ))
 
   implicit def updateTaskToDTO[T: IsResourceId]: ToDTO[UpdateTask[T], dto.UpdateTask[T]] =

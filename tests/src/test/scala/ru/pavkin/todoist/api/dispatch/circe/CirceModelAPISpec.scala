@@ -6,6 +6,7 @@ import org.scalacheck.Arbitrary._
 import org.scalatest.{Matchers, FunSuite}
 import org.scalatest.prop.{GeneratorDrivenPropertyChecks, Checkers}
 import ru.pavkin.todoist.api.circe.CirceDecoder
+import ru.pavkin.todoist.api.core.model.LocationBasedReminder.TriggerKind
 import ru.pavkin.todoist.api.core.model._
 import ru.pavkin.todoist.api.core.query.{MultipleQueryDefinition, SingleQueryDefinition}
 import ru.pavkin.todoist.api.dispatch.impl.circe.DispatchAPI
@@ -91,6 +92,20 @@ class CirceModelAPISpec
     api.perform(AddTask("A", 1.projectId))
     api.perform(AddTaskToInbox("A"))
     api.perform(AddNote("A", 1.taskId))
+    api.perform(AddFilter("1", "1"))
+    api.perform(AddRelativeTimeBasedReminder[Int](
+      1.taskId,
+      ReminderService.Push,
+      ReminderPeriod.min30
+    ))
+    api.perform(AddLocationBasedReminder[Int](
+      1.taskId,
+      "1",
+      1.0,
+      1.0,
+      TriggerKind.Enter,
+      100
+    ))
     api.perform(UpdateProject(1.projectId, Some("A")))
     api.perform(UpdateTask(1.taskId, Some("A")))
     api.perform(UpdateLabel(1.labelId, Some("A")))

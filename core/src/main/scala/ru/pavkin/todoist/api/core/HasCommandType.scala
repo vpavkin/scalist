@@ -20,9 +20,16 @@ object HasCommandType {
 
   implicit val addProject: HasCommandType[AddProject] = HasCommandType("project_add")
   implicit def addTask[T: IsResourceId]: HasCommandType[AddTask[T]] = HasCommandType("item_add")
-  implicit def addNote[T: IsResourceId]: HasCommandType[AddNote[T]] = HasCommandType("note_add")
   implicit val addTaskToInbox: HasCommandType[AddTaskToInbox] = HasCommandType("item_add")
+  implicit def addNote[T: IsResourceId]: HasCommandType[AddNote[T]] = HasCommandType("note_add")
+  implicit def addRelativeReminder[T: IsResourceId]: HasCommandType[AddRelativeTimeBasedReminder[T]] =
+    HasCommandType("reminder_add")
+  implicit def addAbsoluteReminder[T: IsResourceId]: HasCommandType[AddAbsoluteTimeBasedReminder[T]] =
+    HasCommandType("reminder_add")
+  implicit def addLocationReminder[T: IsResourceId]: HasCommandType[AddLocationBasedReminder[T]] =
+    HasCommandType("reminder_add")
   implicit val addLabel: HasCommandType[AddLabel] = HasCommandType("label_add")
+  implicit val addFilter: HasCommandType[AddFilter] = HasCommandType("filter_add")
 
   implicit def updateProject[T: IsResourceId]: HasCommandType[UpdateProject[T]] = HasCommandType("project_update")
   implicit def updateTask[T: IsResourceId]: HasCommandType[UpdateTask[T]] = HasCommandType("item_update")

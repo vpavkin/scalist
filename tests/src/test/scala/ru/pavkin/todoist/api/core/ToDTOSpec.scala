@@ -1,6 +1,5 @@
 package ru.pavkin.todoist.api.core
 
-import java.text.SimpleDateFormat
 import java.util.{UUID, Date}
 
 import org.scalacheck.Arbitrary._
@@ -12,6 +11,7 @@ import ru.pavkin.todoist.api.core.model._
 import ru.pavkin.todoist.api.core.tags.{TaskId, ProjectId}
 import shapeless.tag.@@
 import tags.syntax._
+import ReminderPeriod._
 
 class ToDTOSpec extends FunSuite with Matchers with GeneratorDrivenPropertyChecks {
 
@@ -131,6 +131,92 @@ class ToDTOSpec extends FunSuite with Matchers with GeneratorDrivenPropertyCheck
         p.dayOrder,
         p.isCollapsed.map(b => if (b) 1 else 0),
         p.labels
+      )
+    }
+  }
+
+  val addFilterGen: Gen[AddFilter] = for {
+    name <- arbitrary[String]
+    query <- arbitrary[String]
+    color <- Gen.choose(0, 12).map(LabelColor.unsafeBy)
+    order <- arbitrary[Option[Int]]
+  } yield AddFilter(name, query, color, order)
+
+  test("AddFilter") {
+    forAll(addFilterGen) { (p: AddFilter) =>
+      p.toDTO shouldBe dto.AddFilter(
+        p.name, p.query, p.color.code, p.order
+      )
+    }
+  }
+
+  def addRelativeReminderGen[T: IsResourceId](gen: Gen[T]): Gen[AddRelativeTimeBasedReminder[T]] = for {
+    task <- gen.map(_.taskId)
+    service <- Gen.oneOf(ReminderService.Push, ReminderService.Email, ReminderService.SMS)
+    minutes <- Gen.oneOf(min30, min45, hour1, hour2, hour3, day1, day2, day3, week)
+    subscriber <- arbitrary[Option[Int]].map(_.map(_.userId))
+  } yield AddRelativeTimeBasedReminder(
+    task, service, minutes, subscriber
+  )
+
+  def addAbsoluteReminderGen[T: IsResourceId](gen: Gen[T]): Gen[AddAbsoluteTimeBasedReminder[T]] = for {
+    task <- gen.map(_.taskId)
+    service <- Gen.oneOf(ReminderService.Push, ReminderService.Email, ReminderService.SMS)
+    date <- taskDateGen
+    subscriber <- arbitrary[Option[Int]].map(_.map(_.userId))
+  } yield AddAbsoluteTimeBasedReminder(
+    task, service, date, subscriber
+  )
+
+  def addLocationReminderGen[T: IsResourceId](gen: Gen[T]): Gen[AddLocationBasedReminder[T]] = for {
+    task <- gen.map(_.taskId)
+    subscriber <- arbitrary[Option[Int]].map(_.map(_.userId))
+    name <- arbitrary[String]
+    lat <- arbitrary[Double]
+    lon <- arbitrary[Double]
+    trigger <- Gen.oneOf(LocationBasedReminder.TriggerKind.Enter, LocationBasedReminder.TriggerKind.Leave)
+    radius <- Gen.posNum[Int]
+  } yield AddLocationBasedReminder(
+    task, name, lat, lon, trigger, radius, subscriber
+  )
+
+  test("AddRelativeTimeBasedReminder") {
+    forAll(addRelativeReminderGen(Gen.uuid)) { (p: AddRelativeTimeBasedReminder[UUID]) =>
+      p.toDTO shouldBe dto.AddReminder(
+        p.taskId: UUID,
+        "relative",
+        p.subscriber,
+        Some(p.service.name),
+        minute_offset = Some(p.minutesBefore.minutes)
+      )
+    }
+  }
+
+  test("AddAbsoluteTimeBasedReminder") {
+    forAll(addAbsoluteReminderGen(arbitrary[Int])) { (p: AddAbsoluteTimeBasedReminder[Int]) =>
+      p.toDTO shouldBe dto.AddReminder(
+        p.taskId: Int,
+        "absolute",
+        p.subscriber,
+        Some(p.service.name),
+        date_string = p.dueDate.text,
+        date_lang = Some(p.dueDate.language.code),
+        due_date_utc = Some(TodoistDate.format(p.dueDate.dueDateUTC))
+      )
+    }
+  }
+
+  test("AddLocationBasedReminder") {
+    forAll(addLocationReminderGen(arbitrary[Int])) { (p: AddLocationBasedReminder[Int]) =>
+      p.toDTO shouldBe dto.AddReminder(
+        p.taskId: Int,
+        "location",
+        p.subscriber,
+        name = Some(p.locationName),
+        loc_lat = Some(p.latitude.toString),
+        loc_long = Some(p.longitude.toString),
+        loc_trigger = Some(p.triggerKind.name),
+        radius = Some(p.radiusInMeters)
       )
     }
   }

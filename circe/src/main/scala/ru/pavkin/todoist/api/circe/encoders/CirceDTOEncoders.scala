@@ -13,9 +13,11 @@ trait CirceDTOEncoders {
   implicit val addTaskToInboxEncoder = Encoder[AddTaskToInbox]
   implicit val addProjectEncoder = Encoder[AddProject]
   implicit val addLabelEncoder = Encoder[AddLabel]
+  implicit val addFilterEncoder = Encoder[AddFilter]
   implicit def updateTaskEncoder[A: IsResourceId](implicit E: Encoder[A]) = Encoder[UpdateTask[A]]
   implicit def updateProjectEncoder[A: IsResourceId](implicit E: Encoder[A]) = Encoder[UpdateProject[A]]
   implicit def updateLabelEncoder[A: IsResourceId](implicit E: Encoder[A]) = Encoder[UpdateLabel[A]]
+  implicit def updateReminderEncoder[A: IsResourceId](implicit E: Encoder[A]) = Encoder[AddReminder[A]]
 
   implicit def singleIdEncoder[A: IsResourceId](implicit E: Encoder[A]) = Encoder[SingleIdCommand[A]]
   implicit def multiIdEncoder[A: IsResourceId](implicit E: Encoder[A]) = Encoder[MultipleIdCommand[A]]
