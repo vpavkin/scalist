@@ -6,6 +6,7 @@ import org.scalacheck.Arbitrary._
 import org.scalatest.{Matchers, FunSuite}
 import org.scalatest.prop.{GeneratorDrivenPropertyChecks, Checkers}
 import ru.pavkin.todoist.api.circe.CirceDecoder
+import ru.pavkin.todoist.api.core.model.LocationBasedReminder.TriggerKind
 import ru.pavkin.todoist.api.core.model._
 import ru.pavkin.todoist.api.core.query.{MultipleQueryDefinition, SingleQueryDefinition}
 import ru.pavkin.todoist.api.dispatch.impl.circe.DispatchAPI
@@ -57,7 +58,7 @@ class CirceModelAPISpec
     illTyped("""api.getAll[Labels :: Projects :: Labels :: HNil]""")
   }
 
-  test("Dispatch Circe API command test suite") {
+  test("Dispatch Circe API command syntax test suite") {
     val api = todoist.withToken("token")
 
     api.perform(AddProject("Learn Scalist"))
@@ -82,6 +83,46 @@ class CirceModelAPISpec
         AddTask("task1", id) :+ AddTask("task2", id)
       ) :+ AddLabel("label")
     )
+  }
+
+  test("Dispatch Circe API command support test suite") {
+    val api = todoist.withToken("token")
+    api.perform(AddProject("A"))
+    api.perform(AddLabel("A"))
+    api.perform(AddTask("A", 1.projectId))
+    api.perform(AddTaskToInbox("A"))
+    api.perform(AddNote("A", 1.taskId))
+    api.perform(AddFilter("1", "1"))
+    api.perform(AddRelativeTimeBasedReminder[Int](
+      1.taskId,
+      ReminderService.Push,
+      ReminderPeriod.min30
+    ))
+    api.perform(AddLocationBasedReminder[Int](
+      1.taskId,
+      "1",
+      1.0,
+      1.0,
+      TriggerKind.Enter,
+      100
+    ))
+    api.perform(UpdateProject(1.projectId, Some("A")))
+    api.perform(UpdateTask(1.taskId, Some("A")))
+    api.perform(UpdateLabel(1.labelId, Some("A")))
+    api.perform(UpdateNote(1.noteId, Some("A")))
+    api.perform(UpdateFilter(1.filterId, Some("A")))
+    api.perform(DeleteProjects(List(1, 2).projectIds))
+    api.perform(DeleteLabel(1.labelId))
+    api.perform(DeleteNote(1.noteId))
+    api.perform(DeleteFilter(1.filterId))
+    api.perform(DeleteReminder(1.reminderId))
+    api.perform(DeleteTasks(List(1, 2).taskIds))
+
+    api.perform(MoveTasks(Map.empty, 1.projectId))
+    api.perform(CloseTask(1.taskId))
+    api.perform(UncompleteTasks(List(1, 2).taskIds))
+    api.perform(ArchiveProjects(List(1, 2).projectIds))
+    api.perform(UnarchiveProjects(List(1, 2).projectIds))
   }
 
   test("Dispatch Circe OAuth API test suite") {

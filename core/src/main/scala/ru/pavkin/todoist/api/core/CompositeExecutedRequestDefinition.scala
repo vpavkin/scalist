@@ -11,7 +11,7 @@ abstract class CompositeExecutedRequestDefinition[F[_], L[_], P[_], R, Req, Base
     (override implicit val F: Functor[L])
   extends ExecutedRequestDefinition[F, L, P, R, Req, Base] {
 
-  def toRawRequest:RawRequest
+  def toRawRequest: RawRequest
   def load: L[Base] = executor.execute(requestFactory.produce(toRawRequest))
   def flatten(r: L[P[R]]): F[R] = flattener.flatten(r)
 }

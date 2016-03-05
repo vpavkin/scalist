@@ -6,7 +6,13 @@ import ru.pavkin.todoist.api
 import ru.pavkin.todoist.api.core.tags
 import shapeless.tag.@@
 
-sealed trait UploadState
+sealed trait UploadState {
+  def name: Option[String] = this match {
+    case Pending => Some("pending")
+    case Completed => Some("completed")
+    case External => None
+  }
+}
 case object Pending extends UploadState
 case object Completed extends UploadState
 case object External extends UploadState
