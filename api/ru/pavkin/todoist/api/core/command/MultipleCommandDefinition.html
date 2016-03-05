@@ -49,7 +49,8 @@
       </span>
       </h4>
       
-          <div id="comment" class="fullcommenttop"><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/vpavkin/scalist/tree/master/core/src/main/scala/ru/pavkin/todoist/api/core/command/MultipleCommandDefinition.scala" target="_blank">MultipleCommandDefinition.scala</a></dd></dl><div class="toggleContainer block">
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>A definition of a multiple commands request.</p><p>Call <code>execute</code> to perform the commands and get the results <code>HList</code> (under the effect)
+</p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/vpavkin/scalist/tree/master/core/src/main/scala/ru/pavkin/todoist/api/core/command/MultipleCommandDefinition.scala" target="_blank">MultipleCommandDefinition.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><a href="../RequestDefinition.html" class="extype" name="ru.pavkin.todoist.api.core.RequestDefinition">RequestDefinition</a>[<span class="extype" name="ru.pavkin.todoist.api.core.command.MultipleCommandDefinition.F">F</span>, <span class="extype" name="ru.pavkin.todoist.api.core.command.MultipleCommandDefinition.P">P</span>, <span class="extype" name="ru.pavkin.todoist.api.core.command.MultipleCommandDefinition.R">R</span>, <span class="extype" name="ru.pavkin.todoist.api.core.command.MultipleCommandDefinition.Base">Base</span>], <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.AnyRef" class="extype" target="_top">AnyRef</a>, <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Any" class="extype" target="_top">Any</a></div>
         </div><div class="toggleContainer block">
@@ -100,7 +101,7 @@
 
         <div id="values" class="values members">
               <h3>Abstract Value Members</h3>
-              <ol><li name="ru.pavkin.todoist.api.core.command.MultipleCommandDefinition#and" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+              <ol><li name="ru.pavkin.todoist.api.core.command.MultipleCommandDefinition#and" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
       <a id="and[CC,RR](command:CC)(implicitFM:cats.FlatMap[P],implicittr:ru.pavkin.todoist.api.core.ToRawRequest[CC],implicitcr:ru.pavkin.todoist.api.core.CommandReturns.Aux[CC,RR],implicitparser:ru.pavkin.todoist.api.core.decoder.SingleCommandResponseDecoder.Aux[P,CC,Base,RR]):ru.pavkin.todoist.api.core.command.MultipleCommandDefinition[F,P,shapeless.::[CC,C],shapeless.::[RR,R],Base]"></a>
       <a id="and[CC,RR](CC)(FlatMap[P],ToRawRequest[CC],Aux[CC,RR],Aux[P,CC,Base,RR]):MultipleCommandDefinition[F,P,::[CC,C],::[RR,R],Base]"></a>
       <h4 class="signature">
@@ -116,7 +117,13 @@
         <img src="../../../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      
+      <p class="shortcomment cmt">Returns a new command request definition, that after execution will
+execute all the commands from this definition plus the added one
+and return an <code>HList</code> of corresponding results</p><div class="fullcomment"><div class="comment cmt"><p>Returns a new command request definition, that after execution will
+execute all the commands from this definition plus the added one
+and return an <code>HList</code> of corresponding results</p><p>See <a href="../AuthorizedAPI.html#performAll[C&lt;:shapeless.HList,R&lt;:shapeless.HList,CR&lt;:shapeless.HList](commands:C)(implicitR:shapeless.ops.hlist.Reverse.Aux[C,CR],implicittrr:ru.pavkin.todoist.api.core.ToRawRequest[CR],implicitcr:ru.pavkin.todoist.api.core.CommandReturns.Aux[CR,R],implicitparser:ru.pavkin.todoist.api.core.decoder.MultipleCommandResponseDecoder.Aux[P,CR,Base,R]):ru.pavkin.todoist.api.core.command.MultipleCommandDefinition[F,P,CR,R,Base]" class="extmbr" name="ru.pavkin.todoist.api.core.AuthorizedAPI#performAll">ru.pavkin.todoist.api.core.AuthorizedAPI.performAll</a> for details on working with
+multiple commands response
+</p></div></div>
     </li><li name="ru.pavkin.todoist.api.core.RequestDefinition#execute" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
       <a id="execute:F[R]"></a>
       <a id="execute:F[R]"></a>
@@ -133,7 +140,9 @@
         <img src="../../../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../RequestDefinition.html" class="extype" name="ru.pavkin.todoist.api.core.RequestDefinition">RequestDefinition</a></dd></dl></div>
+      <p class="shortcomment cmt">Executes this request definition and returns the result wrapped with the API effect
+</p><div class="fullcomment"><div class="comment cmt"><p>Executes this request definition and returns the result wrapped with the API effect
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../RequestDefinition.html" class="extype" name="ru.pavkin.todoist.api.core.RequestDefinition">RequestDefinition</a></dd></dl></div>
     </li></ol>
             </div>
 

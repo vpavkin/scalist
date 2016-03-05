@@ -66,23 +66,29 @@
 
         <div id="types" class="types members">
               <h3>Type Members</h3>
-              <ol><li name="ru.pavkin.todoist.api.core.API" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
-      <a id="API[F[_],P[_],Base]extendsAnyRef"></a>
-      <a id="API[F[_],P[_],Base]:API[F,P,Base]"></a>
+              <ol><li name="ru.pavkin.todoist.api.core.AuthorizedAPI" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="AuthorizedAPI[F[_],P[_],Base]extendsAnyRef"></a>
+      <a id="AuthorizedAPI[F[_],P[_],Base]:AuthorizedAPI[F,P,Base]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">trait</span>
       </span>
       <span class="symbol">
-        <a href="API.html"><span class="name">API</span></a><span class="tparams">[<span name="F">F<span class="tparams">[<span name="_">_</span>]</span></span>, <span name="P">P<span class="tparams">[<span name="_">_</span>]</span></span>, <span name="Base">Base</span>]</span><span class="result"> extends <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.AnyRef" class="extype" target="_top">AnyRef</a></span>
+        <a href="AuthorizedAPI.html"><span class="name">AuthorizedAPI</span></a><span class="tparams">[<span name="F">F<span class="tparams">[<span name="_">_</span>]</span></span>, <span name="P">P<span class="tparams">[<span name="_">_</span>]</span></span>, <span name="Base">Base</span>]</span><span class="result"> extends <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.AnyRef" class="extype" target="_top">AnyRef</a></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../../index.html#ru.pavkin.todoist.api.core.package@API[F[_],P[_],Base]extendsAnyRef" title="Permalink" target="_top">
+      <a href="../../../../../index.html#ru.pavkin.todoist.api.core.package@AuthorizedAPI[F[_],P[_],Base]extendsAnyRef" title="Permalink" target="_top">
         <img src="../../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      
+      <p class="shortcomment cmt">Authorized API client that is entitled to perform most of the API calls.</p><div class="fullcomment"><div class="comment cmt"><p>Authorized API client that is entitled to perform most of the API calls.</p><p>Methods are separated into two groups:</p><p>- <code>get</code> methods, for querying resources
+- <code>perform</code> methods, for sending commands</p><p>All the implicit parameters for those methods are usually supplied by the imported API suite, e.g.:</p><pre><span class="kw">import</span> ru.pavkin.todoist.api.dispatch.circe.default._</pre><p>All methods return request definition containers, that are not yet executed.
+To execute a request definition, you have to call <code>execute</code> method on it.</p><p>Request definitions can be chained together to compose a multiple entity request.
+Chaining is done with <code>and</code> method, e.g.:</p><pre>api.get[Projects].and[Labels].and[Tasks]
+api.getAll[Projects :: Labels :: HNil].and[Tasks]
+api.perform(AddProject(<span class="lit">"p1"</span>)).and(AddProject(<span class="lit">"p2"</span>))
+api.performAll(AddProject(<span class="lit">"p1"</span>) :+ AddProject(<span class="lit">"p2"</span>))</pre></div></div>
     </li><li name="ru.pavkin.todoist.api.core.AuthorizedRequestFactory" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
       <a id="AuthorizedRequestFactory[Def,Req]extendsProduce[Def,Req]"></a>
       <a id="AuthorizedRequestFactory[Def,Req]:AuthorizedRequestFactory[Def,Req]"></a>
@@ -135,7 +141,7 @@
     </span>
       
     </li><li name="ru.pavkin.todoist.api.core.ExecutedAPI" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
-      <a id="ExecutedAPI[F[_],L[_],P[_],Req,Base]extendsAPI[F,P,Base]"></a>
+      <a id="ExecutedAPI[F[_],L[_],P[_],Req,Base]extendsAnyRef"></a>
       <a id="ExecutedAPI[F[_],L[_],P[_],Req,Base]:ExecutedAPI[F,L,P,Req,Base]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -143,10 +149,44 @@
         <span class="kind">trait</span>
       </span>
       <span class="symbol">
-        <a href="ExecutedAPI.html"><span class="name">ExecutedAPI</span></a><span class="tparams">[<span name="F">F<span class="tparams">[<span name="_">_</span>]</span></span>, <span name="L">L<span class="tparams">[<span name="_">_</span>]</span></span>, <span name="P">P<span class="tparams">[<span name="_">_</span>]</span></span>, <span name="Req">Req</span>, <span name="Base">Base</span>]</span><span class="result"> extends <a href="API.html" class="extype" name="ru.pavkin.todoist.api.core.API">API</a>[<span class="extype" name="ru.pavkin.todoist.api.core.ExecutedAPI.F">F</span>, <span class="extype" name="ru.pavkin.todoist.api.core.ExecutedAPI.P">P</span>, <span class="extype" name="ru.pavkin.todoist.api.core.ExecutedAPI.Base">Base</span>]</span>
+        <a href="ExecutedAPI.html"><span class="name">ExecutedAPI</span></a><span class="tparams">[<span name="F">F<span class="tparams">[<span name="_">_</span>]</span></span>, <span name="L">L<span class="tparams">[<span name="_">_</span>]</span></span>, <span name="P">P<span class="tparams">[<span name="_">_</span>]</span></span>, <span name="Req">Req</span>, <span name="Base">Base</span>]</span><span class="result"> extends <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.AnyRef" class="extype" target="_top">AnyRef</a></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../../index.html#ru.pavkin.todoist.api.core.package@ExecutedAPI[F[_],L[_],P[_],Req,Base]extendsAPI[F,P,Base]" title="Permalink" target="_top">
+      <a href="../../../../../index.html#ru.pavkin.todoist.api.core.package@ExecutedAPI[F[_],L[_],P[_],Req,Base]extendsAnyRef" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="ru.pavkin.todoist.api.core.ExecutedAuthorizedAPI" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="ExecutedAuthorizedAPI[F[_],L[_],P[_],Req,Base]extendsAuthorizedAPI[F,P,Base]withExecutedAPI[F,L,P,Req,Base]"></a>
+      <a id="ExecutedAuthorizedAPI[F[_],L[_],P[_],Req,Base]:ExecutedAuthorizedAPI[F,L,P,Req,Base]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="ExecutedAuthorizedAPI.html"><span class="name">ExecutedAuthorizedAPI</span></a><span class="tparams">[<span name="F">F<span class="tparams">[<span name="_">_</span>]</span></span>, <span name="L">L<span class="tparams">[<span name="_">_</span>]</span></span>, <span name="P">P<span class="tparams">[<span name="_">_</span>]</span></span>, <span name="Req">Req</span>, <span name="Base">Base</span>]</span><span class="result"> extends <a href="AuthorizedAPI.html" class="extype" name="ru.pavkin.todoist.api.core.AuthorizedAPI">AuthorizedAPI</a>[<span class="extype" name="ru.pavkin.todoist.api.core.ExecutedAuthorizedAPI.F">F</span>, <span class="extype" name="ru.pavkin.todoist.api.core.ExecutedAuthorizedAPI.P">P</span>, <span class="extype" name="ru.pavkin.todoist.api.core.ExecutedAuthorizedAPI.Base">Base</span>] with <a href="ExecutedAPI.html" class="extype" name="ru.pavkin.todoist.api.core.ExecutedAPI">ExecutedAPI</a>[<span class="extype" name="ru.pavkin.todoist.api.core.ExecutedAuthorizedAPI.F">F</span>, <span class="extype" name="ru.pavkin.todoist.api.core.ExecutedAuthorizedAPI.L">L</span>, <span class="extype" name="ru.pavkin.todoist.api.core.ExecutedAuthorizedAPI.P">P</span>, <span class="extype" name="ru.pavkin.todoist.api.core.ExecutedAuthorizedAPI.Req">Req</span>, <span class="extype" name="ru.pavkin.todoist.api.core.ExecutedAuthorizedAPI.Base">Base</span>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#ru.pavkin.todoist.api.core.package@ExecutedAuthorizedAPI[F[_],L[_],P[_],Req,Base]extendsAuthorizedAPI[F,P,Base]withExecutedAPI[F,L,P,Req,Base]" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="ru.pavkin.todoist.api.core.ExecutedOAuthAPI" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="ExecutedOAuthAPI[F[_],L[_],P[_],Req,Base]extendsOAuthAPI[F,P,Base]withExecutedAPI[F,L,P,Req,Base]"></a>
+      <a id="ExecutedOAuthAPI[F[_],L[_],P[_],Req,Base]:ExecutedOAuthAPI[F,L,P,Req,Base]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="ExecutedOAuthAPI.html"><span class="name">ExecutedOAuthAPI</span></a><span class="tparams">[<span name="F">F<span class="tparams">[<span name="_">_</span>]</span></span>, <span name="L">L<span class="tparams">[<span name="_">_</span>]</span></span>, <span name="P">P<span class="tparams">[<span name="_">_</span>]</span></span>, <span name="Req">Req</span>, <span name="Base">Base</span>]</span><span class="result"> extends <a href="OAuthAPI.html" class="extype" name="ru.pavkin.todoist.api.core.OAuthAPI">OAuthAPI</a>[<span class="extype" name="ru.pavkin.todoist.api.core.ExecutedOAuthAPI.F">F</span>, <span class="extype" name="ru.pavkin.todoist.api.core.ExecutedOAuthAPI.P">P</span>, <span class="extype" name="ru.pavkin.todoist.api.core.ExecutedOAuthAPI.Base">Base</span>] with <a href="ExecutedAPI.html" class="extype" name="ru.pavkin.todoist.api.core.ExecutedAPI">ExecutedAPI</a>[<span class="extype" name="ru.pavkin.todoist.api.core.ExecutedOAuthAPI.F">F</span>, <span class="extype" name="ru.pavkin.todoist.api.core.ExecutedOAuthAPI.L">L</span>, <span class="extype" name="ru.pavkin.todoist.api.core.ExecutedOAuthAPI.P">P</span>, <span class="extype" name="ru.pavkin.todoist.api.core.ExecutedOAuthAPI.Req">Req</span>, <span class="extype" name="ru.pavkin.todoist.api.core.ExecutedOAuthAPI.Base">Base</span>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#ru.pavkin.todoist.api.core.package@ExecutedOAuthAPI[F[_],L[_],P[_],Req,Base]extendsOAuthAPI[F,P,Base]withExecutedAPI[F,L,P,Req,Base]" title="Permalink" target="_top">
         <img src="../../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -236,6 +276,23 @@
       </a>
     </span>
       
+    </li><li name="ru.pavkin.todoist.api.core.OAuthAPI" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="OAuthAPI[F[_],P[_],Base]extendsAnyRef"></a>
+      <a id="OAuthAPI[F[_],P[_],Base]:OAuthAPI[F,P,Base]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="OAuthAPI.html"><span class="name">OAuthAPI</span></a><span class="tparams">[<span name="F">F<span class="tparams">[<span name="_">_</span>]</span></span>, <span name="P">P<span class="tparams">[<span name="_">_</span>]</span></span>, <span name="Base">Base</span>]</span><span class="result"> extends <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.AnyRef" class="extype" target="_top">AnyRef</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#ru.pavkin.todoist.api.core.package@OAuthAPI[F[_],P[_],Base]extendsAnyRef" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
     </li><li name="ru.pavkin.todoist.api.core.RequestDefinition" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
       <a id="RequestDefinition[F[_],P[_],R,Base]extendsAnyRef"></a>
       <a id="RequestDefinition[F[_],P[_],R,Base]:RequestDefinition[F,P,R,Base]"></a>
@@ -320,7 +377,9 @@
         <img src="../../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      
+      <p class="shortcomment cmt">Unauthorized API provides two methods: <code>withToken(token: String)</code> that returns Authorized API
+and <code>auth</code>, that returns a wrapper for OAuth related helpers
+</p>
     </li></ol>
             </div>
 
@@ -531,7 +590,8 @@
         <img src="../../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      
+      <p class="shortcomment cmt">Contains all command and resource model classes
+</p>
     </li><li name="ru.pavkin.todoist.api.core.query" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="query"></a>
       <a id="query:query"></a>

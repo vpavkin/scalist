@@ -47,11 +47,11 @@
         <span class="kind">trait</span>
       </span>
       <span class="symbol">
-        <span class="name">ResponseDecoder</span><span class="tparams">[<span name="F">F<span class="tparams">[<span name="_">_</span>]</span></span>, <span name="Base">Base</span>]</span><span class="result"> extends <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.AnyRef" class="extype" target="_top">AnyRef</a></span>
+        <span class="name">ResponseDecoder</span><span class="tparams">[<span name="F">F<span class="tparams">[<span name="_">_</span>]</span></span>, <span name="Base">Base</span>, <span name="Out">Out</span>]</span><span class="result"> extends <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.AnyRef" class="extype" target="_top">AnyRef</a></span>
       </span>
       </h4>
       
-          <div id="comment" class="fullcommenttop"><dl class="attributes block"> <dt>Self Type</dt><dd><a href="" class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder">ResponseDecoder</a>[<span class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder.F">F</span>, <span class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder.Base">Base</span>]</dd><dt>Source</dt><dd><a href="https://github.com/vpavkin/scalist/tree/master/core/src/main/scala/ru/pavkin/todoist/api/core/decoder/ResponseDecoder.scala" target="_blank">ResponseDecoder.scala</a></dd></dl><div class="toggleContainer block">
+          <div id="comment" class="fullcommenttop"><dl class="attributes block"> <dt>Self Type</dt><dd><a href="" class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder">ResponseDecoder</a>[<span class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder.F">F</span>, <span class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder.Base">Base</span>, <span class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder.Out">Out</span>]</dd><dt>Source</dt><dd><a href="https://github.com/vpavkin/scalist/tree/master/core/src/main/scala/ru/pavkin/todoist/api/core/decoder/ResponseDecoder.scala" target="_blank">ResponseDecoder.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.AnyRef" class="extype" target="_top">AnyRef</a>, <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Any" class="extype" target="_top">Any</a></div>
         </div><div class="toggleContainer block">
@@ -98,32 +98,12 @@
         <div id="allMembers">
         
 
-        <div id="types" class="types members">
-              <h3>Type Members</h3>
-              <ol><li name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder.Out" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
-      <a id="Out"></a>
-      <a id="Out:Out"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier">abstract </span>
-        <span class="kind">type</span>
-      </span>
-      <span class="symbol">
-        <span class="name">Out</span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../../../../../index.html#ru.pavkin.todoist.api.core.decoder.ResponseDecoder@Out" title="Permalink" target="_top">
-        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      
-    </li></ol>
-            </div>
+        
 
         <div id="values" class="values members">
               <h3>Abstract Value Members</h3>
               <ol><li name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder#parse" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
-      <a id="parse(resource:Base):F[ResponseDecoder.this.Out]"></a>
+      <a id="parse(resource:Base):F[Out]"></a>
       <a id="parse(Base):F[Out]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -131,10 +111,10 @@
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">parse</span><span class="params">(<span name="resource">resource: <span class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder.Base">Base</span></span>)</span><span class="result">: <span class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder.F">F</span>[<a href="#Out" class="extmbr" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder.Out">Out</a>]</span>
+        <span class="name">parse</span><span class="params">(<span name="resource">resource: <span class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder.Base">Base</span></span>)</span><span class="result">: <span class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder.F">F</span>[<span class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder.Out">Out</span>]</span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../../../index.html#ru.pavkin.todoist.api.core.decoder.ResponseDecoder@parse(resource:Base):F[ResponseDecoder.this.Out]" title="Permalink" target="_top">
+      <a href="../../../../../../index.html#ru.pavkin.todoist.api.core.decoder.ResponseDecoder@parse(resource:Base):F[Out]" title="Permalink" target="_top">
         <img src="../../../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -195,20 +175,20 @@
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt class="implicit">Implicit information</dt><dd>
-            This member is added by an implicit conversion from <a href="" class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder">ResponseDecoder</a>[<span class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder.F">F</span>, <span class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder.Base">Base</span>] to
-            <span class="extype" name="scala.Predef.any2stringadd">any2stringadd</span>[<a href="" class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder">ResponseDecoder</a>[<span class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder.F">F</span>, <span class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder.Base">Base</span>]] performed by method any2stringadd in scala.Predef.
+            This member is added by an implicit conversion from <a href="" class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder">ResponseDecoder</a>[<span class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder.F">F</span>, <span class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder.Base">Base</span>, <span class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder.Out">Out</span>] to
+            <span class="extype" name="scala.Predef.any2stringadd">any2stringadd</span>[<a href="" class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder">ResponseDecoder</a>[<span class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder.F">F</span>, <span class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder.Base">Base</span>, <span class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder.Out">Out</span>]] performed by method any2stringadd in scala.Predef.
             
           </dd><dt>Definition Classes</dt><dd>any2stringadd</dd></dl></div>
     </li><li name="scala.Predef.ArrowAssoc#-&gt;" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="-&gt;[B](y:B):(A,B)"></a>
-      <a id="-&gt;[B](B):(ResponseDecoder[F,Base],B)"></a>
+      <a id="-&gt;[B](B):(ResponseDecoder[F,Base,Out],B)"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span title="gt4s: $minus$greater" class="implicit">-&gt;</span><span class="tparams">[<span name="B">B</span>]</span><span class="params">(<span name="y">y: <span class="extype" name="scala.Predef.ArrowAssoc.-&gt;.B">B</span></span>)</span><span class="result">: (<a href="" class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder">ResponseDecoder</a>[<span class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder.F">F</span>, <span class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder.Base">Base</span>], <span class="extype" name="scala.Predef.ArrowAssoc.-&gt;.B">B</span>)</span>
+        <span title="gt4s: $minus$greater" class="implicit">-&gt;</span><span class="tparams">[<span name="B">B</span>]</span><span class="params">(<span name="y">y: <span class="extype" name="scala.Predef.ArrowAssoc.-&gt;.B">B</span></span>)</span><span class="result">: (<a href="" class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder">ResponseDecoder</a>[<span class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder.F">F</span>, <span class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder.Base">Base</span>, <span class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder.Out">Out</span>], <span class="extype" name="scala.Predef.ArrowAssoc.-&gt;.B">B</span>)</span>
       </span>
       </h4><span class="permalink">
       <a href="../../../../../../index.html#ru.pavkin.todoist.api.core.decoder.ResponseDecoder@-&gt;[B](y:B):(A,B)" title="Permalink" target="_top">
@@ -216,8 +196,8 @@
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt class="implicit">Implicit information</dt><dd>
-            This member is added by an implicit conversion from <a href="" class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder">ResponseDecoder</a>[<span class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder.F">F</span>, <span class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder.Base">Base</span>] to
-            <span class="extype" name="scala.Predef.ArrowAssoc">ArrowAssoc</span>[<a href="" class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder">ResponseDecoder</a>[<span class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder.F">F</span>, <span class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder.Base">Base</span>]] performed by method ArrowAssoc in scala.Predef.
+            This member is added by an implicit conversion from <a href="" class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder">ResponseDecoder</a>[<span class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder.F">F</span>, <span class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder.Base">Base</span>, <span class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder.Out">Out</span>] to
+            <span class="extype" name="scala.Predef.ArrowAssoc">ArrowAssoc</span>[<a href="" class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder">ResponseDecoder</a>[<span class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder.F">F</span>, <span class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder.Base">Base</span>, <span class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder.Out">Out</span>]] performed by method ArrowAssoc in scala.Predef.
             
           </dd><dt>Definition Classes</dt><dd>ArrowAssoc</dd><dt>Annotations</dt><dd>
                 <span class="name">@inline</span><span class="args">()</span>
@@ -282,14 +262,14 @@
         </dd></dl></div>
     </li><li name="scala.Predef.Ensuring#ensuring" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="ensuring(cond:A=&gt;Boolean,msg:=&gt;Any):A"></a>
-      <a id="ensuring((ResponseDecoder[F,Base])⇒Boolean,⇒Any):ResponseDecoder[F,Base]"></a>
+      <a id="ensuring((ResponseDecoder[F,Base,Out])⇒Boolean,⇒Any):ResponseDecoder[F,Base,Out]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="implicit">ensuring</span><span class="params">(<span name="cond">cond: (<a href="" class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder">ResponseDecoder</a>[<span class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder.F">F</span>, <span class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder.Base">Base</span>]) ⇒ <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Boolean" class="extype" target="_top">Boolean</a></span>, <span name="msg">msg: ⇒ <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Any" class="extype" target="_top">Any</a></span>)</span><span class="result">: <a href="" class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder">ResponseDecoder</a>[<span class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder.F">F</span>, <span class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder.Base">Base</span>]</span>
+        <span class="implicit">ensuring</span><span class="params">(<span name="cond">cond: (<a href="" class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder">ResponseDecoder</a>[<span class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder.F">F</span>, <span class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder.Base">Base</span>, <span class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder.Out">Out</span>]) ⇒ <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Boolean" class="extype" target="_top">Boolean</a></span>, <span name="msg">msg: ⇒ <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Any" class="extype" target="_top">Any</a></span>)</span><span class="result">: <a href="" class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder">ResponseDecoder</a>[<span class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder.F">F</span>, <span class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder.Base">Base</span>, <span class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder.Out">Out</span>]</span>
       </span>
       </h4><span class="permalink">
       <a href="../../../../../../index.html#ru.pavkin.todoist.api.core.decoder.ResponseDecoder@ensuring(cond:A=&gt;Boolean,msg:=&gt;Any):A" title="Permalink" target="_top">
@@ -297,20 +277,20 @@
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt class="implicit">Implicit information</dt><dd>
-            This member is added by an implicit conversion from <a href="" class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder">ResponseDecoder</a>[<span class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder.F">F</span>, <span class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder.Base">Base</span>] to
-            <span class="extype" name="scala.Predef.Ensuring">Ensuring</span>[<a href="" class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder">ResponseDecoder</a>[<span class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder.F">F</span>, <span class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder.Base">Base</span>]] performed by method Ensuring in scala.Predef.
+            This member is added by an implicit conversion from <a href="" class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder">ResponseDecoder</a>[<span class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder.F">F</span>, <span class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder.Base">Base</span>, <span class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder.Out">Out</span>] to
+            <span class="extype" name="scala.Predef.Ensuring">Ensuring</span>[<a href="" class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder">ResponseDecoder</a>[<span class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder.F">F</span>, <span class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder.Base">Base</span>, <span class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder.Out">Out</span>]] performed by method Ensuring in scala.Predef.
             
           </dd><dt>Definition Classes</dt><dd>Ensuring</dd></dl></div>
     </li><li name="scala.Predef.Ensuring#ensuring" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="ensuring(cond:A=&gt;Boolean):A"></a>
-      <a id="ensuring((ResponseDecoder[F,Base])⇒Boolean):ResponseDecoder[F,Base]"></a>
+      <a id="ensuring((ResponseDecoder[F,Base,Out])⇒Boolean):ResponseDecoder[F,Base,Out]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="implicit">ensuring</span><span class="params">(<span name="cond">cond: (<a href="" class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder">ResponseDecoder</a>[<span class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder.F">F</span>, <span class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder.Base">Base</span>]) ⇒ <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Boolean" class="extype" target="_top">Boolean</a></span>)</span><span class="result">: <a href="" class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder">ResponseDecoder</a>[<span class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder.F">F</span>, <span class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder.Base">Base</span>]</span>
+        <span class="implicit">ensuring</span><span class="params">(<span name="cond">cond: (<a href="" class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder">ResponseDecoder</a>[<span class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder.F">F</span>, <span class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder.Base">Base</span>, <span class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder.Out">Out</span>]) ⇒ <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Boolean" class="extype" target="_top">Boolean</a></span>)</span><span class="result">: <a href="" class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder">ResponseDecoder</a>[<span class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder.F">F</span>, <span class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder.Base">Base</span>, <span class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder.Out">Out</span>]</span>
       </span>
       </h4><span class="permalink">
       <a href="../../../../../../index.html#ru.pavkin.todoist.api.core.decoder.ResponseDecoder@ensuring(cond:A=&gt;Boolean):A" title="Permalink" target="_top">
@@ -318,20 +298,20 @@
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt class="implicit">Implicit information</dt><dd>
-            This member is added by an implicit conversion from <a href="" class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder">ResponseDecoder</a>[<span class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder.F">F</span>, <span class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder.Base">Base</span>] to
-            <span class="extype" name="scala.Predef.Ensuring">Ensuring</span>[<a href="" class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder">ResponseDecoder</a>[<span class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder.F">F</span>, <span class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder.Base">Base</span>]] performed by method Ensuring in scala.Predef.
+            This member is added by an implicit conversion from <a href="" class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder">ResponseDecoder</a>[<span class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder.F">F</span>, <span class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder.Base">Base</span>, <span class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder.Out">Out</span>] to
+            <span class="extype" name="scala.Predef.Ensuring">Ensuring</span>[<a href="" class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder">ResponseDecoder</a>[<span class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder.F">F</span>, <span class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder.Base">Base</span>, <span class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder.Out">Out</span>]] performed by method Ensuring in scala.Predef.
             
           </dd><dt>Definition Classes</dt><dd>Ensuring</dd></dl></div>
     </li><li name="scala.Predef.Ensuring#ensuring" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="ensuring(cond:Boolean,msg:=&gt;Any):A"></a>
-      <a id="ensuring(Boolean,⇒Any):ResponseDecoder[F,Base]"></a>
+      <a id="ensuring(Boolean,⇒Any):ResponseDecoder[F,Base,Out]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="implicit">ensuring</span><span class="params">(<span name="cond">cond: <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Boolean" class="extype" target="_top">Boolean</a></span>, <span name="msg">msg: ⇒ <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Any" class="extype" target="_top">Any</a></span>)</span><span class="result">: <a href="" class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder">ResponseDecoder</a>[<span class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder.F">F</span>, <span class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder.Base">Base</span>]</span>
+        <span class="implicit">ensuring</span><span class="params">(<span name="cond">cond: <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Boolean" class="extype" target="_top">Boolean</a></span>, <span name="msg">msg: ⇒ <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Any" class="extype" target="_top">Any</a></span>)</span><span class="result">: <a href="" class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder">ResponseDecoder</a>[<span class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder.F">F</span>, <span class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder.Base">Base</span>, <span class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder.Out">Out</span>]</span>
       </span>
       </h4><span class="permalink">
       <a href="../../../../../../index.html#ru.pavkin.todoist.api.core.decoder.ResponseDecoder@ensuring(cond:Boolean,msg:=&gt;Any):A" title="Permalink" target="_top">
@@ -339,20 +319,20 @@
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt class="implicit">Implicit information</dt><dd>
-            This member is added by an implicit conversion from <a href="" class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder">ResponseDecoder</a>[<span class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder.F">F</span>, <span class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder.Base">Base</span>] to
-            <span class="extype" name="scala.Predef.Ensuring">Ensuring</span>[<a href="" class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder">ResponseDecoder</a>[<span class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder.F">F</span>, <span class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder.Base">Base</span>]] performed by method Ensuring in scala.Predef.
+            This member is added by an implicit conversion from <a href="" class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder">ResponseDecoder</a>[<span class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder.F">F</span>, <span class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder.Base">Base</span>, <span class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder.Out">Out</span>] to
+            <span class="extype" name="scala.Predef.Ensuring">Ensuring</span>[<a href="" class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder">ResponseDecoder</a>[<span class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder.F">F</span>, <span class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder.Base">Base</span>, <span class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder.Out">Out</span>]] performed by method Ensuring in scala.Predef.
             
           </dd><dt>Definition Classes</dt><dd>Ensuring</dd></dl></div>
     </li><li name="scala.Predef.Ensuring#ensuring" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="ensuring(cond:Boolean):A"></a>
-      <a id="ensuring(Boolean):ResponseDecoder[F,Base]"></a>
+      <a id="ensuring(Boolean):ResponseDecoder[F,Base,Out]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="implicit">ensuring</span><span class="params">(<span name="cond">cond: <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Boolean" class="extype" target="_top">Boolean</a></span>)</span><span class="result">: <a href="" class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder">ResponseDecoder</a>[<span class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder.F">F</span>, <span class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder.Base">Base</span>]</span>
+        <span class="implicit">ensuring</span><span class="params">(<span name="cond">cond: <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Boolean" class="extype" target="_top">Boolean</a></span>)</span><span class="result">: <a href="" class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder">ResponseDecoder</a>[<span class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder.F">F</span>, <span class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder.Base">Base</span>, <span class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder.Out">Out</span>]</span>
       </span>
       </h4><span class="permalink">
       <a href="../../../../../../index.html#ru.pavkin.todoist.api.core.decoder.ResponseDecoder@ensuring(cond:Boolean):A" title="Permalink" target="_top">
@@ -360,8 +340,8 @@
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt class="implicit">Implicit information</dt><dd>
-            This member is added by an implicit conversion from <a href="" class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder">ResponseDecoder</a>[<span class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder.F">F</span>, <span class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder.Base">Base</span>] to
-            <span class="extype" name="scala.Predef.Ensuring">Ensuring</span>[<a href="" class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder">ResponseDecoder</a>[<span class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder.F">F</span>, <span class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder.Base">Base</span>]] performed by method Ensuring in scala.Predef.
+            This member is added by an implicit conversion from <a href="" class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder">ResponseDecoder</a>[<span class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder.F">F</span>, <span class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder.Base">Base</span>, <span class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder.Out">Out</span>] to
+            <span class="extype" name="scala.Predef.Ensuring">Ensuring</span>[<a href="" class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder">ResponseDecoder</a>[<span class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder.F">F</span>, <span class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder.Base">Base</span>, <span class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder.Out">Out</span>]] performed by method Ensuring in scala.Predef.
             
           </dd><dt>Definition Classes</dt><dd>Ensuring</dd></dl></div>
     </li><li name="scala.AnyRef#eq" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
@@ -438,8 +418,8 @@
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt class="implicit">Implicit information</dt><dd>
-            This member is added by an implicit conversion from <a href="" class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder">ResponseDecoder</a>[<span class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder.F">F</span>, <span class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder.Base">Base</span>] to
-            <span class="extype" name="scala.Predef.StringFormat">StringFormat</span>[<a href="" class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder">ResponseDecoder</a>[<span class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder.F">F</span>, <span class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder.Base">Base</span>]] performed by method StringFormat in scala.Predef.
+            This member is added by an implicit conversion from <a href="" class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder">ResponseDecoder</a>[<span class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder.F">F</span>, <span class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder.Base">Base</span>, <span class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder.Out">Out</span>] to
+            <span class="extype" name="scala.Predef.StringFormat">StringFormat</span>[<a href="" class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder">ResponseDecoder</a>[<span class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder.F">F</span>, <span class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder.Base">Base</span>, <span class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder.Out">Out</span>]] performed by method StringFormat in scala.Predef.
             
           </dd><dt>Definition Classes</dt><dd>StringFormat</dd><dt>Annotations</dt><dd>
                 <span class="name">@inline</span><span class="args">()</span>
@@ -652,14 +632,14 @@
         </dd></dl></div>
     </li><li name="scala.Predef.ArrowAssoc#→" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="→[B](y:B):(A,B)"></a>
-      <a id="→[B](B):(ResponseDecoder[F,Base],B)"></a>
+      <a id="→[B](B):(ResponseDecoder[F,Base,Out],B)"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span title="gt4s: $u2192" class="implicit">→</span><span class="tparams">[<span name="B">B</span>]</span><span class="params">(<span name="y">y: <span class="extype" name="scala.Predef.ArrowAssoc.→.B">B</span></span>)</span><span class="result">: (<a href="" class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder">ResponseDecoder</a>[<span class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder.F">F</span>, <span class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder.Base">Base</span>], <span class="extype" name="scala.Predef.ArrowAssoc.→.B">B</span>)</span>
+        <span title="gt4s: $u2192" class="implicit">→</span><span class="tparams">[<span name="B">B</span>]</span><span class="params">(<span name="y">y: <span class="extype" name="scala.Predef.ArrowAssoc.→.B">B</span></span>)</span><span class="result">: (<a href="" class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder">ResponseDecoder</a>[<span class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder.F">F</span>, <span class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder.Base">Base</span>, <span class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder.Out">Out</span>], <span class="extype" name="scala.Predef.ArrowAssoc.→.B">B</span>)</span>
       </span>
       </h4><span class="permalink">
       <a href="../../../../../../index.html#ru.pavkin.todoist.api.core.decoder.ResponseDecoder@→[B](y:B):(A,B)" title="Permalink" target="_top">
@@ -667,8 +647,8 @@
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt class="implicit">Implicit information</dt><dd>
-            This member is added by an implicit conversion from <a href="" class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder">ResponseDecoder</a>[<span class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder.F">F</span>, <span class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder.Base">Base</span>] to
-            <span class="extype" name="scala.Predef.ArrowAssoc">ArrowAssoc</span>[<a href="" class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder">ResponseDecoder</a>[<span class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder.F">F</span>, <span class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder.Base">Base</span>]] performed by method ArrowAssoc in scala.Predef.
+            This member is added by an implicit conversion from <a href="" class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder">ResponseDecoder</a>[<span class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder.F">F</span>, <span class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder.Base">Base</span>, <span class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder.Out">Out</span>] to
+            <span class="extype" name="scala.Predef.ArrowAssoc">ArrowAssoc</span>[<a href="" class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder">ResponseDecoder</a>[<span class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder.F">F</span>, <span class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder.Base">Base</span>, <span class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder.Out">Out</span>]] performed by method ArrowAssoc in scala.Predef.
             
           </dd><dt>Definition Classes</dt><dd>ArrowAssoc</dd></dl></div>
     </li></ol>
@@ -687,19 +667,19 @@
             </div>
         <div class="conversion" name="scala.Predef.any2stringadd">
               <h3>Inherited by implicit conversion any2stringadd from
-                <a href="" class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder">ResponseDecoder</a>[<span class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder.F">F</span>, <span class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder.Base">Base</span>] to <span class="extype" name="scala.Predef.any2stringadd">any2stringadd</span>[<a href="" class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder">ResponseDecoder</a>[<span class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder.F">F</span>, <span class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder.Base">Base</span>]]
+                <a href="" class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder">ResponseDecoder</a>[<span class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder.F">F</span>, <span class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder.Base">Base</span>, <span class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder.Out">Out</span>] to <span class="extype" name="scala.Predef.any2stringadd">any2stringadd</span>[<a href="" class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder">ResponseDecoder</a>[<span class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder.F">F</span>, <span class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder.Base">Base</span>, <span class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder.Out">Out</span>]]
               </h3>
             </div><div class="conversion" name="scala.Predef.StringFormat">
               <h3>Inherited by implicit conversion StringFormat from
-                <a href="" class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder">ResponseDecoder</a>[<span class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder.F">F</span>, <span class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder.Base">Base</span>] to <span class="extype" name="scala.Predef.StringFormat">StringFormat</span>[<a href="" class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder">ResponseDecoder</a>[<span class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder.F">F</span>, <span class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder.Base">Base</span>]]
+                <a href="" class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder">ResponseDecoder</a>[<span class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder.F">F</span>, <span class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder.Base">Base</span>, <span class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder.Out">Out</span>] to <span class="extype" name="scala.Predef.StringFormat">StringFormat</span>[<a href="" class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder">ResponseDecoder</a>[<span class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder.F">F</span>, <span class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder.Base">Base</span>, <span class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder.Out">Out</span>]]
               </h3>
             </div><div class="conversion" name="scala.Predef.Ensuring">
               <h3>Inherited by implicit conversion Ensuring from
-                <a href="" class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder">ResponseDecoder</a>[<span class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder.F">F</span>, <span class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder.Base">Base</span>] to <span class="extype" name="scala.Predef.Ensuring">Ensuring</span>[<a href="" class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder">ResponseDecoder</a>[<span class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder.F">F</span>, <span class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder.Base">Base</span>]]
+                <a href="" class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder">ResponseDecoder</a>[<span class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder.F">F</span>, <span class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder.Base">Base</span>, <span class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder.Out">Out</span>] to <span class="extype" name="scala.Predef.Ensuring">Ensuring</span>[<a href="" class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder">ResponseDecoder</a>[<span class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder.F">F</span>, <span class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder.Base">Base</span>, <span class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder.Out">Out</span>]]
               </h3>
             </div><div class="conversion" name="scala.Predef.ArrowAssoc">
               <h3>Inherited by implicit conversion ArrowAssoc from
-                <a href="" class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder">ResponseDecoder</a>[<span class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder.F">F</span>, <span class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder.Base">Base</span>] to <span class="extype" name="scala.Predef.ArrowAssoc">ArrowAssoc</span>[<a href="" class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder">ResponseDecoder</a>[<span class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder.F">F</span>, <span class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder.Base">Base</span>]]
+                <a href="" class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder">ResponseDecoder</a>[<span class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder.F">F</span>, <span class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder.Base">Base</span>, <span class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder.Out">Out</span>] to <span class="extype" name="scala.Predef.ArrowAssoc">ArrowAssoc</span>[<a href="" class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder">ResponseDecoder</a>[<span class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder.F">F</span>, <span class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder.Base">Base</span>, <span class="extype" name="ru.pavkin.todoist.api.core.decoder.ResponseDecoder.Out">Out</span>]]
               </h3>
             </div>
         </div>

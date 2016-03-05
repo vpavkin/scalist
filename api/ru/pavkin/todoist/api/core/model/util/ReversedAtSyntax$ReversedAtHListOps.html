@@ -522,7 +522,7 @@
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
-    </li><li name="ru.pavkin.todoist.api.core.model.util.ReversedAtSyntax.ReversedAtHListOps#resultFor" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+    </li><li name="ru.pavkin.todoist.api.core.model.util.ReversedAtSyntax.ReversedAtHListOps#resultFor" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="resultFor[R&lt;:shapeless.HList,Out](index:shapeless.Nat)(implicitR:shapeless.ops.hlist.Reverse.Aux[A,R],implicitA:shapeless.ops.hlist.At.Aux[R,index.N,Out]):Out"></a>
       <a id="resultFor[R&lt;:HList,Out](Nat)(Aux[A,R],Aux[R,N,Out]):Out"></a>
       <h4 class="signature">
@@ -538,7 +538,12 @@
         <img src="../../../../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      
+      <p class="shortcomment cmt">Returns the result of the command that is located under specified index in the request</p><div class="fullcomment"><div class="comment cmt"><p>Returns the result of the command that is located under specified index in the request</p><ul><li>For <a href="../SimpleCommand.html" class="extype" name="ru.pavkin.todoist.api.core.model.SimpleCommand">ru.pavkin.todoist.api.core.model.SimpleCommand</a>
+returns <a href="../CommandResult.html" class="extype" name="ru.pavkin.todoist.api.core.model.CommandResult">ru.pavkin.todoist.api.core.model.CommandResult</a></li><li>For <a href="../TempIdCommand.html" class="extype" name="ru.pavkin.todoist.api.core.model.TempIdCommand">ru.pavkin.todoist.api.core.model.TempIdCommand</a>
+returns <a href="../TempIdCommandResult.html" class="extype" name="ru.pavkin.todoist.api.core.model.TempIdCommandResult">ru.pavkin.todoist.api.core.model.TempIdCommandResult</a>
+</li></ul></div><dl class="paramcmts block"><dt class="param">index</dt><dd class="cmt"><p>the zero based command index, prefixed by an underscore, e.g. <code>_0</code> or <code>_12</code></p></dd></dl><dl class="attributes block"> <div class="block">Example:
+               <ol><li class="cmt"><p></p><pre>res.resultFor(_0)</pre></li></ol>
+            </div></dl></div>
     </li><li name="scala.AnyRef#synchronized" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="synchronized[T0](x$1:=&gt;T0):T0"></a>
       <a id="synchronized[T0](⇒T0):T0"></a>

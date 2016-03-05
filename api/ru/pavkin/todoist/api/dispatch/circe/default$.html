@@ -49,9 +49,10 @@
       </span>
       </h4>
       
-          <div id="comment" class="fullcommenttop"><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/vpavkin/scalist/tree/master/dispatch-circe/src/main/scala/ru/pavkin/todoist/api/dispatch/circe/default.scala" target="_blank">default.scala</a></dd></dl><div class="toggleContainer block">
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Default asynchronous API client implementation.</p><p>API effect is <code>Future[ Xor[DispatchAPI.Error, T] ]</code></p><p>Uses Dispatch HTTP client and Circe Json under the hood
+</p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/vpavkin/scalist/tree/master/dispatch-circe/src/main/scala/ru/pavkin/todoist/api/dispatch/circe/default.scala" target="_blank">default.scala</a></dd><dt>See also</dt><dd><span class="cmt"><p><a href="../impl/circe/DispatchAPI$$Error.html" class="extype" name="ru.pavkin.todoist.api.dispatch.impl.circe.DispatchAPI.Error">ru.pavkin.todoist.api.dispatch.impl.circe.DispatchAPI.Error</a></p></span><span class="cmt"><p><a href="http://typelevel.org/cats/api/index.html#cats.data.Xor" class="extype" target="_top">cats.data.Xor</a></p></span><span class="cmt"><p><a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.concurrent.Future" class="extype" target="_top">scala.concurrent.Future</a></p></span></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
-          <div class="superTypes hiddenContent"><a href="CirceModelAPISuite.html" class="extype" name="ru.pavkin.todoist.api.dispatch.circe.CirceModelAPISuite">CirceModelAPISuite</a>, <a href="../../suite/ModelAPISuite.html" class="extype" name="ru.pavkin.todoist.api.suite.ModelAPISuite">ModelAPISuite</a>[<a href="../impl/circe/DispatchAPI$.html#Result[T]=scala.concurrent.Future[ru.pavkin.todoist.api.dispatch.impl.circe.DispatchAPI.X[T]]" class="extmbr" name="ru.pavkin.todoist.api.dispatch.impl.circe.DispatchAPI.Result">Result</a>, <a href="../../circe/CirceDecoder$.html#Result[T]=cats.data.Xor[io.circe.DecodingFailure,T]" class="extmbr" name="ru.pavkin.todoist.api.circe.CirceDecoder.Result">Result</a>, <a href="https://travisbrown.github.io/circe/api/index.html#io.circe.Json" class="extype" target="_top">Json</a>], <a href="CirceAPISuite.html" class="extype" name="ru.pavkin.todoist.api.dispatch.circe.CirceAPISuite">CirceAPISuite</a>, <a href="../../suite/AbstractDTOCommandAPISuite.html" class="extype" name="ru.pavkin.todoist.api.suite.AbstractDTOCommandAPISuite">AbstractDTOCommandAPISuite</a>[<a href="../impl/circe/DispatchAPI$.html#Result[T]=scala.concurrent.Future[ru.pavkin.todoist.api.dispatch.impl.circe.DispatchAPI.X[T]]" class="extmbr" name="ru.pavkin.todoist.api.dispatch.impl.circe.DispatchAPI.Result">Result</a>, <a href="../../circe/CirceDecoder$.html#Result[T]=cats.data.Xor[io.circe.DecodingFailure,T]" class="extmbr" name="ru.pavkin.todoist.api.circe.CirceDecoder.Result">Result</a>, <a href="https://travisbrown.github.io/circe/api/index.html#io.circe.Json" class="extype" target="_top">Json</a>, <a href="../../core/dto/package$$RawCommandResult.html" class="extype" name="ru.pavkin.todoist.api.core.dto.RawCommandResult">RawCommandResult</a>], <a href="../../suite/CommandAPISuite.html" class="extype" name="ru.pavkin.todoist.api.suite.CommandAPISuite">CommandAPISuite</a>, <a href="../../core/tags$$Syntax.html" class="extype" name="ru.pavkin.todoist.api.core.tags.Syntax">Syntax</a>, <a href="../../suite/AbstractDTOQueryAPISuite.html" class="extype" name="ru.pavkin.todoist.api.suite.AbstractDTOQueryAPISuite">AbstractDTOQueryAPISuite</a>[<a href="../impl/circe/DispatchAPI$.html#Result[T]=scala.concurrent.Future[ru.pavkin.todoist.api.dispatch.impl.circe.DispatchAPI.X[T]]" class="extmbr" name="ru.pavkin.todoist.api.dispatch.impl.circe.DispatchAPI.Result">Result</a>, <a href="../../circe/CirceDecoder$.html#Result[T]=cats.data.Xor[io.circe.DecodingFailure,T]" class="extmbr" name="ru.pavkin.todoist.api.circe.CirceDecoder.Result">Result</a>, <a href="https://travisbrown.github.io/circe/api/index.html#io.circe.Json" class="extype" target="_top">Json</a>, <a href="../../core/dto/AllResources.html" class="extype" name="ru.pavkin.todoist.api.core.dto.AllResources">AllResources</a>], <a href="../../suite/AbstractDTOAPISuite.html" class="extype" name="ru.pavkin.todoist.api.suite.AbstractDTOAPISuite">AbstractDTOAPISuite</a>[<a href="../../circe/CirceDecoder$.html#Result[T]=cats.data.Xor[io.circe.DecodingFailure,T]" class="extmbr" name="ru.pavkin.todoist.api.circe.CirceDecoder.Result">Result</a>], <a href="../../suite/QueryAPISuite.html" class="extype" name="ru.pavkin.todoist.api.suite.QueryAPISuite">QueryAPISuite</a>, <a href="../../suite/FutureBasedAPISuite.html" class="extype" name="ru.pavkin.todoist.api.suite.FutureBasedAPISuite">FutureBasedAPISuite</a>[<a href="../impl/circe/DispatchAPI$.html#Result[T]=scala.concurrent.Future[ru.pavkin.todoist.api.dispatch.impl.circe.DispatchAPI.X[T]]" class="extmbr" name="ru.pavkin.todoist.api.dispatch.impl.circe.DispatchAPI.Result">Result</a>, <a href="../../circe/CirceDecoder$.html#Result[T]=cats.data.Xor[io.circe.DecodingFailure,T]" class="extmbr" name="ru.pavkin.todoist.api.circe.CirceDecoder.Result">Result</a>, <a href="https://travisbrown.github.io/circe/api/index.html#io.circe.Json" class="extype" target="_top">Json</a>], <a href="http://typelevel.org/cats/api/index.html#cats.std.FutureInstances" class="extype" target="_top">FutureInstances</a>, <a href="http://typelevel.org/cats/api/index.html#cats.std.FutureInstances1" class="extype" target="_top">FutureInstances1</a>, <a href="http://typelevel.org/cats/api/index.html#cats.std.FutureInstances2" class="extype" target="_top">FutureInstances2</a>, <a href="../../circe/dto/CirceDTOCommands.html" class="extype" name="ru.pavkin.todoist.api.circe.dto.CirceDTOCommands">CirceDTOCommands</a>, <a href="../../circe/encoders/CirceDTOEncoders.html" class="extype" name="ru.pavkin.todoist.api.circe.encoders.CirceDTOEncoders">CirceDTOEncoders</a>, <a href="../../circe/decoders/CirceDTODecoders.html" class="extype" name="ru.pavkin.todoist.api.circe.decoders.CirceDTODecoders">CirceDTODecoders</a>, <a href="../../circe/decoders/PlainCoproductDecoder.html" class="extype" name="ru.pavkin.todoist.api.circe.decoders.PlainCoproductDecoder">PlainCoproductDecoder</a>, <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.AnyRef" class="extype" target="_top">AnyRef</a>, <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Any" class="extype" target="_top">Any</a></div>
+          <div class="superTypes hiddenContent"><a href="CirceModelAPISuite.html" class="extype" name="ru.pavkin.todoist.api.dispatch.circe.CirceModelAPISuite">CirceModelAPISuite</a>, <a href="../../suite/ModelAPISuite.html" class="extype" name="ru.pavkin.todoist.api.suite.ModelAPISuite">ModelAPISuite</a>[<a href="../impl/circe/DispatchAPI$.html#Result[T]=scala.concurrent.Future[ru.pavkin.todoist.api.dispatch.impl.circe.DispatchAPI.X[T]]" class="extmbr" name="ru.pavkin.todoist.api.dispatch.impl.circe.DispatchAPI.Result">Result</a>, <a href="../../circe/CirceDecoder$.html#Result[T]=cats.data.Xor[io.circe.DecodingFailure,T]" class="extmbr" name="ru.pavkin.todoist.api.circe.CirceDecoder.Result">Result</a>, <a href="https://travisbrown.github.io/circe/api/index.html#io.circe.Json" class="extype" target="_top">Json</a>], <a href="CirceAPISuite.html" class="extype" name="ru.pavkin.todoist.api.dispatch.circe.CirceAPISuite">CirceAPISuite</a>, <a href="../../suite/AbstractOAuthAPISuite.html" class="extype" name="ru.pavkin.todoist.api.suite.AbstractOAuthAPISuite">AbstractOAuthAPISuite</a>[<a href="../impl/circe/DispatchAPI$.html#Result[T]=scala.concurrent.Future[ru.pavkin.todoist.api.dispatch.impl.circe.DispatchAPI.X[T]]" class="extmbr" name="ru.pavkin.todoist.api.dispatch.impl.circe.DispatchAPI.Result">Result</a>, <a href="../../circe/CirceDecoder$.html#Result[T]=cats.data.Xor[io.circe.DecodingFailure,T]" class="extmbr" name="ru.pavkin.todoist.api.circe.CirceDecoder.Result">Result</a>, <a href="https://travisbrown.github.io/circe/api/index.html#io.circe.Json" class="extype" target="_top">Json</a>, <a href="../../core/dto/AccessToken.html" class="extype" name="ru.pavkin.todoist.api.core.dto.AccessToken">AccessToken</a>], <a href="../../suite/AbstractDTOCommandAPISuite.html" class="extype" name="ru.pavkin.todoist.api.suite.AbstractDTOCommandAPISuite">AbstractDTOCommandAPISuite</a>[<a href="../impl/circe/DispatchAPI$.html#Result[T]=scala.concurrent.Future[ru.pavkin.todoist.api.dispatch.impl.circe.DispatchAPI.X[T]]" class="extmbr" name="ru.pavkin.todoist.api.dispatch.impl.circe.DispatchAPI.Result">Result</a>, <a href="../../circe/CirceDecoder$.html#Result[T]=cats.data.Xor[io.circe.DecodingFailure,T]" class="extmbr" name="ru.pavkin.todoist.api.circe.CirceDecoder.Result">Result</a>, <a href="https://travisbrown.github.io/circe/api/index.html#io.circe.Json" class="extype" target="_top">Json</a>, <a href="../../core/dto/package$$RawCommandResult.html" class="extype" name="ru.pavkin.todoist.api.core.dto.RawCommandResult">RawCommandResult</a>], <a href="../../suite/CommandAPISuite.html" class="extype" name="ru.pavkin.todoist.api.suite.CommandAPISuite">CommandAPISuite</a>, <a href="../../core/tags$$Syntax.html" class="extype" name="ru.pavkin.todoist.api.core.tags.Syntax">Syntax</a>, <a href="../../suite/AbstractDTOQueryAPISuite.html" class="extype" name="ru.pavkin.todoist.api.suite.AbstractDTOQueryAPISuite">AbstractDTOQueryAPISuite</a>[<a href="../impl/circe/DispatchAPI$.html#Result[T]=scala.concurrent.Future[ru.pavkin.todoist.api.dispatch.impl.circe.DispatchAPI.X[T]]" class="extmbr" name="ru.pavkin.todoist.api.dispatch.impl.circe.DispatchAPI.Result">Result</a>, <a href="../../circe/CirceDecoder$.html#Result[T]=cats.data.Xor[io.circe.DecodingFailure,T]" class="extmbr" name="ru.pavkin.todoist.api.circe.CirceDecoder.Result">Result</a>, <a href="https://travisbrown.github.io/circe/api/index.html#io.circe.Json" class="extype" target="_top">Json</a>, <a href="../../core/dto/AllResources.html" class="extype" name="ru.pavkin.todoist.api.core.dto.AllResources">AllResources</a>], <a href="../../suite/AbstractDTOAPISuite.html" class="extype" name="ru.pavkin.todoist.api.suite.AbstractDTOAPISuite">AbstractDTOAPISuite</a>[<a href="../../circe/CirceDecoder$.html#Result[T]=cats.data.Xor[io.circe.DecodingFailure,T]" class="extmbr" name="ru.pavkin.todoist.api.circe.CirceDecoder.Result">Result</a>], <a href="../../suite/QueryAPISuite.html" class="extype" name="ru.pavkin.todoist.api.suite.QueryAPISuite">QueryAPISuite</a>, <a href="../../suite/FutureBasedAPISuite.html" class="extype" name="ru.pavkin.todoist.api.suite.FutureBasedAPISuite">FutureBasedAPISuite</a>[<a href="../impl/circe/DispatchAPI$.html#Result[T]=scala.concurrent.Future[ru.pavkin.todoist.api.dispatch.impl.circe.DispatchAPI.X[T]]" class="extmbr" name="ru.pavkin.todoist.api.dispatch.impl.circe.DispatchAPI.Result">Result</a>, <a href="../../circe/CirceDecoder$.html#Result[T]=cats.data.Xor[io.circe.DecodingFailure,T]" class="extmbr" name="ru.pavkin.todoist.api.circe.CirceDecoder.Result">Result</a>, <a href="https://travisbrown.github.io/circe/api/index.html#io.circe.Json" class="extype" target="_top">Json</a>], <a href="http://typelevel.org/cats/api/index.html#cats.std.FutureInstances" class="extype" target="_top">FutureInstances</a>, <a href="http://typelevel.org/cats/api/index.html#cats.std.FutureInstances1" class="extype" target="_top">FutureInstances1</a>, <a href="http://typelevel.org/cats/api/index.html#cats.std.FutureInstances2" class="extype" target="_top">FutureInstances2</a>, <a href="../../circe/dto/CirceDTOCommands.html" class="extype" name="ru.pavkin.todoist.api.circe.dto.CirceDTOCommands">CirceDTOCommands</a>, <a href="../../circe/encoders/CirceDTOEncoders.html" class="extype" name="ru.pavkin.todoist.api.circe.encoders.CirceDTOEncoders">CirceDTOEncoders</a>, <a href="../../circe/decoders/CirceDTODecoders.html" class="extype" name="ru.pavkin.todoist.api.circe.decoders.CirceDTODecoders">CirceDTODecoders</a>, <a href="../../circe/decoders/PlainCoproductDecoder.html" class="extype" name="ru.pavkin.todoist.api.circe.decoders.PlainCoproductDecoder">PlainCoproductDecoder</a>, <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.AnyRef" class="extype" target="_top">AnyRef</a>, <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Any" class="extype" target="_top">Any</a></div>
         </div></div>
         
 
@@ -69,7 +70,7 @@
                 <span class="filtertype">Inherited<br />
                 </span>
                 <ol id="linearization">
-                  <li class="in" name="ru.pavkin.todoist.api.dispatch.circe.default"><span>default</span></li><li class="in" name="ru.pavkin.todoist.api.dispatch.circe.CirceModelAPISuite"><span>CirceModelAPISuite</span></li><li class="in" name="ru.pavkin.todoist.api.suite.ModelAPISuite"><span>ModelAPISuite</span></li><li class="in" name="ru.pavkin.todoist.api.dispatch.circe.CirceAPISuite"><span>CirceAPISuite</span></li><li class="in" name="ru.pavkin.todoist.api.suite.AbstractDTOCommandAPISuite"><span>AbstractDTOCommandAPISuite</span></li><li class="in" name="ru.pavkin.todoist.api.suite.CommandAPISuite"><span>CommandAPISuite</span></li><li class="in" name="ru.pavkin.todoist.api.core.tags.Syntax"><span>Syntax</span></li><li class="in" name="ru.pavkin.todoist.api.suite.AbstractDTOQueryAPISuite"><span>AbstractDTOQueryAPISuite</span></li><li class="in" name="ru.pavkin.todoist.api.suite.AbstractDTOAPISuite"><span>AbstractDTOAPISuite</span></li><li class="in" name="ru.pavkin.todoist.api.suite.QueryAPISuite"><span>QueryAPISuite</span></li><li class="in" name="ru.pavkin.todoist.api.suite.FutureBasedAPISuite"><span>FutureBasedAPISuite</span></li><li class="in" name="cats.std.FutureInstances"><span>FutureInstances</span></li><li class="in" name="cats.std.FutureInstances1"><span>FutureInstances1</span></li><li class="in" name="cats.std.FutureInstances2"><span>FutureInstances2</span></li><li class="in" name="ru.pavkin.todoist.api.circe.dto.CirceDTOCommands"><span>CirceDTOCommands</span></li><li class="in" name="ru.pavkin.todoist.api.circe.encoders.CirceDTOEncoders"><span>CirceDTOEncoders</span></li><li class="in" name="ru.pavkin.todoist.api.circe.decoders.CirceDTODecoders"><span>CirceDTODecoders</span></li><li class="in" name="ru.pavkin.todoist.api.circe.decoders.PlainCoproductDecoder"><span>PlainCoproductDecoder</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
+                  <li class="in" name="ru.pavkin.todoist.api.dispatch.circe.default"><span>default</span></li><li class="in" name="ru.pavkin.todoist.api.dispatch.circe.CirceModelAPISuite"><span>CirceModelAPISuite</span></li><li class="in" name="ru.pavkin.todoist.api.suite.ModelAPISuite"><span>ModelAPISuite</span></li><li class="in" name="ru.pavkin.todoist.api.dispatch.circe.CirceAPISuite"><span>CirceAPISuite</span></li><li class="in" name="ru.pavkin.todoist.api.suite.AbstractOAuthAPISuite"><span>AbstractOAuthAPISuite</span></li><li class="in" name="ru.pavkin.todoist.api.suite.AbstractDTOCommandAPISuite"><span>AbstractDTOCommandAPISuite</span></li><li class="in" name="ru.pavkin.todoist.api.suite.CommandAPISuite"><span>CommandAPISuite</span></li><li class="in" name="ru.pavkin.todoist.api.core.tags.Syntax"><span>Syntax</span></li><li class="in" name="ru.pavkin.todoist.api.suite.AbstractDTOQueryAPISuite"><span>AbstractDTOQueryAPISuite</span></li><li class="in" name="ru.pavkin.todoist.api.suite.AbstractDTOAPISuite"><span>AbstractDTOAPISuite</span></li><li class="in" name="ru.pavkin.todoist.api.suite.QueryAPISuite"><span>QueryAPISuite</span></li><li class="in" name="ru.pavkin.todoist.api.suite.FutureBasedAPISuite"><span>FutureBasedAPISuite</span></li><li class="in" name="cats.std.FutureInstances"><span>FutureInstances</span></li><li class="in" name="cats.std.FutureInstances1"><span>FutureInstances1</span></li><li class="in" name="cats.std.FutureInstances2"><span>FutureInstances2</span></li><li class="in" name="ru.pavkin.todoist.api.circe.dto.CirceDTOCommands"><span>CirceDTOCommands</span></li><li class="in" name="ru.pavkin.todoist.api.circe.encoders.CirceDTOEncoders"><span>CirceDTOEncoders</span></li><li class="in" name="ru.pavkin.todoist.api.circe.decoders.CirceDTODecoders"><span>CirceDTODecoders</span></li><li class="in" name="ru.pavkin.todoist.api.circe.decoders.PlainCoproductDecoder"><span>PlainCoproductDecoder</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
                 </ol>
               </div><div id="ancestors">
             <span class="filtertype"></span>
@@ -91,7 +92,7 @@
         <div id="types" class="types members">
               <h3>Type Members</h3>
               <ol><li name="ru.pavkin.todoist.api.suite.QueryAPISuite.All" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="All=shapeless.::[QueryAPISuite.this.Projects,shapeless.::[QueryAPISuite.this.Labels,shapeless.HNil]]"></a>
+      <a id="All=shapeless.::[QueryAPISuite.this.User,shapeless.::[QueryAPISuite.this.Reminders,shapeless.::[QueryAPISuite.this.Filters,shapeless.::[QueryAPISuite.this.Notes,shapeless.::[QueryAPISuite.this.Tasks,shapeless.::[QueryAPISuite.this.Projects,shapeless.::[QueryAPISuite.this.Labels,shapeless.HNil]]]]]]]"></a>
       <a id="All:All"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -99,14 +100,16 @@
         <span class="kind">type</span>
       </span>
       <span class="symbol">
-        <span class="name">All</span><span class="result"> = <span class="extype" name="shapeless.::">::</span>[<a href="#Projects=List[ru.pavkin.todoist.api.core.model.Project]" class="extmbr" name="ru.pavkin.todoist.api.dispatch.circe.default.Projects">Projects</a>, <span class="extype" name="shapeless.::">::</span>[<a href="#Labels=List[ru.pavkin.todoist.api.core.model.Label]" class="extmbr" name="ru.pavkin.todoist.api.dispatch.circe.default.Labels">Labels</a>, <span class="extype" name="shapeless.HNil">HNil</span>]]</span>
+        <span class="name">All</span><span class="result"> = <span class="extype" name="shapeless.::">::</span>[<a href="#User=ru.pavkin.todoist.api.core.model.User" class="extmbr" name="ru.pavkin.todoist.api.dispatch.circe.default.User">User</a>, <span class="extype" name="shapeless.::">::</span>[<a href="#Reminders=List[ru.pavkin.todoist.api.core.model.Reminder]" class="extmbr" name="ru.pavkin.todoist.api.dispatch.circe.default.Reminders">Reminders</a>, <span class="extype" name="shapeless.::">::</span>[<a href="#Filters=List[ru.pavkin.todoist.api.core.model.Filter]" class="extmbr" name="ru.pavkin.todoist.api.dispatch.circe.default.Filters">Filters</a>, <span class="extype" name="shapeless.::">::</span>[<a href="#Notes=List[ru.pavkin.todoist.api.core.model.Note]" class="extmbr" name="ru.pavkin.todoist.api.dispatch.circe.default.Notes">Notes</a>, <span class="extype" name="shapeless.::">::</span>[<a href="#Tasks=List[ru.pavkin.todoist.api.core.model.Task]" class="extmbr" name="ru.pavkin.todoist.api.dispatch.circe.default.Tasks">Tasks</a>, <span class="extype" name="shapeless.::">::</span>[<a href="#Projects=List[ru.pavkin.todoist.api.core.model.Project]" class="extmbr" name="ru.pavkin.todoist.api.dispatch.circe.default.Projects">Projects</a>, <span class="extype" name="shapeless.::">::</span>[<a href="#Labels=List[ru.pavkin.todoist.api.core.model.Label]" class="extmbr" name="ru.pavkin.todoist.api.dispatch.circe.default.Labels">Labels</a>, <span class="extype" name="shapeless.HNil">HNil</span>]]]]]]]</span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../../../index.html#ru.pavkin.todoist.api.dispatch.circe.default$@All=shapeless.::[QueryAPISuite.this.Projects,shapeless.::[QueryAPISuite.this.Labels,shapeless.HNil]]" title="Permalink" target="_top">
+      <a href="../../../../../../index.html#ru.pavkin.todoist.api.dispatch.circe.default$@All=shapeless.::[QueryAPISuite.this.User,shapeless.::[QueryAPISuite.this.Reminders,shapeless.::[QueryAPISuite.this.Filters,shapeless.::[QueryAPISuite.this.Notes,shapeless.::[QueryAPISuite.this.Tasks,shapeless.::[QueryAPISuite.this.Projects,shapeless.::[QueryAPISuite.this.Labels,shapeless.HNil]]]]]]]" title="Permalink" target="_top">
         <img src="../../../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../suite/QueryAPISuite.html" class="extype" name="ru.pavkin.todoist.api.suite.QueryAPISuite">QueryAPISuite</a></dd></dl></div>
+      <p class="shortcomment cmt">All resources that can be requested
+</p><div class="fullcomment"><div class="comment cmt"><p>All resources that can be requested
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../suite/QueryAPISuite.html" class="extype" name="ru.pavkin.todoist.api.suite.QueryAPISuite">QueryAPISuite</a></dd></dl></div>
     </li><li name="ru.pavkin.todoist.api.suite.ModelAPISuite.CommandResult" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="CommandResult=ru.pavkin.todoist.api.core.model.CommandResult"></a>
       <a id="CommandResult:CommandResult"></a>
@@ -124,6 +127,25 @@
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../suite/ModelAPISuite.html" class="extype" name="ru.pavkin.todoist.api.suite.ModelAPISuite">ModelAPISuite</a> → <a href="../../suite/CommandAPISuite.html" class="extype" name="ru.pavkin.todoist.api.suite.CommandAPISuite">CommandAPISuite</a></dd></dl></div>
+    </li><li name="ru.pavkin.todoist.api.suite.ModelAPISuite.Filters" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="Filters=List[ru.pavkin.todoist.api.core.model.Filter]"></a>
+      <a id="Filters:Filters"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">type</span>
+      </span>
+      <span class="symbol">
+        <span class="name">Filters</span><span class="result"> = <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.collection.immutable.List" class="extype" target="_top">List</a>[<a href="../../core/model/Filter.html" class="extype" name="ru.pavkin.todoist.api.core.model.Filter">Filter</a>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#ru.pavkin.todoist.api.dispatch.circe.default$@Filters=List[ru.pavkin.todoist.api.core.model.Filter]" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Collection of <code>Filter</code> entities
+</p><div class="fullcomment"><div class="comment cmt"><p>Collection of <code>Filter</code> entities
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../suite/ModelAPISuite.html" class="extype" name="ru.pavkin.todoist.api.suite.ModelAPISuite">ModelAPISuite</a> → <a href="../../suite/QueryAPISuite.html" class="extype" name="ru.pavkin.todoist.api.suite.QueryAPISuite">QueryAPISuite</a></dd></dl></div>
     </li><li name="ru.pavkin.todoist.api.suite.ModelAPISuite.Labels" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="Labels=List[ru.pavkin.todoist.api.core.model.Label]"></a>
       <a id="Labels:Labels"></a>
@@ -140,7 +162,28 @@
         <img src="../../../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../suite/ModelAPISuite.html" class="extype" name="ru.pavkin.todoist.api.suite.ModelAPISuite">ModelAPISuite</a> → <a href="../../suite/QueryAPISuite.html" class="extype" name="ru.pavkin.todoist.api.suite.QueryAPISuite">QueryAPISuite</a></dd></dl></div>
+      <p class="shortcomment cmt">Collection of <code>Label</code> entities
+</p><div class="fullcomment"><div class="comment cmt"><p>Collection of <code>Label</code> entities
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../suite/ModelAPISuite.html" class="extype" name="ru.pavkin.todoist.api.suite.ModelAPISuite">ModelAPISuite</a> → <a href="../../suite/QueryAPISuite.html" class="extype" name="ru.pavkin.todoist.api.suite.QueryAPISuite">QueryAPISuite</a></dd></dl></div>
+    </li><li name="ru.pavkin.todoist.api.suite.ModelAPISuite.Notes" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="Notes=List[ru.pavkin.todoist.api.core.model.Note]"></a>
+      <a id="Notes:Notes"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">type</span>
+      </span>
+      <span class="symbol">
+        <span class="name">Notes</span><span class="result"> = <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.collection.immutable.List" class="extype" target="_top">List</a>[<a href="../../core/model/Note.html" class="extype" name="ru.pavkin.todoist.api.core.model.Note">Note</a>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#ru.pavkin.todoist.api.dispatch.circe.default$@Notes=List[ru.pavkin.todoist.api.core.model.Note]" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Collection of <code>Note</code> entities
+</p><div class="fullcomment"><div class="comment cmt"><p>Collection of <code>Note</code> entities
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../suite/ModelAPISuite.html" class="extype" name="ru.pavkin.todoist.api.suite.ModelAPISuite">ModelAPISuite</a> → <a href="../../suite/QueryAPISuite.html" class="extype" name="ru.pavkin.todoist.api.suite.QueryAPISuite">QueryAPISuite</a></dd></dl></div>
     </li><li name="ru.pavkin.todoist.api.suite.ModelAPISuite.Projects" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="Projects=List[ru.pavkin.todoist.api.core.model.Project]"></a>
       <a id="Projects:Projects"></a>
@@ -157,7 +200,9 @@
         <img src="../../../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../suite/ModelAPISuite.html" class="extype" name="ru.pavkin.todoist.api.suite.ModelAPISuite">ModelAPISuite</a> → <a href="../../suite/QueryAPISuite.html" class="extype" name="ru.pavkin.todoist.api.suite.QueryAPISuite">QueryAPISuite</a></dd></dl></div>
+      <p class="shortcomment cmt">Collection of <code>Project</code> entities
+</p><div class="fullcomment"><div class="comment cmt"><p>Collection of <code>Project</code> entities
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../suite/ModelAPISuite.html" class="extype" name="ru.pavkin.todoist.api.suite.ModelAPISuite">ModelAPISuite</a> → <a href="../../suite/QueryAPISuite.html" class="extype" name="ru.pavkin.todoist.api.suite.QueryAPISuite">QueryAPISuite</a></dd></dl></div>
     </li><li name="ru.pavkin.todoist.api.suite.QueryAPISuite.QuerySyntax" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
       <a id="QuerySyntaxextendsAnyRef"></a>
       <a id="QuerySyntax:QuerySyntax"></a>
@@ -175,6 +220,42 @@
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../suite/QueryAPISuite.html" class="extype" name="ru.pavkin.todoist.api.suite.QueryAPISuite">QueryAPISuite</a></dd></dl></div>
+    </li><li name="ru.pavkin.todoist.api.suite.ModelAPISuite.Reminders" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="Reminders=List[ru.pavkin.todoist.api.core.model.Reminder]"></a>
+      <a id="Reminders:Reminders"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">type</span>
+      </span>
+      <span class="symbol">
+        <span class="name">Reminders</span><span class="result"> = <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.collection.immutable.List" class="extype" target="_top">List</a>[<a href="../../core/model/Reminder.html" class="extype" name="ru.pavkin.todoist.api.core.model.Reminder">Reminder</a>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#ru.pavkin.todoist.api.dispatch.circe.default$@Reminders=List[ru.pavkin.todoist.api.core.model.Reminder]" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Collection of <code>Reminder</code> entities
+</p><div class="fullcomment"><div class="comment cmt"><p>Collection of <code>Reminder</code> entities
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../suite/ModelAPISuite.html" class="extype" name="ru.pavkin.todoist.api.suite.ModelAPISuite">ModelAPISuite</a> → <a href="../../suite/QueryAPISuite.html" class="extype" name="ru.pavkin.todoist.api.suite.QueryAPISuite">QueryAPISuite</a></dd></dl></div>
+    </li><li name="ru.pavkin.todoist.api.core.tags.Syntax.ResourceIdListTagOps" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="ResourceIdListTagOps[A]extendsAnyRef"></a>
+      <a id="ResourceIdListTagOps[A]:ResourceIdListTagOps[A]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">implicit </span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="../../core/tags$$Syntax$ResourceIdListTagOps.html"><span class="name">ResourceIdListTagOps</span></a><span class="tparams">[<span name="A">A</span>]</span><span class="result"> extends <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.AnyRef" class="extype" target="_top">AnyRef</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#ru.pavkin.todoist.api.core.tags$$Syntax@ResourceIdListTagOps[A]extendsAnyRef" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../core/tags$$Syntax.html" class="extype" name="ru.pavkin.todoist.api.core.tags.Syntax">Syntax</a></dd></dl></div>
     </li><li name="ru.pavkin.todoist.api.core.tags.Syntax.ResourceIdTagOps" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="ResourceIdTagOps[A]extendsAnyRef"></a>
       <a id="ResourceIdTagOps[A]:ResourceIdTagOps[A]"></a>
@@ -192,6 +273,25 @@
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../core/tags$$Syntax.html" class="extype" name="ru.pavkin.todoist.api.core.tags.Syntax">Syntax</a></dd></dl></div>
+    </li><li name="ru.pavkin.todoist.api.suite.ModelAPISuite.Tasks" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="Tasks=List[ru.pavkin.todoist.api.core.model.Task]"></a>
+      <a id="Tasks:Tasks"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">type</span>
+      </span>
+      <span class="symbol">
+        <span class="name">Tasks</span><span class="result"> = <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.collection.immutable.List" class="extype" target="_top">List</a>[<a href="../../core/model/Task.html" class="extype" name="ru.pavkin.todoist.api.core.model.Task">Task</a>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#ru.pavkin.todoist.api.dispatch.circe.default$@Tasks=List[ru.pavkin.todoist.api.core.model.Task]" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Collection of <code>Item</code> entities
+</p><div class="fullcomment"><div class="comment cmt"><p>Collection of <code>Item</code> entities
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../suite/ModelAPISuite.html" class="extype" name="ru.pavkin.todoist.api.suite.ModelAPISuite">ModelAPISuite</a> → <a href="../../suite/QueryAPISuite.html" class="extype" name="ru.pavkin.todoist.api.suite.QueryAPISuite">QueryAPISuite</a></dd></dl></div>
     </li><li name="ru.pavkin.todoist.api.suite.ModelAPISuite.TempIdCommandResult" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="TempIdCommandResult=ru.pavkin.todoist.api.core.model.TempIdCommandResult"></a>
       <a id="TempIdCommandResult:TempIdCommandResult"></a>
@@ -209,6 +309,25 @@
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../suite/ModelAPISuite.html" class="extype" name="ru.pavkin.todoist.api.suite.ModelAPISuite">ModelAPISuite</a> → <a href="../../suite/CommandAPISuite.html" class="extype" name="ru.pavkin.todoist.api.suite.CommandAPISuite">CommandAPISuite</a></dd></dl></div>
+    </li><li name="ru.pavkin.todoist.api.suite.ModelAPISuite.User" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="User=ru.pavkin.todoist.api.core.model.User"></a>
+      <a id="User:User"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">type</span>
+      </span>
+      <span class="symbol">
+        <span class="name">User</span><span class="result"> = <a href="../../core/model/User.html" class="extype" name="ru.pavkin.todoist.api.core.model.User">core.model.User</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#ru.pavkin.todoist.api.dispatch.circe.default$@User=ru.pavkin.todoist.api.core.model.User" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt"><code>User</code> entity
+</p><div class="fullcomment"><div class="comment cmt"><p><code>User</code> entity
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../suite/ModelAPISuite.html" class="extype" name="ru.pavkin.todoist.api.suite.ModelAPISuite">ModelAPISuite</a> → <a href="../../suite/QueryAPISuite.html" class="extype" name="ru.pavkin.todoist.api.suite.QueryAPISuite">QueryAPISuite</a></dd></dl></div>
     </li></ol>
             </div>
 
@@ -267,6 +386,74 @@
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="ru.pavkin.todoist.api.circe.decoders.CirceDTODecoders#accessTokenDTODecoder" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="accessTokenDTODecoder:io.circe.Decoder[ru.pavkin.todoist.api.core.dto.AccessToken]"></a>
+      <a id="accessTokenDTODecoder:Decoder[AccessToken]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">implicit </span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">accessTokenDTODecoder</span><span class="result">: <a href="https://travisbrown.github.io/circe/api/index.html#io.circe.Decoder" class="extype" target="_top">Decoder</a>[<a href="../../core/dto/AccessToken.html" class="extype" name="ru.pavkin.todoist.api.core.dto.AccessToken">AccessToken</a>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#ru.pavkin.todoist.api.dispatch.circe.default$@accessTokenDTODecoder:io.circe.Decoder[ru.pavkin.todoist.api.core.dto.AccessToken]" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../circe/decoders/CirceDTODecoders.html" class="extype" name="ru.pavkin.todoist.api.circe.decoders.CirceDTODecoders">CirceDTODecoders</a></dd></dl></div>
+    </li><li name="ru.pavkin.todoist.api.suite.AbstractOAuthAPISuite#accessTokenDecoder" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="accessTokenDecoder(implicitM:cats.Monad[P]):ru.pavkin.todoist.api.core.decoder.SingleResponseDecoder[P,Base,ru.pavkin.todoist.api.core.model.AccessToken]"></a>
+      <a id="accessTokenDecoder(Monad[Result]):SingleResponseDecoder[Result,Json,AccessToken]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">implicit </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">accessTokenDecoder</span><span class="params">(<span class="implicit">implicit </span><span name="M">M: <a href="http://typelevel.org/cats/api/index.html#cats.Monad" class="extype" target="_top">Monad</a>[<a href="../../circe/CirceDecoder$.html#Result[T]=cats.data.Xor[io.circe.DecodingFailure,T]" class="extmbr" name="ru.pavkin.todoist.api.circe.CirceDecoder.Result">Result</a>]</span>)</span><span class="result">: <a href="../../core/decoder/SingleResponseDecoder.html" class="extype" name="ru.pavkin.todoist.api.core.decoder.SingleResponseDecoder">SingleResponseDecoder</a>[<a href="../../circe/CirceDecoder$.html#Result[T]=cats.data.Xor[io.circe.DecodingFailure,T]" class="extmbr" name="ru.pavkin.todoist.api.circe.CirceDecoder.Result">Result</a>, <a href="https://travisbrown.github.io/circe/api/index.html#io.circe.Json" class="extype" target="_top">Json</a>, <a href="../../core/model/AccessToken.html" class="extype" name="ru.pavkin.todoist.api.core.model.AccessToken">AccessToken</a>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#ru.pavkin.todoist.api.dispatch.circe.default$@accessTokenDecoder(implicitM:cats.Monad[P]):ru.pavkin.todoist.api.core.decoder.SingleResponseDecoder[P,Base,ru.pavkin.todoist.api.core.model.AccessToken]" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../suite/AbstractOAuthAPISuite.html" class="extype" name="ru.pavkin.todoist.api.suite.AbstractOAuthAPISuite">AbstractOAuthAPISuite</a></dd></dl></div>
+    </li><li name="ru.pavkin.todoist.api.dispatch.circe.CirceAPISuite#accessTokenDtoDecoder" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="accessTokenDtoDecoder:ru.pavkin.todoist.api.core.decoder.SingleResponseDecoder[ru.pavkin.todoist.api.circe.CirceDecoder.Result,io.circe.Json,ru.pavkin.todoist.api.core.dto.AccessToken]"></a>
+      <a id="accessTokenDtoDecoder:SingleResponseDecoder[Result,Json,AccessToken]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">accessTokenDtoDecoder</span><span class="result">: <a href="../../core/decoder/SingleResponseDecoder.html" class="extype" name="ru.pavkin.todoist.api.core.decoder.SingleResponseDecoder">SingleResponseDecoder</a>[<a href="../../circe/CirceDecoder$.html#Result[T]=cats.data.Xor[io.circe.DecodingFailure,T]" class="extmbr" name="ru.pavkin.todoist.api.circe.CirceDecoder.Result">Result</a>, <a href="https://travisbrown.github.io/circe/api/index.html#io.circe.Json" class="extype" target="_top">Json</a>, <a href="../../core/dto/AccessToken.html" class="extype" name="ru.pavkin.todoist.api.core.dto.AccessToken">AccessToken</a>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#ru.pavkin.todoist.api.dispatch.circe.default$@accessTokenDtoDecoder:ru.pavkin.todoist.api.core.decoder.SingleResponseDecoder[ru.pavkin.todoist.api.circe.CirceDecoder.Result,io.circe.Json,ru.pavkin.todoist.api.core.dto.AccessToken]" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="CirceAPISuite.html" class="extype" name="ru.pavkin.todoist.api.dispatch.circe.CirceAPISuite">CirceAPISuite</a> → <a href="../../suite/AbstractOAuthAPISuite.html" class="extype" name="ru.pavkin.todoist.api.suite.AbstractOAuthAPISuite">AbstractOAuthAPISuite</a></dd></dl></div>
+    </li><li name="ru.pavkin.todoist.api.circe.encoders.CirceDTOEncoders#addFilterEncoder" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="addFilterEncoder:io.circe.Encoder[ru.pavkin.todoist.api.core.dto.AddFilter]"></a>
+      <a id="addFilterEncoder:Encoder[AddFilter]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">implicit </span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">addFilterEncoder</span><span class="result">: <a href="https://travisbrown.github.io/circe/api/index.html#io.circe.Encoder" class="extype" target="_top">Encoder</a>[<a href="../../core/dto/AddFilter.html" class="extype" name="ru.pavkin.todoist.api.core.dto.AddFilter">AddFilter</a>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#ru.pavkin.todoist.api.dispatch.circe.default$@addFilterEncoder:io.circe.Encoder[ru.pavkin.todoist.api.core.dto.AddFilter]" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../circe/encoders/CirceDTOEncoders.html" class="extype" name="ru.pavkin.todoist.api.circe.encoders.CirceDTOEncoders">CirceDTOEncoders</a></dd></dl></div>
     </li><li name="ru.pavkin.todoist.api.circe.encoders.CirceDTOEncoders#addLabelEncoder" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="addLabelEncoder:io.circe.Encoder[ru.pavkin.todoist.api.core.dto.AddLabel]"></a>
       <a id="addLabelEncoder:Encoder[AddLabel]"></a>
@@ -284,6 +471,23 @@
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../circe/encoders/CirceDTOEncoders.html" class="extype" name="ru.pavkin.todoist.api.circe.encoders.CirceDTOEncoders">CirceDTOEncoders</a></dd></dl></div>
+    </li><li name="ru.pavkin.todoist.api.circe.encoders.CirceDTOEncoders#addNoteEncoder" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="addNoteEncoder[A](implicitevidence$2:ru.pavkin.todoist.api.core.IsResourceId[A],implicitE:io.circe.Encoder[A]):io.circe.Encoder[ru.pavkin.todoist.api.core.dto.AddNote[A]]"></a>
+      <a id="addNoteEncoder[A](IsResourceId[A],Encoder[A]):Encoder[AddNote[A]]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">implicit </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">addNoteEncoder</span><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <a href="../../core/IsResourceId.html" class="extype" name="ru.pavkin.todoist.api.core.IsResourceId">IsResourceId</a>[<span class="extype" name="ru.pavkin.todoist.api.circe.encoders.CirceDTOEncoders.addNoteEncoder.A">A</span>]</span>, <span name="E">E: <a href="https://travisbrown.github.io/circe/api/index.html#io.circe.Encoder" class="extype" target="_top">Encoder</a>[<span class="extype" name="ru.pavkin.todoist.api.circe.encoders.CirceDTOEncoders.addNoteEncoder.A">A</span>]</span>)</span><span class="result">: <a href="https://travisbrown.github.io/circe/api/index.html#io.circe.Encoder" class="extype" target="_top">Encoder</a>[<a href="../../core/dto/AddNote.html" class="extype" name="ru.pavkin.todoist.api.core.dto.AddNote">AddNote</a>[<span class="extype" name="ru.pavkin.todoist.api.circe.encoders.CirceDTOEncoders.addNoteEncoder.A">A</span>]]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#ru.pavkin.todoist.api.dispatch.circe.default$@addNoteEncoder[A](implicitevidence$2:ru.pavkin.todoist.api.core.IsResourceId[A],implicitE:io.circe.Encoder[A]):io.circe.Encoder[ru.pavkin.todoist.api.core.dto.AddNote[A]]" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../circe/encoders/CirceDTOEncoders.html" class="extype" name="ru.pavkin.todoist.api.circe.encoders.CirceDTOEncoders">CirceDTOEncoders</a></dd></dl></div>
     </li><li name="ru.pavkin.todoist.api.circe.encoders.CirceDTOEncoders#addProjectEncoder" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="addProjectEncoder:io.circe.Encoder[ru.pavkin.todoist.api.core.dto.AddProject]"></a>
       <a id="addProjectEncoder:Encoder[AddProject]"></a>
@@ -297,6 +501,23 @@
       </span>
       </h4><span class="permalink">
       <a href="../../../../../../index.html#ru.pavkin.todoist.api.dispatch.circe.default$@addProjectEncoder:io.circe.Encoder[ru.pavkin.todoist.api.core.dto.AddProject]" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../circe/encoders/CirceDTOEncoders.html" class="extype" name="ru.pavkin.todoist.api.circe.encoders.CirceDTOEncoders">CirceDTOEncoders</a></dd></dl></div>
+    </li><li name="ru.pavkin.todoist.api.circe.encoders.CirceDTOEncoders#addReminderEncoder" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="addReminderEncoder[A](implicitevidence$3:ru.pavkin.todoist.api.core.IsResourceId[A],implicitE:io.circe.Encoder[A]):io.circe.Encoder[ru.pavkin.todoist.api.core.dto.AddReminder[A]]"></a>
+      <a id="addReminderEncoder[A](IsResourceId[A],Encoder[A]):Encoder[AddReminder[A]]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">implicit </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">addReminderEncoder</span><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <a href="../../core/IsResourceId.html" class="extype" name="ru.pavkin.todoist.api.core.IsResourceId">IsResourceId</a>[<span class="extype" name="ru.pavkin.todoist.api.circe.encoders.CirceDTOEncoders.addReminderEncoder.A">A</span>]</span>, <span name="E">E: <a href="https://travisbrown.github.io/circe/api/index.html#io.circe.Encoder" class="extype" target="_top">Encoder</a>[<span class="extype" name="ru.pavkin.todoist.api.circe.encoders.CirceDTOEncoders.addReminderEncoder.A">A</span>]</span>)</span><span class="result">: <a href="https://travisbrown.github.io/circe/api/index.html#io.circe.Encoder" class="extype" target="_top">Encoder</a>[<a href="../../core/dto/AddReminder.html" class="extype" name="ru.pavkin.todoist.api.core.dto.AddReminder">AddReminder</a>[<span class="extype" name="ru.pavkin.todoist.api.circe.encoders.CirceDTOEncoders.addReminderEncoder.A">A</span>]]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#ru.pavkin.todoist.api.dispatch.circe.default$@addReminderEncoder[A](implicitevidence$3:ru.pavkin.todoist.api.core.IsResourceId[A],implicitE:io.circe.Encoder[A]):io.circe.Encoder[ru.pavkin.todoist.api.core.dto.AddReminder[A]]" title="Permalink" target="_top">
         <img src="../../../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -344,7 +565,7 @@
         <span class="kind">val</span>
       </span>
       <span class="symbol">
-        <span class="name">all</span><span class="result">: <a href="../../core/HasRawRequest.html" class="extype" name="ru.pavkin.todoist.api.core.HasRawRequest">HasRawRequest</a>[<a href="#All=shapeless.::[QueryAPISuite.this.Projects,shapeless.::[QueryAPISuite.this.Labels,shapeless.HNil]]" class="extmbr" name="ru.pavkin.todoist.api.dispatch.circe.default.All">All</a>]</span>
+        <span class="name">all</span><span class="result">: <a href="../../core/HasRawRequest.html" class="extype" name="ru.pavkin.todoist.api.core.HasRawRequest">HasRawRequest</a>[<a href="#All=shapeless.::[QueryAPISuite.this.User,shapeless.::[QueryAPISuite.this.Reminders,shapeless.::[QueryAPISuite.this.Filters,shapeless.::[QueryAPISuite.this.Notes,shapeless.::[QueryAPISuite.this.Tasks,shapeless.::[QueryAPISuite.this.Projects,shapeless.::[QueryAPISuite.this.Labels,shapeless.HNil]]]]]]]" class="extmbr" name="ru.pavkin.todoist.api.dispatch.circe.default.All">All</a>]</span>
       </span>
       </h4><span class="permalink">
       <a href="../../../../../../index.html#ru.pavkin.todoist.api.dispatch.circe.default$@all:ru.pavkin.todoist.api.core.HasRawRequest[QueryAPISuite.this.All]" title="Permalink" target="_top">
@@ -410,18 +631,18 @@
               
         </dd></dl></div>
     </li><li name="ru.pavkin.todoist.api.dispatch.circe.CirceAPISuite#commandDtoDecoder" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="commandDtoDecoder:ru.pavkin.todoist.api.core.decoder.SingleResponseDecoder.Aux[ru.pavkin.todoist.api.circe.CirceDecoder.Result,io.circe.Json,ru.pavkin.todoist.api.core.dto.RawCommandResult]"></a>
-      <a id="commandDtoDecoder:Aux[Result,Json,RawCommandResult]"></a>
+      <a id="commandDtoDecoder:ru.pavkin.todoist.api.core.decoder.SingleResponseDecoder[ru.pavkin.todoist.api.circe.CirceDecoder.Result,io.circe.Json,ru.pavkin.todoist.api.core.dto.RawCommandResult]"></a>
+      <a id="commandDtoDecoder:SingleResponseDecoder[Result,Json,RawCommandResult]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier">implicit </span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">commandDtoDecoder</span><span class="result">: <a href="../../core/decoder/SingleResponseDecoder$.html#Aux[F[_],Base,Out0]=ru.pavkin.todoist.api.core.decoder.SingleResponseDecoder[F,Base]{typeOut=Out0}" class="extmbr" name="ru.pavkin.todoist.api.core.decoder.SingleResponseDecoder.Aux">Aux</a>[<a href="../../circe/CirceDecoder$.html#Result[T]=cats.data.Xor[io.circe.DecodingFailure,T]" class="extmbr" name="ru.pavkin.todoist.api.circe.CirceDecoder.Result">Result</a>, <a href="https://travisbrown.github.io/circe/api/index.html#io.circe.Json" class="extype" target="_top">Json</a>, <a href="../../core/dto/package$$RawCommandResult.html" class="extype" name="ru.pavkin.todoist.api.core.dto.RawCommandResult">RawCommandResult</a>]</span>
+        <span class="name">commandDtoDecoder</span><span class="result">: <a href="../../core/decoder/SingleResponseDecoder.html" class="extype" name="ru.pavkin.todoist.api.core.decoder.SingleResponseDecoder">SingleResponseDecoder</a>[<a href="../../circe/CirceDecoder$.html#Result[T]=cats.data.Xor[io.circe.DecodingFailure,T]" class="extmbr" name="ru.pavkin.todoist.api.circe.CirceDecoder.Result">Result</a>, <a href="https://travisbrown.github.io/circe/api/index.html#io.circe.Json" class="extype" target="_top">Json</a>, <a href="../../core/dto/package$$RawCommandResult.html" class="extype" name="ru.pavkin.todoist.api.core.dto.RawCommandResult">RawCommandResult</a>]</span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../../../index.html#ru.pavkin.todoist.api.dispatch.circe.default$@commandDtoDecoder:ru.pavkin.todoist.api.core.decoder.SingleResponseDecoder.Aux[ru.pavkin.todoist.api.circe.CirceDecoder.Result,io.circe.Json,ru.pavkin.todoist.api.core.dto.RawCommandResult]" title="Permalink" target="_top">
+      <a href="../../../../../../index.html#ru.pavkin.todoist.api.dispatch.circe.default$@commandDtoDecoder:ru.pavkin.todoist.api.core.decoder.SingleResponseDecoder[ru.pavkin.todoist.api.circe.CirceDecoder.Result,io.circe.Json,ru.pavkin.todoist.api.core.dto.RawCommandResult]" title="Permalink" target="_top">
         <img src="../../../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -546,35 +767,35 @@
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../suite/AbstractDTOCommandAPISuite.html" class="extype" name="ru.pavkin.todoist.api.suite.AbstractDTOCommandAPISuite">AbstractDTOCommandAPISuite</a></dd></dl></div>
     </li><li name="ru.pavkin.todoist.api.suite.AbstractDTOQueryAPISuite#composeDecoders1" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="composeDecoders1[Out](implicitp2:ru.pavkin.todoist.api.core.decoder.SingleResponseDecoder.Aux[P,ResourceDTO,Out],implicitF:cats.FlatMap[P]):ru.pavkin.todoist.api.core.decoder.SingleResponseDecoder.Aux[P,Base,Out]"></a>
-      <a id="composeDecoders1[Out](Aux[Result,AllResources,Out],FlatMap[Result]):Aux[Result,Json,Out]"></a>
+      <a id="composeDecoders1[Out](implicitp2:ru.pavkin.todoist.api.core.decoder.SingleResponseDecoder[P,ResourceDTO,Out],implicitF:cats.FlatMap[P]):ru.pavkin.todoist.api.core.decoder.SingleResponseDecoder[P,Base,Out]"></a>
+      <a id="composeDecoders1[Out](SingleResponseDecoder[Result,AllResources,Out],FlatMap[Result]):SingleResponseDecoder[Result,Json,Out]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier">implicit </span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">composeDecoders1</span><span class="tparams">[<span name="Out">Out</span>]</span><span class="params">(<span class="implicit">implicit </span><span name="p2">p2: <a href="../../core/decoder/SingleResponseDecoder$.html#Aux[F[_],Base,Out0]=ru.pavkin.todoist.api.core.decoder.SingleResponseDecoder[F,Base]{typeOut=Out0}" class="extmbr" name="ru.pavkin.todoist.api.core.decoder.SingleResponseDecoder.Aux">Aux</a>[<a href="../../circe/CirceDecoder$.html#Result[T]=cats.data.Xor[io.circe.DecodingFailure,T]" class="extmbr" name="ru.pavkin.todoist.api.circe.CirceDecoder.Result">Result</a>, <a href="../../core/dto/AllResources.html" class="extype" name="ru.pavkin.todoist.api.core.dto.AllResources">AllResources</a>, <span class="extype" name="ru.pavkin.todoist.api.suite.AbstractDTOQueryAPISuite.composeDecoders1.Out">Out</span>]</span>, <span name="F">F: <a href="http://typelevel.org/cats/api/index.html#cats.FlatMap" class="extype" target="_top">FlatMap</a>[<a href="../../circe/CirceDecoder$.html#Result[T]=cats.data.Xor[io.circe.DecodingFailure,T]" class="extmbr" name="ru.pavkin.todoist.api.circe.CirceDecoder.Result">Result</a>]</span>)</span><span class="result">: <a href="../../core/decoder/SingleResponseDecoder$.html#Aux[F[_],Base,Out0]=ru.pavkin.todoist.api.core.decoder.SingleResponseDecoder[F,Base]{typeOut=Out0}" class="extmbr" name="ru.pavkin.todoist.api.core.decoder.SingleResponseDecoder.Aux">Aux</a>[<a href="../../circe/CirceDecoder$.html#Result[T]=cats.data.Xor[io.circe.DecodingFailure,T]" class="extmbr" name="ru.pavkin.todoist.api.circe.CirceDecoder.Result">Result</a>, <a href="https://travisbrown.github.io/circe/api/index.html#io.circe.Json" class="extype" target="_top">Json</a>, <span class="extype" name="ru.pavkin.todoist.api.suite.AbstractDTOQueryAPISuite.composeDecoders1.Out">Out</span>]</span>
+        <span class="name">composeDecoders1</span><span class="tparams">[<span name="Out">Out</span>]</span><span class="params">(<span class="implicit">implicit </span><span name="p2">p2: <a href="../../core/decoder/SingleResponseDecoder.html" class="extype" name="ru.pavkin.todoist.api.core.decoder.SingleResponseDecoder">SingleResponseDecoder</a>[<a href="../../circe/CirceDecoder$.html#Result[T]=cats.data.Xor[io.circe.DecodingFailure,T]" class="extmbr" name="ru.pavkin.todoist.api.circe.CirceDecoder.Result">Result</a>, <a href="../../core/dto/AllResources.html" class="extype" name="ru.pavkin.todoist.api.core.dto.AllResources">AllResources</a>, <span class="extype" name="ru.pavkin.todoist.api.suite.AbstractDTOQueryAPISuite.composeDecoders1.Out">Out</span>]</span>, <span name="F">F: <a href="http://typelevel.org/cats/api/index.html#cats.FlatMap" class="extype" target="_top">FlatMap</a>[<a href="../../circe/CirceDecoder$.html#Result[T]=cats.data.Xor[io.circe.DecodingFailure,T]" class="extmbr" name="ru.pavkin.todoist.api.circe.CirceDecoder.Result">Result</a>]</span>)</span><span class="result">: <a href="../../core/decoder/SingleResponseDecoder.html" class="extype" name="ru.pavkin.todoist.api.core.decoder.SingleResponseDecoder">SingleResponseDecoder</a>[<a href="../../circe/CirceDecoder$.html#Result[T]=cats.data.Xor[io.circe.DecodingFailure,T]" class="extmbr" name="ru.pavkin.todoist.api.circe.CirceDecoder.Result">Result</a>, <a href="https://travisbrown.github.io/circe/api/index.html#io.circe.Json" class="extype" target="_top">Json</a>, <span class="extype" name="ru.pavkin.todoist.api.suite.AbstractDTOQueryAPISuite.composeDecoders1.Out">Out</span>]</span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../../../index.html#ru.pavkin.todoist.api.dispatch.circe.default$@composeDecoders1[Out](implicitp2:ru.pavkin.todoist.api.core.decoder.SingleResponseDecoder.Aux[P,ResourceDTO,Out],implicitF:cats.FlatMap[P]):ru.pavkin.todoist.api.core.decoder.SingleResponseDecoder.Aux[P,Base,Out]" title="Permalink" target="_top">
+      <a href="../../../../../../index.html#ru.pavkin.todoist.api.dispatch.circe.default$@composeDecoders1[Out](implicitp2:ru.pavkin.todoist.api.core.decoder.SingleResponseDecoder[P,ResourceDTO,Out],implicitF:cats.FlatMap[P]):ru.pavkin.todoist.api.core.decoder.SingleResponseDecoder[P,Base,Out]" title="Permalink" target="_top">
         <img src="../../../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../suite/AbstractDTOQueryAPISuite.html" class="extype" name="ru.pavkin.todoist.api.suite.AbstractDTOQueryAPISuite">AbstractDTOQueryAPISuite</a></dd></dl></div>
     </li><li name="ru.pavkin.todoist.api.suite.AbstractDTOQueryAPISuite#composeDecoders2" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="composeDecoders2[Out&lt;:shapeless.HList](implicitp2:ru.pavkin.todoist.api.core.decoder.MultipleResponseDecoder.Aux[P,ResourceDTO,Out],implicitF:cats.FlatMap[P]):ru.pavkin.todoist.api.core.decoder.MultipleResponseDecoder.Aux[P,Base,Out]"></a>
-      <a id="composeDecoders2[Out&lt;:HList](Aux[Result,AllResources,Out],FlatMap[Result]):Aux[Result,Json,Out]"></a>
+      <a id="composeDecoders2[Out&lt;:shapeless.HList](implicitp2:ru.pavkin.todoist.api.core.decoder.MultipleResponseDecoder[P,ResourceDTO,Out],implicitF:cats.FlatMap[P]):ru.pavkin.todoist.api.core.decoder.MultipleResponseDecoder[P,Base,Out]"></a>
+      <a id="composeDecoders2[Out&lt;:HList](MultipleResponseDecoder[Result,AllResources,Out],FlatMap[Result]):MultipleResponseDecoder[Result,Json,Out]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier">implicit </span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">composeDecoders2</span><span class="tparams">[<span name="Out">Out &lt;: <span class="extype" name="shapeless.HList">HList</span></span>]</span><span class="params">(<span class="implicit">implicit </span><span name="p2">p2: <a href="../../core/decoder/MultipleResponseDecoder$.html#Aux[F[_],Base,Out0&lt;:shapeless.HList]=ru.pavkin.todoist.api.core.decoder.MultipleResponseDecoder[F,Base]{typeOut=Out0}" class="extmbr" name="ru.pavkin.todoist.api.core.decoder.MultipleResponseDecoder.Aux">Aux</a>[<a href="../../circe/CirceDecoder$.html#Result[T]=cats.data.Xor[io.circe.DecodingFailure,T]" class="extmbr" name="ru.pavkin.todoist.api.circe.CirceDecoder.Result">Result</a>, <a href="../../core/dto/AllResources.html" class="extype" name="ru.pavkin.todoist.api.core.dto.AllResources">AllResources</a>, <span class="extype" name="ru.pavkin.todoist.api.suite.AbstractDTOQueryAPISuite.composeDecoders2.Out">Out</span>]</span>, <span name="F">F: <a href="http://typelevel.org/cats/api/index.html#cats.FlatMap" class="extype" target="_top">FlatMap</a>[<a href="../../circe/CirceDecoder$.html#Result[T]=cats.data.Xor[io.circe.DecodingFailure,T]" class="extmbr" name="ru.pavkin.todoist.api.circe.CirceDecoder.Result">Result</a>]</span>)</span><span class="result">: <a href="../../core/decoder/MultipleResponseDecoder$.html#Aux[F[_],Base,Out0&lt;:shapeless.HList]=ru.pavkin.todoist.api.core.decoder.MultipleResponseDecoder[F,Base]{typeOut=Out0}" class="extmbr" name="ru.pavkin.todoist.api.core.decoder.MultipleResponseDecoder.Aux">Aux</a>[<a href="../../circe/CirceDecoder$.html#Result[T]=cats.data.Xor[io.circe.DecodingFailure,T]" class="extmbr" name="ru.pavkin.todoist.api.circe.CirceDecoder.Result">Result</a>, <a href="https://travisbrown.github.io/circe/api/index.html#io.circe.Json" class="extype" target="_top">Json</a>, <span class="extype" name="ru.pavkin.todoist.api.suite.AbstractDTOQueryAPISuite.composeDecoders2.Out">Out</span>]</span>
+        <span class="name">composeDecoders2</span><span class="tparams">[<span name="Out">Out &lt;: <span class="extype" name="shapeless.HList">HList</span></span>]</span><span class="params">(<span class="implicit">implicit </span><span name="p2">p2: <a href="../../core/decoder/MultipleResponseDecoder.html" class="extype" name="ru.pavkin.todoist.api.core.decoder.MultipleResponseDecoder">MultipleResponseDecoder</a>[<a href="../../circe/CirceDecoder$.html#Result[T]=cats.data.Xor[io.circe.DecodingFailure,T]" class="extmbr" name="ru.pavkin.todoist.api.circe.CirceDecoder.Result">Result</a>, <a href="../../core/dto/AllResources.html" class="extype" name="ru.pavkin.todoist.api.core.dto.AllResources">AllResources</a>, <span class="extype" name="ru.pavkin.todoist.api.suite.AbstractDTOQueryAPISuite.composeDecoders2.Out">Out</span>]</span>, <span name="F">F: <a href="http://typelevel.org/cats/api/index.html#cats.FlatMap" class="extype" target="_top">FlatMap</a>[<a href="../../circe/CirceDecoder$.html#Result[T]=cats.data.Xor[io.circe.DecodingFailure,T]" class="extmbr" name="ru.pavkin.todoist.api.circe.CirceDecoder.Result">Result</a>]</span>)</span><span class="result">: <a href="../../core/decoder/MultipleResponseDecoder.html" class="extype" name="ru.pavkin.todoist.api.core.decoder.MultipleResponseDecoder">MultipleResponseDecoder</a>[<a href="../../circe/CirceDecoder$.html#Result[T]=cats.data.Xor[io.circe.DecodingFailure,T]" class="extmbr" name="ru.pavkin.todoist.api.circe.CirceDecoder.Result">Result</a>, <a href="https://travisbrown.github.io/circe/api/index.html#io.circe.Json" class="extype" target="_top">Json</a>, <span class="extype" name="ru.pavkin.todoist.api.suite.AbstractDTOQueryAPISuite.composeDecoders2.Out">Out</span>]</span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../../../index.html#ru.pavkin.todoist.api.dispatch.circe.default$@composeDecoders2[Out&lt;:shapeless.HList](implicitp2:ru.pavkin.todoist.api.core.decoder.MultipleResponseDecoder.Aux[P,ResourceDTO,Out],implicitF:cats.FlatMap[P]):ru.pavkin.todoist.api.core.decoder.MultipleResponseDecoder.Aux[P,Base,Out]" title="Permalink" target="_top">
+      <a href="../../../../../../index.html#ru.pavkin.todoist.api.dispatch.circe.default$@composeDecoders2[Out&lt;:shapeless.HList](implicitp2:ru.pavkin.todoist.api.core.decoder.MultipleResponseDecoder[P,ResourceDTO,Out],implicitF:cats.FlatMap[P]):ru.pavkin.todoist.api.core.decoder.MultipleResponseDecoder[P,Base,Out]" title="Permalink" target="_top">
         <img src="../../../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -613,36 +834,87 @@
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="CirceAPISuite.html" class="extype" name="ru.pavkin.todoist.api.dispatch.circe.CirceAPISuite">CirceAPISuite</a> → <a href="../../suite/AbstractDTOAPISuite.html" class="extype" name="ru.pavkin.todoist.api.suite.AbstractDTOAPISuite">AbstractDTOAPISuite</a></dd></dl></div>
-    </li><li name="ru.pavkin.todoist.api.suite.ModelAPISuite#dtoToLabels" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="dtoToLabels(implicitM:cats.Monad[P]):ru.pavkin.todoist.api.core.decoder.SingleResponseDecoder.Aux[P,ru.pavkin.todoist.api.core.dto.AllResources,ModelAPISuite.this.Labels]"></a>
-      <a id="dtoToLabels(Monad[Result]):Aux[Result,AllResources,Labels]"></a>
+    </li><li name="ru.pavkin.todoist.api.suite.ModelAPISuite#dtoToAccessToken" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="dtoToAccessToken(implicitM:cats.Monad[P]):ru.pavkin.todoist.api.core.decoder.SingleResponseDecoder[P,ru.pavkin.todoist.api.core.dto.AccessToken,ru.pavkin.todoist.api.core.model.AccessToken]"></a>
+      <a id="dtoToAccessToken(Monad[Result]):SingleResponseDecoder[Result,AccessToken,AccessToken]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">dtoToAccessToken</span><span class="params">(<span class="implicit">implicit </span><span name="M">M: <a href="http://typelevel.org/cats/api/index.html#cats.Monad" class="extype" target="_top">Monad</a>[<a href="../../circe/CirceDecoder$.html#Result[T]=cats.data.Xor[io.circe.DecodingFailure,T]" class="extmbr" name="ru.pavkin.todoist.api.circe.CirceDecoder.Result">Result</a>]</span>)</span><span class="result">: <a href="../../core/decoder/SingleResponseDecoder.html" class="extype" name="ru.pavkin.todoist.api.core.decoder.SingleResponseDecoder">SingleResponseDecoder</a>[<a href="../../circe/CirceDecoder$.html#Result[T]=cats.data.Xor[io.circe.DecodingFailure,T]" class="extmbr" name="ru.pavkin.todoist.api.circe.CirceDecoder.Result">Result</a>, <a href="../../core/dto/AccessToken.html" class="extype" name="ru.pavkin.todoist.api.core.dto.AccessToken">AccessToken</a>, <a href="../../core/model/AccessToken.html" class="extype" name="ru.pavkin.todoist.api.core.model.AccessToken">AccessToken</a>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#ru.pavkin.todoist.api.dispatch.circe.default$@dtoToAccessToken(implicitM:cats.Monad[P]):ru.pavkin.todoist.api.core.decoder.SingleResponseDecoder[P,ru.pavkin.todoist.api.core.dto.AccessToken,ru.pavkin.todoist.api.core.model.AccessToken]" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../suite/ModelAPISuite.html" class="extype" name="ru.pavkin.todoist.api.suite.ModelAPISuite">ModelAPISuite</a> → <a href="../../suite/AbstractOAuthAPISuite.html" class="extype" name="ru.pavkin.todoist.api.suite.AbstractOAuthAPISuite">AbstractOAuthAPISuite</a></dd></dl></div>
+    </li><li name="ru.pavkin.todoist.api.suite.ModelAPISuite#dtoToFilters" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="dtoToFilters(implicitM:cats.Monad[P]):ru.pavkin.todoist.api.core.decoder.SingleResponseDecoder[P,ru.pavkin.todoist.api.core.dto.AllResources,ModelAPISuite.this.Filters]"></a>
+      <a id="dtoToFilters(Monad[Result]):SingleResponseDecoder[Result,AllResources,Filters]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier">implicit </span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">dtoToLabels</span><span class="params">(<span class="implicit">implicit </span><span name="M">M: <a href="http://typelevel.org/cats/api/index.html#cats.Monad" class="extype" target="_top">Monad</a>[<a href="../../circe/CirceDecoder$.html#Result[T]=cats.data.Xor[io.circe.DecodingFailure,T]" class="extmbr" name="ru.pavkin.todoist.api.circe.CirceDecoder.Result">Result</a>]</span>)</span><span class="result">: <a href="../../core/decoder/SingleResponseDecoder$.html#Aux[F[_],Base,Out0]=ru.pavkin.todoist.api.core.decoder.SingleResponseDecoder[F,Base]{typeOut=Out0}" class="extmbr" name="ru.pavkin.todoist.api.core.decoder.SingleResponseDecoder.Aux">Aux</a>[<a href="../../circe/CirceDecoder$.html#Result[T]=cats.data.Xor[io.circe.DecodingFailure,T]" class="extmbr" name="ru.pavkin.todoist.api.circe.CirceDecoder.Result">Result</a>, <a href="../../core/dto/AllResources.html" class="extype" name="ru.pavkin.todoist.api.core.dto.AllResources">AllResources</a>, <a href="#Labels=List[ru.pavkin.todoist.api.core.model.Label]" class="extmbr" name="ru.pavkin.todoist.api.dispatch.circe.default.Labels">Labels</a>]</span>
+        <span class="name">dtoToFilters</span><span class="params">(<span class="implicit">implicit </span><span name="M">M: <a href="http://typelevel.org/cats/api/index.html#cats.Monad" class="extype" target="_top">Monad</a>[<a href="../../circe/CirceDecoder$.html#Result[T]=cats.data.Xor[io.circe.DecodingFailure,T]" class="extmbr" name="ru.pavkin.todoist.api.circe.CirceDecoder.Result">Result</a>]</span>)</span><span class="result">: <a href="../../core/decoder/SingleResponseDecoder.html" class="extype" name="ru.pavkin.todoist.api.core.decoder.SingleResponseDecoder">SingleResponseDecoder</a>[<a href="../../circe/CirceDecoder$.html#Result[T]=cats.data.Xor[io.circe.DecodingFailure,T]" class="extmbr" name="ru.pavkin.todoist.api.circe.CirceDecoder.Result">Result</a>, <a href="../../core/dto/AllResources.html" class="extype" name="ru.pavkin.todoist.api.core.dto.AllResources">AllResources</a>, <a href="#Filters=List[ru.pavkin.todoist.api.core.model.Filter]" class="extmbr" name="ru.pavkin.todoist.api.dispatch.circe.default.Filters">Filters</a>]</span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../../../index.html#ru.pavkin.todoist.api.dispatch.circe.default$@dtoToLabels(implicitM:cats.Monad[P]):ru.pavkin.todoist.api.core.decoder.SingleResponseDecoder.Aux[P,ru.pavkin.todoist.api.core.dto.AllResources,ModelAPISuite.this.Labels]" title="Permalink" target="_top">
+      <a href="../../../../../../index.html#ru.pavkin.todoist.api.dispatch.circe.default$@dtoToFilters(implicitM:cats.Monad[P]):ru.pavkin.todoist.api.core.decoder.SingleResponseDecoder[P,ru.pavkin.todoist.api.core.dto.AllResources,ModelAPISuite.this.Filters]" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../suite/ModelAPISuite.html" class="extype" name="ru.pavkin.todoist.api.suite.ModelAPISuite">ModelAPISuite</a> → <a href="../../suite/AbstractDTOQueryAPISuite.html" class="extype" name="ru.pavkin.todoist.api.suite.AbstractDTOQueryAPISuite">AbstractDTOQueryAPISuite</a></dd></dl></div>
+    </li><li name="ru.pavkin.todoist.api.suite.ModelAPISuite#dtoToLabels" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="dtoToLabels(implicitM:cats.Monad[P]):ru.pavkin.todoist.api.core.decoder.SingleResponseDecoder[P,ru.pavkin.todoist.api.core.dto.AllResources,ModelAPISuite.this.Labels]"></a>
+      <a id="dtoToLabels(Monad[Result]):SingleResponseDecoder[Result,AllResources,Labels]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">implicit </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">dtoToLabels</span><span class="params">(<span class="implicit">implicit </span><span name="M">M: <a href="http://typelevel.org/cats/api/index.html#cats.Monad" class="extype" target="_top">Monad</a>[<a href="../../circe/CirceDecoder$.html#Result[T]=cats.data.Xor[io.circe.DecodingFailure,T]" class="extmbr" name="ru.pavkin.todoist.api.circe.CirceDecoder.Result">Result</a>]</span>)</span><span class="result">: <a href="../../core/decoder/SingleResponseDecoder.html" class="extype" name="ru.pavkin.todoist.api.core.decoder.SingleResponseDecoder">SingleResponseDecoder</a>[<a href="../../circe/CirceDecoder$.html#Result[T]=cats.data.Xor[io.circe.DecodingFailure,T]" class="extmbr" name="ru.pavkin.todoist.api.circe.CirceDecoder.Result">Result</a>, <a href="../../core/dto/AllResources.html" class="extype" name="ru.pavkin.todoist.api.core.dto.AllResources">AllResources</a>, <a href="#Labels=List[ru.pavkin.todoist.api.core.model.Label]" class="extmbr" name="ru.pavkin.todoist.api.dispatch.circe.default.Labels">Labels</a>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#ru.pavkin.todoist.api.dispatch.circe.default$@dtoToLabels(implicitM:cats.Monad[P]):ru.pavkin.todoist.api.core.decoder.SingleResponseDecoder[P,ru.pavkin.todoist.api.core.dto.AllResources,ModelAPISuite.this.Labels]" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../suite/ModelAPISuite.html" class="extype" name="ru.pavkin.todoist.api.suite.ModelAPISuite">ModelAPISuite</a> → <a href="../../suite/AbstractDTOQueryAPISuite.html" class="extype" name="ru.pavkin.todoist.api.suite.AbstractDTOQueryAPISuite">AbstractDTOQueryAPISuite</a></dd></dl></div>
+    </li><li name="ru.pavkin.todoist.api.suite.ModelAPISuite#dtoToNotes" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="dtoToNotes(implicitM:cats.Monad[P]):ru.pavkin.todoist.api.core.decoder.SingleResponseDecoder[P,ru.pavkin.todoist.api.core.dto.AllResources,ModelAPISuite.this.Notes]"></a>
+      <a id="dtoToNotes(Monad[Result]):SingleResponseDecoder[Result,AllResources,Notes]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">implicit </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">dtoToNotes</span><span class="params">(<span class="implicit">implicit </span><span name="M">M: <a href="http://typelevel.org/cats/api/index.html#cats.Monad" class="extype" target="_top">Monad</a>[<a href="../../circe/CirceDecoder$.html#Result[T]=cats.data.Xor[io.circe.DecodingFailure,T]" class="extmbr" name="ru.pavkin.todoist.api.circe.CirceDecoder.Result">Result</a>]</span>)</span><span class="result">: <a href="../../core/decoder/SingleResponseDecoder.html" class="extype" name="ru.pavkin.todoist.api.core.decoder.SingleResponseDecoder">SingleResponseDecoder</a>[<a href="../../circe/CirceDecoder$.html#Result[T]=cats.data.Xor[io.circe.DecodingFailure,T]" class="extmbr" name="ru.pavkin.todoist.api.circe.CirceDecoder.Result">Result</a>, <a href="../../core/dto/AllResources.html" class="extype" name="ru.pavkin.todoist.api.core.dto.AllResources">AllResources</a>, <a href="#Notes=List[ru.pavkin.todoist.api.core.model.Note]" class="extmbr" name="ru.pavkin.todoist.api.dispatch.circe.default.Notes">Notes</a>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#ru.pavkin.todoist.api.dispatch.circe.default$@dtoToNotes(implicitM:cats.Monad[P]):ru.pavkin.todoist.api.core.decoder.SingleResponseDecoder[P,ru.pavkin.todoist.api.core.dto.AllResources,ModelAPISuite.this.Notes]" title="Permalink" target="_top">
         <img src="../../../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../suite/ModelAPISuite.html" class="extype" name="ru.pavkin.todoist.api.suite.ModelAPISuite">ModelAPISuite</a> → <a href="../../suite/AbstractDTOQueryAPISuite.html" class="extype" name="ru.pavkin.todoist.api.suite.AbstractDTOQueryAPISuite">AbstractDTOQueryAPISuite</a></dd></dl></div>
     </li><li name="ru.pavkin.todoist.api.suite.ModelAPISuite#dtoToProjects" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="dtoToProjects(implicitM:cats.Monad[P]):ru.pavkin.todoist.api.core.decoder.SingleResponseDecoder.Aux[P,ru.pavkin.todoist.api.core.dto.AllResources,ModelAPISuite.this.Projects]"></a>
-      <a id="dtoToProjects(Monad[Result]):Aux[Result,AllResources,Projects]"></a>
+      <a id="dtoToProjects(implicitM:cats.Monad[P]):ru.pavkin.todoist.api.core.decoder.SingleResponseDecoder[P,ru.pavkin.todoist.api.core.dto.AllResources,ModelAPISuite.this.Projects]"></a>
+      <a id="dtoToProjects(Monad[Result]):SingleResponseDecoder[Result,AllResources,Projects]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier">implicit </span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">dtoToProjects</span><span class="params">(<span class="implicit">implicit </span><span name="M">M: <a href="http://typelevel.org/cats/api/index.html#cats.Monad" class="extype" target="_top">Monad</a>[<a href="../../circe/CirceDecoder$.html#Result[T]=cats.data.Xor[io.circe.DecodingFailure,T]" class="extmbr" name="ru.pavkin.todoist.api.circe.CirceDecoder.Result">Result</a>]</span>)</span><span class="result">: <a href="../../core/decoder/SingleResponseDecoder$.html#Aux[F[_],Base,Out0]=ru.pavkin.todoist.api.core.decoder.SingleResponseDecoder[F,Base]{typeOut=Out0}" class="extmbr" name="ru.pavkin.todoist.api.core.decoder.SingleResponseDecoder.Aux">Aux</a>[<a href="../../circe/CirceDecoder$.html#Result[T]=cats.data.Xor[io.circe.DecodingFailure,T]" class="extmbr" name="ru.pavkin.todoist.api.circe.CirceDecoder.Result">Result</a>, <a href="../../core/dto/AllResources.html" class="extype" name="ru.pavkin.todoist.api.core.dto.AllResources">AllResources</a>, <a href="#Projects=List[ru.pavkin.todoist.api.core.model.Project]" class="extmbr" name="ru.pavkin.todoist.api.dispatch.circe.default.Projects">Projects</a>]</span>
+        <span class="name">dtoToProjects</span><span class="params">(<span class="implicit">implicit </span><span name="M">M: <a href="http://typelevel.org/cats/api/index.html#cats.Monad" class="extype" target="_top">Monad</a>[<a href="../../circe/CirceDecoder$.html#Result[T]=cats.data.Xor[io.circe.DecodingFailure,T]" class="extmbr" name="ru.pavkin.todoist.api.circe.CirceDecoder.Result">Result</a>]</span>)</span><span class="result">: <a href="../../core/decoder/SingleResponseDecoder.html" class="extype" name="ru.pavkin.todoist.api.core.decoder.SingleResponseDecoder">SingleResponseDecoder</a>[<a href="../../circe/CirceDecoder$.html#Result[T]=cats.data.Xor[io.circe.DecodingFailure,T]" class="extmbr" name="ru.pavkin.todoist.api.circe.CirceDecoder.Result">Result</a>, <a href="../../core/dto/AllResources.html" class="extype" name="ru.pavkin.todoist.api.core.dto.AllResources">AllResources</a>, <a href="#Projects=List[ru.pavkin.todoist.api.core.model.Project]" class="extmbr" name="ru.pavkin.todoist.api.dispatch.circe.default.Projects">Projects</a>]</span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../../../index.html#ru.pavkin.todoist.api.dispatch.circe.default$@dtoToProjects(implicitM:cats.Monad[P]):ru.pavkin.todoist.api.core.decoder.SingleResponseDecoder.Aux[P,ru.pavkin.todoist.api.core.dto.AllResources,ModelAPISuite.this.Projects]" title="Permalink" target="_top">
+      <a href="../../../../../../index.html#ru.pavkin.todoist.api.dispatch.circe.default$@dtoToProjects(implicitM:cats.Monad[P]):ru.pavkin.todoist.api.core.decoder.SingleResponseDecoder[P,ru.pavkin.todoist.api.core.dto.AllResources,ModelAPISuite.this.Projects]" title="Permalink" target="_top">
         <img src="../../../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -681,6 +953,57 @@
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../suite/ModelAPISuite.html" class="extype" name="ru.pavkin.todoist.api.suite.ModelAPISuite">ModelAPISuite</a></dd></dl></div>
+    </li><li name="ru.pavkin.todoist.api.suite.ModelAPISuite#dtoToReminders" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="dtoToReminders(implicitM:cats.Monad[P]):ru.pavkin.todoist.api.core.decoder.SingleResponseDecoder[P,ru.pavkin.todoist.api.core.dto.AllResources,ModelAPISuite.this.Reminders]"></a>
+      <a id="dtoToReminders(Monad[Result]):SingleResponseDecoder[Result,AllResources,Reminders]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">implicit </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">dtoToReminders</span><span class="params">(<span class="implicit">implicit </span><span name="M">M: <a href="http://typelevel.org/cats/api/index.html#cats.Monad" class="extype" target="_top">Monad</a>[<a href="../../circe/CirceDecoder$.html#Result[T]=cats.data.Xor[io.circe.DecodingFailure,T]" class="extmbr" name="ru.pavkin.todoist.api.circe.CirceDecoder.Result">Result</a>]</span>)</span><span class="result">: <a href="../../core/decoder/SingleResponseDecoder.html" class="extype" name="ru.pavkin.todoist.api.core.decoder.SingleResponseDecoder">SingleResponseDecoder</a>[<a href="../../circe/CirceDecoder$.html#Result[T]=cats.data.Xor[io.circe.DecodingFailure,T]" class="extmbr" name="ru.pavkin.todoist.api.circe.CirceDecoder.Result">Result</a>, <a href="../../core/dto/AllResources.html" class="extype" name="ru.pavkin.todoist.api.core.dto.AllResources">AllResources</a>, <a href="#Reminders=List[ru.pavkin.todoist.api.core.model.Reminder]" class="extmbr" name="ru.pavkin.todoist.api.dispatch.circe.default.Reminders">Reminders</a>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#ru.pavkin.todoist.api.dispatch.circe.default$@dtoToReminders(implicitM:cats.Monad[P]):ru.pavkin.todoist.api.core.decoder.SingleResponseDecoder[P,ru.pavkin.todoist.api.core.dto.AllResources,ModelAPISuite.this.Reminders]" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../suite/ModelAPISuite.html" class="extype" name="ru.pavkin.todoist.api.suite.ModelAPISuite">ModelAPISuite</a> → <a href="../../suite/AbstractDTOQueryAPISuite.html" class="extype" name="ru.pavkin.todoist.api.suite.AbstractDTOQueryAPISuite">AbstractDTOQueryAPISuite</a></dd></dl></div>
+    </li><li name="ru.pavkin.todoist.api.suite.ModelAPISuite#dtoToTasks" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="dtoToTasks(implicitM:cats.Monad[P]):ru.pavkin.todoist.api.core.decoder.SingleResponseDecoder[P,ru.pavkin.todoist.api.core.dto.AllResources,ModelAPISuite.this.Tasks]"></a>
+      <a id="dtoToTasks(Monad[Result]):SingleResponseDecoder[Result,AllResources,Tasks]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">implicit </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">dtoToTasks</span><span class="params">(<span class="implicit">implicit </span><span name="M">M: <a href="http://typelevel.org/cats/api/index.html#cats.Monad" class="extype" target="_top">Monad</a>[<a href="../../circe/CirceDecoder$.html#Result[T]=cats.data.Xor[io.circe.DecodingFailure,T]" class="extmbr" name="ru.pavkin.todoist.api.circe.CirceDecoder.Result">Result</a>]</span>)</span><span class="result">: <a href="../../core/decoder/SingleResponseDecoder.html" class="extype" name="ru.pavkin.todoist.api.core.decoder.SingleResponseDecoder">SingleResponseDecoder</a>[<a href="../../circe/CirceDecoder$.html#Result[T]=cats.data.Xor[io.circe.DecodingFailure,T]" class="extmbr" name="ru.pavkin.todoist.api.circe.CirceDecoder.Result">Result</a>, <a href="../../core/dto/AllResources.html" class="extype" name="ru.pavkin.todoist.api.core.dto.AllResources">AllResources</a>, <a href="#Tasks=List[ru.pavkin.todoist.api.core.model.Task]" class="extmbr" name="ru.pavkin.todoist.api.dispatch.circe.default.Tasks">Tasks</a>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#ru.pavkin.todoist.api.dispatch.circe.default$@dtoToTasks(implicitM:cats.Monad[P]):ru.pavkin.todoist.api.core.decoder.SingleResponseDecoder[P,ru.pavkin.todoist.api.core.dto.AllResources,ModelAPISuite.this.Tasks]" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../suite/ModelAPISuite.html" class="extype" name="ru.pavkin.todoist.api.suite.ModelAPISuite">ModelAPISuite</a> → <a href="../../suite/AbstractDTOQueryAPISuite.html" class="extype" name="ru.pavkin.todoist.api.suite.AbstractDTOQueryAPISuite">AbstractDTOQueryAPISuite</a></dd></dl></div>
+    </li><li name="ru.pavkin.todoist.api.suite.ModelAPISuite#dtoToUser" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="dtoToUser(implicitM:cats.Monad[P]):ru.pavkin.todoist.api.core.decoder.SingleResponseDecoder[P,ru.pavkin.todoist.api.core.dto.AllResources,ModelAPISuite.this.User]"></a>
+      <a id="dtoToUser(Monad[Result]):SingleResponseDecoder[Result,AllResources,User]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">implicit </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">dtoToUser</span><span class="params">(<span class="implicit">implicit </span><span name="M">M: <a href="http://typelevel.org/cats/api/index.html#cats.Monad" class="extype" target="_top">Monad</a>[<a href="../../circe/CirceDecoder$.html#Result[T]=cats.data.Xor[io.circe.DecodingFailure,T]" class="extmbr" name="ru.pavkin.todoist.api.circe.CirceDecoder.Result">Result</a>]</span>)</span><span class="result">: <a href="../../core/decoder/SingleResponseDecoder.html" class="extype" name="ru.pavkin.todoist.api.core.decoder.SingleResponseDecoder">SingleResponseDecoder</a>[<a href="../../circe/CirceDecoder$.html#Result[T]=cats.data.Xor[io.circe.DecodingFailure,T]" class="extmbr" name="ru.pavkin.todoist.api.circe.CirceDecoder.Result">Result</a>, <a href="../../core/dto/AllResources.html" class="extype" name="ru.pavkin.todoist.api.core.dto.AllResources">AllResources</a>, <a href="#User=ru.pavkin.todoist.api.core.model.User" class="extmbr" name="ru.pavkin.todoist.api.dispatch.circe.default.User">User</a>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#ru.pavkin.todoist.api.dispatch.circe.default$@dtoToUser(implicitM:cats.Monad[P]):ru.pavkin.todoist.api.core.decoder.SingleResponseDecoder[P,ru.pavkin.todoist.api.core.dto.AllResources,ModelAPISuite.this.User]" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../suite/ModelAPISuite.html" class="extype" name="ru.pavkin.todoist.api.suite.ModelAPISuite">ModelAPISuite</a> → <a href="../../suite/AbstractDTOQueryAPISuite.html" class="extype" name="ru.pavkin.todoist.api.suite.AbstractDTOQueryAPISuite">AbstractDTOQueryAPISuite</a></dd></dl></div>
     </li><li name="scala.AnyRef#eq" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="eq(x$1:AnyRef):Boolean"></a>
       <a id="eq(AnyRef):Boolean"></a>
@@ -715,6 +1038,74 @@
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="ru.pavkin.todoist.api.circe.decoders.CirceDTODecoders#fileDTODecoder" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="fileDTODecoder:io.circe.Decoder[ru.pavkin.todoist.api.core.dto.FileAttachment]"></a>
+      <a id="fileDTODecoder:Decoder[FileAttachment]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">implicit </span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">fileDTODecoder</span><span class="result">: <a href="https://travisbrown.github.io/circe/api/index.html#io.circe.Decoder" class="extype" target="_top">Decoder</a>[<a href="../../core/dto/FileAttachment.html" class="extype" name="ru.pavkin.todoist.api.core.dto.FileAttachment">FileAttachment</a>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#ru.pavkin.todoist.api.dispatch.circe.default$@fileDTODecoder:io.circe.Decoder[ru.pavkin.todoist.api.core.dto.FileAttachment]" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../circe/decoders/CirceDTODecoders.html" class="extype" name="ru.pavkin.todoist.api.circe.decoders.CirceDTODecoders">CirceDTODecoders</a></dd></dl></div>
+    </li><li name="ru.pavkin.todoist.api.circe.decoders.CirceDTODecoders#filterDTODecoder" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="filterDTODecoder:io.circe.Decoder[ru.pavkin.todoist.api.core.dto.Filter]"></a>
+      <a id="filterDTODecoder:Decoder[Filter]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">implicit </span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">filterDTODecoder</span><span class="result">: <a href="https://travisbrown.github.io/circe/api/index.html#io.circe.Decoder" class="extype" target="_top">Decoder</a>[<a href="../../core/dto/Filter.html" class="extype" name="ru.pavkin.todoist.api.core.dto.Filter">Filter</a>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#ru.pavkin.todoist.api.dispatch.circe.default$@filterDTODecoder:io.circe.Decoder[ru.pavkin.todoist.api.core.dto.Filter]" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../circe/decoders/CirceDTODecoders.html" class="extype" name="ru.pavkin.todoist.api.circe.decoders.CirceDTODecoders">CirceDTODecoders</a></dd></dl></div>
+    </li><li name="ru.pavkin.todoist.api.suite.QueryAPISuite#filters" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="filters:ru.pavkin.todoist.api.core.HasRawRequest[QueryAPISuite.this.Filters]"></a>
+      <a id="filters:HasRawRequest[Filters]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">implicit </span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">filters</span><span class="result">: <a href="../../core/HasRawRequest.html" class="extype" name="ru.pavkin.todoist.api.core.HasRawRequest">HasRawRequest</a>[<a href="#Filters=List[ru.pavkin.todoist.api.core.model.Filter]" class="extmbr" name="ru.pavkin.todoist.api.dispatch.circe.default.Filters">Filters</a>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#ru.pavkin.todoist.api.dispatch.circe.default$@filters:ru.pavkin.todoist.api.core.HasRawRequest[QueryAPISuite.this.Filters]" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../suite/QueryAPISuite.html" class="extype" name="ru.pavkin.todoist.api.suite.QueryAPISuite">QueryAPISuite</a></dd></dl></div>
+    </li><li name="ru.pavkin.todoist.api.circe.decoders.CirceDTODecoders#filtersDTODecoder" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="filtersDTODecoder:io.circe.Decoder[List[ru.pavkin.todoist.api.core.dto.Filter]]"></a>
+      <a id="filtersDTODecoder:Decoder[List[Filter]]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">implicit </span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">filtersDTODecoder</span><span class="result">: <a href="https://travisbrown.github.io/circe/api/index.html#io.circe.Decoder" class="extype" target="_top">Decoder</a>[<span class="extype" name="scala.List">List</span>[<a href="../../core/dto/Filter.html" class="extype" name="ru.pavkin.todoist.api.core.dto.Filter">Filter</a>]]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#ru.pavkin.todoist.api.dispatch.circe.default$@filtersDTODecoder:io.circe.Decoder[List[ru.pavkin.todoist.api.core.dto.Filter]]" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../circe/decoders/CirceDTODecoders.html" class="extype" name="ru.pavkin.todoist.api.circe.decoders.CirceDTODecoders">CirceDTODecoders</a></dd></dl></div>
     </li><li name="scala.AnyRef#finalize" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="finalize():Unit"></a>
       <a id="finalize():Unit"></a>
@@ -756,18 +1147,18 @@
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd><a href="../../suite/AbstractDTOCommandAPISuite.html" class="extype" name="ru.pavkin.todoist.api.suite.AbstractDTOCommandAPISuite">AbstractDTOCommandAPISuite</a></dd></dl></div>
     </li><li name="ru.pavkin.todoist.api.suite.AbstractDTOQueryAPISuite#fromResourceDtoDecoder" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="fromResourceDtoDecoder[T](f:ResourceDTO=&gt;Option[T])(name:String)(implicitM:cats.Monad[P]):ru.pavkin.todoist.api.core.decoder.SingleResponseDecoder.Aux[P,ResourceDTO,T]"></a>
-      <a id="fromResourceDtoDecoder[T]((AllResources)⇒Option[T])(String)(Monad[Result]):Aux[Result,AllResources,T]"></a>
+      <a id="fromResourceDtoDecoder[T](f:ResourceDTO=&gt;Option[T])(name:String)(implicitM:cats.Monad[P]):ru.pavkin.todoist.api.core.decoder.SingleResponseDecoder[P,ResourceDTO,T]"></a>
+      <a id="fromResourceDtoDecoder[T]((AllResources)⇒Option[T])(String)(Monad[Result]):SingleResponseDecoder[Result,AllResources,T]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">fromResourceDtoDecoder</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="f">f: (<a href="../../core/dto/AllResources.html" class="extype" name="ru.pavkin.todoist.api.core.dto.AllResources">AllResources</a>) ⇒ <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Option" class="extype" target="_top">Option</a>[<span class="extype" name="ru.pavkin.todoist.api.suite.AbstractDTOQueryAPISuite.fromResourceDtoDecoder.T">T</span>]</span>)</span><span class="params">(<span name="name">name: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="M">M: <a href="http://typelevel.org/cats/api/index.html#cats.Monad" class="extype" target="_top">Monad</a>[<a href="../../circe/CirceDecoder$.html#Result[T]=cats.data.Xor[io.circe.DecodingFailure,T]" class="extmbr" name="ru.pavkin.todoist.api.circe.CirceDecoder.Result">Result</a>]</span>)</span><span class="result">: <a href="../../core/decoder/SingleResponseDecoder$.html#Aux[F[_],Base,Out0]=ru.pavkin.todoist.api.core.decoder.SingleResponseDecoder[F,Base]{typeOut=Out0}" class="extmbr" name="ru.pavkin.todoist.api.core.decoder.SingleResponseDecoder.Aux">Aux</a>[<a href="../../circe/CirceDecoder$.html#Result[T]=cats.data.Xor[io.circe.DecodingFailure,T]" class="extmbr" name="ru.pavkin.todoist.api.circe.CirceDecoder.Result">Result</a>, <a href="../../core/dto/AllResources.html" class="extype" name="ru.pavkin.todoist.api.core.dto.AllResources">AllResources</a>, <span class="extype" name="ru.pavkin.todoist.api.suite.AbstractDTOQueryAPISuite.fromResourceDtoDecoder.T">T</span>]</span>
+        <span class="name">fromResourceDtoDecoder</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="f">f: (<a href="../../core/dto/AllResources.html" class="extype" name="ru.pavkin.todoist.api.core.dto.AllResources">AllResources</a>) ⇒ <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Option" class="extype" target="_top">Option</a>[<span class="extype" name="ru.pavkin.todoist.api.suite.AbstractDTOQueryAPISuite.fromResourceDtoDecoder.T">T</span>]</span>)</span><span class="params">(<span name="name">name: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="M">M: <a href="http://typelevel.org/cats/api/index.html#cats.Monad" class="extype" target="_top">Monad</a>[<a href="../../circe/CirceDecoder$.html#Result[T]=cats.data.Xor[io.circe.DecodingFailure,T]" class="extmbr" name="ru.pavkin.todoist.api.circe.CirceDecoder.Result">Result</a>]</span>)</span><span class="result">: <a href="../../core/decoder/SingleResponseDecoder.html" class="extype" name="ru.pavkin.todoist.api.core.decoder.SingleResponseDecoder">SingleResponseDecoder</a>[<a href="../../circe/CirceDecoder$.html#Result[T]=cats.data.Xor[io.circe.DecodingFailure,T]" class="extmbr" name="ru.pavkin.todoist.api.circe.CirceDecoder.Result">Result</a>, <a href="../../core/dto/AllResources.html" class="extype" name="ru.pavkin.todoist.api.core.dto.AllResources">AllResources</a>, <span class="extype" name="ru.pavkin.todoist.api.suite.AbstractDTOQueryAPISuite.fromResourceDtoDecoder.T">T</span>]</span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../../../index.html#ru.pavkin.todoist.api.dispatch.circe.default$@fromResourceDtoDecoder[T](f:ResourceDTO=&gt;Option[T])(name:String)(implicitM:cats.Monad[P]):ru.pavkin.todoist.api.core.decoder.SingleResponseDecoder.Aux[P,ResourceDTO,T]" title="Permalink" target="_top">
+      <a href="../../../../../../index.html#ru.pavkin.todoist.api.dispatch.circe.default$@fromResourceDtoDecoder[T](f:ResourceDTO=&gt;Option[T])(name:String)(implicitM:cats.Monad[P]):ru.pavkin.todoist.api.core.decoder.SingleResponseDecoder[P,ResourceDTO,T]" title="Permalink" target="_top">
         <img src="../../../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -942,6 +1333,40 @@
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../circe/decoders/CirceDTODecoders.html" class="extype" name="ru.pavkin.todoist.api.circe.decoders.CirceDTODecoders">CirceDTODecoders</a></dd></dl></div>
+    </li><li name="ru.pavkin.todoist.api.circe.encoders.CirceDTOEncoders#moveTasksEncoder" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="moveTasksEncoder:io.circe.Encoder[ru.pavkin.todoist.api.core.dto.MoveTasks]"></a>
+      <a id="moveTasksEncoder:Encoder[MoveTasks]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">implicit </span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">moveTasksEncoder</span><span class="result">: <a href="https://travisbrown.github.io/circe/api/index.html#io.circe.Encoder" class="extype" target="_top">Encoder</a>[<a href="../../core/dto/MoveTasks.html" class="extype" name="ru.pavkin.todoist.api.core.dto.MoveTasks">MoveTasks</a>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#ru.pavkin.todoist.api.dispatch.circe.default$@moveTasksEncoder:io.circe.Encoder[ru.pavkin.todoist.api.core.dto.MoveTasks]" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../circe/encoders/CirceDTOEncoders.html" class="extype" name="ru.pavkin.todoist.api.circe.encoders.CirceDTOEncoders">CirceDTOEncoders</a></dd></dl></div>
+    </li><li name="ru.pavkin.todoist.api.circe.encoders.CirceDTOEncoders#multiIdEncoder" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="multiIdEncoder[A](implicitevidence$10:ru.pavkin.todoist.api.core.IsResourceId[A],implicitE:io.circe.Encoder[A]):io.circe.Encoder[ru.pavkin.todoist.api.core.dto.MultipleIdCommand[A]]"></a>
+      <a id="multiIdEncoder[A](IsResourceId[A],Encoder[A]):Encoder[MultipleIdCommand[A]]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">implicit </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">multiIdEncoder</span><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <a href="../../core/IsResourceId.html" class="extype" name="ru.pavkin.todoist.api.core.IsResourceId">IsResourceId</a>[<span class="extype" name="ru.pavkin.todoist.api.circe.encoders.CirceDTOEncoders.multiIdEncoder.A">A</span>]</span>, <span name="E">E: <a href="https://travisbrown.github.io/circe/api/index.html#io.circe.Encoder" class="extype" target="_top">Encoder</a>[<span class="extype" name="ru.pavkin.todoist.api.circe.encoders.CirceDTOEncoders.multiIdEncoder.A">A</span>]</span>)</span><span class="result">: <a href="https://travisbrown.github.io/circe/api/index.html#io.circe.Encoder" class="extype" target="_top">Encoder</a>[<a href="../../core/dto/MultipleIdCommand.html" class="extype" name="ru.pavkin.todoist.api.core.dto.MultipleIdCommand">MultipleIdCommand</a>[<span class="extype" name="ru.pavkin.todoist.api.circe.encoders.CirceDTOEncoders.multiIdEncoder.A">A</span>]]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#ru.pavkin.todoist.api.dispatch.circe.default$@multiIdEncoder[A](implicitevidence$10:ru.pavkin.todoist.api.core.IsResourceId[A],implicitE:io.circe.Encoder[A]):io.circe.Encoder[ru.pavkin.todoist.api.core.dto.MultipleIdCommand[A]]" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../circe/encoders/CirceDTOEncoders.html" class="extype" name="ru.pavkin.todoist.api.circe.encoders.CirceDTOEncoders">CirceDTOEncoders</a></dd></dl></div>
     </li><li name="scala.AnyRef#ne" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="ne(x$1:AnyRef):Boolean"></a>
       <a id="ne(AnyRef):Boolean"></a>
@@ -959,6 +1384,57 @@
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li name="ru.pavkin.todoist.api.circe.decoders.CirceDTODecoders#noteDTODecoder" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="noteDTODecoder:io.circe.Decoder[ru.pavkin.todoist.api.core.dto.Note]"></a>
+      <a id="noteDTODecoder:Decoder[Note]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">implicit </span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">noteDTODecoder</span><span class="result">: <a href="https://travisbrown.github.io/circe/api/index.html#io.circe.Decoder" class="extype" target="_top">Decoder</a>[<a href="../../core/dto/Note.html" class="extype" name="ru.pavkin.todoist.api.core.dto.Note">Note</a>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#ru.pavkin.todoist.api.dispatch.circe.default$@noteDTODecoder:io.circe.Decoder[ru.pavkin.todoist.api.core.dto.Note]" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../circe/decoders/CirceDTODecoders.html" class="extype" name="ru.pavkin.todoist.api.circe.decoders.CirceDTODecoders">CirceDTODecoders</a></dd></dl></div>
+    </li><li name="ru.pavkin.todoist.api.suite.QueryAPISuite#notes" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="notes:ru.pavkin.todoist.api.core.HasRawRequest[QueryAPISuite.this.Notes]"></a>
+      <a id="notes:HasRawRequest[Notes]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">implicit </span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">notes</span><span class="result">: <a href="../../core/HasRawRequest.html" class="extype" name="ru.pavkin.todoist.api.core.HasRawRequest">HasRawRequest</a>[<a href="#Notes=List[ru.pavkin.todoist.api.core.model.Note]" class="extmbr" name="ru.pavkin.todoist.api.dispatch.circe.default.Notes">Notes</a>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#ru.pavkin.todoist.api.dispatch.circe.default$@notes:ru.pavkin.todoist.api.core.HasRawRequest[QueryAPISuite.this.Notes]" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../suite/QueryAPISuite.html" class="extype" name="ru.pavkin.todoist.api.suite.QueryAPISuite">QueryAPISuite</a></dd></dl></div>
+    </li><li name="ru.pavkin.todoist.api.circe.decoders.CirceDTODecoders#notesDTODecoder" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="notesDTODecoder:io.circe.Decoder[List[ru.pavkin.todoist.api.core.dto.Note]]"></a>
+      <a id="notesDTODecoder:Decoder[List[Note]]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">implicit </span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">notesDTODecoder</span><span class="result">: <a href="https://travisbrown.github.io/circe/api/index.html#io.circe.Decoder" class="extype" target="_top">Decoder</a>[<span class="extype" name="scala.List">List</span>[<a href="../../core/dto/Note.html" class="extype" name="ru.pavkin.todoist.api.core.dto.Note">Note</a>]]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#ru.pavkin.todoist.api.dispatch.circe.default$@notesDTODecoder:io.circe.Decoder[List[ru.pavkin.todoist.api.core.dto.Note]]" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../circe/decoders/CirceDTODecoders.html" class="extype" name="ru.pavkin.todoist.api.circe.decoders.CirceDTODecoders">CirceDTODecoders</a></dd></dl></div>
     </li><li name="scala.AnyRef#notify" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="notify():Unit"></a>
       <a id="notify():Unit"></a>
@@ -1129,23 +1605,91 @@
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../circe/dto/CirceDTOCommands.html" class="extype" name="ru.pavkin.todoist.api.circe.dto.CirceDTOCommands">CirceDTOCommands</a></dd></dl></div>
+    </li><li name="ru.pavkin.todoist.api.circe.decoders.CirceDTODecoders#reminderDTODecoder" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="reminderDTODecoder:io.circe.Decoder[ru.pavkin.todoist.api.core.dto.Reminder]"></a>
+      <a id="reminderDTODecoder:Decoder[Reminder]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">implicit </span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">reminderDTODecoder</span><span class="result">: <a href="https://travisbrown.github.io/circe/api/index.html#io.circe.Decoder" class="extype" target="_top">Decoder</a>[<a href="../../core/dto/Reminder.html" class="extype" name="ru.pavkin.todoist.api.core.dto.Reminder">Reminder</a>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#ru.pavkin.todoist.api.dispatch.circe.default$@reminderDTODecoder:io.circe.Decoder[ru.pavkin.todoist.api.core.dto.Reminder]" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../circe/decoders/CirceDTODecoders.html" class="extype" name="ru.pavkin.todoist.api.circe.decoders.CirceDTODecoders">CirceDTODecoders</a></dd></dl></div>
+    </li><li name="ru.pavkin.todoist.api.suite.QueryAPISuite#reminders" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="reminders:ru.pavkin.todoist.api.core.HasRawRequest[QueryAPISuite.this.Reminders]"></a>
+      <a id="reminders:HasRawRequest[Reminders]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">implicit </span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">reminders</span><span class="result">: <a href="../../core/HasRawRequest.html" class="extype" name="ru.pavkin.todoist.api.core.HasRawRequest">HasRawRequest</a>[<a href="#Reminders=List[ru.pavkin.todoist.api.core.model.Reminder]" class="extmbr" name="ru.pavkin.todoist.api.dispatch.circe.default.Reminders">Reminders</a>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#ru.pavkin.todoist.api.dispatch.circe.default$@reminders:ru.pavkin.todoist.api.core.HasRawRequest[QueryAPISuite.this.Reminders]" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../suite/QueryAPISuite.html" class="extype" name="ru.pavkin.todoist.api.suite.QueryAPISuite">QueryAPISuite</a></dd></dl></div>
+    </li><li name="ru.pavkin.todoist.api.circe.decoders.CirceDTODecoders#remindersDTODecoder" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="remindersDTODecoder:io.circe.Decoder[List[ru.pavkin.todoist.api.core.dto.Reminder]]"></a>
+      <a id="remindersDTODecoder:Decoder[List[Reminder]]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">implicit </span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">remindersDTODecoder</span><span class="result">: <a href="https://travisbrown.github.io/circe/api/index.html#io.circe.Decoder" class="extype" target="_top">Decoder</a>[<span class="extype" name="scala.List">List</span>[<a href="../../core/dto/Reminder.html" class="extype" name="ru.pavkin.todoist.api.core.dto.Reminder">Reminder</a>]]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#ru.pavkin.todoist.api.dispatch.circe.default$@remindersDTODecoder:io.circe.Decoder[List[ru.pavkin.todoist.api.core.dto.Reminder]]" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../circe/decoders/CirceDTODecoders.html" class="extype" name="ru.pavkin.todoist.api.circe.decoders.CirceDTODecoders">CirceDTODecoders</a></dd></dl></div>
     </li><li name="ru.pavkin.todoist.api.dispatch.circe.CirceAPISuite#resourceDtoDecoder" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="resourceDtoDecoder:ru.pavkin.todoist.api.core.decoder.SingleResponseDecoder.Aux[ru.pavkin.todoist.api.circe.CirceDecoder.Result,io.circe.Json,ru.pavkin.todoist.api.core.dto.AllResources]"></a>
-      <a id="resourceDtoDecoder:Aux[Result,Json,AllResources]"></a>
+      <a id="resourceDtoDecoder:ru.pavkin.todoist.api.core.decoder.SingleResponseDecoder[ru.pavkin.todoist.api.circe.CirceDecoder.Result,io.circe.Json,ru.pavkin.todoist.api.core.dto.AllResources]"></a>
+      <a id="resourceDtoDecoder:SingleResponseDecoder[Result,Json,AllResources]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier">implicit </span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">resourceDtoDecoder</span><span class="result">: <a href="../../core/decoder/SingleResponseDecoder$.html#Aux[F[_],Base,Out0]=ru.pavkin.todoist.api.core.decoder.SingleResponseDecoder[F,Base]{typeOut=Out0}" class="extmbr" name="ru.pavkin.todoist.api.core.decoder.SingleResponseDecoder.Aux">Aux</a>[<a href="../../circe/CirceDecoder$.html#Result[T]=cats.data.Xor[io.circe.DecodingFailure,T]" class="extmbr" name="ru.pavkin.todoist.api.circe.CirceDecoder.Result">Result</a>, <a href="https://travisbrown.github.io/circe/api/index.html#io.circe.Json" class="extype" target="_top">Json</a>, <a href="../../core/dto/AllResources.html" class="extype" name="ru.pavkin.todoist.api.core.dto.AllResources">AllResources</a>]</span>
+        <span class="name">resourceDtoDecoder</span><span class="result">: <a href="../../core/decoder/SingleResponseDecoder.html" class="extype" name="ru.pavkin.todoist.api.core.decoder.SingleResponseDecoder">SingleResponseDecoder</a>[<a href="../../circe/CirceDecoder$.html#Result[T]=cats.data.Xor[io.circe.DecodingFailure,T]" class="extmbr" name="ru.pavkin.todoist.api.circe.CirceDecoder.Result">Result</a>, <a href="https://travisbrown.github.io/circe/api/index.html#io.circe.Json" class="extype" target="_top">Json</a>, <a href="../../core/dto/AllResources.html" class="extype" name="ru.pavkin.todoist.api.core.dto.AllResources">AllResources</a>]</span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../../../index.html#ru.pavkin.todoist.api.dispatch.circe.default$@resourceDtoDecoder:ru.pavkin.todoist.api.core.decoder.SingleResponseDecoder.Aux[ru.pavkin.todoist.api.circe.CirceDecoder.Result,io.circe.Json,ru.pavkin.todoist.api.core.dto.AllResources]" title="Permalink" target="_top">
+      <a href="../../../../../../index.html#ru.pavkin.todoist.api.dispatch.circe.default$@resourceDtoDecoder:ru.pavkin.todoist.api.core.decoder.SingleResponseDecoder[ru.pavkin.todoist.api.circe.CirceDecoder.Result,io.circe.Json,ru.pavkin.todoist.api.core.dto.AllResources]" title="Permalink" target="_top">
         <img src="../../../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="CirceAPISuite.html" class="extype" name="ru.pavkin.todoist.api.dispatch.circe.CirceAPISuite">CirceAPISuite</a> → <a href="../../suite/AbstractDTOQueryAPISuite.html" class="extype" name="ru.pavkin.todoist.api.suite.AbstractDTOQueryAPISuite">AbstractDTOQueryAPISuite</a></dd></dl></div>
+    </li><li name="ru.pavkin.todoist.api.circe.encoders.CirceDTOEncoders#singleIdEncoder" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="singleIdEncoder[A](implicitevidence$9:ru.pavkin.todoist.api.core.IsResourceId[A],implicitE:io.circe.Encoder[A]):io.circe.Encoder[ru.pavkin.todoist.api.core.dto.SingleIdCommand[A]]"></a>
+      <a id="singleIdEncoder[A](IsResourceId[A],Encoder[A]):Encoder[SingleIdCommand[A]]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">implicit </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">singleIdEncoder</span><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <a href="../../core/IsResourceId.html" class="extype" name="ru.pavkin.todoist.api.core.IsResourceId">IsResourceId</a>[<span class="extype" name="ru.pavkin.todoist.api.circe.encoders.CirceDTOEncoders.singleIdEncoder.A">A</span>]</span>, <span name="E">E: <a href="https://travisbrown.github.io/circe/api/index.html#io.circe.Encoder" class="extype" target="_top">Encoder</a>[<span class="extype" name="ru.pavkin.todoist.api.circe.encoders.CirceDTOEncoders.singleIdEncoder.A">A</span>]</span>)</span><span class="result">: <a href="https://travisbrown.github.io/circe/api/index.html#io.circe.Encoder" class="extype" target="_top">Encoder</a>[<a href="../../core/dto/SingleIdCommand.html" class="extype" name="ru.pavkin.todoist.api.core.dto.SingleIdCommand">SingleIdCommand</a>[<span class="extype" name="ru.pavkin.todoist.api.circe.encoders.CirceDTOEncoders.singleIdEncoder.A">A</span>]]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#ru.pavkin.todoist.api.dispatch.circe.default$@singleIdEncoder[A](implicitevidence$9:ru.pavkin.todoist.api.core.IsResourceId[A],implicitE:io.circe.Encoder[A]):io.circe.Encoder[ru.pavkin.todoist.api.core.dto.SingleIdCommand[A]]" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../circe/encoders/CirceDTOEncoders.html" class="extype" name="ru.pavkin.todoist.api.circe.encoders.CirceDTOEncoders">CirceDTOEncoders</a></dd></dl></div>
     </li><li name="scala.AnyRef#synchronized" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="synchronized[T0](x$1:=&gt;T0):T0"></a>
       <a id="synchronized[T0](⇒T0):T0"></a>
@@ -1179,7 +1723,60 @@
         <img src="../../../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../suite/ModelAPISuite.html" class="extype" name="ru.pavkin.todoist.api.suite.ModelAPISuite">ModelAPISuite</a></dd></dl></div>
+      <p class="shortcomment cmt">Syntax helpers for this API suite
+</p><div class="fullcomment"><div class="comment cmt"><p>Syntax helpers for this API suite
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../suite/ModelAPISuite.html" class="extype" name="ru.pavkin.todoist.api.suite.ModelAPISuite">ModelAPISuite</a></dd><dt>See also</dt><dd><span class="cmt"><p><a href="../../core/model/util/CombineCommands$$Syntax$TempIdProduceCommandsOps.html#andForItAll[T&lt;:shapeless.HList](commands:shapeless.tag.@@[java.util.UUID,Tag]=&gt;T):shapeless.::[C,T]" class="extmbr" name="ru.pavkin.todoist.api.core.model.util.CombineCommands.Syntax.TempIdProduceCommandsOps#andForItAll">ru.pavkin.todoist.api.core.model.util.CombineCommands.Syntax.TempIdProduceCommandsOps.andForItAll</a></p></span><span class="cmt"><p><a href="../../core/model/util/CombineCommands$$Syntax$TempIdProduceCommandsOps.html#andForIt[T](factory:shapeless.tag.@@[java.util.UUID,Tag]=&gt;T):shapeless.::[C,shapeless.::[T,shapeless.HNil]]" class="extmbr" name="ru.pavkin.todoist.api.core.model.util.CombineCommands.Syntax.TempIdProduceCommandsOps#andForIt">ru.pavkin.todoist.api.core.model.util.CombineCommands.Syntax.TempIdProduceCommandsOps.andForIt</a></p></span><span class="cmt"><p><a href="../../core/model/util/CombineCommands$$Syntax$TempIdProduceCommandsOps.html#forIt[T](factory:shapeless.tag.@@[java.util.UUID,Tag]=&gt;T):T" class="extmbr" name="ru.pavkin.todoist.api.core.model.util.CombineCommands.Syntax.TempIdProduceCommandsOps#forIt">ru.pavkin.todoist.api.core.model.util.CombineCommands.Syntax.TempIdProduceCommandsOps.forIt</a></p></span><span class="cmt"><p><a href="../../core/model/util/CombineCommands$$Syntax$CombineCommandsOps.html#:+[A&lt;:ru.pavkin.todoist.api.core.model.Command](other:A):shapeless.::[C,shapeless.::[A,shapeless.HNil]]" class="extmbr" name="ru.pavkin.todoist.api.core.model.util.CombineCommands.Syntax.CombineCommandsOps#:+">ru.pavkin.todoist.api.core.model.util.CombineCommands.Syntax.CombineCommandsOps.:+</a></p></span><span class="cmt"><p><a href="../../core/model/util/CommandResultHList$$Syntax$CommandResultHListOps.html#isSuccess:Boolean" class="extmbr" name="ru.pavkin.todoist.api.core.model.util.CommandResultHList.Syntax.CommandResultHListOps#isSuccess">ru.pavkin.todoist.api.core.model.util.CommandResultHList.Syntax.CommandResultHListOps.isSuccess</a></p></span><span class="cmt"><p><a href="../../core/model/util/CommandResultHList$$Syntax$CommandResultHListOps.html#resultFor(uuid:java.util.UUID):Option[ru.pavkin.todoist.api.core.model.TodoistCommandResult]" class="extmbr" name="ru.pavkin.todoist.api.core.model.util.CommandResultHList.Syntax.CommandResultHListOps#resultFor">ru.pavkin.todoist.api.core.model.util.CommandResultHList.Syntax.CommandResultHListOps.resultFor</a></p></span><span class="cmt"><p><a href="../../core/model/util/ReversedAtSyntax$ReversedAtHListOps.html#resultFor[R&lt;:shapeless.HList,Out](index:shapeless.Nat)(implicitR:shapeless.ops.hlist.Reverse.Aux[A,R],implicitA:shapeless.ops.hlist.At.Aux[R,index.N,Out]):Out" class="extmbr" name="ru.pavkin.todoist.api.core.model.util.ReversedAtSyntax.ReversedAtHListOps#resultFor">ru.pavkin.todoist.api.core.model.util.ReversedAtSyntax.ReversedAtHListOps.resultFor</a></p></span><span class="cmt"><p><a href="../../suite/QueryAPISuite$QuerySyntax$HListQueryOps.html#projects(implicitS:shapeless.ops.hlist.Selector[L,QueryAPISuite.this.Projects]):QueryAPISuite.this.Projects" class="extmbr" name="ru.pavkin.todoist.api.suite.QueryAPISuite.QuerySyntax.HListQueryOps#projects">ru.pavkin.todoist.api.suite.QueryAPISuite.QuerySyntax.HListQueryOps.projects</a></p></span></dd></dl></div>
+    </li><li name="ru.pavkin.todoist.api.circe.decoders.CirceDTODecoders#taskDTODecoder" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="taskDTODecoder:io.circe.Decoder[ru.pavkin.todoist.api.core.dto.Task]"></a>
+      <a id="taskDTODecoder:Decoder[Task]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">implicit </span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">taskDTODecoder</span><span class="result">: <a href="https://travisbrown.github.io/circe/api/index.html#io.circe.Decoder" class="extype" target="_top">Decoder</a>[<a href="../../core/dto/Task.html" class="extype" name="ru.pavkin.todoist.api.core.dto.Task">Task</a>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#ru.pavkin.todoist.api.dispatch.circe.default$@taskDTODecoder:io.circe.Decoder[ru.pavkin.todoist.api.core.dto.Task]" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../circe/decoders/CirceDTODecoders.html" class="extype" name="ru.pavkin.todoist.api.circe.decoders.CirceDTODecoders">CirceDTODecoders</a></dd></dl></div>
+    </li><li name="ru.pavkin.todoist.api.suite.QueryAPISuite#tasks" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="tasks:ru.pavkin.todoist.api.core.HasRawRequest[QueryAPISuite.this.Tasks]"></a>
+      <a id="tasks:HasRawRequest[Tasks]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">implicit </span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">tasks</span><span class="result">: <a href="../../core/HasRawRequest.html" class="extype" name="ru.pavkin.todoist.api.core.HasRawRequest">HasRawRequest</a>[<a href="#Tasks=List[ru.pavkin.todoist.api.core.model.Task]" class="extmbr" name="ru.pavkin.todoist.api.dispatch.circe.default.Tasks">Tasks</a>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#ru.pavkin.todoist.api.dispatch.circe.default$@tasks:ru.pavkin.todoist.api.core.HasRawRequest[QueryAPISuite.this.Tasks]" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../suite/QueryAPISuite.html" class="extype" name="ru.pavkin.todoist.api.suite.QueryAPISuite">QueryAPISuite</a></dd></dl></div>
+    </li><li name="ru.pavkin.todoist.api.circe.decoders.CirceDTODecoders#tasksDTODecoder" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="tasksDTODecoder:io.circe.Decoder[List[ru.pavkin.todoist.api.core.dto.Task]]"></a>
+      <a id="tasksDTODecoder:Decoder[List[Task]]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">implicit </span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">tasksDTODecoder</span><span class="result">: <a href="https://travisbrown.github.io/circe/api/index.html#io.circe.Decoder" class="extype" target="_top">Decoder</a>[<span class="extype" name="scala.List">List</span>[<a href="../../core/dto/Task.html" class="extype" name="ru.pavkin.todoist.api.core.dto.Task">Task</a>]]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#ru.pavkin.todoist.api.dispatch.circe.default$@tasksDTODecoder:io.circe.Decoder[List[ru.pavkin.todoist.api.core.dto.Task]]" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../circe/decoders/CirceDTODecoders.html" class="extype" name="ru.pavkin.todoist.api.circe.decoders.CirceDTODecoders">CirceDTODecoders</a></dd></dl></div>
     </li><li name="ru.pavkin.todoist.api.suite.ModelAPISuite#tempIdCommandReturns" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="tempIdCommandReturns[T&lt;:ru.pavkin.todoist.api.core.model.TempIdCommand[_]]:ru.pavkin.todoist.api.core.CommandReturns.Aux[T,ModelAPISuite.this.TempIdCommandResult]"></a>
       <a id="tempIdCommandReturns[T&lt;:TempIdCommand[_]]:Aux[T,TempIdCommandResult]"></a>
@@ -1247,9 +1844,62 @@
         <img src="../../../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="CirceAPISuite.html" class="extype" name="ru.pavkin.todoist.api.dispatch.circe.CirceAPISuite">CirceAPISuite</a> → <a href="../../suite/FutureBasedAPISuite.html" class="extype" name="ru.pavkin.todoist.api.suite.FutureBasedAPISuite">FutureBasedAPISuite</a></dd></dl></div>
+      <p class="shortcomment cmt">Returns Unauthorized API client instance
+</p><div class="fullcomment"><div class="comment cmt"><p>Returns Unauthorized API client instance
+</p></div><dl class="paramcmts block"><dt class="param">ec</dt><dd class="cmt"><p>Execution context that will be used internally for all API calls</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="CirceAPISuite.html" class="extype" name="ru.pavkin.todoist.api.dispatch.circe.CirceAPISuite">CirceAPISuite</a> → <a href="../../suite/FutureBasedAPISuite.html" class="extype" name="ru.pavkin.todoist.api.suite.FutureBasedAPISuite">FutureBasedAPISuite</a></dd></dl></div>
+    </li><li name="ru.pavkin.todoist.api.suite.AbstractOAuthAPISuite#tokenExchangeToRawRequest" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="tokenExchangeToRawRequest:ru.pavkin.todoist.api.core.ToRawRequest[ru.pavkin.todoist.api.core.model.TokenExchange]"></a>
+      <a id="tokenExchangeToRawRequest:ToRawRequest[TokenExchange]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">implicit </span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">tokenExchangeToRawRequest</span><span class="result">: <a href="../../core/ToRawRequest.html" class="extype" name="ru.pavkin.todoist.api.core.ToRawRequest">ToRawRequest</a>[<a href="../../core/model/TokenExchange.html" class="extype" name="ru.pavkin.todoist.api.core.model.TokenExchange">TokenExchange</a>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#ru.pavkin.todoist.api.dispatch.circe.default$@tokenExchangeToRawRequest:ru.pavkin.todoist.api.core.ToRawRequest[ru.pavkin.todoist.api.core.model.TokenExchange]" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../suite/AbstractOAuthAPISuite.html" class="extype" name="ru.pavkin.todoist.api.suite.AbstractOAuthAPISuite">AbstractOAuthAPISuite</a></dd></dl></div>
+    </li><li name="ru.pavkin.todoist.api.circe.decoders.CirceDTODecoders#tzOffsetDTODecoder" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="tzOffsetDTODecoder:io.circe.Decoder[ru.pavkin.todoist.api.core.dto.TimeZoneOffset]"></a>
+      <a id="tzOffsetDTODecoder:Decoder[TimeZoneOffset]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">implicit </span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">tzOffsetDTODecoder</span><span class="result">: <a href="https://travisbrown.github.io/circe/api/index.html#io.circe.Decoder" class="extype" target="_top">Decoder</a>[<a href="../../core/dto/TimeZoneOffset.html" class="extype" name="ru.pavkin.todoist.api.core.dto.TimeZoneOffset">TimeZoneOffset</a>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#ru.pavkin.todoist.api.dispatch.circe.default$@tzOffsetDTODecoder:io.circe.Decoder[ru.pavkin.todoist.api.core.dto.TimeZoneOffset]" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../circe/decoders/CirceDTODecoders.html" class="extype" name="ru.pavkin.todoist.api.circe.decoders.CirceDTODecoders">CirceDTODecoders</a></dd></dl></div>
+    </li><li name="ru.pavkin.todoist.api.circe.encoders.CirceDTOEncoders#updateFilterEncoder" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="updateFilterEncoder[A](implicitevidence$7:ru.pavkin.todoist.api.core.IsResourceId[A],implicitE:io.circe.Encoder[A]):io.circe.Encoder[ru.pavkin.todoist.api.core.dto.UpdateFilter[A]]"></a>
+      <a id="updateFilterEncoder[A](IsResourceId[A],Encoder[A]):Encoder[UpdateFilter[A]]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">implicit </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">updateFilterEncoder</span><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <a href="../../core/IsResourceId.html" class="extype" name="ru.pavkin.todoist.api.core.IsResourceId">IsResourceId</a>[<span class="extype" name="ru.pavkin.todoist.api.circe.encoders.CirceDTOEncoders.updateFilterEncoder.A">A</span>]</span>, <span name="E">E: <a href="https://travisbrown.github.io/circe/api/index.html#io.circe.Encoder" class="extype" target="_top">Encoder</a>[<span class="extype" name="ru.pavkin.todoist.api.circe.encoders.CirceDTOEncoders.updateFilterEncoder.A">A</span>]</span>)</span><span class="result">: <a href="https://travisbrown.github.io/circe/api/index.html#io.circe.Encoder" class="extype" target="_top">Encoder</a>[<a href="../../core/dto/UpdateFilter.html" class="extype" name="ru.pavkin.todoist.api.core.dto.UpdateFilter">UpdateFilter</a>[<span class="extype" name="ru.pavkin.todoist.api.circe.encoders.CirceDTOEncoders.updateFilterEncoder.A">A</span>]]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#ru.pavkin.todoist.api.dispatch.circe.default$@updateFilterEncoder[A](implicitevidence$7:ru.pavkin.todoist.api.core.IsResourceId[A],implicitE:io.circe.Encoder[A]):io.circe.Encoder[ru.pavkin.todoist.api.core.dto.UpdateFilter[A]]" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../circe/encoders/CirceDTOEncoders.html" class="extype" name="ru.pavkin.todoist.api.circe.encoders.CirceDTOEncoders">CirceDTOEncoders</a></dd></dl></div>
     </li><li name="ru.pavkin.todoist.api.circe.encoders.CirceDTOEncoders#updateLabelEncoder" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="updateLabelEncoder[A](implicitevidence$4:ru.pavkin.todoist.api.core.IsResourceId[A],implicitE:io.circe.Encoder[A]):io.circe.Encoder[ru.pavkin.todoist.api.core.dto.UpdateLabel[A]]"></a>
+      <a id="updateLabelEncoder[A](implicitevidence$6:ru.pavkin.todoist.api.core.IsResourceId[A],implicitE:io.circe.Encoder[A]):io.circe.Encoder[ru.pavkin.todoist.api.core.dto.UpdateLabel[A]]"></a>
       <a id="updateLabelEncoder[A](IsResourceId[A],Encoder[A]):Encoder[UpdateLabel[A]]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -1260,13 +1910,30 @@
         <span class="name">updateLabelEncoder</span><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <a href="../../core/IsResourceId.html" class="extype" name="ru.pavkin.todoist.api.core.IsResourceId">IsResourceId</a>[<span class="extype" name="ru.pavkin.todoist.api.circe.encoders.CirceDTOEncoders.updateLabelEncoder.A">A</span>]</span>, <span name="E">E: <a href="https://travisbrown.github.io/circe/api/index.html#io.circe.Encoder" class="extype" target="_top">Encoder</a>[<span class="extype" name="ru.pavkin.todoist.api.circe.encoders.CirceDTOEncoders.updateLabelEncoder.A">A</span>]</span>)</span><span class="result">: <a href="https://travisbrown.github.io/circe/api/index.html#io.circe.Encoder" class="extype" target="_top">Encoder</a>[<a href="../../core/dto/UpdateLabel.html" class="extype" name="ru.pavkin.todoist.api.core.dto.UpdateLabel">UpdateLabel</a>[<span class="extype" name="ru.pavkin.todoist.api.circe.encoders.CirceDTOEncoders.updateLabelEncoder.A">A</span>]]</span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../../../index.html#ru.pavkin.todoist.api.dispatch.circe.default$@updateLabelEncoder[A](implicitevidence$4:ru.pavkin.todoist.api.core.IsResourceId[A],implicitE:io.circe.Encoder[A]):io.circe.Encoder[ru.pavkin.todoist.api.core.dto.UpdateLabel[A]]" title="Permalink" target="_top">
+      <a href="../../../../../../index.html#ru.pavkin.todoist.api.dispatch.circe.default$@updateLabelEncoder[A](implicitevidence$6:ru.pavkin.todoist.api.core.IsResourceId[A],implicitE:io.circe.Encoder[A]):io.circe.Encoder[ru.pavkin.todoist.api.core.dto.UpdateLabel[A]]" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../circe/encoders/CirceDTOEncoders.html" class="extype" name="ru.pavkin.todoist.api.circe.encoders.CirceDTOEncoders">CirceDTOEncoders</a></dd></dl></div>
+    </li><li name="ru.pavkin.todoist.api.circe.encoders.CirceDTOEncoders#updateNoteEncoder" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="updateNoteEncoder[A](implicitevidence$8:ru.pavkin.todoist.api.core.IsResourceId[A],implicitE:io.circe.Encoder[A]):io.circe.Encoder[ru.pavkin.todoist.api.core.dto.UpdateNote[A]]"></a>
+      <a id="updateNoteEncoder[A](IsResourceId[A],Encoder[A]):Encoder[UpdateNote[A]]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">implicit </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">updateNoteEncoder</span><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <a href="../../core/IsResourceId.html" class="extype" name="ru.pavkin.todoist.api.core.IsResourceId">IsResourceId</a>[<span class="extype" name="ru.pavkin.todoist.api.circe.encoders.CirceDTOEncoders.updateNoteEncoder.A">A</span>]</span>, <span name="E">E: <a href="https://travisbrown.github.io/circe/api/index.html#io.circe.Encoder" class="extype" target="_top">Encoder</a>[<span class="extype" name="ru.pavkin.todoist.api.circe.encoders.CirceDTOEncoders.updateNoteEncoder.A">A</span>]</span>)</span><span class="result">: <a href="https://travisbrown.github.io/circe/api/index.html#io.circe.Encoder" class="extype" target="_top">Encoder</a>[<a href="../../core/dto/UpdateNote.html" class="extype" name="ru.pavkin.todoist.api.core.dto.UpdateNote">UpdateNote</a>[<span class="extype" name="ru.pavkin.todoist.api.circe.encoders.CirceDTOEncoders.updateNoteEncoder.A">A</span>]]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#ru.pavkin.todoist.api.dispatch.circe.default$@updateNoteEncoder[A](implicitevidence$8:ru.pavkin.todoist.api.core.IsResourceId[A],implicitE:io.circe.Encoder[A]):io.circe.Encoder[ru.pavkin.todoist.api.core.dto.UpdateNote[A]]" title="Permalink" target="_top">
         <img src="../../../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../circe/encoders/CirceDTOEncoders.html" class="extype" name="ru.pavkin.todoist.api.circe.encoders.CirceDTOEncoders">CirceDTOEncoders</a></dd></dl></div>
     </li><li name="ru.pavkin.todoist.api.circe.encoders.CirceDTOEncoders#updateProjectEncoder" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="updateProjectEncoder[A](implicitevidence$3:ru.pavkin.todoist.api.core.IsResourceId[A],implicitE:io.circe.Encoder[A]):io.circe.Encoder[ru.pavkin.todoist.api.core.dto.UpdateProject[A]]"></a>
+      <a id="updateProjectEncoder[A](implicitevidence$5:ru.pavkin.todoist.api.core.IsResourceId[A],implicitE:io.circe.Encoder[A]):io.circe.Encoder[ru.pavkin.todoist.api.core.dto.UpdateProject[A]]"></a>
       <a id="updateProjectEncoder[A](IsResourceId[A],Encoder[A]):Encoder[UpdateProject[A]]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -1277,13 +1944,13 @@
         <span class="name">updateProjectEncoder</span><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <a href="../../core/IsResourceId.html" class="extype" name="ru.pavkin.todoist.api.core.IsResourceId">IsResourceId</a>[<span class="extype" name="ru.pavkin.todoist.api.circe.encoders.CirceDTOEncoders.updateProjectEncoder.A">A</span>]</span>, <span name="E">E: <a href="https://travisbrown.github.io/circe/api/index.html#io.circe.Encoder" class="extype" target="_top">Encoder</a>[<span class="extype" name="ru.pavkin.todoist.api.circe.encoders.CirceDTOEncoders.updateProjectEncoder.A">A</span>]</span>)</span><span class="result">: <a href="https://travisbrown.github.io/circe/api/index.html#io.circe.Encoder" class="extype" target="_top">Encoder</a>[<a href="../../core/dto/UpdateProject.html" class="extype" name="ru.pavkin.todoist.api.core.dto.UpdateProject">UpdateProject</a>[<span class="extype" name="ru.pavkin.todoist.api.circe.encoders.CirceDTOEncoders.updateProjectEncoder.A">A</span>]]</span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../../../index.html#ru.pavkin.todoist.api.dispatch.circe.default$@updateProjectEncoder[A](implicitevidence$3:ru.pavkin.todoist.api.core.IsResourceId[A],implicitE:io.circe.Encoder[A]):io.circe.Encoder[ru.pavkin.todoist.api.core.dto.UpdateProject[A]]" title="Permalink" target="_top">
+      <a href="../../../../../../index.html#ru.pavkin.todoist.api.dispatch.circe.default$@updateProjectEncoder[A](implicitevidence$5:ru.pavkin.todoist.api.core.IsResourceId[A],implicitE:io.circe.Encoder[A]):io.circe.Encoder[ru.pavkin.todoist.api.core.dto.UpdateProject[A]]" title="Permalink" target="_top">
         <img src="../../../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../circe/encoders/CirceDTOEncoders.html" class="extype" name="ru.pavkin.todoist.api.circe.encoders.CirceDTOEncoders">CirceDTOEncoders</a></dd></dl></div>
     </li><li name="ru.pavkin.todoist.api.circe.encoders.CirceDTOEncoders#updateTaskEncoder" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="updateTaskEncoder[A](implicitevidence$2:ru.pavkin.todoist.api.core.IsResourceId[A],implicitE:io.circe.Encoder[A]):io.circe.Encoder[ru.pavkin.todoist.api.core.dto.UpdateTask[A]]"></a>
+      <a id="updateTaskEncoder[A](implicitevidence$4:ru.pavkin.todoist.api.core.IsResourceId[A],implicitE:io.circe.Encoder[A]):io.circe.Encoder[ru.pavkin.todoist.api.core.dto.UpdateTask[A]]"></a>
       <a id="updateTaskEncoder[A](IsResourceId[A],Encoder[A]):Encoder[UpdateTask[A]]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -1294,11 +1961,45 @@
         <span class="name">updateTaskEncoder</span><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <a href="../../core/IsResourceId.html" class="extype" name="ru.pavkin.todoist.api.core.IsResourceId">IsResourceId</a>[<span class="extype" name="ru.pavkin.todoist.api.circe.encoders.CirceDTOEncoders.updateTaskEncoder.A">A</span>]</span>, <span name="E">E: <a href="https://travisbrown.github.io/circe/api/index.html#io.circe.Encoder" class="extype" target="_top">Encoder</a>[<span class="extype" name="ru.pavkin.todoist.api.circe.encoders.CirceDTOEncoders.updateTaskEncoder.A">A</span>]</span>)</span><span class="result">: <a href="https://travisbrown.github.io/circe/api/index.html#io.circe.Encoder" class="extype" target="_top">Encoder</a>[<a href="../../core/dto/UpdateTask.html" class="extype" name="ru.pavkin.todoist.api.core.dto.UpdateTask">UpdateTask</a>[<span class="extype" name="ru.pavkin.todoist.api.circe.encoders.CirceDTOEncoders.updateTaskEncoder.A">A</span>]]</span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../../../index.html#ru.pavkin.todoist.api.dispatch.circe.default$@updateTaskEncoder[A](implicitevidence$2:ru.pavkin.todoist.api.core.IsResourceId[A],implicitE:io.circe.Encoder[A]):io.circe.Encoder[ru.pavkin.todoist.api.core.dto.UpdateTask[A]]" title="Permalink" target="_top">
+      <a href="../../../../../../index.html#ru.pavkin.todoist.api.dispatch.circe.default$@updateTaskEncoder[A](implicitevidence$4:ru.pavkin.todoist.api.core.IsResourceId[A],implicitE:io.circe.Encoder[A]):io.circe.Encoder[ru.pavkin.todoist.api.core.dto.UpdateTask[A]]" title="Permalink" target="_top">
         <img src="../../../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../circe/encoders/CirceDTOEncoders.html" class="extype" name="ru.pavkin.todoist.api.circe.encoders.CirceDTOEncoders">CirceDTOEncoders</a></dd></dl></div>
+    </li><li name="ru.pavkin.todoist.api.suite.QueryAPISuite#user" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="user:ru.pavkin.todoist.api.core.HasRawRequest[QueryAPISuite.this.User]"></a>
+      <a id="user:HasRawRequest[User]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">implicit </span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">user</span><span class="result">: <a href="../../core/HasRawRequest.html" class="extype" name="ru.pavkin.todoist.api.core.HasRawRequest">HasRawRequest</a>[<a href="#User=ru.pavkin.todoist.api.core.model.User" class="extmbr" name="ru.pavkin.todoist.api.dispatch.circe.default.User">User</a>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#ru.pavkin.todoist.api.dispatch.circe.default$@user:ru.pavkin.todoist.api.core.HasRawRequest[QueryAPISuite.this.User]" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../suite/QueryAPISuite.html" class="extype" name="ru.pavkin.todoist.api.suite.QueryAPISuite">QueryAPISuite</a></dd></dl></div>
+    </li><li name="ru.pavkin.todoist.api.circe.decoders.CirceDTODecoders#userDTODecoder" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="userDTODecoder:io.circe.Decoder[ru.pavkin.todoist.api.core.dto.User]"></a>
+      <a id="userDTODecoder:Decoder[core.dto.User]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">implicit </span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">userDTODecoder</span><span class="result">: <a href="https://travisbrown.github.io/circe/api/index.html#io.circe.Decoder" class="extype" target="_top">Decoder</a>[<a href="../../core/dto/User.html" class="extype" name="ru.pavkin.todoist.api.core.dto.User">core.dto.User</a>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#ru.pavkin.todoist.api.dispatch.circe.default$@userDTODecoder:io.circe.Decoder[ru.pavkin.todoist.api.core.dto.User]" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../circe/decoders/CirceDTODecoders.html" class="extype" name="ru.pavkin.todoist.api.circe.decoders.CirceDTODecoders">CirceDTODecoders</a></dd></dl></div>
     </li><li name="scala.AnyRef#wait" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="wait():Unit"></a>
       <a id="wait():Unit"></a>
@@ -1383,6 +2084,8 @@
               <h3>Inherited from <a href="../../suite/ModelAPISuite.html" class="extype" name="ru.pavkin.todoist.api.suite.ModelAPISuite">ModelAPISuite</a>[<a href="../impl/circe/DispatchAPI$.html#Result[T]=scala.concurrent.Future[ru.pavkin.todoist.api.dispatch.impl.circe.DispatchAPI.X[T]]" class="extmbr" name="ru.pavkin.todoist.api.dispatch.impl.circe.DispatchAPI.Result">Result</a>, <a href="../../circe/CirceDecoder$.html#Result[T]=cats.data.Xor[io.circe.DecodingFailure,T]" class="extmbr" name="ru.pavkin.todoist.api.circe.CirceDecoder.Result">Result</a>, <a href="https://travisbrown.github.io/circe/api/index.html#io.circe.Json" class="extype" target="_top">Json</a>]</h3>
             </div><div class="parent" name="ru.pavkin.todoist.api.dispatch.circe.CirceAPISuite">
               <h3>Inherited from <a href="CirceAPISuite.html" class="extype" name="ru.pavkin.todoist.api.dispatch.circe.CirceAPISuite">CirceAPISuite</a></h3>
+            </div><div class="parent" name="ru.pavkin.todoist.api.suite.AbstractOAuthAPISuite">
+              <h3>Inherited from <a href="../../suite/AbstractOAuthAPISuite.html" class="extype" name="ru.pavkin.todoist.api.suite.AbstractOAuthAPISuite">AbstractOAuthAPISuite</a>[<a href="../impl/circe/DispatchAPI$.html#Result[T]=scala.concurrent.Future[ru.pavkin.todoist.api.dispatch.impl.circe.DispatchAPI.X[T]]" class="extmbr" name="ru.pavkin.todoist.api.dispatch.impl.circe.DispatchAPI.Result">Result</a>, <a href="../../circe/CirceDecoder$.html#Result[T]=cats.data.Xor[io.circe.DecodingFailure,T]" class="extmbr" name="ru.pavkin.todoist.api.circe.CirceDecoder.Result">Result</a>, <a href="https://travisbrown.github.io/circe/api/index.html#io.circe.Json" class="extype" target="_top">Json</a>, <a href="../../core/dto/AccessToken.html" class="extype" name="ru.pavkin.todoist.api.core.dto.AccessToken">AccessToken</a>]</h3>
             </div><div class="parent" name="ru.pavkin.todoist.api.suite.AbstractDTOCommandAPISuite">
               <h3>Inherited from <a href="../../suite/AbstractDTOCommandAPISuite.html" class="extype" name="ru.pavkin.todoist.api.suite.AbstractDTOCommandAPISuite">AbstractDTOCommandAPISuite</a>[<a href="../impl/circe/DispatchAPI$.html#Result[T]=scala.concurrent.Future[ru.pavkin.todoist.api.dispatch.impl.circe.DispatchAPI.X[T]]" class="extmbr" name="ru.pavkin.todoist.api.dispatch.impl.circe.DispatchAPI.Result">Result</a>, <a href="../../circe/CirceDecoder$.html#Result[T]=cats.data.Xor[io.circe.DecodingFailure,T]" class="extmbr" name="ru.pavkin.todoist.api.circe.CirceDecoder.Result">Result</a>, <a href="https://travisbrown.github.io/circe/api/index.html#io.circe.Json" class="extype" target="_top">Json</a>, <a href="../../core/dto/package$$RawCommandResult.html" class="extype" name="ru.pavkin.todoist.api.core.dto.RawCommandResult">RawCommandResult</a>]</h3>
             </div><div class="parent" name="ru.pavkin.todoist.api.suite.CommandAPISuite">

@@ -51,7 +51,7 @@
       </span>
       </h4>
       
-          <div id="comment" class="fullcommenttop"><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/vpavkin/scalist/tree/master/dispatch-circe/src/main/scala/ru/pavkin/todoist/api/dispatch/impl/circe/DispatchAPI.scala" target="_blank">DispatchAPI.scala</a></dd></dl><div class="toggleContainer block">
+          <div id="comment" class="fullcommenttop"><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/vpavkin/scalist/tree/master/dispatch-circe/src/main/scala/ru/pavkin/todoist/api/dispatch/impl/circe/DispatchAuthorizedAPI.scala" target="_blank">DispatchAuthorizedAPI.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><a href="../../../utils/ComposeApply.html" class="extype" name="ru.pavkin.todoist.api.utils.ComposeApply">ComposeApply</a>, <a href="http://typelevel.org/cats/api/index.html#cats.std.FutureInstances" class="extype" target="_top">FutureInstances</a>, <a href="http://typelevel.org/cats/api/index.html#cats.std.FutureInstances1" class="extype" target="_top">FutureInstances1</a>, <a href="http://typelevel.org/cats/api/index.html#cats.std.FutureInstances2" class="extype" target="_top">FutureInstances2</a>, <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.AnyRef" class="extype" target="_top">AnyRef</a>, <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Any" class="extype" target="_top">Any</a></div>
         </div></div>
@@ -92,7 +92,7 @@
 
         <div id="types" class="types members">
               <h3>Type Members</h3>
-              <ol><li name="ru.pavkin.todoist.api.dispatch.impl.circe.DispatchAPI.DecodingError" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+              <ol><li name="ru.pavkin.todoist.api.dispatch.impl.circe.DispatchAPI.DecodingError" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="DecodingErrorextendsDispatchAPI.ErrorwithProductwithSerializable"></a>
       <a id="DecodingError:DecodingError"></a>
       <h4 class="signature">
@@ -108,7 +108,11 @@
         <img src="../../../../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      
+      <p class="shortcomment cmt">Messages that an error occured during result decoding,
+which usually means inconsistency between the actual API and implementation
+</p><div class="fullcomment"><div class="comment cmt"><p>Messages that an error occured during result decoding,
+which usually means inconsistency between the actual API and implementation
+</p></div><dl class="paramcmts block"><dt class="param">underlying</dt><dd class="cmt"><p>the Circe error, describing the actual failure</p></dd></dl></div>
     </li><li name="ru.pavkin.todoist.api.dispatch.impl.circe.DispatchAPI.DispatchFlattener" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="DispatchFlattenerextendsFlattener[ru.pavkin.todoist.api.dispatch.impl.circe.DispatchAPI.Result,ru.pavkin.todoist.api.dispatch.impl.circe.DispatchAPI.L,ru.pavkin.todoist.api.dispatch.impl.circe.DispatchAPI.P]"></a>
       <a id="DispatchFlattener:DispatchFlattener"></a>
@@ -126,7 +130,7 @@
       </a>
     </span>
       
-    </li><li name="ru.pavkin.todoist.api.dispatch.impl.circe.DispatchAPI.Error" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+    </li><li name="ru.pavkin.todoist.api.dispatch.impl.circe.DispatchAPI.Error" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
       <a id="ErrorextendsAnyRef"></a>
       <a id="Error:Error"></a>
       <h4 class="signature">
@@ -142,8 +146,10 @@
         <img src="../../../../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      
-    </li><li name="ru.pavkin.todoist.api.dispatch.impl.circe.DispatchAPI.HTTPError" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <p class="shortcomment cmt">Represents error, occured during HTTP request.</p><div class="fullcomment"><div class="comment cmt"><p>Represents error, occured during HTTP request.
+Can be either <a href="DispatchAPI$$HTTPError.html" class="extype" name="ru.pavkin.todoist.api.dispatch.impl.circe.DispatchAPI.HTTPError">HTTPError</a> or <a href="DispatchAPI$$DecodingError.html" class="extype" name="ru.pavkin.todoist.api.dispatch.impl.circe.DispatchAPI.DecodingError">DecodingError</a>
+</p></div></div>
+    </li><li name="ru.pavkin.todoist.api.dispatch.impl.circe.DispatchAPI.HTTPError" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="HTTPErrorextendsDispatchAPI.ErrorwithProductwithSerializable"></a>
       <a id="HTTPError:HTTPError"></a>
       <h4 class="signature">
@@ -159,7 +165,9 @@
         <img src="../../../../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      
+      <p class="shortcomment cmt">Represents HTTP response with not 2xx result code
+</p><div class="fullcomment"><div class="comment cmt"><p>Represents HTTP response with not 2xx result code
+</p></div><dl class="paramcmts block"><dt class="param">code</dt><dd class="cmt"><p>HTTP response code</p></dd><dt class="param">body</dt><dd class="cmt"><p>optional response body</p></dd></dl></div>
     </li><li name="ru.pavkin.todoist.api.dispatch.impl.circe.DispatchAPI.L" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="L[T]=ru.pavkin.todoist.api.dispatch.impl.circe.DispatchJsonRequestExecutor.Result[T]"></a>
       <a id="L[T]:L[T]"></a>

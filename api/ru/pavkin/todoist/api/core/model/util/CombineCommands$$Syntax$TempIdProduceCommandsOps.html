@@ -215,7 +215,7 @@
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
-    </li><li name="ru.pavkin.todoist.api.core.model.util.CombineCommands.Syntax.TempIdProduceCommandsOps#andForIt" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+    </li><li name="ru.pavkin.todoist.api.core.model.util.CombineCommands.Syntax.TempIdProduceCommandsOps#andForIt" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="andForIt[T](factory:shapeless.tag.@@[java.util.UUID,Tag]=&gt;T):shapeless.::[C,shapeless.::[T,shapeless.HNil]]"></a>
       <a id="andForIt[T]((@@[UUID,Tag])⇒T):::[C,::[T,HNil]]"></a>
       <h4 class="signature">
@@ -231,8 +231,14 @@
         <img src="../../../../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      
-    </li><li name="ru.pavkin.todoist.api.core.model.util.CombineCommands.Syntax.TempIdProduceCommandsOps#andForItAll" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <p class="shortcomment cmt">Creates a dependant command that uses the <code>tempId</code> of this command <b>and
+stacks it to this command</b>.</p><div class="fullcomment"><div class="comment cmt"><p>Creates a dependant command that uses the <code>tempId</code> of this command <b>and
+stacks it to this command</b>.
+Returns an <code>HList</code> of this command and the dependant command.
+</p></div><dl class="paramcmts block"><dt class="param">factory</dt><dd class="cmt"><p>A function that receives a tempId and creates a command.</p></dd><dt>returns</dt><dd class="cmt"><p>An <code>HList</code> of this command and the dependant command.</p></dd></dl><dl class="attributes block"> <div class="block">Example:
+               <ol><li class="cmt"><p></p><pre>AddProject(<span class="lit">"p"</span>).andForIt(AddTask(<span class="lit">"t"</span>,_) <span class="cmt">// AddProject :: AddTask :: HNil</span></pre></li></ol>
+            </div></dl></div>
+    </li><li name="ru.pavkin.todoist.api.core.model.util.CombineCommands.Syntax.TempIdProduceCommandsOps#andForItAll" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="andForItAll[T&lt;:shapeless.HList](commands:shapeless.tag.@@[java.util.UUID,Tag]=&gt;T):shapeless.::[C,T]"></a>
       <a id="andForItAll[T&lt;:HList]((@@[UUID,Tag])⇒T):::[C,T]"></a>
       <h4 class="signature">
@@ -248,7 +254,14 @@
         <img src="../../../../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      
+      <p class="shortcomment cmt">Creates multiple dependant commands that use the <code>tempId</code> of this command <b>and
+stacks them to this command</b>.</p><div class="fullcomment"><div class="comment cmt"><p>Creates multiple dependant commands that use the <code>tempId</code> of this command <b>and
+stacks them to this command</b>.
+Returns an <code>HList</code> of this command and the dependant commands.
+</p></div><dl class="paramcmts block"><dt class="param">commands</dt><dd class="cmt"><p>A function that receives a tempId and creates an <code>HList</code> of commands.</p></dd><dt>returns</dt><dd class="cmt"><p>An <code>HList</code> of this command and the dependant commands.</p></dd></dl><dl class="attributes block"> <div class="block">Example:
+               <ol><li class="cmt"><p></p><pre>AddProject(<span class="lit">"p"</span>).andForItAll(id <span class="kw">=&gt;</span> AddTask(<span class="lit">"t1"</span>,id) :+ AddTask(<span class="lit">"t2"</span>,id))
+<span class="cmt">// AddProject :: AddTask :: AddTask :: HNil</span></pre></li></ol>
+            </div></dl></div>
     </li><li name="scala.Any#asInstanceOf" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="asInstanceOf[T0]:T0"></a>
       <a id="asInstanceOf[T0]:T0"></a>
@@ -430,7 +443,7 @@
     </span>)</span>
               
         </dd></dl></div>
-    </li><li name="ru.pavkin.todoist.api.core.model.util.CombineCommands.Syntax.TempIdProduceCommandsOps#forIt" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+    </li><li name="ru.pavkin.todoist.api.core.model.util.CombineCommands.Syntax.TempIdProduceCommandsOps#forIt" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="forIt[T](factory:shapeless.tag.@@[java.util.UUID,Tag]=&gt;T):T"></a>
       <a id="forIt[T]((@@[UUID,Tag])⇒T):T"></a>
       <h4 class="signature">
@@ -446,7 +459,11 @@
         <img src="../../../../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      
+      <p class="shortcomment cmt">Creates a dependant command that uses the <code>tempId</code> of this command.</p><div class="fullcomment"><div class="comment cmt"><p>Creates a dependant command that uses the <code>tempId</code> of this command.
+Returns <b>only</b> the dependant command.
+</p></div><dl class="paramcmts block"><dt class="param">factory</dt><dd class="cmt"><p>A function that receives a tempId and creates a command.</p></dd><dt>returns</dt><dd class="cmt"><p>The dependant command <b>only</b></p></dd></dl><dl class="attributes block"> <div class="block">Example:
+               <ol><li class="cmt"><p></p><pre>AddProject(<span class="lit">"p"</span>).forIt(AddTask(<span class="lit">"t"</span>,_) <span class="cmt">// AddTask</span></pre></li></ol>
+            </div></dl></div>
     </li><li name="scala.Predef.StringFormat#formatted" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="formatted(fmtstr:String):String"></a>
       <a id="formatted(String):String"></a>

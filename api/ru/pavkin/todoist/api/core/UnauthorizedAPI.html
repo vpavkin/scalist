@@ -49,7 +49,9 @@
       </span>
       </h4>
       
-          <div id="comment" class="fullcommenttop"><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/vpavkin/scalist/tree/master/core/src/main/scala/ru/pavkin/todoist/api/core/UnauthorizedAPI.scala" target="_blank">UnauthorizedAPI.scala</a></dd></dl><div class="toggleContainer block">
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Unauthorized API provides two methods: <code>withToken(token: String)</code> that returns Authorized API
+and <code>auth</code>, that returns a wrapper for OAuth related helpers
+</p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/vpavkin/scalist/tree/master/core/src/main/scala/ru/pavkin/todoist/api/core/UnauthorizedAPI.scala" target="_blank">UnauthorizedAPI.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.AnyRef" class="extype" target="_top">AnyRef</a>, <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Any" class="extype" target="_top">Any</a></div>
         </div></div>
@@ -97,23 +99,45 @@
 
         <div id="values" class="values members">
               <h3>Abstract Value Members</h3>
-              <ol><li name="ru.pavkin.todoist.api.core.UnauthorizedAPI#withToken" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
-      <a id="withToken(token:ru.pavkin.todoist.api.Token):ru.pavkin.todoist.api.core.API[F,P,Base]"></a>
-      <a id="withToken(Token):API[F,P,Base]"></a>
+              <ol><li name="ru.pavkin.todoist.api.core.UnauthorizedAPI#auth" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="auth:ru.pavkin.todoist.api.core.OAuthAPI[F,P,Base]"></a>
+      <a id="auth:OAuthAPI[F,P,Base]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier">abstract </span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">withToken</span><span class="params">(<span name="token">token: <a href="../package.html#Token=String" class="extmbr" name="ru.pavkin.todoist.api.Token">Token</a></span>)</span><span class="result">: <a href="API.html" class="extype" name="ru.pavkin.todoist.api.core.API">API</a>[<span class="extype" name="ru.pavkin.todoist.api.core.UnauthorizedAPI.F">F</span>, <span class="extype" name="ru.pavkin.todoist.api.core.UnauthorizedAPI.P">P</span>, <span class="extype" name="ru.pavkin.todoist.api.core.UnauthorizedAPI.Base">Base</span>]</span>
+        <span class="name">auth</span><span class="result">: <a href="OAuthAPI.html" class="extype" name="ru.pavkin.todoist.api.core.OAuthAPI">OAuthAPI</a>[<span class="extype" name="ru.pavkin.todoist.api.core.UnauthorizedAPI.F">F</span>, <span class="extype" name="ru.pavkin.todoist.api.core.UnauthorizedAPI.P">P</span>, <span class="extype" name="ru.pavkin.todoist.api.core.UnauthorizedAPI.Base">Base</span>]</span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../../index.html#ru.pavkin.todoist.api.core.UnauthorizedAPI@withToken(token:ru.pavkin.todoist.api.Token):ru.pavkin.todoist.api.core.API[F,P,Base]" title="Permalink" target="_top">
+      <a href="../../../../../index.html#ru.pavkin.todoist.api.core.UnauthorizedAPI@auth:ru.pavkin.todoist.api.core.OAuthAPI[F,P,Base]" title="Permalink" target="_top">
         <img src="../../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      
+      <p class="shortcomment cmt">Returns a client for OAuth related helpers
+</p>
+    </li><li name="ru.pavkin.todoist.api.core.UnauthorizedAPI#withToken" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="withToken(token:ru.pavkin.todoist.api.Token):ru.pavkin.todoist.api.core.AuthorizedAPI[F,P,Base]"></a>
+      <a id="withToken(Token):AuthorizedAPI[F,P,Base]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">withToken</span><span class="params">(<span name="token">token: <a href="../package.html#Token=String" class="extmbr" name="ru.pavkin.todoist.api.Token">Token</a></span>)</span><span class="result">: <a href="AuthorizedAPI.html" class="extype" name="ru.pavkin.todoist.api.core.AuthorizedAPI">AuthorizedAPI</a>[<span class="extype" name="ru.pavkin.todoist.api.core.UnauthorizedAPI.F">F</span>, <span class="extype" name="ru.pavkin.todoist.api.core.UnauthorizedAPI.P">P</span>, <span class="extype" name="ru.pavkin.todoist.api.core.UnauthorizedAPI.Base">Base</span>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#ru.pavkin.todoist.api.core.UnauthorizedAPI@withToken(token:ru.pavkin.todoist.api.Token):ru.pavkin.todoist.api.core.AuthorizedAPI[F,P,Base]" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Creates an authorized API Client that has access to most of the API calls like
+querying resources and performing commands
+</p><div class="fullcomment"><div class="comment cmt"><p>Creates an authorized API Client that has access to most of the API calls like
+querying resources and performing commands
+</p></div><dl class="paramcmts block"><dt class="param">token</dt><dd class="cmt"><p>User API token</p></dd><dt>returns</dt><dd class="cmt"><p>Authorized API Client</p></dd></dl></div>
     </li></ol>
             </div>
 

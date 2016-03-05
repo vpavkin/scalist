@@ -248,7 +248,11 @@
         <img src="../../../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="ru.pavkin.todoist.api.core.command.SingleCommandRequestDefinition">SingleCommandRequestDefinition</a> → <a href="SingleCommandDefinition.html" class="extype" name="ru.pavkin.todoist.api.core.command.SingleCommandDefinition">SingleCommandDefinition</a></dd></dl></div>
+      <p class="shortcomment cmt">Returns a new command request definition, that after execution will
+execute both commands and return an <code>HList</code> of corresponding results</p><div class="fullcomment"><div class="comment cmt"><p>Returns a new command request definition, that after execution will
+execute both commands and return an <code>HList</code> of corresponding results</p><p>Equivalent of calling:</p><pre>api.performAll(command1 :+ command2)</pre><p>See <a href="../AuthorizedAPI.html#performAll[C&lt;:shapeless.HList,R&lt;:shapeless.HList,CR&lt;:shapeless.HList](commands:C)(implicitR:shapeless.ops.hlist.Reverse.Aux[C,CR],implicittrr:ru.pavkin.todoist.api.core.ToRawRequest[CR],implicitcr:ru.pavkin.todoist.api.core.CommandReturns.Aux[CR,R],implicitparser:ru.pavkin.todoist.api.core.decoder.MultipleCommandResponseDecoder.Aux[P,CR,Base,R]):ru.pavkin.todoist.api.core.command.MultipleCommandDefinition[F,P,CR,R,Base]" class="extmbr" name="ru.pavkin.todoist.api.core.AuthorizedAPI#performAll">ru.pavkin.todoist.api.core.AuthorizedAPI.performAll</a> for details on working with
+multiple commands response
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="ru.pavkin.todoist.api.core.command.SingleCommandRequestDefinition">SingleCommandRequestDefinition</a> → <a href="SingleCommandDefinition.html" class="extype" name="ru.pavkin.todoist.api.core.command.SingleCommandDefinition">SingleCommandDefinition</a></dd></dl></div>
     </li><li name="scala.Any#asInstanceOf" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="asInstanceOf[T0]:T0"></a>
       <a id="asInstanceOf[T0]:T0"></a>
@@ -423,7 +427,9 @@
         <img src="../../../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../ExecutedRequestDefinition.html" class="extype" name="ru.pavkin.todoist.api.core.ExecutedRequestDefinition">ExecutedRequestDefinition</a> → <a href="../RequestDefinition.html" class="extype" name="ru.pavkin.todoist.api.core.RequestDefinition">RequestDefinition</a></dd></dl></div>
+      <p class="shortcomment cmt">Executes this request definition and returns the result wrapped with the API effect
+</p><div class="fullcomment"><div class="comment cmt"><p>Executes this request definition and returns the result wrapped with the API effect
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../ExecutedRequestDefinition.html" class="extype" name="ru.pavkin.todoist.api.core.ExecutedRequestDefinition">ExecutedRequestDefinition</a> → <a href="../RequestDefinition.html" class="extype" name="ru.pavkin.todoist.api.core.RequestDefinition">RequestDefinition</a></dd></dl></div>
     </li><li name="scala.AnyRef#finalize" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="finalize():Unit"></a>
       <a id="finalize():Unit"></a>

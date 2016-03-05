@@ -47,7 +47,8 @@
       </span>
       </h4>
       
-          <div id="comment" class="fullcommenttop"><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/vpavkin/scalist/tree/master/core/src/main/scala/ru/pavkin/todoist/api/core/model/package.scala" target="_blank">package.scala</a></dd></dl><div class="toggleContainer block">
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Contains all command and resource model classes
+</p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/vpavkin/scalist/tree/master/core/src/main/scala/ru/pavkin/todoist/api/core/model/package.scala" target="_blank">package.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.AnyRef" class="extype" target="_top">AnyRef</a>, <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Any" class="extype" target="_top">Any</a></div>
         </div></div>
@@ -88,7 +89,75 @@
 
         <div id="types" class="types members">
               <h3>Type Members</h3>
-              <ol><li name="ru.pavkin.todoist.api.core.model.AddLabel" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+              <ol><li name="ru.pavkin.todoist.api.core.model.AbsoluteTimeBasedReminder" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="AbsoluteTimeBasedReminderextendsTimeBasedReminderwithProductwithSerializable"></a>
+      <a id="AbsoluteTimeBasedReminder:AbsoluteTimeBasedReminder"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="AbsoluteTimeBasedReminder.html"><span class="name">AbsoluteTimeBasedReminder</span></a><span class="params">(<span name="id">id: <span class="extype" name="shapeless.tag.@@">@@</span>[<a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Int" class="extype" target="_top">Int</a>, <a href="../tags$$ReminderId.html" class="extype" name="ru.pavkin.todoist.api.core.tags.ReminderId">ReminderId</a>]</span>, <span name="subscriber">subscriber: <span class="extype" name="shapeless.tag.@@">@@</span>[<a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Int" class="extype" target="_top">Int</a>, <a href="../tags$$UserId.html" class="extype" name="ru.pavkin.todoist.api.core.tags.UserId">UserId</a>]</span>, <span name="task">task: <span class="extype" name="shapeless.tag.@@">@@</span>[<a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Int" class="extype" target="_top">Int</a>, <a href="../tags$$TaskId.html" class="extype" name="ru.pavkin.todoist.api.core.tags.TaskId">TaskId</a>]</span>, <span name="service">service: <a href="ReminderService.html" class="extype" name="ru.pavkin.todoist.api.core.model.ReminderService">ReminderService</a></span>, <span name="dueDate">dueDate: <a href="TaskDate.html" class="extype" name="ru.pavkin.todoist.api.core.model.TaskDate">TaskDate</a></span>, <span name="isDeleted">isDeleted: <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Boolean" class="extype" target="_top">Boolean</a></span>)</span><span class="result"> extends <a href="TimeBasedReminder.html" class="extype" name="ru.pavkin.todoist.api.core.model.TimeBasedReminder">TimeBasedReminder</a> with <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Product" class="extype" target="_top">Product</a> with <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Serializable" class="extype" target="_top">Serializable</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#ru.pavkin.todoist.api.core.model.package@AbsoluteTimeBasedReminderextendsTimeBasedReminderwithProductwithSerializable" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="ru.pavkin.todoist.api.core.model.AccessToken" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="AccessTokenextendsProductwithSerializable"></a>
+      <a id="AccessToken:AccessToken"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="AccessToken.html"><span class="name">AccessToken</span></a><span class="params">(<span name="token">token: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="tokenType">tokenType: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result"> extends <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Product" class="extype" target="_top">Product</a> with <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Serializable" class="extype" target="_top">Serializable</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#ru.pavkin.todoist.api.core.model.package@AccessTokenextendsProductwithSerializable" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="ru.pavkin.todoist.api.core.model.AddAbsoluteTimeBasedReminder" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="AddAbsoluteTimeBasedReminder[A]extendsTempIdCommand[ru.pavkin.todoist.api.core.tags.ReminderId]withProductwithSerializable"></a>
+      <a id="AddAbsoluteTimeBasedReminder[A]:AddAbsoluteTimeBasedReminder[A]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="AddAbsoluteTimeBasedReminder.html"><span class="name">AddAbsoluteTimeBasedReminder</span></a><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="taskId">taskId: <span class="extype" name="shapeless.tag.@@">@@</span>[<span class="extype" name="ru.pavkin.todoist.api.core.model.AddAbsoluteTimeBasedReminder.A">A</span>, <a href="../tags$$TaskId.html" class="extype" name="ru.pavkin.todoist.api.core.tags.TaskId">TaskId</a>]</span>, <span name="service">service: <a href="ReminderService.html" class="extype" name="ru.pavkin.todoist.api.core.model.ReminderService">ReminderService</a></span>, <span name="dueDate">dueDate: <a href="TaskDate.html" class="extype" name="ru.pavkin.todoist.api.core.model.TaskDate">TaskDate</a></span>, <span name="subscriber">subscriber: <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Option" class="extype" target="_top">Option</a>[<span class="extype" name="shapeless.tag.@@">@@</span>[<a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Int" class="extype" target="_top">Int</a>, <a href="../tags$$UserId.html" class="extype" name="ru.pavkin.todoist.api.core.tags.UserId">UserId</a>]] = <span class="symbol">None</span></span>, <span name="uuid">uuid: <span class="extype" name="java.util.UUID">UUID</span> = <span class="symbol">UUID.randomUUID()</span></span>, <span name="tempId">tempId: <span class="extype" name="shapeless.tag.@@">@@</span>[<span class="extype" name="java.util.UUID">UUID</span>, <a href="../tags$$ReminderId.html" class="extype" name="ru.pavkin.todoist.api.core.tags.ReminderId">ReminderId</a>] = <span class="symbol"><span class="name"><a href="../IsResourceId$.html">UUID.randomUUID().reminderId</a></span></span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="evidence$4">evidence$4: <a href="../IsResourceId.html" class="extype" name="ru.pavkin.todoist.api.core.IsResourceId">IsResourceId</a>[<span class="extype" name="ru.pavkin.todoist.api.core.model.AddAbsoluteTimeBasedReminder.A">A</span>]</span>)</span><span class="result"> extends <a href="TempIdCommand.html" class="extype" name="ru.pavkin.todoist.api.core.model.TempIdCommand">TempIdCommand</a>[<a href="../tags$$ReminderId.html" class="extype" name="ru.pavkin.todoist.api.core.tags.ReminderId">ReminderId</a>] with <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Product" class="extype" target="_top">Product</a> with <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Serializable" class="extype" target="_top">Serializable</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#ru.pavkin.todoist.api.core.model.package@AddAbsoluteTimeBasedReminder[A]extendsTempIdCommand[ru.pavkin.todoist.api.core.tags.ReminderId]withProductwithSerializable" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="ru.pavkin.todoist.api.core.model.AddFilter" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="AddFilterextendsTempIdCommand[ru.pavkin.todoist.api.core.tags.FilterId]withProductwithSerializable"></a>
+      <a id="AddFilter:AddFilter"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="AddFilter.html"><span class="name">AddFilter</span></a><span class="params">(<span name="name">name: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="query">query: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="color">color: <a href="LabelColor.html" class="extype" name="ru.pavkin.todoist.api.core.model.LabelColor">LabelColor</a> = <span class="symbol"><span class="name"><a href="LabelColor$.html">LabelColor.color0</a></span></span></span>, <span name="order">order: <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Option" class="extype" target="_top">Option</a>[<a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Int" class="extype" target="_top">Int</a>] = <span class="symbol">None</span></span>, <span name="uuid">uuid: <span class="extype" name="java.util.UUID">UUID</span> = <span class="symbol">UUID.randomUUID()</span></span>, <span name="tempId">tempId: <span class="extype" name="shapeless.tag.@@">@@</span>[<span class="extype" name="java.util.UUID">UUID</span>, <a href="../tags$$FilterId.html" class="extype" name="ru.pavkin.todoist.api.core.tags.FilterId">FilterId</a>] = <span class="symbol"><span class="name"><a href="../IsResourceId$.html">UUID.randomUUID().filterId</a></span></span></span>)</span><span class="result"> extends <a href="TempIdCommand.html" class="extype" name="ru.pavkin.todoist.api.core.model.TempIdCommand">TempIdCommand</a>[<a href="../tags$$FilterId.html" class="extype" name="ru.pavkin.todoist.api.core.tags.FilterId">FilterId</a>] with <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Product" class="extype" target="_top">Product</a> with <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Serializable" class="extype" target="_top">Serializable</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#ru.pavkin.todoist.api.core.model.package@AddFilterextendsTempIdCommand[ru.pavkin.todoist.api.core.tags.FilterId]withProductwithSerializable" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="ru.pavkin.todoist.api.core.model.AddLabel" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="AddLabelextendsTempIdCommand[ru.pavkin.todoist.api.core.tags.LabelId]withProductwithSerializable"></a>
       <a id="AddLabel:AddLabel"></a>
       <h4 class="signature">
@@ -101,6 +170,40 @@
       </span>
       </h4><span class="permalink">
       <a href="../../../../../../index.html#ru.pavkin.todoist.api.core.model.package@AddLabelextendsTempIdCommand[ru.pavkin.todoist.api.core.tags.LabelId]withProductwithSerializable" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="ru.pavkin.todoist.api.core.model.AddLocationBasedReminder" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="AddLocationBasedReminder[A]extendsTempIdCommand[ru.pavkin.todoist.api.core.tags.ReminderId]withProductwithSerializable"></a>
+      <a id="AddLocationBasedReminder[A]:AddLocationBasedReminder[A]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="AddLocationBasedReminder.html"><span class="name">AddLocationBasedReminder</span></a><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="taskId">taskId: <span class="extype" name="shapeless.tag.@@">@@</span>[<span class="extype" name="ru.pavkin.todoist.api.core.model.AddLocationBasedReminder.A">A</span>, <a href="../tags$$TaskId.html" class="extype" name="ru.pavkin.todoist.api.core.tags.TaskId">TaskId</a>]</span>, <span name="locationName">locationName: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="latitude">latitude: <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Double" class="extype" target="_top">Double</a></span>, <span name="longitude">longitude: <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Double" class="extype" target="_top">Double</a></span>, <span name="triggerKind">triggerKind: <a href="LocationBasedReminder$$TriggerKind.html" class="extype" name="ru.pavkin.todoist.api.core.model.LocationBasedReminder.TriggerKind">TriggerKind</a></span>, <span name="radiusInMeters">radiusInMeters: <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Int" class="extype" target="_top">Int</a></span>, <span name="subscriber">subscriber: <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Option" class="extype" target="_top">Option</a>[<span class="extype" name="shapeless.tag.@@">@@</span>[<a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Int" class="extype" target="_top">Int</a>, <a href="../tags$$UserId.html" class="extype" name="ru.pavkin.todoist.api.core.tags.UserId">UserId</a>]] = <span class="symbol">None</span></span>, <span name="uuid">uuid: <span class="extype" name="java.util.UUID">UUID</span> = <span class="symbol">UUID.randomUUID()</span></span>, <span name="tempId">tempId: <span class="extype" name="shapeless.tag.@@">@@</span>[<span class="extype" name="java.util.UUID">UUID</span>, <a href="../tags$$ReminderId.html" class="extype" name="ru.pavkin.todoist.api.core.tags.ReminderId">ReminderId</a>] = <span class="symbol"><span class="name"><a href="../IsResourceId$.html">UUID.randomUUID().reminderId</a></span></span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="evidence$5">evidence$5: <a href="../IsResourceId.html" class="extype" name="ru.pavkin.todoist.api.core.IsResourceId">IsResourceId</a>[<span class="extype" name="ru.pavkin.todoist.api.core.model.AddLocationBasedReminder.A">A</span>]</span>)</span><span class="result"> extends <a href="TempIdCommand.html" class="extype" name="ru.pavkin.todoist.api.core.model.TempIdCommand">TempIdCommand</a>[<a href="../tags$$ReminderId.html" class="extype" name="ru.pavkin.todoist.api.core.tags.ReminderId">ReminderId</a>] with <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Product" class="extype" target="_top">Product</a> with <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Serializable" class="extype" target="_top">Serializable</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#ru.pavkin.todoist.api.core.model.package@AddLocationBasedReminder[A]extendsTempIdCommand[ru.pavkin.todoist.api.core.tags.ReminderId]withProductwithSerializable" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="ru.pavkin.todoist.api.core.model.AddNote" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="AddNote[A]extendsTempIdCommand[ru.pavkin.todoist.api.core.tags.NoteId]withProductwithSerializable"></a>
+      <a id="AddNote[A]:AddNote[A]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="AddNote.html"><span class="name">AddNote</span></a><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="content">content: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="taskId">taskId: <span class="extype" name="shapeless.tag.@@">@@</span>[<span class="extype" name="ru.pavkin.todoist.api.core.model.AddNote.A">A</span>, <a href="../tags$$TaskId.html" class="extype" name="ru.pavkin.todoist.api.core.tags.TaskId">TaskId</a>]</span>, <span name="notifyUsers">notifyUsers: <span class="extype" name="scala.List">List</span>[<span class="extype" name="shapeless.tag.@@">@@</span>[<a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Int" class="extype" target="_top">Int</a>, <a href="../tags$$UserId.html" class="extype" name="ru.pavkin.todoist.api.core.tags.UserId">UserId</a>]] = <span class="symbol">Nil</span></span>, <span name="uuid">uuid: <span class="extype" name="java.util.UUID">UUID</span> = <span class="symbol">UUID.randomUUID()</span></span>, <span name="tempId">tempId: <span class="extype" name="shapeless.tag.@@">@@</span>[<span class="extype" name="java.util.UUID">UUID</span>, <a href="../tags$$NoteId.html" class="extype" name="ru.pavkin.todoist.api.core.tags.NoteId">NoteId</a>] = <span class="symbol"><span class="name"><a href="../IsResourceId$.html">UUID.randomUUID().noteId</a></span></span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="evidence$2">evidence$2: <a href="../IsResourceId.html" class="extype" name="ru.pavkin.todoist.api.core.IsResourceId">IsResourceId</a>[<span class="extype" name="ru.pavkin.todoist.api.core.model.AddNote.A">A</span>]</span>)</span><span class="result"> extends <a href="TempIdCommand.html" class="extype" name="ru.pavkin.todoist.api.core.model.TempIdCommand">TempIdCommand</a>[<a href="../tags$$NoteId.html" class="extype" name="ru.pavkin.todoist.api.core.tags.NoteId">NoteId</a>] with <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Product" class="extype" target="_top">Product</a> with <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Serializable" class="extype" target="_top">Serializable</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#ru.pavkin.todoist.api.core.model.package@AddNote[A]extendsTempIdCommand[ru.pavkin.todoist.api.core.tags.NoteId]withProductwithSerializable" title="Permalink" target="_top">
         <img src="../../../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -118,6 +221,23 @@
       </span>
       </h4><span class="permalink">
       <a href="../../../../../../index.html#ru.pavkin.todoist.api.core.model.package@AddProjectextendsTempIdCommand[ru.pavkin.todoist.api.core.tags.ProjectId]withProductwithSerializable" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="ru.pavkin.todoist.api.core.model.AddRelativeTimeBasedReminder" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="AddRelativeTimeBasedReminder[A]extendsTempIdCommand[ru.pavkin.todoist.api.core.tags.ReminderId]withProductwithSerializable"></a>
+      <a id="AddRelativeTimeBasedReminder[A]:AddRelativeTimeBasedReminder[A]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="AddRelativeTimeBasedReminder.html"><span class="name">AddRelativeTimeBasedReminder</span></a><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="taskId">taskId: <span class="extype" name="shapeless.tag.@@">@@</span>[<span class="extype" name="ru.pavkin.todoist.api.core.model.AddRelativeTimeBasedReminder.A">A</span>, <a href="../tags$$TaskId.html" class="extype" name="ru.pavkin.todoist.api.core.tags.TaskId">TaskId</a>]</span>, <span name="service">service: <a href="ReminderService.html" class="extype" name="ru.pavkin.todoist.api.core.model.ReminderService">ReminderService</a></span>, <span name="minutesBefore">minutesBefore: <a href="ReminderPeriod.html" class="extype" name="ru.pavkin.todoist.api.core.model.ReminderPeriod">ReminderPeriod</a></span>, <span name="subscriber">subscriber: <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Option" class="extype" target="_top">Option</a>[<span class="extype" name="shapeless.tag.@@">@@</span>[<a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Int" class="extype" target="_top">Int</a>, <a href="../tags$$UserId.html" class="extype" name="ru.pavkin.todoist.api.core.tags.UserId">UserId</a>]] = <span class="symbol">None</span></span>, <span name="uuid">uuid: <span class="extype" name="java.util.UUID">UUID</span> = <span class="symbol">UUID.randomUUID()</span></span>, <span name="tempId">tempId: <span class="extype" name="shapeless.tag.@@">@@</span>[<span class="extype" name="java.util.UUID">UUID</span>, <a href="../tags$$ReminderId.html" class="extype" name="ru.pavkin.todoist.api.core.tags.ReminderId">ReminderId</a>] = <span class="symbol"><span class="name"><a href="../IsResourceId$.html">UUID.randomUUID().reminderId</a></span></span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="evidence$3">evidence$3: <a href="../IsResourceId.html" class="extype" name="ru.pavkin.todoist.api.core.IsResourceId">IsResourceId</a>[<span class="extype" name="ru.pavkin.todoist.api.core.model.AddRelativeTimeBasedReminder.A">A</span>]</span>)</span><span class="result"> extends <a href="TempIdCommand.html" class="extype" name="ru.pavkin.todoist.api.core.model.TempIdCommand">TempIdCommand</a>[<a href="../tags$$ReminderId.html" class="extype" name="ru.pavkin.todoist.api.core.tags.ReminderId">ReminderId</a>] with <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Product" class="extype" target="_top">Product</a> with <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Serializable" class="extype" target="_top">Serializable</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#ru.pavkin.todoist.api.core.model.package@AddRelativeTimeBasedReminder[A]extendsTempIdCommand[ru.pavkin.todoist.api.core.tags.ReminderId]withProductwithSerializable" title="Permalink" target="_top">
         <img src="../../../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -152,6 +272,40 @@
       </span>
       </h4><span class="permalink">
       <a href="../../../../../../index.html#ru.pavkin.todoist.api.core.model.package@AddTaskToInboxextendsTempIdCommand[ru.pavkin.todoist.api.core.tags.TaskId]withProductwithSerializable" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="ru.pavkin.todoist.api.core.model.ArchiveProjects" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="ArchiveProjects[A]extendsSimpleCommandwithProductwithSerializable"></a>
+      <a id="ArchiveProjects[A]:ArchiveProjects[A]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="ArchiveProjects.html"><span class="name">ArchiveProjects</span></a><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="projects">projects: <span class="extype" name="scala.List">List</span>[<span class="extype" name="shapeless.tag.@@">@@</span>[<span class="extype" name="ru.pavkin.todoist.api.core.model.ArchiveProjects.A">A</span>, <a href="../tags$$ProjectId.html" class="extype" name="ru.pavkin.todoist.api.core.tags.ProjectId">ProjectId</a>]]</span>, <span name="uuid">uuid: <span class="extype" name="java.util.UUID">UUID</span> = <span class="symbol">UUID.randomUUID()</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="evidence$19">evidence$19: <a href="../IsResourceId.html" class="extype" name="ru.pavkin.todoist.api.core.IsResourceId">IsResourceId</a>[<span class="extype" name="ru.pavkin.todoist.api.core.model.ArchiveProjects.A">A</span>]</span>)</span><span class="result"> extends <a href="SimpleCommand.html" class="extype" name="ru.pavkin.todoist.api.core.model.SimpleCommand">SimpleCommand</a> with <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Product" class="extype" target="_top">Product</a> with <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Serializable" class="extype" target="_top">Serializable</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#ru.pavkin.todoist.api.core.model.package@ArchiveProjects[A]extendsSimpleCommandwithProductwithSerializable" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="ru.pavkin.todoist.api.core.model.CloseTask" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="CloseTask[A]extendsSimpleCommandwithProductwithSerializable"></a>
+      <a id="CloseTask[A]:CloseTask[A]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="CloseTask.html"><span class="name">CloseTask</span></a><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="task">task: <span class="extype" name="shapeless.tag.@@">@@</span>[<span class="extype" name="ru.pavkin.todoist.api.core.model.CloseTask.A">A</span>, <a href="../tags$$TaskId.html" class="extype" name="ru.pavkin.todoist.api.core.tags.TaskId">TaskId</a>]</span>, <span name="uuid">uuid: <span class="extype" name="java.util.UUID">UUID</span> = <span class="symbol">UUID.randomUUID()</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="evidence$17">evidence$17: <a href="../IsResourceId.html" class="extype" name="ru.pavkin.todoist.api.core.IsResourceId">IsResourceId</a>[<span class="extype" name="ru.pavkin.todoist.api.core.model.CloseTask.A">A</span>]</span>)</span><span class="result"> extends <a href="SimpleCommand.html" class="extype" name="ru.pavkin.todoist.api.core.model.SimpleCommand">SimpleCommand</a> with <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Product" class="extype" target="_top">Product</a> with <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Serializable" class="extype" target="_top">Serializable</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#ru.pavkin.todoist.api.core.model.package@CloseTask[A]extendsSimpleCommandwithProductwithSerializable" title="Permalink" target="_top">
         <img src="../../../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -224,6 +378,23 @@
       </a>
     </span>
       
+    </li><li name="ru.pavkin.todoist.api.core.model.DateFormat" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="DateFormatextendsProductwithSerializable"></a>
+      <a id="DateFormat:DateFormat"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="DateFormat.html"><span class="name">DateFormat</span></a><span class="result"> extends <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Product" class="extype" target="_top">Product</a> with <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Serializable" class="extype" target="_top">Serializable</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#ru.pavkin.todoist.api.core.model.package@DateFormatextendsProductwithSerializable" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
     </li><li name="ru.pavkin.todoist.api.core.model.DateLanguage" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="DateLanguageextendsProductwithSerializable"></a>
       <a id="DateLanguage:DateLanguage"></a>
@@ -237,6 +408,159 @@
       </span>
       </h4><span class="permalink">
       <a href="../../../../../../index.html#ru.pavkin.todoist.api.core.model.package@DateLanguageextendsProductwithSerializable" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="ru.pavkin.todoist.api.core.model.DayOfWeek" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="DayOfWeekextendsProductwithSerializable"></a>
+      <a id="DayOfWeek:DayOfWeek"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="DayOfWeek.html"><span class="name">DayOfWeek</span></a><span class="result"> extends <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Product" class="extype" target="_top">Product</a> with <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Serializable" class="extype" target="_top">Serializable</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#ru.pavkin.todoist.api.core.model.package@DayOfWeekextendsProductwithSerializable" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="ru.pavkin.todoist.api.core.model.DeleteFilter" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="DeleteFilter[A]extendsSimpleCommandwithProductwithSerializable"></a>
+      <a id="DeleteFilter[A]:DeleteFilter[A]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="DeleteFilter.html"><span class="name">DeleteFilter</span></a><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="filter">filter: <span class="extype" name="shapeless.tag.@@">@@</span>[<span class="extype" name="ru.pavkin.todoist.api.core.model.DeleteFilter.A">A</span>, <a href="../tags$$FilterId.html" class="extype" name="ru.pavkin.todoist.api.core.tags.FilterId">FilterId</a>]</span>, <span name="uuid">uuid: <span class="extype" name="java.util.UUID">UUID</span> = <span class="symbol">UUID.randomUUID()</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="evidence$14">evidence$14: <a href="../IsResourceId.html" class="extype" name="ru.pavkin.todoist.api.core.IsResourceId">IsResourceId</a>[<span class="extype" name="ru.pavkin.todoist.api.core.model.DeleteFilter.A">A</span>]</span>)</span><span class="result"> extends <a href="SimpleCommand.html" class="extype" name="ru.pavkin.todoist.api.core.model.SimpleCommand">SimpleCommand</a> with <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Product" class="extype" target="_top">Product</a> with <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Serializable" class="extype" target="_top">Serializable</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#ru.pavkin.todoist.api.core.model.package@DeleteFilter[A]extendsSimpleCommandwithProductwithSerializable" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="ru.pavkin.todoist.api.core.model.DeleteLabel" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="DeleteLabel[A]extendsSimpleCommandwithProductwithSerializable"></a>
+      <a id="DeleteLabel[A]:DeleteLabel[A]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="DeleteLabel.html"><span class="name">DeleteLabel</span></a><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="label">label: <span class="extype" name="shapeless.tag.@@">@@</span>[<span class="extype" name="ru.pavkin.todoist.api.core.model.DeleteLabel.A">A</span>, <a href="../tags$$LabelId.html" class="extype" name="ru.pavkin.todoist.api.core.tags.LabelId">LabelId</a>]</span>, <span name="uuid">uuid: <span class="extype" name="java.util.UUID">UUID</span> = <span class="symbol">UUID.randomUUID()</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="evidence$13">evidence$13: <a href="../IsResourceId.html" class="extype" name="ru.pavkin.todoist.api.core.IsResourceId">IsResourceId</a>[<span class="extype" name="ru.pavkin.todoist.api.core.model.DeleteLabel.A">A</span>]</span>)</span><span class="result"> extends <a href="SimpleCommand.html" class="extype" name="ru.pavkin.todoist.api.core.model.SimpleCommand">SimpleCommand</a> with <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Product" class="extype" target="_top">Product</a> with <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Serializable" class="extype" target="_top">Serializable</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#ru.pavkin.todoist.api.core.model.package@DeleteLabel[A]extendsSimpleCommandwithProductwithSerializable" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="ru.pavkin.todoist.api.core.model.DeleteNote" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="DeleteNote[A]extendsSimpleCommandwithProductwithSerializable"></a>
+      <a id="DeleteNote[A]:DeleteNote[A]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="DeleteNote.html"><span class="name">DeleteNote</span></a><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="note">note: <span class="extype" name="shapeless.tag.@@">@@</span>[<span class="extype" name="ru.pavkin.todoist.api.core.model.DeleteNote.A">A</span>, <a href="../tags$$NoteId.html" class="extype" name="ru.pavkin.todoist.api.core.tags.NoteId">NoteId</a>]</span>, <span name="uuid">uuid: <span class="extype" name="java.util.UUID">UUID</span> = <span class="symbol">UUID.randomUUID()</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="evidence$15">evidence$15: <a href="../IsResourceId.html" class="extype" name="ru.pavkin.todoist.api.core.IsResourceId">IsResourceId</a>[<span class="extype" name="ru.pavkin.todoist.api.core.model.DeleteNote.A">A</span>]</span>)</span><span class="result"> extends <a href="SimpleCommand.html" class="extype" name="ru.pavkin.todoist.api.core.model.SimpleCommand">SimpleCommand</a> with <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Product" class="extype" target="_top">Product</a> with <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Serializable" class="extype" target="_top">Serializable</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#ru.pavkin.todoist.api.core.model.package@DeleteNote[A]extendsSimpleCommandwithProductwithSerializable" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="ru.pavkin.todoist.api.core.model.DeleteProjects" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="DeleteProjects[A]extendsSimpleCommandwithProductwithSerializable"></a>
+      <a id="DeleteProjects[A]:DeleteProjects[A]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="DeleteProjects.html"><span class="name">DeleteProjects</span></a><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="projects">projects: <span class="extype" name="scala.List">List</span>[<span class="extype" name="shapeless.tag.@@">@@</span>[<span class="extype" name="ru.pavkin.todoist.api.core.model.DeleteProjects.A">A</span>, <a href="../tags$$ProjectId.html" class="extype" name="ru.pavkin.todoist.api.core.tags.ProjectId">ProjectId</a>]]</span>, <span name="uuid">uuid: <span class="extype" name="java.util.UUID">UUID</span> = <span class="symbol">UUID.randomUUID()</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="evidence$12">evidence$12: <a href="../IsResourceId.html" class="extype" name="ru.pavkin.todoist.api.core.IsResourceId">IsResourceId</a>[<span class="extype" name="ru.pavkin.todoist.api.core.model.DeleteProjects.A">A</span>]</span>)</span><span class="result"> extends <a href="SimpleCommand.html" class="extype" name="ru.pavkin.todoist.api.core.model.SimpleCommand">SimpleCommand</a> with <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Product" class="extype" target="_top">Product</a> with <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Serializable" class="extype" target="_top">Serializable</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#ru.pavkin.todoist.api.core.model.package@DeleteProjects[A]extendsSimpleCommandwithProductwithSerializable" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="ru.pavkin.todoist.api.core.model.DeleteReminder" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="DeleteReminder[A]extendsSimpleCommandwithProductwithSerializable"></a>
+      <a id="DeleteReminder[A]:DeleteReminder[A]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="DeleteReminder.html"><span class="name">DeleteReminder</span></a><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="reminder">reminder: <span class="extype" name="shapeless.tag.@@">@@</span>[<span class="extype" name="ru.pavkin.todoist.api.core.model.DeleteReminder.A">A</span>, <a href="../tags$$ReminderId.html" class="extype" name="ru.pavkin.todoist.api.core.tags.ReminderId">ReminderId</a>]</span>, <span name="uuid">uuid: <span class="extype" name="java.util.UUID">UUID</span> = <span class="symbol">UUID.randomUUID()</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="evidence$16">evidence$16: <a href="../IsResourceId.html" class="extype" name="ru.pavkin.todoist.api.core.IsResourceId">IsResourceId</a>[<span class="extype" name="ru.pavkin.todoist.api.core.model.DeleteReminder.A">A</span>]</span>)</span><span class="result"> extends <a href="SimpleCommand.html" class="extype" name="ru.pavkin.todoist.api.core.model.SimpleCommand">SimpleCommand</a> with <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Product" class="extype" target="_top">Product</a> with <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Serializable" class="extype" target="_top">Serializable</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#ru.pavkin.todoist.api.core.model.package@DeleteReminder[A]extendsSimpleCommandwithProductwithSerializable" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="ru.pavkin.todoist.api.core.model.DeleteTasks" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="DeleteTasks[A]extendsSimpleCommandwithProductwithSerializable"></a>
+      <a id="DeleteTasks[A]:DeleteTasks[A]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="DeleteTasks.html"><span class="name">DeleteTasks</span></a><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="tasks">tasks: <span class="extype" name="scala.List">List</span>[<span class="extype" name="shapeless.tag.@@">@@</span>[<span class="extype" name="ru.pavkin.todoist.api.core.model.DeleteTasks.A">A</span>, <a href="../tags$$TaskId.html" class="extype" name="ru.pavkin.todoist.api.core.tags.TaskId">TaskId</a>]]</span>, <span name="uuid">uuid: <span class="extype" name="java.util.UUID">UUID</span> = <span class="symbol">UUID.randomUUID()</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="evidence$11">evidence$11: <a href="../IsResourceId.html" class="extype" name="ru.pavkin.todoist.api.core.IsResourceId">IsResourceId</a>[<span class="extype" name="ru.pavkin.todoist.api.core.model.DeleteTasks.A">A</span>]</span>)</span><span class="result"> extends <a href="SimpleCommand.html" class="extype" name="ru.pavkin.todoist.api.core.model.SimpleCommand">SimpleCommand</a> with <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Product" class="extype" target="_top">Product</a> with <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Serializable" class="extype" target="_top">Serializable</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#ru.pavkin.todoist.api.core.model.package@DeleteTasks[A]extendsSimpleCommandwithProductwithSerializable" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="ru.pavkin.todoist.api.core.model.FileAttachment" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="FileAttachmentextendsProductwithSerializable"></a>
+      <a id="FileAttachment:FileAttachment"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="FileAttachment.html"><span class="name">FileAttachment</span></a><span class="params">(<span name="name">name: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="size">size: <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Long" class="extype" target="_top">Long</a></span>, <span name="mimeType">mimeType: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="url">url: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="uploadState">uploadState: <a href="UploadState.html" class="extype" name="ru.pavkin.todoist.api.core.model.UploadState">UploadState</a></span>)</span><span class="result"> extends <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Product" class="extype" target="_top">Product</a> with <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Serializable" class="extype" target="_top">Serializable</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#ru.pavkin.todoist.api.core.model.package@FileAttachmentextendsProductwithSerializable" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="ru.pavkin.todoist.api.core.model.Filter" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="FilterextendsProductwithSerializable"></a>
+      <a id="Filter:Filter"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="Filter.html"><span class="name">Filter</span></a><span class="params">(<span name="id">id: <span class="extype" name="shapeless.tag.@@">@@</span>[<a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Int" class="extype" target="_top">Int</a>, <a href="../tags$$FilterId.html" class="extype" name="ru.pavkin.todoist.api.core.tags.FilterId">FilterId</a>]</span>, <span name="name">name: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="query">query: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="color">color: <a href="LabelColor.html" class="extype" name="ru.pavkin.todoist.api.core.model.LabelColor">LabelColor</a></span>, <span name="order">order: <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Int" class="extype" target="_top">Int</a></span>, <span name="isDeleted">isDeleted: <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Boolean" class="extype" target="_top">Boolean</a></span>)</span><span class="result"> extends <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Product" class="extype" target="_top">Product</a> with <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Serializable" class="extype" target="_top">Serializable</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#ru.pavkin.todoist.api.core.model.package@FilterextendsProductwithSerializable" title="Permalink" target="_top">
         <img src="../../../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -309,6 +633,40 @@
       </a>
     </span>
       
+    </li><li name="ru.pavkin.todoist.api.core.model.LocationBasedReminder" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="LocationBasedReminderextendsReminderwithProductwithSerializable"></a>
+      <a id="LocationBasedReminder:LocationBasedReminder"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="LocationBasedReminder.html"><span class="name">LocationBasedReminder</span></a><span class="params">(<span name="id">id: <span class="extype" name="shapeless.tag.@@">@@</span>[<a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Int" class="extype" target="_top">Int</a>, <a href="../tags$$ReminderId.html" class="extype" name="ru.pavkin.todoist.api.core.tags.ReminderId">ReminderId</a>]</span>, <span name="subscriber">subscriber: <span class="extype" name="shapeless.tag.@@">@@</span>[<a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Int" class="extype" target="_top">Int</a>, <a href="../tags$$UserId.html" class="extype" name="ru.pavkin.todoist.api.core.tags.UserId">UserId</a>]</span>, <span name="task">task: <span class="extype" name="shapeless.tag.@@">@@</span>[<a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Int" class="extype" target="_top">Int</a>, <a href="../tags$$TaskId.html" class="extype" name="ru.pavkin.todoist.api.core.tags.TaskId">TaskId</a>]</span>, <span name="locationName">locationName: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="latitude">latitude: <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Double" class="extype" target="_top">Double</a></span>, <span name="longitude">longitude: <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Double" class="extype" target="_top">Double</a></span>, <span name="triggerKind">triggerKind: <a href="LocationBasedReminder$$TriggerKind.html" class="extype" name="ru.pavkin.todoist.api.core.model.LocationBasedReminder.TriggerKind">TriggerKind</a></span>, <span name="radiusInMeters">radiusInMeters: <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Int" class="extype" target="_top">Int</a></span>, <span name="isDeleted">isDeleted: <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Boolean" class="extype" target="_top">Boolean</a></span>)</span><span class="result"> extends <a href="Reminder.html" class="extype" name="ru.pavkin.todoist.api.core.model.Reminder">Reminder</a> with <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Product" class="extype" target="_top">Product</a> with <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Serializable" class="extype" target="_top">Serializable</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#ru.pavkin.todoist.api.core.model.package@LocationBasedReminderextendsReminderwithProductwithSerializable" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="ru.pavkin.todoist.api.core.model.MoveTasks" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="MoveTasksextendsSimpleCommandwithProductwithSerializable"></a>
+      <a id="MoveTasks:MoveTasks"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="MoveTasks.html"><span class="name">MoveTasks</span></a><span class="params">(<span name="tasks">tasks: <span class="extype" name="scala.Predef.Map">Map</span>[<span class="extype" name="shapeless.tag.@@">@@</span>[<a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Int" class="extype" target="_top">Int</a>, <a href="../tags$$ProjectId.html" class="extype" name="ru.pavkin.todoist.api.core.tags.ProjectId">ProjectId</a>], <span class="extype" name="scala.List">List</span>[<span class="extype" name="shapeless.tag.@@">@@</span>[<a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Int" class="extype" target="_top">Int</a>, <a href="../tags$$TaskId.html" class="extype" name="ru.pavkin.todoist.api.core.tags.TaskId">TaskId</a>]]]</span>, <span name="toProject">toProject: <span class="extype" name="shapeless.tag.@@">@@</span>[<a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Int" class="extype" target="_top">Int</a>, <a href="../tags$$ProjectId.html" class="extype" name="ru.pavkin.todoist.api.core.tags.ProjectId">ProjectId</a>]</span>, <span name="uuid">uuid: <span class="extype" name="java.util.UUID">UUID</span> = <span class="symbol">UUID.randomUUID()</span></span>)</span><span class="result"> extends <a href="SimpleCommand.html" class="extype" name="ru.pavkin.todoist.api.core.model.SimpleCommand">SimpleCommand</a> with <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Product" class="extype" target="_top">Product</a> with <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Serializable" class="extype" target="_top">Serializable</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#ru.pavkin.todoist.api.core.model.package@MoveTasksextendsSimpleCommandwithProductwithSerializable" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
     </li><li name="ru.pavkin.todoist.api.core.model.MultiItemCommandStatus" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="MultiItemCommandStatusextendsCommandStatuswithProductwithSerializable"></a>
       <a id="MultiItemCommandStatus:MultiItemCommandStatus"></a>
@@ -322,6 +680,23 @@
       </span>
       </h4><span class="permalink">
       <a href="../../../../../../index.html#ru.pavkin.todoist.api.core.model.package@MultiItemCommandStatusextendsCommandStatuswithProductwithSerializable" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="ru.pavkin.todoist.api.core.model.Note" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="NoteextendsProductwithSerializable"></a>
+      <a id="Note:Note"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="Note.html"><span class="name">Note</span></a><span class="params">(<span name="id">id: <span class="extype" name="shapeless.tag.@@">@@</span>[<a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Int" class="extype" target="_top">Int</a>, <a href="../tags$$NoteId.html" class="extype" name="ru.pavkin.todoist.api.core.tags.NoteId">NoteId</a>]</span>, <span name="postedBy">postedBy: <span class="extype" name="shapeless.tag.@@">@@</span>[<a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Int" class="extype" target="_top">Int</a>, <a href="../tags$$UserId.html" class="extype" name="ru.pavkin.todoist.api.core.tags.UserId">UserId</a>]</span>, <span name="task">task: <span class="extype" name="shapeless.tag.@@">@@</span>[<a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Int" class="extype" target="_top">Int</a>, <a href="../tags$$TaskId.html" class="extype" name="ru.pavkin.todoist.api.core.tags.TaskId">TaskId</a>]</span>, <span name="project">project: <span class="extype" name="shapeless.tag.@@">@@</span>[<a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Int" class="extype" target="_top">Int</a>, <a href="../tags$$ProjectId.html" class="extype" name="ru.pavkin.todoist.api.core.tags.ProjectId">ProjectId</a>]</span>, <span name="content">content: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="attachment">attachment: <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Option" class="extype" target="_top">Option</a>[<a href="FileAttachment.html" class="extype" name="ru.pavkin.todoist.api.core.model.FileAttachment">FileAttachment</a>]</span>, <span name="subscribers">subscribers: <span class="extype" name="scala.List">List</span>[<span class="extype" name="shapeless.tag.@@">@@</span>[<a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Int" class="extype" target="_top">Int</a>, <a href="../tags$$UserId.html" class="extype" name="ru.pavkin.todoist.api.core.tags.UserId">UserId</a>]]</span>, <span name="isDeleted">isDeleted: <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Boolean" class="extype" target="_top">Boolean</a></span>, <span name="isArchived">isArchived: <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Boolean" class="extype" target="_top">Boolean</a></span>, <span name="postedAt">postedAt: <span class="extype" name="java.util.Date">Date</span></span>)</span><span class="result"> extends <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Product" class="extype" target="_top">Product</a> with <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Serializable" class="extype" target="_top">Serializable</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#ru.pavkin.todoist.api.core.model.package@NoteextendsProductwithSerializable" title="Permalink" target="_top">
         <img src="../../../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -377,6 +752,23 @@
       </a>
     </span>
       
+    </li><li name="ru.pavkin.todoist.api.core.model.ProjectsSortOrder" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="ProjectsSortOrderextendsProductwithSerializable"></a>
+      <a id="ProjectsSortOrder:ProjectsSortOrder"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="ProjectsSortOrder.html"><span class="name">ProjectsSortOrder</span></a><span class="result"> extends <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Product" class="extype" target="_top">Product</a> with <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Serializable" class="extype" target="_top">Serializable</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#ru.pavkin.todoist.api.core.model.package@ProjectsSortOrderextendsProductwithSerializable" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
     </li><li name="ru.pavkin.todoist.api.core.model.RegularProject" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="RegularProjectextendsProjectwithProductwithSerializable"></a>
       <a id="RegularProject:RegularProject"></a>
@@ -390,6 +782,74 @@
       </span>
       </h4><span class="permalink">
       <a href="../../../../../../index.html#ru.pavkin.todoist.api.core.model.package@RegularProjectextendsProjectwithProductwithSerializable" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="ru.pavkin.todoist.api.core.model.RelativeTimeBasedReminder" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="RelativeTimeBasedReminderextendsTimeBasedReminderwithProductwithSerializable"></a>
+      <a id="RelativeTimeBasedReminder:RelativeTimeBasedReminder"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="RelativeTimeBasedReminder.html"><span class="name">RelativeTimeBasedReminder</span></a><span class="params">(<span name="id">id: <span class="extype" name="shapeless.tag.@@">@@</span>[<a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Int" class="extype" target="_top">Int</a>, <a href="../tags$$ReminderId.html" class="extype" name="ru.pavkin.todoist.api.core.tags.ReminderId">ReminderId</a>]</span>, <span name="subscriber">subscriber: <span class="extype" name="shapeless.tag.@@">@@</span>[<a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Int" class="extype" target="_top">Int</a>, <a href="../tags$$UserId.html" class="extype" name="ru.pavkin.todoist.api.core.tags.UserId">UserId</a>]</span>, <span name="task">task: <span class="extype" name="shapeless.tag.@@">@@</span>[<a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Int" class="extype" target="_top">Int</a>, <a href="../tags$$TaskId.html" class="extype" name="ru.pavkin.todoist.api.core.tags.TaskId">TaskId</a>]</span>, <span name="service">service: <a href="ReminderService.html" class="extype" name="ru.pavkin.todoist.api.core.model.ReminderService">ReminderService</a></span>, <span name="dueDate">dueDate: <a href="TaskDate.html" class="extype" name="ru.pavkin.todoist.api.core.model.TaskDate">TaskDate</a></span>, <span name="minutesBefore">minutesBefore: <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Int" class="extype" target="_top">Int</a></span>, <span name="isDeleted">isDeleted: <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Boolean" class="extype" target="_top">Boolean</a></span>)</span><span class="result"> extends <a href="TimeBasedReminder.html" class="extype" name="ru.pavkin.todoist.api.core.model.TimeBasedReminder">TimeBasedReminder</a> with <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Product" class="extype" target="_top">Product</a> with <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Serializable" class="extype" target="_top">Serializable</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#ru.pavkin.todoist.api.core.model.package@RelativeTimeBasedReminderextendsTimeBasedReminderwithProductwithSerializable" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="ru.pavkin.todoist.api.core.model.Reminder" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="ReminderextendsAnyRef"></a>
+      <a id="Reminder:Reminder"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">sealed </span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="Reminder.html"><span class="name">Reminder</span></a><span class="result"> extends <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.AnyRef" class="extype" target="_top">AnyRef</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#ru.pavkin.todoist.api.core.model.package@ReminderextendsAnyRef" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="ru.pavkin.todoist.api.core.model.ReminderPeriod" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="ReminderPeriodextendsProductwithSerializable"></a>
+      <a id="ReminderPeriod:ReminderPeriod"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="ReminderPeriod.html"><span class="name">ReminderPeriod</span></a><span class="result"> extends <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Product" class="extype" target="_top">Product</a> with <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Serializable" class="extype" target="_top">Serializable</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#ru.pavkin.todoist.api.core.model.package@ReminderPeriodextendsProductwithSerializable" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="ru.pavkin.todoist.api.core.model.ReminderService" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="ReminderServiceextendsAnyRef"></a>
+      <a id="ReminderService:ReminderService"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">sealed </span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="ReminderService.html"><span class="name">ReminderService</span></a><span class="result"> extends <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.AnyRef" class="extype" target="_top">AnyRef</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#ru.pavkin.todoist.api.core.model.package@ReminderServiceextendsAnyRef" title="Permalink" target="_top">
         <img src="../../../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -454,7 +914,7 @@
         <span class="kind">case class</span>
       </span>
       <span class="symbol">
-        <a href="TaskDate.html"><span class="name">TaskDate</span></a><span class="params">(<span name="text">text: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="language">language: <a href="DateLanguage.html" class="extype" name="ru.pavkin.todoist.api.core.model.DateLanguage">DateLanguage</a></span>, <span name="dueDateUTC">dueDateUTC: <span class="extype" name="java.util.Date">Date</span></span>)</span><span class="result"> extends <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Product" class="extype" target="_top">Product</a> with <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Serializable" class="extype" target="_top">Serializable</a></span>
+        <a href="TaskDate.html"><span class="name">TaskDate</span></a><span class="params">(<span name="text">text: <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Option" class="extype" target="_top">Option</a>[<span class="extype" name="scala.Predef.String">String</span>]</span>, <span name="language">language: <a href="DateLanguage.html" class="extype" name="ru.pavkin.todoist.api.core.model.DateLanguage">DateLanguage</a></span>, <span name="dueDateUTC">dueDateUTC: <span class="extype" name="java.util.Date">Date</span></span>)</span><span class="result"> extends <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Product" class="extype" target="_top">Product</a> with <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Serializable" class="extype" target="_top">Serializable</a></span>
       </span>
       </h4><span class="permalink">
       <a href="../../../../../../index.html#ru.pavkin.todoist.api.core.model.package@TaskDateextendsProductwithSerializable" title="Permalink" target="_top">
@@ -547,6 +1007,57 @@
       </a>
     </span>
       
+    </li><li name="ru.pavkin.todoist.api.core.model.Theme" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="ThemeextendsProductwithSerializable"></a>
+      <a id="Theme:Theme"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="Theme.html"><span class="name">Theme</span></a><span class="result"> extends <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Product" class="extype" target="_top">Product</a> with <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Serializable" class="extype" target="_top">Serializable</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#ru.pavkin.todoist.api.core.model.package@ThemeextendsProductwithSerializable" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="ru.pavkin.todoist.api.core.model.TimeBasedReminder" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="TimeBasedReminderextendsReminder"></a>
+      <a id="TimeBasedReminder:TimeBasedReminder"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">sealed </span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="TimeBasedReminder.html"><span class="name">TimeBasedReminder</span></a><span class="result"> extends <a href="Reminder.html" class="extype" name="ru.pavkin.todoist.api.core.model.Reminder">Reminder</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#ru.pavkin.todoist.api.core.model.package@TimeBasedReminderextendsReminder" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="ru.pavkin.todoist.api.core.model.TimeFormat" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="TimeFormatextendsProductwithSerializable"></a>
+      <a id="TimeFormat:TimeFormat"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="TimeFormat.html"><span class="name">TimeFormat</span></a><span class="result"> extends <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Product" class="extype" target="_top">Product</a> with <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Serializable" class="extype" target="_top">Serializable</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#ru.pavkin.todoist.api.core.model.package@TimeFormatextendsProductwithSerializable" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
     </li><li name="ru.pavkin.todoist.api.core.model.TodoistCommandResult" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
       <a id="TodoistCommandResultextendsAnyRef"></a>
       <a id="TodoistCommandResult:TodoistCommandResult"></a>
@@ -564,6 +1075,91 @@
       </a>
     </span>
       
+    </li><li name="ru.pavkin.todoist.api.core.model.TokenExchange" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="TokenExchangeextendsProductwithSerializable"></a>
+      <a id="TokenExchange:TokenExchange"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="TokenExchange.html"><span class="name">TokenExchange</span></a><span class="params">(<span name="clientId">clientId: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="clientSecret">clientSecret: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="authCode">authCode: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result"> extends <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Product" class="extype" target="_top">Product</a> with <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Serializable" class="extype" target="_top">Serializable</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#ru.pavkin.todoist.api.core.model.package@TokenExchangeextendsProductwithSerializable" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="ru.pavkin.todoist.api.core.model.TokenScope" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="TokenScopeextendsAnyRef"></a>
+      <a id="TokenScope:TokenScope"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">sealed abstract </span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="TokenScope.html"><span class="name">TokenScope</span></a><span class="result"> extends <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.AnyRef" class="extype" target="_top">AnyRef</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#ru.pavkin.todoist.api.core.model.package@TokenScopeextendsAnyRef" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="ru.pavkin.todoist.api.core.model.UnarchiveProjects" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="UnarchiveProjects[A]extendsSimpleCommandwithProductwithSerializable"></a>
+      <a id="UnarchiveProjects[A]:UnarchiveProjects[A]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="UnarchiveProjects.html"><span class="name">UnarchiveProjects</span></a><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="projects">projects: <span class="extype" name="scala.List">List</span>[<span class="extype" name="shapeless.tag.@@">@@</span>[<span class="extype" name="ru.pavkin.todoist.api.core.model.UnarchiveProjects.A">A</span>, <a href="../tags$$ProjectId.html" class="extype" name="ru.pavkin.todoist.api.core.tags.ProjectId">ProjectId</a>]]</span>, <span name="uuid">uuid: <span class="extype" name="java.util.UUID">UUID</span> = <span class="symbol">UUID.randomUUID()</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="evidence$20">evidence$20: <a href="../IsResourceId.html" class="extype" name="ru.pavkin.todoist.api.core.IsResourceId">IsResourceId</a>[<span class="extype" name="ru.pavkin.todoist.api.core.model.UnarchiveProjects.A">A</span>]</span>)</span><span class="result"> extends <a href="SimpleCommand.html" class="extype" name="ru.pavkin.todoist.api.core.model.SimpleCommand">SimpleCommand</a> with <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Product" class="extype" target="_top">Product</a> with <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Serializable" class="extype" target="_top">Serializable</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#ru.pavkin.todoist.api.core.model.package@UnarchiveProjects[A]extendsSimpleCommandwithProductwithSerializable" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="ru.pavkin.todoist.api.core.model.UncompleteTasks" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="UncompleteTasks[A]extendsSimpleCommandwithProductwithSerializable"></a>
+      <a id="UncompleteTasks[A]:UncompleteTasks[A]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="UncompleteTasks.html"><span class="name">UncompleteTasks</span></a><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="tasks">tasks: <span class="extype" name="scala.List">List</span>[<span class="extype" name="shapeless.tag.@@">@@</span>[<span class="extype" name="ru.pavkin.todoist.api.core.model.UncompleteTasks.A">A</span>, <a href="../tags$$TaskId.html" class="extype" name="ru.pavkin.todoist.api.core.tags.TaskId">TaskId</a>]]</span>, <span name="uuid">uuid: <span class="extype" name="java.util.UUID">UUID</span> = <span class="symbol">UUID.randomUUID()</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="evidence$18">evidence$18: <a href="../IsResourceId.html" class="extype" name="ru.pavkin.todoist.api.core.IsResourceId">IsResourceId</a>[<span class="extype" name="ru.pavkin.todoist.api.core.model.UncompleteTasks.A">A</span>]</span>)</span><span class="result"> extends <a href="SimpleCommand.html" class="extype" name="ru.pavkin.todoist.api.core.model.SimpleCommand">SimpleCommand</a> with <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Product" class="extype" target="_top">Product</a> with <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Serializable" class="extype" target="_top">Serializable</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#ru.pavkin.todoist.api.core.model.package@UncompleteTasks[A]extendsSimpleCommandwithProductwithSerializable" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="ru.pavkin.todoist.api.core.model.UpdateFilter" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="UpdateFilter[A]extendsSimpleCommandwithProductwithSerializable"></a>
+      <a id="UpdateFilter[A]:UpdateFilter[A]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="UpdateFilter.html"><span class="name">UpdateFilter</span></a><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="id">id: <span class="extype" name="shapeless.tag.@@">@@</span>[<span class="extype" name="ru.pavkin.todoist.api.core.model.UpdateFilter.A">A</span>, <a href="../tags$$FilterId.html" class="extype" name="ru.pavkin.todoist.api.core.tags.FilterId">FilterId</a>]</span>, <span name="name">name: <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Option" class="extype" target="_top">Option</a>[<span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol">None</span></span>, <span name="query">query: <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Option" class="extype" target="_top">Option</a>[<span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol">None</span></span>, <span name="color">color: <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Option" class="extype" target="_top">Option</a>[<a href="LabelColor.html" class="extype" name="ru.pavkin.todoist.api.core.model.LabelColor">LabelColor</a>] = <span class="symbol">None</span></span>, <span name="order">order: <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Option" class="extype" target="_top">Option</a>[<a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Int" class="extype" target="_top">Int</a>] = <span class="symbol">None</span></span>, <span name="uuid">uuid: <span class="extype" name="java.util.UUID">UUID</span> = <span class="symbol">UUID.randomUUID()</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="evidence$9">evidence$9: <a href="../IsResourceId.html" class="extype" name="ru.pavkin.todoist.api.core.IsResourceId">IsResourceId</a>[<span class="extype" name="ru.pavkin.todoist.api.core.model.UpdateFilter.A">A</span>]</span>)</span><span class="result"> extends <a href="SimpleCommand.html" class="extype" name="ru.pavkin.todoist.api.core.model.SimpleCommand">SimpleCommand</a> with <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Product" class="extype" target="_top">Product</a> with <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Serializable" class="extype" target="_top">Serializable</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#ru.pavkin.todoist.api.core.model.package@UpdateFilter[A]extendsSimpleCommandwithProductwithSerializable" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
     </li><li name="ru.pavkin.todoist.api.core.model.UpdateLabel" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="UpdateLabel[A]extendsSimpleCommandwithProductwithSerializable"></a>
       <a id="UpdateLabel[A]:UpdateLabel[A]"></a>
@@ -573,10 +1169,27 @@
         <span class="kind">case class</span>
       </span>
       <span class="symbol">
-        <a href="UpdateLabel.html"><span class="name">UpdateLabel</span></a><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="id">id: <span class="extype" name="shapeless.tag.@@">@@</span>[<span class="extype" name="ru.pavkin.todoist.api.core.model.UpdateLabel.A">A</span>, <a href="../tags$$LabelId.html" class="extype" name="ru.pavkin.todoist.api.core.tags.LabelId">LabelId</a>]</span>, <span name="name">name: <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Option" class="extype" target="_top">Option</a>[<span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol">None</span></span>, <span name="color">color: <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Option" class="extype" target="_top">Option</a>[<a href="LabelColor.html" class="extype" name="ru.pavkin.todoist.api.core.model.LabelColor">LabelColor</a>] = <span class="symbol">None</span></span>, <span name="order">order: <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Option" class="extype" target="_top">Option</a>[<a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Int" class="extype" target="_top">Int</a>] = <span class="symbol">None</span></span>, <span name="uuid">uuid: <span class="extype" name="java.util.UUID">UUID</span> = <span class="symbol">UUID.randomUUID()</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="evidence$4">evidence$4: <a href="../IsResourceId.html" class="extype" name="ru.pavkin.todoist.api.core.IsResourceId">IsResourceId</a>[<span class="extype" name="ru.pavkin.todoist.api.core.model.UpdateLabel.A">A</span>]</span>)</span><span class="result"> extends <a href="SimpleCommand.html" class="extype" name="ru.pavkin.todoist.api.core.model.SimpleCommand">SimpleCommand</a> with <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Product" class="extype" target="_top">Product</a> with <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Serializable" class="extype" target="_top">Serializable</a></span>
+        <a href="UpdateLabel.html"><span class="name">UpdateLabel</span></a><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="id">id: <span class="extype" name="shapeless.tag.@@">@@</span>[<span class="extype" name="ru.pavkin.todoist.api.core.model.UpdateLabel.A">A</span>, <a href="../tags$$LabelId.html" class="extype" name="ru.pavkin.todoist.api.core.tags.LabelId">LabelId</a>]</span>, <span name="name">name: <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Option" class="extype" target="_top">Option</a>[<span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol">None</span></span>, <span name="color">color: <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Option" class="extype" target="_top">Option</a>[<a href="LabelColor.html" class="extype" name="ru.pavkin.todoist.api.core.model.LabelColor">LabelColor</a>] = <span class="symbol">None</span></span>, <span name="order">order: <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Option" class="extype" target="_top">Option</a>[<a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Int" class="extype" target="_top">Int</a>] = <span class="symbol">None</span></span>, <span name="uuid">uuid: <span class="extype" name="java.util.UUID">UUID</span> = <span class="symbol">UUID.randomUUID()</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="evidence$8">evidence$8: <a href="../IsResourceId.html" class="extype" name="ru.pavkin.todoist.api.core.IsResourceId">IsResourceId</a>[<span class="extype" name="ru.pavkin.todoist.api.core.model.UpdateLabel.A">A</span>]</span>)</span><span class="result"> extends <a href="SimpleCommand.html" class="extype" name="ru.pavkin.todoist.api.core.model.SimpleCommand">SimpleCommand</a> with <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Product" class="extype" target="_top">Product</a> with <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Serializable" class="extype" target="_top">Serializable</a></span>
       </span>
       </h4><span class="permalink">
       <a href="../../../../../../index.html#ru.pavkin.todoist.api.core.model.package@UpdateLabel[A]extendsSimpleCommandwithProductwithSerializable" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="ru.pavkin.todoist.api.core.model.UpdateNote" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="UpdateNote[A]extendsSimpleCommandwithProductwithSerializable"></a>
+      <a id="UpdateNote[A]:UpdateNote[A]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="UpdateNote.html"><span class="name">UpdateNote</span></a><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="id">id: <span class="extype" name="shapeless.tag.@@">@@</span>[<span class="extype" name="ru.pavkin.todoist.api.core.model.UpdateNote.A">A</span>, <a href="../tags$$NoteId.html" class="extype" name="ru.pavkin.todoist.api.core.tags.NoteId">NoteId</a>]</span>, <span name="content">content: <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Option" class="extype" target="_top">Option</a>[<span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol">None</span></span>, <span name="uuid">uuid: <span class="extype" name="java.util.UUID">UUID</span> = <span class="symbol">UUID.randomUUID()</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="evidence$10">evidence$10: <a href="../IsResourceId.html" class="extype" name="ru.pavkin.todoist.api.core.IsResourceId">IsResourceId</a>[<span class="extype" name="ru.pavkin.todoist.api.core.model.UpdateNote.A">A</span>]</span>)</span><span class="result"> extends <a href="SimpleCommand.html" class="extype" name="ru.pavkin.todoist.api.core.model.SimpleCommand">SimpleCommand</a> with <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Product" class="extype" target="_top">Product</a> with <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Serializable" class="extype" target="_top">Serializable</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#ru.pavkin.todoist.api.core.model.package@UpdateNote[A]extendsSimpleCommandwithProductwithSerializable" title="Permalink" target="_top">
         <img src="../../../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -590,7 +1203,7 @@
         <span class="kind">case class</span>
       </span>
       <span class="symbol">
-        <a href="UpdateProject.html"><span class="name">UpdateProject</span></a><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="id">id: <span class="extype" name="shapeless.tag.@@">@@</span>[<span class="extype" name="ru.pavkin.todoist.api.core.model.UpdateProject.A">A</span>, <a href="../tags$$ProjectId.html" class="extype" name="ru.pavkin.todoist.api.core.tags.ProjectId">ProjectId</a>]</span>, <span name="name">name: <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Option" class="extype" target="_top">Option</a>[<span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol">None</span></span>, <span name="color">color: <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Option" class="extype" target="_top">Option</a>[<a href="ProjectColor.html" class="extype" name="ru.pavkin.todoist.api.core.model.ProjectColor">ProjectColor</a>] = <span class="symbol">None</span></span>, <span name="indent">indent: <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Option" class="extype" target="_top">Option</a>[<a href="Indent.html" class="extype" name="ru.pavkin.todoist.api.core.model.Indent">Indent</a>] = <span class="symbol">None</span></span>, <span name="order">order: <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Option" class="extype" target="_top">Option</a>[<a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Int" class="extype" target="_top">Int</a>] = <span class="symbol">None</span></span>, <span name="isCollapsed">isCollapsed: <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Option" class="extype" target="_top">Option</a>[<a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Boolean" class="extype" target="_top">Boolean</a>] = <span class="symbol">None</span></span>, <span name="uuid">uuid: <span class="extype" name="java.util.UUID">UUID</span> = <span class="symbol">UUID.randomUUID()</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="evidence$2">evidence$2: <a href="../IsResourceId.html" class="extype" name="ru.pavkin.todoist.api.core.IsResourceId">IsResourceId</a>[<span class="extype" name="ru.pavkin.todoist.api.core.model.UpdateProject.A">A</span>]</span>)</span><span class="result"> extends <a href="SimpleCommand.html" class="extype" name="ru.pavkin.todoist.api.core.model.SimpleCommand">SimpleCommand</a> with <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Product" class="extype" target="_top">Product</a> with <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Serializable" class="extype" target="_top">Serializable</a></span>
+        <a href="UpdateProject.html"><span class="name">UpdateProject</span></a><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="id">id: <span class="extype" name="shapeless.tag.@@">@@</span>[<span class="extype" name="ru.pavkin.todoist.api.core.model.UpdateProject.A">A</span>, <a href="../tags$$ProjectId.html" class="extype" name="ru.pavkin.todoist.api.core.tags.ProjectId">ProjectId</a>]</span>, <span name="name">name: <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Option" class="extype" target="_top">Option</a>[<span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol">None</span></span>, <span name="color">color: <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Option" class="extype" target="_top">Option</a>[<a href="ProjectColor.html" class="extype" name="ru.pavkin.todoist.api.core.model.ProjectColor">ProjectColor</a>] = <span class="symbol">None</span></span>, <span name="indent">indent: <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Option" class="extype" target="_top">Option</a>[<a href="Indent.html" class="extype" name="ru.pavkin.todoist.api.core.model.Indent">Indent</a>] = <span class="symbol">None</span></span>, <span name="order">order: <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Option" class="extype" target="_top">Option</a>[<a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Int" class="extype" target="_top">Int</a>] = <span class="symbol">None</span></span>, <span name="isCollapsed">isCollapsed: <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Option" class="extype" target="_top">Option</a>[<a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Boolean" class="extype" target="_top">Boolean</a>] = <span class="symbol">None</span></span>, <span name="uuid">uuid: <span class="extype" name="java.util.UUID">UUID</span> = <span class="symbol">UUID.randomUUID()</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="evidence$6">evidence$6: <a href="../IsResourceId.html" class="extype" name="ru.pavkin.todoist.api.core.IsResourceId">IsResourceId</a>[<span class="extype" name="ru.pavkin.todoist.api.core.model.UpdateProject.A">A</span>]</span>)</span><span class="result"> extends <a href="SimpleCommand.html" class="extype" name="ru.pavkin.todoist.api.core.model.SimpleCommand">SimpleCommand</a> with <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Product" class="extype" target="_top">Product</a> with <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Serializable" class="extype" target="_top">Serializable</a></span>
       </span>
       </h4><span class="permalink">
       <a href="../../../../../../index.html#ru.pavkin.todoist.api.core.model.package@UpdateProject[A]extendsSimpleCommandwithProductwithSerializable" title="Permalink" target="_top">
@@ -607,10 +1220,61 @@
         <span class="kind">case class</span>
       </span>
       <span class="symbol">
-        <a href="UpdateTask.html"><span class="name">UpdateTask</span></a><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="id">id: <span class="extype" name="shapeless.tag.@@">@@</span>[<span class="extype" name="ru.pavkin.todoist.api.core.model.UpdateTask.A">A</span>, <a href="../tags$$TaskId.html" class="extype" name="ru.pavkin.todoist.api.core.tags.TaskId">TaskId</a>]</span>, <span name="content">content: <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Option" class="extype" target="_top">Option</a>[<span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol">None</span></span>, <span name="date">date: <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Option" class="extype" target="_top">Option</a>[<a href="TaskDate.html" class="extype" name="ru.pavkin.todoist.api.core.model.TaskDate">TaskDate</a>] = <span class="symbol">None</span></span>, <span name="priority">priority: <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Option" class="extype" target="_top">Option</a>[<a href="Priority.html" class="extype" name="ru.pavkin.todoist.api.core.model.Priority">Priority</a>] = <span class="symbol">None</span></span>, <span name="indent">indent: <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Option" class="extype" target="_top">Option</a>[<a href="Indent.html" class="extype" name="ru.pavkin.todoist.api.core.model.Indent">Indent</a>] = <span class="symbol">None</span></span>, <span name="order">order: <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Option" class="extype" target="_top">Option</a>[<a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Int" class="extype" target="_top">Int</a>] = <span class="symbol">None</span></span>, <span name="dayOrder">dayOrder: <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Option" class="extype" target="_top">Option</a>[<a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Int" class="extype" target="_top">Int</a>] = <span class="symbol">None</span></span>, <span name="isCollapsed">isCollapsed: <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Option" class="extype" target="_top">Option</a>[<a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Boolean" class="extype" target="_top">Boolean</a>] = <span class="symbol">None</span></span>, <span name="labels">labels: <span class="extype" name="scala.List">List</span>[<span class="extype" name="shapeless.tag.@@">@@</span>[<a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Int" class="extype" target="_top">Int</a>, <a href="../tags$$LabelId.html" class="extype" name="ru.pavkin.todoist.api.core.tags.LabelId">LabelId</a>]] = <span class="symbol">Nil</span></span>, <span name="assignedBy">assignedBy: <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Option" class="extype" target="_top">Option</a>[<span class="extype" name="shapeless.tag.@@">@@</span>[<a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Int" class="extype" target="_top">Int</a>, <a href="../tags$$UserId.html" class="extype" name="ru.pavkin.todoist.api.core.tags.UserId">UserId</a>]] = <span class="symbol">None</span></span>, <span name="responsible">responsible: <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Option" class="extype" target="_top">Option</a>[<span class="extype" name="shapeless.tag.@@">@@</span>[<a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Int" class="extype" target="_top">Int</a>, <a href="../tags$$UserId.html" class="extype" name="ru.pavkin.todoist.api.core.tags.UserId">UserId</a>]] = <span class="symbol">None</span></span>, <span name="uuid">uuid: <span class="extype" name="java.util.UUID">UUID</span> = <span class="symbol">UUID.randomUUID()</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="evidence$3">evidence$3: <a href="../IsResourceId.html" class="extype" name="ru.pavkin.todoist.api.core.IsResourceId">IsResourceId</a>[<span class="extype" name="ru.pavkin.todoist.api.core.model.UpdateTask.A">A</span>]</span>)</span><span class="result"> extends <a href="SimpleCommand.html" class="extype" name="ru.pavkin.todoist.api.core.model.SimpleCommand">SimpleCommand</a> with <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Product" class="extype" target="_top">Product</a> with <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Serializable" class="extype" target="_top">Serializable</a></span>
+        <a href="UpdateTask.html"><span class="name">UpdateTask</span></a><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="id">id: <span class="extype" name="shapeless.tag.@@">@@</span>[<span class="extype" name="ru.pavkin.todoist.api.core.model.UpdateTask.A">A</span>, <a href="../tags$$TaskId.html" class="extype" name="ru.pavkin.todoist.api.core.tags.TaskId">TaskId</a>]</span>, <span name="content">content: <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Option" class="extype" target="_top">Option</a>[<span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol">None</span></span>, <span name="date">date: <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Option" class="extype" target="_top">Option</a>[<a href="TaskDate.html" class="extype" name="ru.pavkin.todoist.api.core.model.TaskDate">TaskDate</a>] = <span class="symbol">None</span></span>, <span name="priority">priority: <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Option" class="extype" target="_top">Option</a>[<a href="Priority.html" class="extype" name="ru.pavkin.todoist.api.core.model.Priority">Priority</a>] = <span class="symbol">None</span></span>, <span name="indent">indent: <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Option" class="extype" target="_top">Option</a>[<a href="Indent.html" class="extype" name="ru.pavkin.todoist.api.core.model.Indent">Indent</a>] = <span class="symbol">None</span></span>, <span name="order">order: <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Option" class="extype" target="_top">Option</a>[<a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Int" class="extype" target="_top">Int</a>] = <span class="symbol">None</span></span>, <span name="dayOrder">dayOrder: <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Option" class="extype" target="_top">Option</a>[<a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Int" class="extype" target="_top">Int</a>] = <span class="symbol">None</span></span>, <span name="isCollapsed">isCollapsed: <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Option" class="extype" target="_top">Option</a>[<a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Boolean" class="extype" target="_top">Boolean</a>] = <span class="symbol">None</span></span>, <span name="labels">labels: <span class="extype" name="scala.List">List</span>[<span class="extype" name="shapeless.tag.@@">@@</span>[<a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Int" class="extype" target="_top">Int</a>, <a href="../tags$$LabelId.html" class="extype" name="ru.pavkin.todoist.api.core.tags.LabelId">LabelId</a>]] = <span class="symbol">Nil</span></span>, <span name="assignedBy">assignedBy: <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Option" class="extype" target="_top">Option</a>[<span class="extype" name="shapeless.tag.@@">@@</span>[<a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Int" class="extype" target="_top">Int</a>, <a href="../tags$$UserId.html" class="extype" name="ru.pavkin.todoist.api.core.tags.UserId">UserId</a>]] = <span class="symbol">None</span></span>, <span name="responsible">responsible: <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Option" class="extype" target="_top">Option</a>[<span class="extype" name="shapeless.tag.@@">@@</span>[<a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Int" class="extype" target="_top">Int</a>, <a href="../tags$$UserId.html" class="extype" name="ru.pavkin.todoist.api.core.tags.UserId">UserId</a>]] = <span class="symbol">None</span></span>, <span name="uuid">uuid: <span class="extype" name="java.util.UUID">UUID</span> = <span class="symbol">UUID.randomUUID()</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="evidence$7">evidence$7: <a href="../IsResourceId.html" class="extype" name="ru.pavkin.todoist.api.core.IsResourceId">IsResourceId</a>[<span class="extype" name="ru.pavkin.todoist.api.core.model.UpdateTask.A">A</span>]</span>)</span><span class="result"> extends <a href="SimpleCommand.html" class="extype" name="ru.pavkin.todoist.api.core.model.SimpleCommand">SimpleCommand</a> with <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Product" class="extype" target="_top">Product</a> with <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Serializable" class="extype" target="_top">Serializable</a></span>
       </span>
       </h4><span class="permalink">
       <a href="../../../../../../index.html#ru.pavkin.todoist.api.core.model.package@UpdateTask[A]extendsSimpleCommandwithProductwithSerializable" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="ru.pavkin.todoist.api.core.model.UploadState" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="UploadStateextendsAnyRef"></a>
+      <a id="UploadState:UploadState"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">sealed </span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="UploadState.html"><span class="name">UploadState</span></a><span class="result"> extends <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.AnyRef" class="extype" target="_top">AnyRef</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#ru.pavkin.todoist.api.core.model.package@UploadStateextendsAnyRef" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="ru.pavkin.todoist.api.core.model.User" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="UserextendsProductwithSerializable"></a>
+      <a id="User:User"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="User.html"><span class="name">User</span></a><span class="params">(<span name="id">id: <span class="extype" name="shapeless.tag.@@">@@</span>[<a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Int" class="extype" target="_top">Int</a>, <a href="../tags$$UserId.html" class="extype" name="ru.pavkin.todoist.api.core.tags.UserId">UserId</a>]</span>, <span name="email">email: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="fullName">fullName: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="inboxProject">inboxProject: <span class="extype" name="shapeless.tag.@@">@@</span>[<a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Int" class="extype" target="_top">Int</a>, <a href="../tags$$ProjectId.html" class="extype" name="ru.pavkin.todoist.api.core.tags.ProjectId">ProjectId</a>]</span>, <span name="timezone">timezone: <span class="extype" name="java.util.TimeZone">TimeZone</span></span>, <span name="startPageQuery">startPageQuery: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="weekStartDay">weekStartDay: <a href="DayOfWeek.html" class="extype" name="ru.pavkin.todoist.api.core.model.DayOfWeek">DayOfWeek</a></span>, <span name="postponeTo">postponeTo: <a href="DayOfWeek.html" class="extype" name="ru.pavkin.todoist.api.core.model.DayOfWeek">DayOfWeek</a></span>, <span name="timeFormat">timeFormat: <a href="TimeFormat.html" class="extype" name="ru.pavkin.todoist.api.core.model.TimeFormat">TimeFormat</a></span>, <span name="dateFormat">dateFormat: <a href="DateFormat.html" class="extype" name="ru.pavkin.todoist.api.core.model.DateFormat">DateFormat</a></span>, <span name="projectsSortOrder">projectsSortOrder: <a href="ProjectsSortOrder.html" class="extype" name="ru.pavkin.todoist.api.core.model.ProjectsSortOrder">ProjectsSortOrder</a></span>, <span name="hasPushReminders">hasPushReminders: <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Boolean" class="extype" target="_top">Boolean</a></span>, <span name="defaultReminder">defaultReminder: <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Option" class="extype" target="_top">Option</a>[<a href="ReminderService.html" class="extype" name="ru.pavkin.todoist.api.core.model.ReminderService">ReminderService</a>]</span>, <span name="autoReminder">autoReminder: <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Option" class="extype" target="_top">Option</a>[<a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Int" class="extype" target="_top">Int</a>]</span>, <span name="mobileNumber">mobileNumber: <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Option" class="extype" target="_top">Option</a>[<span class="extype" name="scala.Predef.String">String</span>]</span>, <span name="mobileHost">mobileHost: <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Option" class="extype" target="_top">Option</a>[<span class="extype" name="scala.Predef.String">String</span>]</span>, <span name="totalCompletedTasksCount">totalCompletedTasksCount: <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Int" class="extype" target="_top">Int</a></span>, <span name="todayCompletedTasksCount">todayCompletedTasksCount: <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Int" class="extype" target="_top">Int</a></span>, <span name="karma">karma: <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Double" class="extype" target="_top">Double</a></span>, <span name="premiumUntil">premiumUntil: <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Option" class="extype" target="_top">Option</a>[<span class="extype" name="java.util.Date">Date</span>]</span>, <span name="isBusinessAccountAdmin">isBusinessAccountAdmin: <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Boolean" class="extype" target="_top">Boolean</a></span>, <span name="businessAccountId">businessAccountId: <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Option" class="extype" target="_top">Option</a>[<a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Int" class="extype" target="_top">Int</a>]</span>, <span name="isBeta">isBeta: <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Boolean" class="extype" target="_top">Boolean</a></span>, <span name="isDummy">isDummy: <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Boolean" class="extype" target="_top">Boolean</a></span>, <span name="dateJoined">dateJoined: <span class="extype" name="java.util.Date">Date</span></span>, <span name="theme">theme: <a href="Theme.html" class="extype" name="ru.pavkin.todoist.api.core.model.Theme">Theme</a></span>, <span name="avatars">avatars: <a href="UserAvatars.html" class="extype" name="ru.pavkin.todoist.api.core.model.UserAvatars">UserAvatars</a></span>)</span><span class="result"> extends <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Product" class="extype" target="_top">Product</a> with <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Serializable" class="extype" target="_top">Serializable</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#ru.pavkin.todoist.api.core.model.package@UserextendsProductwithSerializable" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="ru.pavkin.todoist.api.core.model.UserAvatars" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="UserAvatarsextendsProductwithSerializable"></a>
+      <a id="UserAvatars:UserAvatars"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="UserAvatars.html"><span class="name">UserAvatars</span></a><span class="params">(<span name="small">small: <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Option" class="extype" target="_top">Option</a>[<span class="extype" name="scala.Predef.String">String</span>]</span>, <span name="medium">medium: <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Option" class="extype" target="_top">Option</a>[<span class="extype" name="scala.Predef.String">String</span>]</span>, <span name="big">big: <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Option" class="extype" target="_top">Option</a>[<span class="extype" name="scala.Predef.String">String</span>]</span>, <span name="s640">s640: <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Option" class="extype" target="_top">Option</a>[<span class="extype" name="scala.Predef.String">String</span>]</span>)</span><span class="result"> extends <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Product" class="extype" target="_top">Product</a> with <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Serializable" class="extype" target="_top">Serializable</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#ru.pavkin.todoist.api.core.model.package@UserAvatarsextendsProductwithSerializable" title="Permalink" target="_top">
         <img src="../../../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -639,6 +1303,40 @@
       </a>
     </span>
       
+    </li><li name="ru.pavkin.todoist.api.core.model.Completed" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="Completed"></a>
+      <a id="Completed:Completed"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="Completed$.html"><span class="name">Completed</span></a><span class="result"> extends <a href="UploadState.html" class="extype" name="ru.pavkin.todoist.api.core.model.UploadState">UploadState</a> with <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Product" class="extype" target="_top">Product</a> with <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Serializable" class="extype" target="_top">Serializable</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#ru.pavkin.todoist.api.core.model.package@Completed" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="ru.pavkin.todoist.api.core.model.DateFormat" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="DateFormat"></a>
+      <a id="DateFormat:DateFormat"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="DateFormat$.html"><span class="name">DateFormat</span></a><span class="result"> extends <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Serializable" class="extype" target="_top">Serializable</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#ru.pavkin.todoist.api.core.model.package@DateFormat" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
     </li><li name="ru.pavkin.todoist.api.core.model.DateLanguage" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="DateLanguage"></a>
       <a id="DateLanguage:DateLanguage"></a>
@@ -652,6 +1350,40 @@
       </span>
       </h4><span class="permalink">
       <a href="../../../../../../index.html#ru.pavkin.todoist.api.core.model.package@DateLanguage" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="ru.pavkin.todoist.api.core.model.DayOfWeek" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="DayOfWeek"></a>
+      <a id="DayOfWeek:DayOfWeek"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="DayOfWeek$.html"><span class="name">DayOfWeek</span></a><span class="result"> extends <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Serializable" class="extype" target="_top">Serializable</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#ru.pavkin.todoist.api.core.model.package@DayOfWeek" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="ru.pavkin.todoist.api.core.model.External" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="External"></a>
+      <a id="External:External"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="External$.html"><span class="name">External</span></a><span class="result"> extends <a href="UploadState.html" class="extype" name="ru.pavkin.todoist.api.core.model.UploadState">UploadState</a> with <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Product" class="extype" target="_top">Product</a> with <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Serializable" class="extype" target="_top">Serializable</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#ru.pavkin.todoist.api.core.model.package@External" title="Permalink" target="_top">
         <img src="../../../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -690,6 +1422,40 @@
       </a>
     </span>
       
+    </li><li name="ru.pavkin.todoist.api.core.model.LocationBasedReminder" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="LocationBasedReminder"></a>
+      <a id="LocationBasedReminder:LocationBasedReminder"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="LocationBasedReminder$.html"><span class="name">LocationBasedReminder</span></a><span class="result"> extends <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Serializable" class="extype" target="_top">Serializable</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#ru.pavkin.todoist.api.core.model.package@LocationBasedReminder" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="ru.pavkin.todoist.api.core.model.Pending" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="Pending"></a>
+      <a id="Pending:Pending"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="Pending$.html"><span class="name">Pending</span></a><span class="result"> extends <a href="UploadState.html" class="extype" name="ru.pavkin.todoist.api.core.model.UploadState">UploadState</a> with <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Product" class="extype" target="_top">Product</a> with <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Serializable" class="extype" target="_top">Serializable</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#ru.pavkin.todoist.api.core.model.package@Pending" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
     </li><li name="ru.pavkin.todoist.api.core.model.Priority" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="Priority"></a>
       <a id="Priority:Priority"></a>
@@ -720,6 +1486,142 @@
       </span>
       </h4><span class="permalink">
       <a href="../../../../../../index.html#ru.pavkin.todoist.api.core.model.package@ProjectColor" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="ru.pavkin.todoist.api.core.model.ProjectsSortOrder" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="ProjectsSortOrder"></a>
+      <a id="ProjectsSortOrder:ProjectsSortOrder"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="ProjectsSortOrder$.html"><span class="name">ProjectsSortOrder</span></a><span class="result"> extends <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Serializable" class="extype" target="_top">Serializable</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#ru.pavkin.todoist.api.core.model.package@ProjectsSortOrder" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="ru.pavkin.todoist.api.core.model.ReminderPeriod" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="ReminderPeriod"></a>
+      <a id="ReminderPeriod:ReminderPeriod"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="ReminderPeriod$.html"><span class="name">ReminderPeriod</span></a><span class="result"> extends <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Serializable" class="extype" target="_top">Serializable</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#ru.pavkin.todoist.api.core.model.package@ReminderPeriod" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="ru.pavkin.todoist.api.core.model.ReminderService" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="ReminderService"></a>
+      <a id="ReminderService:ReminderService"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="ReminderService$.html"><span class="name">ReminderService</span></a>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#ru.pavkin.todoist.api.core.model.package@ReminderService" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="ru.pavkin.todoist.api.core.model.Theme" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="Theme"></a>
+      <a id="Theme:Theme"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="Theme$.html"><span class="name">Theme</span></a><span class="result"> extends <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Serializable" class="extype" target="_top">Serializable</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#ru.pavkin.todoist.api.core.model.package@Theme" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="ru.pavkin.todoist.api.core.model.TimeFormat" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="TimeFormat"></a>
+      <a id="TimeFormat:TimeFormat"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="TimeFormat$.html"><span class="name">TimeFormat</span></a><span class="result"> extends <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Serializable" class="extype" target="_top">Serializable</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#ru.pavkin.todoist.api.core.model.package@TimeFormat" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="ru.pavkin.todoist.api.core.model.TodoistDate" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="TodoistDate"></a>
+      <a id="TodoistDate:TodoistDate"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="TodoistDate$.html"><span class="name">TodoistDate</span></a>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#ru.pavkin.todoist.api.core.model.package@TodoistDate" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="ru.pavkin.todoist.api.core.model.TokenScope" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="TokenScope"></a>
+      <a id="TokenScope:TokenScope"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="TokenScope$.html"><span class="name">TokenScope</span></a>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#ru.pavkin.todoist.api.core.model.package@TokenScope" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="ru.pavkin.todoist.api.core.model.UploadState" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="UploadState"></a>
+      <a id="UploadState:UploadState"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="UploadState$.html"><span class="name">UploadState</span></a>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#ru.pavkin.todoist.api.core.model.package@UploadState" title="Permalink" target="_top">
         <img src="../../../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>

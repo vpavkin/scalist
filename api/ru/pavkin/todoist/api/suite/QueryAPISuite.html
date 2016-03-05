@@ -99,7 +99,7 @@
         <div id="types" class="types members">
               <h3>Type Members</h3>
               <ol><li name="ru.pavkin.todoist.api.suite.QueryAPISuite.All" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="All=shapeless.::[QueryAPISuite.this.Projects,shapeless.::[QueryAPISuite.this.Labels,shapeless.HNil]]"></a>
+      <a id="All=shapeless.::[QueryAPISuite.this.User,shapeless.::[QueryAPISuite.this.Reminders,shapeless.::[QueryAPISuite.this.Filters,shapeless.::[QueryAPISuite.this.Notes,shapeless.::[QueryAPISuite.this.Tasks,shapeless.::[QueryAPISuite.this.Projects,shapeless.::[QueryAPISuite.this.Labels,shapeless.HNil]]]]]]]"></a>
       <a id="All:All"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -107,14 +107,33 @@
         <span class="kind">type</span>
       </span>
       <span class="symbol">
-        <span class="name">All</span><span class="result"> = <span class="extype" name="shapeless.::">::</span>[<a href="#Projects" class="extmbr" name="ru.pavkin.todoist.api.suite.QueryAPISuite.Projects">Projects</a>, <span class="extype" name="shapeless.::">::</span>[<a href="#Labels" class="extmbr" name="ru.pavkin.todoist.api.suite.QueryAPISuite.Labels">Labels</a>, <span class="extype" name="shapeless.HNil">HNil</span>]]</span>
+        <span class="name">All</span><span class="result"> = <span class="extype" name="shapeless.::">::</span>[<a href="#User" class="extmbr" name="ru.pavkin.todoist.api.suite.QueryAPISuite.User">User</a>, <span class="extype" name="shapeless.::">::</span>[<a href="#Reminders" class="extmbr" name="ru.pavkin.todoist.api.suite.QueryAPISuite.Reminders">Reminders</a>, <span class="extype" name="shapeless.::">::</span>[<a href="#Filters" class="extmbr" name="ru.pavkin.todoist.api.suite.QueryAPISuite.Filters">Filters</a>, <span class="extype" name="shapeless.::">::</span>[<a href="#Notes" class="extmbr" name="ru.pavkin.todoist.api.suite.QueryAPISuite.Notes">Notes</a>, <span class="extype" name="shapeless.::">::</span>[<a href="#Tasks" class="extmbr" name="ru.pavkin.todoist.api.suite.QueryAPISuite.Tasks">Tasks</a>, <span class="extype" name="shapeless.::">::</span>[<a href="#Projects" class="extmbr" name="ru.pavkin.todoist.api.suite.QueryAPISuite.Projects">Projects</a>, <span class="extype" name="shapeless.::">::</span>[<a href="#Labels" class="extmbr" name="ru.pavkin.todoist.api.suite.QueryAPISuite.Labels">Labels</a>, <span class="extype" name="shapeless.HNil">HNil</span>]]]]]]]</span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../../index.html#ru.pavkin.todoist.api.suite.QueryAPISuite@All=shapeless.::[QueryAPISuite.this.Projects,shapeless.::[QueryAPISuite.this.Labels,shapeless.HNil]]" title="Permalink" target="_top">
+      <a href="../../../../../index.html#ru.pavkin.todoist.api.suite.QueryAPISuite@All=shapeless.::[QueryAPISuite.this.User,shapeless.::[QueryAPISuite.this.Reminders,shapeless.::[QueryAPISuite.this.Filters,shapeless.::[QueryAPISuite.this.Notes,shapeless.::[QueryAPISuite.this.Tasks,shapeless.::[QueryAPISuite.this.Projects,shapeless.::[QueryAPISuite.this.Labels,shapeless.HNil]]]]]]]" title="Permalink" target="_top">
         <img src="../../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      
+      <p class="shortcomment cmt">All resources that can be requested
+</p>
+    </li><li name="ru.pavkin.todoist.api.suite.QueryAPISuite.Filters" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="Filters"></a>
+      <a id="Filters:Filters"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">type</span>
+      </span>
+      <span class="symbol">
+        <span class="name">Filters</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#ru.pavkin.todoist.api.suite.QueryAPISuite@Filters" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Collection of <code>Filter</code> entities
+</p>
     </li><li name="ru.pavkin.todoist.api.suite.QueryAPISuite.Labels" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
       <a id="Labels"></a>
       <a id="Labels:Labels"></a>
@@ -131,7 +150,26 @@
         <img src="../../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      
+      <p class="shortcomment cmt">Collection of <code>Label</code> entities
+</p>
+    </li><li name="ru.pavkin.todoist.api.suite.QueryAPISuite.Notes" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="Notes"></a>
+      <a id="Notes:Notes"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">type</span>
+      </span>
+      <span class="symbol">
+        <span class="name">Notes</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#ru.pavkin.todoist.api.suite.QueryAPISuite@Notes" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Collection of <code>Note</code> entities
+</p>
     </li><li name="ru.pavkin.todoist.api.suite.QueryAPISuite.Projects" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
       <a id="Projects"></a>
       <a id="Projects:Projects"></a>
@@ -148,7 +186,8 @@
         <img src="../../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      
+      <p class="shortcomment cmt">Collection of <code>Project</code> entities
+</p>
     </li><li name="ru.pavkin.todoist.api.suite.QueryAPISuite.QuerySyntax" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
       <a id="QuerySyntaxextendsAnyRef"></a>
       <a id="QuerySyntax:QuerySyntax"></a>
@@ -166,6 +205,60 @@
       </a>
     </span>
       
+    </li><li name="ru.pavkin.todoist.api.suite.QueryAPISuite.Reminders" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="Reminders"></a>
+      <a id="Reminders:Reminders"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">type</span>
+      </span>
+      <span class="symbol">
+        <span class="name">Reminders</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#ru.pavkin.todoist.api.suite.QueryAPISuite@Reminders" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Collection of <code>Reminder</code> entities
+</p>
+    </li><li name="ru.pavkin.todoist.api.suite.QueryAPISuite.Tasks" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="Tasks"></a>
+      <a id="Tasks:Tasks"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">type</span>
+      </span>
+      <span class="symbol">
+        <span class="name">Tasks</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#ru.pavkin.todoist.api.suite.QueryAPISuite@Tasks" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Collection of <code>Item</code> entities
+</p>
+    </li><li name="ru.pavkin.todoist.api.suite.QueryAPISuite.User" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="User"></a>
+      <a id="User:User"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">type</span>
+      </span>
+      <span class="symbol">
+        <span class="name">User</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#ru.pavkin.todoist.api.suite.QueryAPISuite@User" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt"><code>User</code> entity
+</p>
     </li></ol>
             </div>
 
@@ -278,7 +371,7 @@
         <span class="kind">val</span>
       </span>
       <span class="symbol">
-        <span class="name">all</span><span class="result">: <a href="../core/HasRawRequest.html" class="extype" name="ru.pavkin.todoist.api.core.HasRawRequest">HasRawRequest</a>[<a href="#All=shapeless.::[QueryAPISuite.this.Projects,shapeless.::[QueryAPISuite.this.Labels,shapeless.HNil]]" class="extmbr" name="ru.pavkin.todoist.api.suite.QueryAPISuite.All">All</a>]</span>
+        <span class="name">all</span><span class="result">: <a href="../core/HasRawRequest.html" class="extype" name="ru.pavkin.todoist.api.core.HasRawRequest">HasRawRequest</a>[<a href="#All=shapeless.::[QueryAPISuite.this.User,shapeless.::[QueryAPISuite.this.Reminders,shapeless.::[QueryAPISuite.this.Filters,shapeless.::[QueryAPISuite.this.Notes,shapeless.::[QueryAPISuite.this.Tasks,shapeless.::[QueryAPISuite.this.Projects,shapeless.::[QueryAPISuite.this.Labels,shapeless.HNil]]]]]]]" class="extmbr" name="ru.pavkin.todoist.api.suite.QueryAPISuite.All">All</a>]</span>
       </span>
       </h4><span class="permalink">
       <a href="../../../../../index.html#ru.pavkin.todoist.api.suite.QueryAPISuite@all:ru.pavkin.todoist.api.core.HasRawRequest[QueryAPISuite.this.All]" title="Permalink" target="_top">
@@ -444,6 +537,23 @@
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="ru.pavkin.todoist.api.suite.QueryAPISuite#filters" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="filters:ru.pavkin.todoist.api.core.HasRawRequest[QueryAPISuite.this.Filters]"></a>
+      <a id="filters:HasRawRequest[Filters]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">implicit </span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">filters</span><span class="result">: <a href="../core/HasRawRequest.html" class="extype" name="ru.pavkin.todoist.api.core.HasRawRequest">HasRawRequest</a>[<a href="#Filters" class="extmbr" name="ru.pavkin.todoist.api.suite.QueryAPISuite.Filters">Filters</a>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#ru.pavkin.todoist.api.suite.QueryAPISuite@filters:ru.pavkin.todoist.api.core.HasRawRequest[QueryAPISuite.this.Filters]" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
     </li><li name="scala.AnyRef#finalize" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="finalize():Unit"></a>
       <a id="finalize():Unit"></a>
@@ -576,6 +686,23 @@
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li name="ru.pavkin.todoist.api.suite.QueryAPISuite#notes" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="notes:ru.pavkin.todoist.api.core.HasRawRequest[QueryAPISuite.this.Notes]"></a>
+      <a id="notes:HasRawRequest[Notes]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">implicit </span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">notes</span><span class="result">: <a href="../core/HasRawRequest.html" class="extype" name="ru.pavkin.todoist.api.core.HasRawRequest">HasRawRequest</a>[<a href="#Notes" class="extmbr" name="ru.pavkin.todoist.api.suite.QueryAPISuite.Notes">Notes</a>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#ru.pavkin.todoist.api.suite.QueryAPISuite@notes:ru.pavkin.todoist.api.core.HasRawRequest[QueryAPISuite.this.Notes]" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
     </li><li name="scala.AnyRef#notify" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="notify():Unit"></a>
       <a id="notify():Unit"></a>
@@ -627,6 +754,23 @@
       </a>
     </span>
       
+    </li><li name="ru.pavkin.todoist.api.suite.QueryAPISuite#reminders" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="reminders:ru.pavkin.todoist.api.core.HasRawRequest[QueryAPISuite.this.Reminders]"></a>
+      <a id="reminders:HasRawRequest[Reminders]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">implicit </span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">reminders</span><span class="result">: <a href="../core/HasRawRequest.html" class="extype" name="ru.pavkin.todoist.api.core.HasRawRequest">HasRawRequest</a>[<a href="#Reminders" class="extmbr" name="ru.pavkin.todoist.api.suite.QueryAPISuite.Reminders">Reminders</a>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#ru.pavkin.todoist.api.suite.QueryAPISuite@reminders:ru.pavkin.todoist.api.core.HasRawRequest[QueryAPISuite.this.Reminders]" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
     </li><li name="scala.AnyRef#synchronized" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="synchronized[T0](x$1:=&gt;T0):T0"></a>
       <a id="synchronized[T0](⇒T0):T0"></a>
@@ -644,6 +788,23 @@
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li name="ru.pavkin.todoist.api.suite.QueryAPISuite#tasks" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="tasks:ru.pavkin.todoist.api.core.HasRawRequest[QueryAPISuite.this.Tasks]"></a>
+      <a id="tasks:HasRawRequest[Tasks]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">implicit </span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">tasks</span><span class="result">: <a href="../core/HasRawRequest.html" class="extype" name="ru.pavkin.todoist.api.core.HasRawRequest">HasRawRequest</a>[<a href="#Tasks" class="extmbr" name="ru.pavkin.todoist.api.suite.QueryAPISuite.Tasks">Tasks</a>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#ru.pavkin.todoist.api.suite.QueryAPISuite@tasks:ru.pavkin.todoist.api.core.HasRawRequest[QueryAPISuite.this.Tasks]" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
     </li><li name="scala.AnyRef#toString" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="toString():String"></a>
       <a id="toString():String"></a>
@@ -661,6 +822,23 @@
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="ru.pavkin.todoist.api.suite.QueryAPISuite#user" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="user:ru.pavkin.todoist.api.core.HasRawRequest[QueryAPISuite.this.User]"></a>
+      <a id="user:HasRawRequest[User]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">implicit </span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">user</span><span class="result">: <a href="../core/HasRawRequest.html" class="extype" name="ru.pavkin.todoist.api.core.HasRawRequest">HasRawRequest</a>[<a href="#User" class="extmbr" name="ru.pavkin.todoist.api.suite.QueryAPISuite.User">User</a>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#ru.pavkin.todoist.api.suite.QueryAPISuite@user:ru.pavkin.todoist.api.core.HasRawRequest[QueryAPISuite.this.User]" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
     </li><li name="scala.AnyRef#wait" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="wait():Unit"></a>
       <a id="wait():Unit"></a>

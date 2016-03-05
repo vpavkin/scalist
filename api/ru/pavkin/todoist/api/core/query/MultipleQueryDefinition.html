@@ -49,7 +49,9 @@
       </span>
       </h4>
       
-          <div id="comment" class="fullcommenttop"><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/vpavkin/scalist/tree/master/core/src/main/scala/ru/pavkin/todoist/api/core/query/MultipleQueryDefinition.scala" target="_blank">MultipleQueryDefinition.scala</a></dd></dl><div class="toggleContainer block">
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>A definition of a multiple resources query.
+The execution result is an HList of requested resources</p><p>Call <code>execute</code> to perform the request and get the result (under the effect)
+</p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/vpavkin/scalist/tree/master/core/src/main/scala/ru/pavkin/todoist/api/core/query/MultipleQueryDefinition.scala" target="_blank">MultipleQueryDefinition.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><a href="../RequestDefinition.html" class="extype" name="ru.pavkin.todoist.api.core.RequestDefinition">RequestDefinition</a>[<span class="extype" name="ru.pavkin.todoist.api.core.query.MultipleQueryDefinition.F">F</span>, <span class="extype" name="ru.pavkin.todoist.api.core.query.MultipleQueryDefinition.P">P</span>, <span class="extype" name="ru.pavkin.todoist.api.core.query.MultipleQueryDefinition.R">R</span>, <span class="extype" name="ru.pavkin.todoist.api.core.query.MultipleQueryDefinition.Base">Base</span>], <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.AnyRef" class="extype" target="_top">AnyRef</a>, <a href="http://www.scala-lang.org/api/2.11.7/index.html#scala.Any" class="extype" target="_top">Any</a></div>
         </div><div class="toggleContainer block">
@@ -100,23 +102,27 @@
 
         <div id="values" class="values members">
               <h3>Abstract Value Members</h3>
-              <ol><li name="ru.pavkin.todoist.api.core.query.MultipleQueryDefinition#and" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
-      <a id="and[RR](implicitFM:cats.FlatMap[P],implicitNC:ru.pavkin.todoist.api.utils.NotContainsConstraint[R,RR],implicitir:ru.pavkin.todoist.api.core.HasRawRequest[RR],implicitparser:ru.pavkin.todoist.api.core.decoder.SingleResponseDecoder.Aux[P,Base,RR]):ru.pavkin.todoist.api.core.query.MultipleQueryDefinition[F,P,shapeless.::[RR,R],Base]"></a>
-      <a id="and[RR](FlatMap[P],NotContainsConstraint[R,RR],HasRawRequest[RR],Aux[P,Base,RR]):MultipleQueryDefinition[F,P,::[RR,R],Base]"></a>
+              <ol><li name="ru.pavkin.todoist.api.core.query.MultipleQueryDefinition#and" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="and[RR](implicitFM:cats.FlatMap[P],implicitNC:ru.pavkin.todoist.api.utils.NotContainsConstraint[R,RR],implicitir:ru.pavkin.todoist.api.core.HasRawRequest[RR],implicitparser:ru.pavkin.todoist.api.core.decoder.SingleResponseDecoder[P,Base,RR]):ru.pavkin.todoist.api.core.query.MultipleQueryDefinition[F,P,shapeless.::[RR,R],Base]"></a>
+      <a id="and[RR](FlatMap[P],NotContainsConstraint[R,RR],HasRawRequest[RR],SingleResponseDecoder[P,Base,RR]):MultipleQueryDefinition[F,P,::[RR,R],Base]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier">abstract </span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">and</span><span class="tparams">[<span name="RR">RR</span>]</span><span class="params">(<span class="implicit">implicit </span><span name="FM">FM: <a href="http://typelevel.org/cats/api/index.html#cats.FlatMap" class="extype" target="_top">FlatMap</a>[<span class="extype" name="ru.pavkin.todoist.api.core.query.MultipleQueryDefinition.P">P</span>]</span>, <span name="NC">NC: <a href="../../utils/NotContainsConstraint.html" class="extype" name="ru.pavkin.todoist.api.utils.NotContainsConstraint">NotContainsConstraint</a>[<span class="extype" name="ru.pavkin.todoist.api.core.query.MultipleQueryDefinition.R">R</span>, <span class="extype" name="ru.pavkin.todoist.api.core.query.MultipleQueryDefinition.and.RR">RR</span>]</span>, <span name="ir">ir: <a href="../HasRawRequest.html" class="extype" name="ru.pavkin.todoist.api.core.HasRawRequest">HasRawRequest</a>[<span class="extype" name="ru.pavkin.todoist.api.core.query.MultipleQueryDefinition.and.RR">RR</span>]</span>, <span name="parser">parser: <a href="../decoder/SingleResponseDecoder$.html#Aux[F[_],Base,Out0]=ru.pavkin.todoist.api.core.decoder.SingleResponseDecoder[F,Base]{typeOut=Out0}" class="extmbr" name="ru.pavkin.todoist.api.core.decoder.SingleResponseDecoder.Aux">Aux</a>[<span class="extype" name="ru.pavkin.todoist.api.core.query.MultipleQueryDefinition.P">P</span>, <span class="extype" name="ru.pavkin.todoist.api.core.query.MultipleQueryDefinition.Base">Base</span>, <span class="extype" name="ru.pavkin.todoist.api.core.query.MultipleQueryDefinition.and.RR">RR</span>]</span>)</span><span class="result">: <a href="" class="extype" name="ru.pavkin.todoist.api.core.query.MultipleQueryDefinition">MultipleQueryDefinition</a>[<span class="extype" name="ru.pavkin.todoist.api.core.query.MultipleQueryDefinition.F">F</span>, <span class="extype" name="ru.pavkin.todoist.api.core.query.MultipleQueryDefinition.P">P</span>, <span class="extype" name="shapeless.::">::</span>[<span class="extype" name="ru.pavkin.todoist.api.core.query.MultipleQueryDefinition.and.RR">RR</span>, <span class="extype" name="ru.pavkin.todoist.api.core.query.MultipleQueryDefinition.R">R</span>], <span class="extype" name="ru.pavkin.todoist.api.core.query.MultipleQueryDefinition.Base">Base</span>]</span>
+        <span class="name">and</span><span class="tparams">[<span name="RR">RR</span>]</span><span class="params">(<span class="implicit">implicit </span><span name="FM">FM: <a href="http://typelevel.org/cats/api/index.html#cats.FlatMap" class="extype" target="_top">FlatMap</a>[<span class="extype" name="ru.pavkin.todoist.api.core.query.MultipleQueryDefinition.P">P</span>]</span>, <span name="NC">NC: <a href="../../utils/NotContainsConstraint.html" class="extype" name="ru.pavkin.todoist.api.utils.NotContainsConstraint">NotContainsConstraint</a>[<span class="extype" name="ru.pavkin.todoist.api.core.query.MultipleQueryDefinition.R">R</span>, <span class="extype" name="ru.pavkin.todoist.api.core.query.MultipleQueryDefinition.and.RR">RR</span>]</span>, <span name="ir">ir: <a href="../HasRawRequest.html" class="extype" name="ru.pavkin.todoist.api.core.HasRawRequest">HasRawRequest</a>[<span class="extype" name="ru.pavkin.todoist.api.core.query.MultipleQueryDefinition.and.RR">RR</span>]</span>, <span name="parser">parser: <a href="../decoder/SingleResponseDecoder.html" class="extype" name="ru.pavkin.todoist.api.core.decoder.SingleResponseDecoder">SingleResponseDecoder</a>[<span class="extype" name="ru.pavkin.todoist.api.core.query.MultipleQueryDefinition.P">P</span>, <span class="extype" name="ru.pavkin.todoist.api.core.query.MultipleQueryDefinition.Base">Base</span>, <span class="extype" name="ru.pavkin.todoist.api.core.query.MultipleQueryDefinition.and.RR">RR</span>]</span>)</span><span class="result">: <a href="" class="extype" name="ru.pavkin.todoist.api.core.query.MultipleQueryDefinition">MultipleQueryDefinition</a>[<span class="extype" name="ru.pavkin.todoist.api.core.query.MultipleQueryDefinition.F">F</span>, <span class="extype" name="ru.pavkin.todoist.api.core.query.MultipleQueryDefinition.P">P</span>, <span class="extype" name="shapeless.::">::</span>[<span class="extype" name="ru.pavkin.todoist.api.core.query.MultipleQueryDefinition.and.RR">RR</span>, <span class="extype" name="ru.pavkin.todoist.api.core.query.MultipleQueryDefinition.R">R</span>], <span class="extype" name="ru.pavkin.todoist.api.core.query.MultipleQueryDefinition.Base">Base</span>]</span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../../../index.html#ru.pavkin.todoist.api.core.query.MultipleQueryDefinition@and[RR](implicitFM:cats.FlatMap[P],implicitNC:ru.pavkin.todoist.api.utils.NotContainsConstraint[R,RR],implicitir:ru.pavkin.todoist.api.core.HasRawRequest[RR],implicitparser:ru.pavkin.todoist.api.core.decoder.SingleResponseDecoder.Aux[P,Base,RR]):ru.pavkin.todoist.api.core.query.MultipleQueryDefinition[F,P,shapeless.::[RR,R],Base]" title="Permalink" target="_top">
+      <a href="../../../../../../index.html#ru.pavkin.todoist.api.core.query.MultipleQueryDefinition@and[RR](implicitFM:cats.FlatMap[P],implicitNC:ru.pavkin.todoist.api.utils.NotContainsConstraint[R,RR],implicitir:ru.pavkin.todoist.api.core.HasRawRequest[RR],implicitparser:ru.pavkin.todoist.api.core.decoder.SingleResponseDecoder[P,Base,RR]):ru.pavkin.todoist.api.core.query.MultipleQueryDefinition[F,P,shapeless.::[RR,R],Base]" title="Permalink" target="_top">
         <img src="../../../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      
+      <p class="shortcomment cmt">Returns a new request definition, that after execution will return
+all originally requested resources plus the added one (in a form of an <code>HList</code>)</p><div class="fullcomment"><div class="comment cmt"><p>Returns a new request definition, that after execution will return
+all originally requested resources plus the added one (in a form of an <code>HList</code>)</p><p>See <a href="../AuthorizedAPI.html#getAll[R&lt;:shapeless.HList](implicitIR:ru.pavkin.todoist.api.core.HasRawRequest[R],implicitID:ru.pavkin.todoist.api.utils.IsDistinctConstraint[R],implicitparser:ru.pavkin.todoist.api.core.decoder.MultipleResponseDecoder[P,Base,R]):ru.pavkin.todoist.api.core.query.MultipleQueryDefinition[F,P,R,Base]" class="extmbr" name="ru.pavkin.todoist.api.core.AuthorizedAPI#getAll">ru.pavkin.todoist.api.core.AuthorizedAPI.getAll</a> for details on working with
+multiple resources response
+</p></div></div>
     </li><li name="ru.pavkin.todoist.api.core.RequestDefinition#execute" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
       <a id="execute:F[R]"></a>
       <a id="execute:F[R]"></a>
@@ -133,7 +139,9 @@
         <img src="../../../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../RequestDefinition.html" class="extype" name="ru.pavkin.todoist.api.core.RequestDefinition">RequestDefinition</a></dd></dl></div>
+      <p class="shortcomment cmt">Executes this request definition and returns the result wrapped with the API effect
+</p><div class="fullcomment"><div class="comment cmt"><p>Executes this request definition and returns the result wrapped with the API effect
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../RequestDefinition.html" class="extype" name="ru.pavkin.todoist.api.core.RequestDefinition">RequestDefinition</a></dd></dl></div>
     </li></ol>
             </div>
 
