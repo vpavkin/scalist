@@ -99,7 +99,10 @@ Build a single command request:
 val addProject = api.perform(AddProject("Learn scalist", Some(ProjectColor.color18)))
 ```
 
-Build a typesafe multiple command request (multiple ways):
+Build a typesafe multiple command request (multiple ways).
+Notice the usage of `projectId` tagger to mark raw `UUID` as a project id. 
+All entity ids have tagged types for additional compile time safety.
+
 ```scala
 import java.util.UUID
 
@@ -134,7 +137,7 @@ val addProjectWithTasks = api.performAll(
 )
 ```
 
-Note that resource ids, while being `UUID`s under the hood, are tagged with corresponding phantom types, so you won't be able to write things like this:
+Note, that tagged ids help to avoid misuse here: for instance, you won't be able to create `AddTask` command with a temp id of a label:
 ```scala
 // labelId and taskId have differently tagged types
 val invalidCommand = AddLabel("Label").andForIt(AddTask("Task1", _)) 
@@ -142,7 +145,9 @@ val invalidCommand = AddLabel("Label").andForIt(AddTask("Task1", _))
 
 #### Request execution
 
-To send the request just call `execute` method on the request object:
+Everything we created in [Queries](#queries) and [Commands](#commands) sections examples are just request definitions: no requests were actually executed yet.
+
+Given a request definition we can send the request by just calling `execute` method on the request definition instance:
 
 ```scala
 projectsRequest.execute
