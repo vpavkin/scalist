@@ -23,6 +23,9 @@ Project is at early stages now. Most major features are implemented, but there c
     3. [Request execution](#request-execution)
     4. [Response handling](#response-handling)
     5. [Result type](#result-type)
+    6. [Authorization helpers](#authorization-helpers)
+      1. [OAuth step 1 url generator](#oauth-step-1-url-generator)
+      2. [OAuth step 3 request](#oauth-step-3-request)
 2. [Design](#design)
   1. [Modules](#modules)
   2. [API dependencies](#api-dependencies)
@@ -250,6 +253,37 @@ result.resultFor(UUID.randomUUID) // returns None at runtime
 
 ```scala
 result.isSuccess // true or false
+```
+
+#### Authorization helpers
+
+Scalist can't provide all the requests, required by the OAuth flow, because some of them should be handled on the application level.
+But there's something Scalist can help with:
+
+##### OAuth step 1 URL generator
+
+Scalist can generate URLs for OAuth step 1 redirect (see more [here](https://developer.todoist.com/#oauth)):
+
+```scala
+todoist.auth.oAuthStep1URL("<clientId>", Set(TokenScope.Read, TokenScope.AddTasks), "<state>")
+```
+This call returns a url string for supplied `clientId`, `state` and set of scopes.
+See all list of available scopes in `TokenScope` companion object.
+
+##### OAuth step 3 request
+
+Scalist can perform the "token exchange" request which is the step 3 of Todoist OAuth flow:
+
+```scala
+todoist.auth.oAuthStep3(TokenExchange("<clientId>","<clientSecret>","<code>")).execute
+```
+
+Note that request definition here does not support chaining and only allows to call `execute` on it.
+
+In result you will get an instance of `AccessToken` class (of course it will be under the same API effect as all other responses):
+
+```scala
+case class AccessToken(token: String, tokenType: String)
 ```
 
 ## Design
