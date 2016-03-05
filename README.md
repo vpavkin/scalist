@@ -28,7 +28,7 @@ Project is at early stages now. Implemented feature set is not complete and ther
   2. [API dependencies](#api-dependencies)
   3. [Type safety](#type-safety)
 3. [Documentation](#documentation)
-4. [Supported commands list](#supported-commands-list)
+4. [Supported resources and commands](#supported-resources-and-commands)
 5. [Contributing](#contributing)
 
 
@@ -278,14 +278,25 @@ Some type level tricks, that were used within the Scalist DSL will be described 
 
 ## Documentation
 
-Full API documentation is under development. 
+Full API documentation is under development.
 For now, please, check the [Getting started](#getting-started) guide or [file an issue](https://github.com/vpavkin/scalist/issues/new) with a question.
 
-Scaladocs are located [here](http://vpavkin.github.io/scalist/api/#package).
+Also, all methods that can be used by library user are documented in the source.
+Full scaladocs are located [here](http://vpavkin.github.io/scalist/api/#package).
 
 Model classes are good to study right in the [source](https://github.com/vpavkin/scalist/tree/master/core/src/main/scala/ru/pavkin/todoist/api/core/model).
 
-## Supported command list
+## Supported resources and commands:
+
+Currently supported resources:
+
+- Project
+- Label
+- Filter
+- Task
+- Note
+- Reminder
+- User
 
 Full list of commands, currently supported by Scalist:
 
