@@ -12,7 +12,7 @@ Scalist is a client library for [Todoist API](https://developer.todoist.com/), w
 Scalist works on Scala 2.11 with Java 7/8.
 
 **Warning:**
-Project is at early stages now. Implemented feature set is not complete and there can be performance problems. Also, a great work should be done on clearing out what types should be made private/public.
+Project is at early stages now. Most major features are implemented, but there can be performance problems. Also, a great work should be done on clearing out what types should be made private/public.
 
 
 1. [Getting started](#getting-started)
