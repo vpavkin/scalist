@@ -92,6 +92,18 @@ trait ModelAPISuite[F[_], P[_], Base]
   def dtoToAccessToken(implicit M: Monad[P]): SingleResponseDecoder[P, dto.AccessToken, model.AccessToken] =
     SingleResponseDecoder.using(d => M.pure(d.toModel))
 
+  /**
+    * Syntax helpers for this API suite
+    *
+    * @see [[ru.pavkin.todoist.api.suite.QueryAPISuite.QuerySyntax.HListQueryOps.projects]]
+    * @see [[ru.pavkin.todoist.api.core.model.util.ReversedAtSyntax.ReversedAtHListOps.resultFor]]
+    * @see [[ru.pavkin.todoist.api.core.model.util.CommandResultHList.Syntax.CommandResultHListOps.resultFor]]
+    * @see [[ru.pavkin.todoist.api.core.model.util.CommandResultHList.Syntax.CommandResultHListOps.isSuccess]]
+    * @see [[ru.pavkin.todoist.api.core.model.util.CombineCommands.Syntax.CombineCommandsOps.:+]]
+    * @see [[ru.pavkin.todoist.api.core.model.util.CombineCommands.Syntax.TempIdProduceCommandsOps.forIt]]
+    * @see [[ru.pavkin.todoist.api.core.model.util.CombineCommands.Syntax.TempIdProduceCommandsOps.andForIt]]
+    * @see [[ru.pavkin.todoist.api.core.model.util.CombineCommands.Syntax.TempIdProduceCommandsOps.andForItAll]]
+    */
   object syntax
     extends QuerySyntax
       with ReversedAtSyntax

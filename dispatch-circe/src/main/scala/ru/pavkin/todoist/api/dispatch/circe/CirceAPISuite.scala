@@ -47,7 +47,7 @@ trait CirceAPISuite
           executor
         )
 
-      def auth: OAuthAPI[DispatchAPI.Result, CirceDecoder.Result, Json] =
+      override val auth: OAuthAPI[DispatchAPI.Result, CirceDecoder.Result, Json] =
         new DispatchOAuthAPI(
           new DispatchOAuthRequestFactory,
           executor
