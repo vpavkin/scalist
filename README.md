@@ -246,6 +246,12 @@ result.resultFor(addProject.uuid)
 result.resultFor(UUID.randomUUID) // returns None at runtime
 ```
 
+- `isSuccess` allows to quickly find out, if all the commands in the request finished successfully:
+
+```scala
+result.isSuccess // true or false
+```
+
 ## Design
 
 Scalist is designed with three correlated requirements:
