@@ -14,8 +14,24 @@ import scala.concurrent.{ExecutionContext, Future}
 
 object DispatchAPI extends FutureInstances with ComposeApply {
 
+  /**
+    * Represents error, occured during HTTP request.
+    * Can be either [[HTTPError]] or [[DecodingError]]
+    */
   sealed trait Error
+  /**
+    * Messages that an error occured during result decoding,
+    * which usually means inconsistency between the actual API and implementation
+    *
+    * @param underlying the Circe error, describing the actual failure
+    */
   case class DecodingError(underlying: io.circe.Error) extends Error
+  /**
+    * Represents HTTP response with not 2xx result code
+    *
+    * @param code HTTP response code
+    * @param body optional response body
+    */
   case class HTTPError(code: Int, body: Option[String]) extends Error
 
   type L[T] = DispatchJsonRequestExecutor.Result[T]
@@ -54,6 +70,6 @@ class DispatchAuthorizedAPI(override val requestFactory: AuthorizedRequestFactor
   extends DispatchAPI(executor) with ExecutedAuthorizedAPI[Result, L, P, Req, Json]
 
 class DispatchOAuthAPI(override val requestFactory: RawRequest Produce Req,
-                            override val executor: RequestExecutor.Aux[Req, DispatchJsonRequestExecutor.Result, Json])
-                           (override implicit val ec: ExecutionContext)
+                       override val executor: RequestExecutor.Aux[Req, DispatchJsonRequestExecutor.Result, Json])
+                      (override implicit val ec: ExecutionContext)
   extends DispatchAPI(executor) with ExecutedOAuthAPI[Result, L, P, Req, Json]

@@ -12,7 +12,7 @@ Scalist is a client library for [Todoist API](https://developer.todoist.com/), w
 Scalist works on Scala 2.11 with Java 7/8.
 
 **Warning:**
-Project is at early stages now. Implemented feature set is not complete and there can be performance problems. Also, a great work should be done on clearing out what types should be made private/public.
+Project is at early stages now. Most major features are implemented, but there can be performance problems. Also, a great work should be done on clearing out what types should be made private/public.
 
 
 1. [Getting started](#getting-started)
@@ -28,7 +28,8 @@ Project is at early stages now. Implemented feature set is not complete and ther
   2. [API dependencies](#api-dependencies)
   3. [Type safety](#type-safety)
 3. [Documentation](#documentation)
-4. [Contributing](#contributing)
+4. [Supported resources and commands](#supported-resources-and-commands)
+5. [Contributing](#contributing)
 
 
 ## Getting started
@@ -37,7 +38,7 @@ Project is at early stages now. Implemented feature set is not complete and ther
 Currently, there's only one API implementation, based on [Dispatch HTTP](https://github.com/dispatch/reboot) and [Circe JSON](https://github.com/travisbrown/circe) libraries. To get it, include this in your `build.sbt`:
 
 ```scala
-libraryDependencies += "ru.vpavkin" %% "scalist-dispatch-circe" % "0.1.0"
+libraryDependencies += "ru.vpavkin" %% "scalist-dispatch-circe" % "0.2.0"
 ```
 
 Next, import the API toolkit where you need it:
@@ -98,7 +99,10 @@ Build a single command request:
 val addProject = api.perform(AddProject("Learn scalist", Some(ProjectColor.color18)))
 ```
 
-Build a typesafe multiple command request (multiple ways):
+Build a typesafe multiple command request (multiple ways).
+Notice the usage of `projectId` tagger to mark raw `UUID` as a project id. 
+All entity ids have tagged types for additional compile time safety.
+
 ```scala
 import java.util.UUID
 
@@ -133,7 +137,7 @@ val addProjectWithTasks = api.performAll(
 )
 ```
 
-Note that resource ids, while being `UUID`s under the hood, are tagged with corresponding phantom types, so you won't be able to write things like this:
+Note, that tagged ids help to avoid misuse here: for instance, you won't be able to create `AddTask` command with a temp id of a label:
 ```scala
 // labelId and taskId have differently tagged types
 val invalidCommand = AddLabel("Label").andForIt(AddTask("Task1", _)) 
@@ -141,7 +145,9 @@ val invalidCommand = AddLabel("Label").andForIt(AddTask("Task1", _))
 
 #### Request execution
 
-To send the request just call `execute` method on the request object:
+Everything we created in [Queries](#queries) and [Commands](#commands) sections examples are just request definitions: no requests were actually executed yet.
+
+Given a request definition we can send the request by just calling `execute` method on the request definition instance:
 
 ```scala
 projectsRequest.execute
@@ -240,6 +246,12 @@ result.resultFor(addProject.uuid)
 result.resultFor(UUID.randomUUID) // returns None at runtime
 ```
 
+- `isSuccess` allows to quickly find out, if all the commands in the request finished successfully:
+
+```scala
+result.isSuccess // true or false
+```
+
 ## Design
 
 Scalist is designed with three correlated requirements:
@@ -277,12 +289,53 @@ Some type level tricks, that were used within the Scalist DSL will be described 
 
 ## Documentation
 
-Full API documentation is under development. 
+Full API documentation is under development.
 For now, please, check the [Getting started](#getting-started) guide or [file an issue](https://github.com/vpavkin/scalist/issues/new) with a question.
 
-Scaladocs are located [here](http://vpavkin.github.io/scalist/api/#package).
+Also, all methods that can be used by library user are documented in the source.
+Full scaladocs are located [here](http://vpavkin.github.io/scalist/api/#package).
 
 Model classes are good to study right in the [source](https://github.com/vpavkin/scalist/tree/master/core/src/main/scala/ru/pavkin/todoist/api/core/model).
+
+## Supported resources and commands:
+
+Currently supported resources:
+
+- Project
+- Label
+- Filter
+- Task
+- Note
+- Reminder
+- User
+
+Full list of commands, currently supported by Scalist:
+
+- AddAbsoluteTimeBasedReminder
+- AddFilter
+- AddLabel
+- AddLocationBasedReminder
+- AddNote
+- AddProject
+- AddRelativeTimeBasedReminder
+- AddTask
+- AddTaskToInbox
+- ArchiveProjects
+- CloseTask
+- DeleteFilter
+- DeleteLabel
+- DeleteNote
+- DeleteProjects
+- DeleteReminder
+- DeleteTasks
+- MoveTasks
+- UnarchiveProjects
+- UncompleteTasks
+- UpdateFilter
+- UpdateLabel
+- UpdateNote
+- UpdateProject
+- UpdateTask
 
 ## Contributing
 

@@ -125,7 +125,7 @@ lazy val tests = project.in(file("tests"))
     dispatchCirce
   )
 
-lazy val noDocProjects: Seq[ProjectReference] = Seq.empty
+lazy val noDocProjects: Seq[ProjectReference] = Seq(scalist)
 
 lazy val docSettings = site.settings ++ ghpages.settings ++ unidocSettings ++ Seq(
   site.addMappingsToSiteDir(mappings in(ScalaUnidoc, packageDoc), "api"),
